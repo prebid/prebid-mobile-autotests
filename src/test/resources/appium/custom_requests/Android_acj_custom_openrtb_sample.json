@@ -1,0 +1,43 @@
+{
+  "tmax" : "$VARIABLE",
+  "source" : {
+    "ext" : {
+      "omidpv":"$VARIABLE",
+      "omidpn":"$VARIABLE"
+    }
+  },
+  "imp": [
+    {
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "instl": "$VARIABLE",
+      "clickbrowser": 0,
+      "secure": 1,
+      "banner": {
+        "api": "$VARIABLE"
+      }
+    }
+  ],
+  "app": {
+    "name": "Prebid Rendering Kotlin Demo",
+    "bundle": "org.prebid.mobile.renderingtestapp",
+    "storeurl": "$VARIABLE"
+  },
+  "device": {
+    "lmt": 0,
+    "make": "$VARIABLE",
+    "model": "$VARIABLE",
+    "os": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "language": "$VARIABLE",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
+    "ifa": "$VARIABLE",
+    "ip": "$VARIABLE",
+    "h": "$VARIABLE",
+    "w": "$VARIABLE",
+    "connectiontype":  "$VARIABLE",
+    "geo": "$VARIABLE"
+  },
+  "user": "$VARIABLE"
+}

@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name":"Prebid Rendering Kotlin Demo",
+    "bundle":"org.prebid.mobile.renderingtestapp"
+  },
+  "imp":[{
+    "displaymanager": "prebid-mobile",
+    "displaymanagerver":"4.11.0",
+    "clickBrowser":0,
+    "video": {
+      "delivery":[2],
+      "playbackend":2,
+      "pos":7,
+      "placement":5,
+      "protocols":[2,5],
+      "mimes":["video/mp4","video/3gpp","video/webm","video/mkv"]
+    },
+    "instl":1
+  }],
+  "user":{}
+}

@@ -1,0 +1,84 @@
+{
+  "app": {
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "ver": "$VARIABLE",
+    "name": "Prebid Rendering Kotlin Demo",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "bundle": "org.prebid.mobile.renderingtestapp"
+  },
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "cache": {
+        "bids": {
+
+        }
+      },
+      "targeting": {
+
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "source": {
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    },
+    "tid": "$VARIABLE"
+  },
+  "imp": [
+    {
+      "ext": {
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "clickbrowser": 0,
+      "native": {
+        "request": "{\"ver\":\"1.2\",\"context\":2,\"contextsubtype\":20,\"plcmttype\":1,\"assets\":[{\"required\":1,\"title\":{\"len\":90}},{\"required\":1,\"img\":{\"type\":1,\"wmin\":20,\"hmin\":20}},{\"required\":1,\"img\":{\"wmin\":200,\"hmin\":20}},{\"required\":1,\"data\":{\"type\":1,\"len\":90}},{\"required\":1,\"data\":{\"type\":2}},{\"required\":1,\"data\":{\"type\":12}}],\"eventtrackers\":[{\"event\":1,\"methods\":[1,2]}]}",
+        "ver": "$VARIABLE"
+      },
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "id": "$VARIABLE",
+      "secure": 1,
+      "instl": 0
+    }
+  ],
+  "device": {
+    "os": "Android",
+    "ifa": "$VARIABLE",
+    "h": "$VARIABLE",
+    "language": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "geo": {
+      "lon": "$VARIABLE",
+      "type": "$VARIABLE",
+      "lat": "$VARIABLE"
+    },
+    "lmt": "$VARIABLE",
+    "carrier": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
+    "w": "$VARIABLE",
+    "model": "$VARIABLE",
+    "connectiontype": "$VARIABLE",
+    "make": "$VARIABLE"
+  },
+  "user": {
+
+  }
+}

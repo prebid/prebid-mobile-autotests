@@ -1,0 +1,17 @@
+{
+  "app":{
+    "name":"Prebid Rendering Kotlin Demo",
+    "bundle":"org.prebid.mobile.renderingtestapp"
+  },
+  "imp":[{
+    "displaymanager": "prebid-mobile",
+    "displaymanagerver":"4.11.0",
+    "banner":{
+      "api":[3,5,7]
+    },
+    "clickBrowser":0,
+    "secure":1,
+    "instl":0
+  }],
+  "user":{}
+}

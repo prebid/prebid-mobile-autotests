@@ -1,0 +1,111 @@
+{
+  "app": {
+    "bundle": "org.prebid.mobile.renderingtestapp",
+    "ext": {
+      "prebid": {
+        "data": {
+        },
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "PrebidMobileDemoRendering",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "connectiontype": "$VARIABLE",
+    "geo": {
+
+    },
+    "h": "$VARIABLE",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "language": "en",
+    "lmt": "$VARIABLE",
+    "make": "Apple",
+    "model": "iPhone",
+    "os": "iOS",
+    "osv": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "w":"$VARIABLE"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        },
+        "vastxml": {
+
+        }
+      },
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "targeting": {
+
+      },
+      "data": {
+        "bidders": []
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "banner": {
+        "api": [
+          3,
+          5,
+          6,
+          7
+        ],
+        "format": [
+          {
+            "h": 50,
+            "w": 320
+          }
+        ]
+      },
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "ext": {
+        "context": {
+          "data": {
+
+          }
+        },
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 0,
+      "secure": 1
+    }
+  ],
+  "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "ext": {
+      "data": {
+
+      }
+    }
+  }
+}

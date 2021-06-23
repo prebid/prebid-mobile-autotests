@@ -1,0 +1,141 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# ------------------------------------------
+# iOS
+# ------------------------------------------
+
+platform :ios do
+
+    after_all do |lane|
+        sh("bash ../scripts/DisableWebProxyIfNeeded.sh")
+    end
+
+    error do |lane, exception|
+        sh("bash ../scripts/DisableWebProxyIfNeeded.sh")
+    end
+
+    lane :iOS_INAPPBIDDING_tests do |options|
+                scheme='iOS InAppBidding'
+                output_file='PrebidMobileDemoRendering.app'
+
+                begin
+                    downloadAppFromServer(output_file)
+                    sh 'mvn -f ../pom.xml clean -Dsurefire.suiteXmlFiles=src/test/resources/appium/inAppBidding/inAppBidding_iOS.xml -DauthToken="' + (options[:auth_token] || "NONE") + '" -DjobId="' + (options[:job_id] || "NONE") + '" test'
+                end
+        end
+    
+    lane :iOS_Prebid_tests do |options|
+        output_file='PrebidApp.app'
+
+        begin
+            downloadPrebidApp(output_file)
+            sh 'mvn -f ../pom.xml clean -Dmaven.test.failure.ignore=true -Dsurefire.suiteXmlFiles=src/test/resources/appium/prebid/Prebid_iOS.xml -DprebidServerKind=Prebid -DauthToken="' + (options[:auth_token] || "NONE") + '" -DjobId="' + (options[:job_id] || "NONE") + '" test'
+        end
+    end
+
+end
+
+# ------------------------------------------
+# Android
+# ------------------------------------------
+
+platform :android do
+
+    after_all do |lane|
+        sh("bash ../scripts/DisableWebProxyIfNeeded.sh")
+    end
+
+    error do |lane, exception|
+        sh("bash ../scripts/DisableWebProxyIfNeeded.sh")
+    end
+
+    lane :android9_inAppBidding_tests do |options|
+                scheme='Android inAppBidding'
+                output_file='AndroidSDKInternalTest-prod-debug.apk'
+                avdFile = "fastlane/AVD_WIFI_setup.json"
+
+                begin
+                    downloadAppFromServer(output_file)
+                    task = 'mvn -f ./pom.xml clean -DplatformVersion=9 -Dsurefire.suiteXmlFiles=src/test/resources/appium/inAppBidding/inAppBidding_Android.xml -DauthToken="' + (options[:auth_token] || "NONE") + '" -DjobId="' + (options[:job_id] || "NONE") + '" test'
+                    testsForTask(task, avdFile)
+                end
+        end
+
+    lane :android9_mocked_tests do |options|
+                    scheme='Android mocked'
+                    output_file='AndroidSDKInternalTest-prod-debug.apk'
+                    avdFile = "fastlane/AVD_setup.json"
+
+                    begin
+                        downloadAppFromServer(output_file)
+                        task = 'mvn -f ./pom.xml clean -DplatformVersion=9 -Dsurefire.suiteXmlFiles=src/test/resources/appium/inAppBidding/inAppBidding_Android_Mocked.xml -DauthToken="' + (options[:auth_token] || "NONE") + '" -DjobId="' + (options[:job_id] || "NONE") + '" test'
+                        testsForTask(task, avdFile)
+                    end
+            end
+
+        lane :Android_Prebid_tests do |options|
+            output_file='PrebidApplication-debug.apk'
+            avdFile = "fastlane/AVD_WIFI_setup.json"
+
+            begin
+                downloadPrebidApp(output_file)
+                task = 'mvn -f ./pom.xml clean -DplatformVersion=9 -Dsurefire.suiteXmlFiles=src/test/resources/appium/prebid/Prebid_Android.xml -DprebidServerKind=Prebid -DauthToken="' + (options[:auth_token] || "NONE") + '" -DjobId="' + (options[:job_id] || "NONE") + '" test'
+                testsForTask(task, avdFile)
+            end
+        end
+        
+    def testsForTask(task, avdFile)
+
+        # Waking up the machine...
+        sh("caffeinate -u -t 1")
+        
+        sh("pwd")
+        sh("ls -l")
+        sh("echo $PATH")
+        sh("echo $ANDROID_HOME")
+        
+        # Enable proxy for Appium
+        sh("bash ../scripts/EnableWebProxyIfNeeded.sh")
+
+        automated_test_emulator_run(
+            AVD_setup_path: "#{avdFile}",
+            AVD_recreate_new: false,
+            AVD_clean_after: false,
+            shell_task: "bash ./scripts/run_tests.sh \"#{task}\""
+        )
+    end
+
+end
+
+# ------------------------------------------
+# Global variables
+# ------------------------------------------
+
+BUILD_FOLDER=File.expand_path("~/Downloads/AppiumBuilds")
+
+# ------------------------------------------
+# Global func
+# ------------------------------------------
+
+desc "Download and unarchive app from server"
+def downloadAppFromServer(app)
+
+end
+
+desc "Download and unarchive app from server"
+def downloadPrebidApp(app)
+
+end

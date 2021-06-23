@@ -1,0 +1,32 @@
+{
+  "app":{
+    "name":"Prebid Rendering Kotlin Demo",
+    "bundle":"org.prebid.mobile.renderingtestapp"
+  },
+  "imp":[{
+    "displaymanager":"Prebid",
+    "displaymanagerver":"4.11.0",
+    "banner":{
+      "api":[3,5,7]
+    },
+    "clickBrowser":0,
+    "secure":1,
+    "instl":0
+  }],
+  "device":{
+    "os":"Android",
+    "ifa":"759bed57-5f6b-46b2-bfbe-c83c44b4c293",
+    "h":1920,
+    "language":"en",
+    "geo":{},
+    "lmt":0,
+    "carrier":"Android",
+    "osv":"9",
+    "mccmnc":"310-260",
+    "w":1080,
+    "model":"Android SDK built for x86",
+    "connectiontype":3,
+    "make":"Google"
+  },
+  "user":{}
+}

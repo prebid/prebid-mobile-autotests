@@ -1,0 +1,52 @@
+{
+  "app": {
+    "bundle": "org.prebid.mobile.renderingtestapp",
+    "name": "PrebidMobileDemoRendering"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "geo": "$VARIABLE",
+    "h": "$VARIABLE",
+    "ifa": "$VARIABLE",
+    "language": "$VARIABLE",
+    "lmt": 1,
+    "connectiontype": "$VARIABLE",
+    "make": "$VARIABLE",
+    "model": "$VARIABLE",
+    "os": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "w": "$VARIABLE"
+  },
+  "source" : {
+    "ext" : {
+      "omidpv":"$VARIABLE",
+      "omidpn":"$VARIABLE"
+    }
+  },
+  "imp": [
+    {
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "ext": {
+        "dlp": 1
+      },
+      "instl": "$VARIABLE",
+      "secure": 1,
+      "video": {
+        "delivery": "$VARIABLE",
+        "mimes": "$VARIABLE",
+        "placement": "$VARIABLE",
+        "playbackend": "$VARIABLE",
+        "playbackmethod": "$VARIABLE",
+        "pos": "$VARIABLE",
+        "protocols": "$VARIABLE"
+      }
+    }
+  ],
+  "user": {
+  }
+}

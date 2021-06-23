@@ -1,0 +1,103 @@
+{
+  "app": {
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "ver": "1.0",
+    "name": "Prebid Rendering Kotlin Demo",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "bundle": "org.prebid.mobile.renderingtestapp"
+  },
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "cache": {
+        "bids": {
+
+        }
+      },
+      "targeting": {
+
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "source": {
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    },
+    "tid": "$VARIABLE"
+  },
+  "imp": [
+    {
+      "ext": {
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "banner": {
+        "format": [
+          {
+            "w": "$VARIABLE",
+            "h": "$VARIABLE"
+          }
+        ],
+        "pos": 7,
+        "api": [
+          3,
+          5,
+          6,
+          7
+        ]
+      },
+      "id": "$VARIABLE",
+      "secure": "$VARIABLE",
+      "instl": "$VARIABLE"
+    }
+  ],
+  "device": {
+    "ext": {
+      "prebid": {
+        "interstitial": {
+          "minheightperc": 30,
+          "minwidthperc": 30
+        }
+      }
+    },
+    "os": "Android",
+    "ifa": "$VARIABLE",
+    "h": "$VARIABLE",
+    "language": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "geo": {
+      "lon": "$VARIABLE",
+      "type": "$VARIABLE",
+      "lat": "$VARIABLE"
+    },
+    "lmt": "$VARIABLE",
+    "carrier": "Android",
+    "osv": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
+    "w": "$VARIABLE",
+    "model": "$VARIABLE",
+    "connectiontype": "$VARIABLE",
+    "make": "Google"
+  },
+  "user": {
+
+  }
+}

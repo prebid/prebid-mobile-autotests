@@ -1,0 +1,118 @@
+{
+  "app": {
+    "bundle": "org.prebid.mobile.renderingtestapp",
+    "ext": {
+      "prebid": {
+        "data": {
+        },
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "PrebidMobileDemoRendering",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "connectiontype": "$VARIABLE",
+    "geo": {
+    },
+    "h": "$VARIABLE",
+    "ifa": "$VARIABLE",
+    "language": "$VARIABLE",
+    "lmt": "$VARIABLE",
+    "make": "Apple",
+    "model": "iPhone",
+    "os": "iOS",
+    "osv": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "w": "$VARIABLE"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        },
+        "vastxml": {
+
+        }
+      },
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "targeting": {
+
+      },
+      "data": {
+        "bidders": []
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "ext": {
+        "context": {
+          "data": {
+
+          }
+        },
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 1,
+      "secure": 1,
+      "video": {
+        "delivery": [
+          3
+        ],
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "mimes": [
+          "video\/mp4",
+          "video\/quicktime",
+          "video\/x-m4v",
+          "video\/3gpp",
+          "video\/3gpp2"
+        ],
+        "placement": 5,
+        "playbackend": 2,
+        "pos": 7,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE"
+      }
+    }
+  ],
+  "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "ext": {
+      "data": {
+
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "$VARIABLE",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "$VARIABLE",
+          "impid": "$VARIABLE",
+          "price": "$VARIABLE",
+          "adm": "$VARIABLE",
+          "adid": "$VARIABLE",
+          "adomain": [
+            "prebid.com"
+          ],
+          "crid": "$VARIABLE",
+          "w": 300,
+          "h": 250,
+          "ext": {
+            "prebid": {
+              "cache": {
+                "key": "",
+                "url": "",
+                "bids": {
+                  "url": "$VARIABLE",
+                  "cacheId": "$VARIABLE"
+                }
+              },
+              "targeting": {
+                "hb_bidder": "prebid",
+                "hb_bidder_prebid": "prebid",
+                "hb_cache_host": "prebid.qa.prebid.net",
+                "hb_cache_host_prebid": "prebid.qa.prebid.net",
+                "hb_cache_id": "$VARIABLE",
+                "hb_cache_id_prebid": "$VARIABLE",
+                "hb_cache_path": "/cache",
+                "hb_cache_path_prebid": "/cache",
+                "hb_env": "mobile-app",
+                "hb_env_prebid": "mobile-app",
+                "hb_pb": "0.10",
+                "hb_pb_prebid": "0.10",
+                "hb_size": "300x250",
+                "hb_size_prebid": "300x250"
+              },
+              "type": "banner",
+              "video": {
+                "duration": "$VARIABLE",
+                "primary_category": "$VARIABLE"
+              },
+              "events": {
+                "win": "$VARIABLE",
+                "imp": "$VARIABLE"
+              }
+            },
+            "bidder": {
+              "ad_ox_cats": "$VARIABLE",
+              "agency_id": "$VARIABLE",
+              "brand_id": "$VARIABLE",
+              "buyer_id": "$VARIABLE",
+              "matching_ad_id": {
+                "campaign_id": "$VARIABLE",
+                "creative_id": "$VARIABLE",
+                "placement_id": "$VARIABLE"
+              },
+              "next_highest_bid_price": "$VARIABLE"
+            }
+          }
+        }
+      ],
+      "seat": "prebid"
+    }
+  ],
+  "cur": "$VARIABLE",
+  "ext": {
+    "responsetimemillis": {
+      "prebid": "$VARIABLE"
+    },
+    "prebid": {
+      "auctiontimestamp": "$VARIABLE"
+    }
+  }
+}

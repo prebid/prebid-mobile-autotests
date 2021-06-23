@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"
+        [<!ENTITY parent SYSTEM "src/test/resources/appium/config/env_resources.xml">]>
+<suite name="InApp_Bidding_Android.xml" thread-count="1" verbose="7" time-out="360000">
+    &parent;
+    <parameter name="prebidTestPlatform" value="Android-Server"/>
+    <parameter name="prebidServerKind" value="Prebid"/>
+    <parameter name="locatorType" value="text"/>
+    <test verbose="3" name="InApp_Bidding Android Server Based">
+        <groups>
+            <run>
+                <include name="serverBased"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+        </classes>
+    </test>
+</suite>
