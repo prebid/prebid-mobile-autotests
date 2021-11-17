@@ -93,7 +93,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -226,7 +226,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -244,7 +244,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -347,7 +347,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
@@ -487,7 +487,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -599,7 +599,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 //
 //
 //    //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -765,7 +765,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamVideoEventsPauseResume(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -787,7 +787,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"})
+//    @Test(groups = {"smoke"})
     public void testVideoOutstreamVideoEventsPauseResumeEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
