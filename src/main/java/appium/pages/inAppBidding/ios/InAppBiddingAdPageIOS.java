@@ -700,7 +700,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         for (int i = 1; i <= 4; i++) {
             touchAction.longPress(PointOption.point(startX, startY))
                     .moveTo(PointOption.point(startX, finishY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
+//                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
                     .perform();
         }
 
@@ -726,7 +726,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         for (int i = 1; i <= 4; i++) {
             touchAction.longPress(PointOption.point(startX, startY))
                     .moveTo(PointOption.point(startX, finishY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
+//                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
                     .perform();
         }
     }

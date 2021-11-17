@@ -9,7 +9,7 @@
       }
     },
     "ver": "$VARIABLE",
-    "name": "PrebidMobileDemoRendering",
+    "name": "InternalTestApp",
     "publisher": {
       "id": "$VARIABLE"
     },
@@ -37,6 +37,11 @@
     }
   },
   "id": "$VARIABLE",
+  "regs":{
+    "ext":{
+      "gdpr":"$VARIABLE"
+    }
+  },
   "source": {
     "ext": {
       "omidpv": "$VARIABLE",

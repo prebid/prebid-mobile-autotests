@@ -81,6 +81,7 @@ public class OMSDKSessionDescriptor {
      * Checks all obligatory events for ad.
      */
     public void checkOMBaseEvents(String platformName) {
+//        System.out.println(checkSessionStart().getIsPassed());
         OMSDKAssert.assertTrue(checkSessionStart()
                 .and(checkImpression())
                 .and(checkVerificationParameter())
@@ -267,7 +268,7 @@ public class OMSDKSessionDescriptor {
     }
 
     /**
-     * Checks properties of {@link OMSDKSessionDescriptor.EVENT_TYPE#LOADED} event
+     * Checks properties of {@link EVENT_TYPE#LOADED} event
      * - skippable must be false
      * - autoPlay must be false
      * - position must be 'standalone'

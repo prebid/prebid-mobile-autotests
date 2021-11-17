@@ -20,10 +20,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
-
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         if (adName.contains("Feed")) {
@@ -36,8 +35,10 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.homePage.clickBack();
+
     }
 
+    //
     @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
@@ -55,7 +56,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"serverBased"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"serverBased"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -126,7 +127,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -152,7 +153,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -188,7 +189,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsLearnMore(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -308,7 +309,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -382,6 +383,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         }
 
         env.homePage.clickBack();
+
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
@@ -399,6 +401,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
+        System.out.println("Total sessions: " + eventHandler.getSessions().length);
         assertTrue(eventHandler.checkSessionsCount(1));
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
         session.checkOMBaseEvents(platformName);
@@ -408,7 +411,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    //
+//    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -523,7 +527,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"android"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"android"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedAndroidDelegates(String prebidAd) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
@@ -578,6 +582,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         OMSDKEventHandler eventHandler = new OMSDKEventHandler(env.bmp.getHar());
+        System.out.println("Sessions count: " + eventHandler.getSessions().length);
         assertTrue(eventHandler.checkSessionsCount(1));
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
         session.checkOMBaseEvents(platformName);
@@ -587,12 +592,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    ////////////////////////////
-    //OUTSTREAM 300x250 TESTS
-    ////////////////////////////
-
-
-    //VIDEO DELEGATES TEST
+    //
+//    //////////////////////////
+//    //    OUTSTREAM 300x250 TESTS
+//    //////////////////////////
+//
+//
+//    //VIDEO DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
@@ -613,7 +619,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsSingleSessionMinimize(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -637,7 +643,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -658,7 +664,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkNonAutoPlaySkippableAndStandalonePosition();
     }
 
-    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
@@ -687,7 +693,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsBackgrounded(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -802,7 +808,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"android"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"android"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
         Thread.sleep(5000);

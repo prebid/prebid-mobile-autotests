@@ -27,6 +27,7 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
         static final By examples = MobileBy.AccessibilityId("Examples");
         static final By utilities = MobileBy.AccessibilityId("Utilities");
         static final By mockServerSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchUseMock");
+        static final By GDPRSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchEnableGdpr");
 
         static final By closeButton = MobileBy.id("org.prebid.mobile.renderingtestapp:id/iv_close_interstitial");
         static final By closeWebViewButton = MobileBy.xpath("//android.widget.Button[@content-desc='close']");
@@ -43,25 +44,42 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     // Pages
 
     @Override
-    public void goToUtilities(){
+    public void goToUtilities() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.utilities)).click();
     }
 
     @Override
-    public void turnOnMockServerSwitcher(){
-        if(isMockServerOff()){
+    public void turnOnMockServerSwitcher() {
+        if (isMockServerOff()) {
             wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
         }
     }
 
     @Override
-    public void turnOffMockServerSwitcher(){
+    public void turnOnGDPRSwitcher() {
+        if (isGDPROff()) {
+            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
+        }
+    }
+
+    @Override
+    public void turnOffGDPRSwitcher() {
+        wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
+    }
+
+    @Override
+    public void turnOffMockServerSwitcher() {
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
     }
 
-    private boolean isMockServerOff(){
+    private boolean isMockServerOff() {
         return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected();
     }
+
+    public boolean isGDPROff() {
+        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).isSelected();
+    }
+
 
     @Override
     public void clickRequestTrackingAuthorization() {
@@ -87,10 +105,10 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     // Actions
 
     @Override
-    public boolean isSearchFieldDisplayed(){
+    public boolean isSearchFieldDisplayed() {
         try {
             return !(driver.findElements(PrebidLocators.searchEditText).size() == 0);
-        }catch (WebDriverException exception){
+        } catch (WebDriverException exception) {
             return false;
         }
     }
@@ -102,13 +120,13 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     }
 
     @Override
-    public void resetApp(){
+    public void resetApp() {
         System.out.println("reset app");
         driver.resetApp();
     }
 
     @Override
-    public void goToAdExamples(){
+    public void goToAdExamples() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.examples)).click();
     }
 
@@ -174,18 +192,18 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
 
     @Override
     public void turnOnCustomConfig() {
-        if(driver.findElements(PrebidLocators.customConfigButtonUnchecked).size() != 0){
+        if (driver.findElements(PrebidLocators.customConfigButtonUnchecked).size() != 0) {
             wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.customConfigButtonUnchecked))
-            .click();
+                    .click();
         }
 
     }
 
     @Override
     public void turnOffCustomConfig() {
-        if(driver.findElements(PrebidLocators.customConfigButtonChecked).size() != 0){
+        if (driver.findElements(PrebidLocators.customConfigButtonChecked).size() != 0) {
             wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.customConfigButtonChecked))
-            .click();
+                    .click();
         }
     }
 

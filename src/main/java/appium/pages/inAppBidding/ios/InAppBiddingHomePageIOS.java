@@ -12,7 +12,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
+import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBiddingHomePageImpl {
@@ -34,6 +37,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         static final By alertOk = MobileBy.AccessibilityId("OK");
         static final By searchField = MobileBy.xpath("//XCUIElementTypeSearchField");
         static final By mockServerSwitcher = MobileBy.AccessibilityId("useMockServerSwitch");
+        static final By GDPRSwitcher = MobileBy.AccessibilityId("GDPRSwitch");
     }
 
 
@@ -58,6 +62,18 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     }
 
     @Override
+    public void turnOnGDPRSwitcher() {
+        if(isGDPROff()){
+            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
+        }
+    }
+
+    @Override
+    public void turnOffGDPRSwitcher() {
+        wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
+    }
+
+    @Override
     public void turnOffMockServerSwitcher(){
         if(wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected()){
             wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
@@ -67,7 +83,9 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     private boolean isMockServerOff(){
         return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected();
     }
-
+    private boolean isGDPROff(){
+        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).isSelected();
+    }
     // Actions
     @Override
     public boolean isSearchFieldDisplayed(){
@@ -127,9 +145,13 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     public void isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates delegate) {
         final String delegateName = InAppBiddingTestEnvironment.getDelegate(delegate, platformName);
         final String xpathDelegateLocator = String.format("//XCUIElementTypeButton[@name='%s']", delegateName);
-
-        By locator = MobileBy.xpath(xpathDelegateLocator);
-        wait.until(ExpectedConditions.elementToBeClickable(locator)).isEnabled();
+        if (delegate.equals(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW)) {
+            By locator = MobileBy.xpath("(//XCUIElementTypeStaticText[@name=1])[3]");
+            assertFalse(driver.findElements(locator).isEmpty());
+        } else {
+            By locator = MobileBy.xpath(xpathDelegateLocator);
+            wait.until(ExpectedConditions.elementToBeClickable(locator)).isEnabled();
+        }
     }
 
     @Override
@@ -175,6 +197,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
 
     @Override
     public void clickCloseButtonClickThroughBrowser() {
+
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.closeButtonClickThroughBrowser))
                 .click();
     }

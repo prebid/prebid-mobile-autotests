@@ -19,7 +19,6 @@ import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
 import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
 
 public class InAppBaseTest {
-
     public static InAppBiddingTestEnvironment env;
     public static JSONObject validAuctionRequest;
     public static JSONObject validAuctionResponse;
@@ -37,11 +36,13 @@ public class InAppBaseTest {
 
     @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
     public void setupMock(ITestContext itc) throws IOException {
+        System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOCK_SERVER);
     }
 
     @BeforeTest(groups = {"serverBased", "serverBased-ios"})
     public void setupBMP(ITestContext itc) throws IOException {
+        System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOB_PROXY);
     }
 
@@ -60,7 +61,9 @@ public class InAppBaseTest {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
             env.homePage.turnOnMockServerSwitcher();
+            env.homePage.turnOffGDPRSwitcher();
         }
+
         env.homePage.turnOffCustomConfig();
         env.logValidator.clearLogs();
     }
@@ -69,6 +72,7 @@ public class InAppBaseTest {
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
+            env.homePage.turnOffGDPRSwitcher();
         }
         env.homePage.turnOffCustomConfig();
         env.bmp.newHar();
@@ -109,12 +113,15 @@ public class InAppBaseTest {
 
     public void initValidTemplatesJson(String prebidAd) {
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+
+        System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
 
     public void initEventHandler() {
+        System.out.println("Log validator: "+env.logValidator.getLogs());
         eventHandler = new OMSDKEventHandler(env.logValidator);
     }
 
@@ -124,6 +131,7 @@ public class InAppBaseTest {
         if (trafficInsprctors.contains(TestEnvironment.TrafficInspectorKind.MOCK_SERVER)) {
             env.homePage.turnOnMockServerSwitcher();
         }
+        env.homePage.turnOffGDPRSwitcher();
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
         itc.setAttribute("authToken", env.capabilities.getCapability("authToken").toString());
         platformName = env.getProperty("platformName");

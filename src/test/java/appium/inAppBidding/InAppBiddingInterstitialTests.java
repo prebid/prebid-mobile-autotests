@@ -53,10 +53,14 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         page.isShowButtonEnabled();
-
+//        System.out.println("Before Button shown: "+isButtonShown);
+//        while(!isButtonShown){
+//            page.clickReloadButton();
+//            isButtonShown=page.isShowButtonEnabled();
+//        }
+//        System.out.println("After Button shown: "+isButtonShown);
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
@@ -121,35 +125,37 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException {
-        initValidTemplatesJson(prebidAd);
+       if (prebidAd.contains("MoPub")) {
+           initValidTemplatesJson(prebidAd);
 
-        InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
+           InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
-        interstitialPage.clickShowButton();
+           interstitialPage.clickShowButton();
 
-        interstitialPage.clickInterstitialAd();
+           interstitialPage.clickInterstitialAd();
 
-        env.homePage.openInBrowser();
+           env.homePage.openInBrowser();
 
-        interstitialPage.waitAndReturnToApp();
+           interstitialPage.waitAndReturnToApp();
 
-        if (prebidAd.contains("MoPub")) {
-            interstitialPage.clickCloseInterstitial();
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_APPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
-        } else {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
-        }
+           if (prebidAd.contains("MoPub")) {
+               interstitialPage.clickCloseInterstitial();
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_APPEAR);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
+           } else {
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
+               env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+           }
 
-        env.homePage.clickBack();
+           env.homePage.clickBack();
+       }
     }
 
    @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
@@ -249,7 +255,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         session.checkNoObstructions();
     }
 
-   @Test(groups = {"smoke"})
+//   @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 

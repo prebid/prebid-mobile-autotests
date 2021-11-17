@@ -15,7 +15,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     //NATIVE TESTS
 
-    //@Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
