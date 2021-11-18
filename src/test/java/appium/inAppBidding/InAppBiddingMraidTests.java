@@ -577,7 +577,8 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.isCloseButtonDisplayed();//, "Close button should be displayed.");
 
         assertNotEquals(defaultAdSize, page.getResizeWithErrorsAdSize(), "Ad should resize");
-
+        page.setToggleOffscreenTrue();
+        page.setToggleOffscreenFalse();
         page.resizeUp();
 
         page.isCloseButtonDisplayed();//, "Close button should displayed.");
@@ -589,7 +590,6 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.isCloseButtonDisplayed();//, "Close button should be displayed.");
 
         assertNotEquals(defaultAdSize, page.getResizeWithErrorsAdSize(), "Ad should resize");
-        page.setToggleOffscreenTrue();
         env.homePage.clickBack();
 
         env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
@@ -675,7 +675,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         }
     }
 
-   @Test(groups = {"requests"}, dataProvider = "videoInterstitialAd", dataProviderClass = InAppDataProviders.class)
+//   @Test(groups = {"requests"}, dataProvider = "videoInterstitialAd", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsAfterReloadVideoInterstitial(String adName) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
