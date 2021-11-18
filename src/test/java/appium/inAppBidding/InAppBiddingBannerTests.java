@@ -26,7 +26,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-//        System.out.println(InAppBiddingEvents.AUCTION+" "+InAppBiddingEvents.WIN_PREBID);
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
 
         env.homePage.clickBack();
@@ -35,13 +34,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
-//        env.homePage.turnOffGDPRSwitcher();
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-//        System.out.println("Valid auction request: "+validAuctionRequest);
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
         checkGamOrMoPubEvents(prebidAd);
         System.out.println(validAuctionRequest);
@@ -77,7 +74,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"serverBased"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
-//        env.homePage.turnOffGDPRSwitcher();
         initValidTemplatesJson(prebidAd);
 
         if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_IN_APP) && !(isPlatformIOS)) {
@@ -104,7 +100,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         }
 
         env.homePage.clickBack();
-//        switchOnGDPR();
     }
 
     //    @Test(groups = {"ios"})

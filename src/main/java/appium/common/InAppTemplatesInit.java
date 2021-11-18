@@ -182,7 +182,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_STYLES_NO_ASSETS_GAM_MRECT, REQUEST_TEMPLATE_NATIVE);
     }};
 
-    private final static HashMap<String, String> responseTemplates = new HashMap<String, String>() {{
+    private final static HashMap<String, String> responseTemplates = new HashMap<>() {{
         //NATIVE CASES
         put(NATIVE_AD_IN_APP, RESPONSE_TEMPLATE_NATIVE);
         put(NATIVE_AD_FEED_IN_APP, RESPONSE_TEMPLATE_NATIVE);

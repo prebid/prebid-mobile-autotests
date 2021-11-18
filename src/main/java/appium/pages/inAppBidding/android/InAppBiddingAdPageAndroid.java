@@ -483,7 +483,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
 
     @Override
     public void mapAppShouldOpen() {
-        //wait.until(ExpectedConditions.presenceOfElementLocated(Locators.mapLocation));
+//        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.mapLocation));
     }
 
     @Override

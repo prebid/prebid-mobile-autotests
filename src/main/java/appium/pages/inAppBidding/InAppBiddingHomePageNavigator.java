@@ -21,9 +21,7 @@ public class InAppBiddingHomePageNavigator {
         WebElement searchBar = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBarElement));
         searchBar.clear();
         searchBar.click();
-//        System.out.println(text.toLowerCase());
         searchBar.sendKeys(text.toLowerCase());
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(listElement))
                 .click();
     }

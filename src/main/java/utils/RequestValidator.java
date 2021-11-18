@@ -22,13 +22,11 @@ public class RequestValidator {
 
     public static void validatePrebidRequest(Har data, String prebidEvent, JSONObject validJson) {
         // uncomment for debugging
-        //System.out.println(HarParser.getRequestPostDataTextJson(data, prebidEvent));
         validateRequestPrebid(data, validJson, prebidEvent);
     }
 
     public static void validateInAppBiddingRequest(Har data, String inAppBiddingEvent, JSONObject validJson) {
         // uncomment for debugging
-        //System.out.println(HarParser.getRequestPostDataJSON(data, inAppBiddingEvent));
         validateRequestInAppBidding(data, validJson, inAppBiddingEvent);
     }
 

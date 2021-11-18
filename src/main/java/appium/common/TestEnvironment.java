@@ -151,10 +151,7 @@ public class TestEnvironment {
                 && capabilities.getPlatform().equals(Platform.IOS)) {
             TestEnvironment.turnOnHttpProxyOnMac();
             TestEnvironment.turnOnHttpsProxyOnMac();
-        } /*else if (capabilities.getPlatform().equals(Platform.ANDROID)){
-            TestEnvironment.turnOnHttpProxyOnMac();
-            TestEnvironment.turnOnHttpsProxyOnMac();
-        }*/
+        }
     }
 
     private void initMockServer() throws IOException {
@@ -172,10 +169,7 @@ public class TestEnvironment {
                 && capabilities.getPlatform().equals(Platform.IOS)) {
             TestEnvironment.turnOffHttpProxyOnMac();
             TestEnvironment.turnOffHttpsProxyOnMac();
-        }/*else if (capabilities.getPlatform().equals(Platform.ANDROID)){
-            TestEnvironment.turnOnHttpProxyOnMac();
-            TestEnvironment.turnOnHttpsProxyOnMac();
-        }*/
+        }
     }
 
     /**
@@ -230,7 +224,6 @@ public class TestEnvironment {
         capabilities.setCapability("androidInstallTimeout", config.getProperty("androidInstallTimeout"));
         capabilities.setCapability("autoGrantPermissions", config.getProperty("autoGrantPermissions"));
         capabilities.setCapability("name", config.getProperty("name"));
-//        capabilities.setCapability("app", config.getProperty("app"));
         capabilities.setCapability("app", new File(config.getProperty("app")).getAbsolutePath());
         capabilities.setCapability("tags", config.getProperty("tags"));
         capabilities.setCapability("newCommandTimeout", config.getProperty("newCommandTimeout"));
@@ -238,10 +231,6 @@ public class TestEnvironment {
         capabilities.setCapability("fullReset", config.getProperty("fullReset"));
         capabilities.setCapability("noReset", config.getProperty("noReset"));
         if (capabilities.getPlatform().equals(Platform.IOS)) {
-
-//            capabilities.setCapability("customSSLCert", new String(Files.readAllBytes(Paths.get(
-//                    "src/test/resources/appium/bmp/charles-ssl-proxying-certificate.cer"))));
-//            capabilities.setCapability("useNewWDA", true);
             capabilities.setCapability("resetOnSessionStartOnly", true);
         }
 
@@ -378,7 +367,6 @@ public class TestEnvironment {
         if (systemProperty != null) {
             return systemProperty;
         } else {
-//            return "USB 10/100/1000 LAN";
             return "Wi-fi";
         }
     }

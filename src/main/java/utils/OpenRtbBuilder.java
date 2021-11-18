@@ -31,8 +31,7 @@ public class OpenRtbBuilder {
         private final JSONObject mParentObject = new JSONObject();
         private final JSONObject mOpenRtbObject = new JSONObject();
 
-        //private static final String KEY_AD_UNIT_ID = "auid";
-       //private static final String KEY_AD_UNIT_GROUP_ID = "pgid";
+
         private static final String KEY_OPEN_RTB = "openRtb";
 
         private static final String KEY_AGE = "age";
@@ -69,21 +68,6 @@ public class OpenRtbBuilder {
                 }
             }
         }
-
-        /*public ObjectBuilder setTargetAdUnitId(String adUnitId) {
-            mParentObject.put(KEY_AD_UNIT_ID, adUnitId);
-            return this;
-        }*/
-
-        /*public ObjectBuilder setTargetAdUnitGroupId(String adUnitGroupId) {
-            mParentObject.put(KEY_AD_UNIT_GROUP_ID, adUnitGroupId);
-            return this;
-        }*/
-
-        /*public ObjectBuilder setOpenRtbAdUnitId(String adUnitId) {
-            mOpenRtbObject.put(KEY_AD_UNIT_ID, adUnitId);
-            return this;
-        }*/
 
         public ObjectBuilder setAge(int age) {
             mOpenRtbObject.put(KEY_AGE, age);
@@ -187,8 +171,7 @@ public class OpenRtbBuilder {
         } else {
             objectBuilder = new ObjectBuilder(this);
         }
-        //objectBuilder.setTargetAdUnitId(newAdUnitId);
-        //objectBuilder.setTargetAdUnitGroupId(newAdUnitGroupId);
+
         return objectBuilder;
     }
 

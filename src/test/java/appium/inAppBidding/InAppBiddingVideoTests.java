@@ -20,7 +20,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-//    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
@@ -53,6 +53,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.clickCloseRandom();
 
         env.homePage.clickBack();
+
     }
 
 
@@ -226,7 +227,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -244,7 +245,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -263,7 +264,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -386,7 +387,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -452,7 +453,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedOMEventsClickEndCard(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -487,7 +488,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -727,7 +728,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsBackgroundedEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
@@ -737,9 +738,6 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.runAppInBackground(5);
         videoPage.isEndCardDisplayed();
-        if (isPlatformIOS) {
-            videoPage.clickCloseInterstitial();
-        }
 
         env.homePage.clickBack();
 
@@ -765,7 +763,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamVideoEventsPauseResume(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -787,7 +785,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"smoke"})
+    //    @Test(groups = {"smoke"})
     public void testVideoOutstreamVideoEventsPauseResumeEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 

@@ -103,9 +103,6 @@ public class HarParser {
      * @return JsonArray with entries
      */
     public static JsonArray getEntries(Har harLog) {
-//        System.out.println("Har Json: "+HarParser.harToJson(harLog));
-//        System.out.println("Object: "+HarParser.harToJson(harLog).getAsJsonObject("log").getAsJsonArray("entries"));
-//        System.out.println("Har get as Json Object: "+HarParser.harToJson(harLog).getAsJsonObject("log"));
         return HarParser.harToJson(harLog).getAsJsonObject("log").getAsJsonArray("entries");
     }
 
@@ -118,18 +115,13 @@ public class HarParser {
      */
     public static JsonArray getEntriesWithEventInUrl(Har harLog, String event) {
         JsonArray results = new JsonArray();
-//        System.out.println("Harlog "+harLog.getLog()+" "+harLog.toString());
-//        System.out.println(getEntries(harLog));
-//        System.out.println(HarParser.harToJson(harLog).getAsJsonObject("log").getAsJsonArray("entries"));
+
         for (JsonElement entry : getEntries(harLog)) {
-//            System.out.println("Entry: "+entry.getAsJsonObject().getAsJsonObject("request").get("url").getAsString()
-//                    +" "+" Event: "+event);
+
             if (entry.getAsJsonObject().getAsJsonObject("request").get("url").getAsString().contains(event)) {
                 results.add(entry);
             }
         }
-//        System.out.println("Event: "+event);
-//        System.out.println("Json Array: "+results);
         return results;
     }
 

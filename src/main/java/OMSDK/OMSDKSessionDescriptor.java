@@ -81,7 +81,6 @@ public class OMSDKSessionDescriptor {
      * Checks all obligatory events for ad.
      */
     public void checkOMBaseEvents(String platformName) {
-//        System.out.println(checkSessionStart().getIsPassed());
         OMSDKAssert.assertTrue(checkSessionStart()
                 .and(checkImpression())
                 .and(checkVerificationParameter())

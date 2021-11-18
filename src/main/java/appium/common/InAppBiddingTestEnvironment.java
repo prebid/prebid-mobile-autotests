@@ -394,7 +394,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         try {
             waitForOMEventMock(event, expectedOccurrences, timeout / 2);
         } catch (NullPointerException | TimeoutException exception) {
-//            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
+            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
         }
     }
 
@@ -433,7 +433,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
                 break;
             case "cache":
                 System.out.println("This is a CACHE event");
-                //RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
                 break;
         }
     }
@@ -459,7 +458,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
                 break;
             case "cache":
                 System.out.println("This is a CACHE event");
-                //RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
                 break;
         }
     }
