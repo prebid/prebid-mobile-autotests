@@ -22,13 +22,11 @@ public class RequestValidator {
 
     public static void validatePrebidRequest(Har data, String prebidEvent, JSONObject validJson) {
         // uncomment for debugging
-        //System.out.println(HarParser.getRequestPostDataTextJson(data, prebidEvent));
         validateRequestPrebid(data, validJson, prebidEvent);
     }
 
     public static void validateInAppBiddingRequest(Har data, String inAppBiddingEvent, JSONObject validJson) {
         // uncomment for debugging
-        //System.out.println(HarParser.getRequestPostDataJSON(data, inAppBiddingEvent));
         validateRequestInAppBidding(data, validJson, inAppBiddingEvent);
     }
 
@@ -103,7 +101,8 @@ public class RequestValidator {
         }
 
         JSONObject sentJson = new JSONObject(lastValidData);
-
+        System.out.println("Sent json: "+sentJson);
+        System.out.println("Valid Json: "+validJson);
         boolean checkResult;
         String errorMessage = null;
         try {
@@ -132,6 +131,7 @@ public class RequestValidator {
         }
         JSONObject sentJson = HarParser.getRequestPostDataTextJson(harLog, event);
         boolean checkResult;
+        System.out.println("Sent json: "+sentJson);
         String errorMessage = null;
         try {
             checkResult = isJsonValid(sentJson, validJson, ROOT_JSON_KEY);

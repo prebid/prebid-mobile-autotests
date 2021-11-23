@@ -11,7 +11,6 @@ public class InputStreamUtils {
 
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
-
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line);

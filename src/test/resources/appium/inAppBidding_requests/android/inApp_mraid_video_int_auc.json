@@ -28,6 +28,11 @@
       }
     }
   },
+  "regs":{
+    "ext":{
+      "gdpr":"$VARIABLE"
+    }
+  },
   "id": "$VARIABLE",
   "source": {
     "ext": {
@@ -84,9 +89,7 @@
     "ua": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-      "lon": "$VARIABLE",
-      "type": "$VARIABLE",
-      "lat": "$VARIABLE"
+
     },
     "lmt": "$VARIABLE",
     "carrier": "Android",

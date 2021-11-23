@@ -11,8 +11,11 @@ import org.openqa.selenium.Platform;
 import org.testng.ITestContext;
 import utils.RequestValidator;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -33,7 +36,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
     private static final String PROPERTIES_FILE_PATH_ANDROID = "src/test/resources/appium/config/AndroidInAppBiddingConfig.properties";
     private static final String PROPERTIES_FILE_PATH_ANDROID_PREBID_SERVER = "src/test/resources/appium/config/AndroidConfig.properties";
 
-    private Set<TestEnvironment.TrafficInspectorKind> trafficInspectors;
+    private Set<TrafficInspectorKind> trafficInspectors;
 
     private static final Map<InAppBiddingEvents, String> inAppBidding_Events;
 
@@ -111,10 +114,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_LOAD, "rewardedVideoAdDidLoad called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_FAIL, "rewardedVideoAdDidFailToLoad called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_APPEAR, "rewardedVideoAdWillAppearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_APPEAR, "rewardedVideoAdDidAppearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_DISSAPPEAR, "rewardedVideoAdWillDisappearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_DISSAPPEAR, "rewardedVideoAdDidDisappear called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_PRESENT, "rewardedAdWillPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_PRESENT, "rewardedAdDidPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_DISMISS, "rewardedAdWillDismiss called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_DISMISS, "rewardedAdDidDismiss called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_EXPIRE, "rewardedVideoAdDidExpire called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_TAP, "rewardedVideoAdDidReceiveTapEvent called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_SHOULD_REWARD, "rewardedVideoAdShouldReward called");
@@ -199,10 +202,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         REWARDED_VIDEO_AD_DID_LOAD,
         REWARDED_VIDEO_AD_DID_FAIL,
-        REWARDED_VIDEO_AD_WILL_APPEAR,
-        REWARDED_VIDEO_AD_DID_APPEAR,
-        REWARDED_VIDEO_AD_WILL_DISSAPPEAR,
-        REWARDED_VIDEO_AD_DID_DISSAPPEAR,
+        REWARDED_VIDEO_AD_WILL_PRESENT,
+        REWARDED_VIDEO_AD_DID_PRESENT,
+        REWARDED_VIDEO_AD_WILL_DISMISS,
+        REWARDED_VIDEO_AD_DID_DISMISS,
         REWARDED_VIDEO_AD_DID_EXPIRE,
         REWARDED_VIDEO_AD_DID_TAP,
         REWARDED_VIDEO_AD_SHOULD_REWARD,
@@ -296,6 +299,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
             driver = new IOSDriver(new URL(urlAdress), capabilities);
+            installBmpCertificate();
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);
@@ -314,6 +318,15 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         homePage.rotatePortrait();
     }
 
+    private void installBmpCertificate() throws IOException {
+        Map<String, Object> args = new HashMap<>();
+
+        byte[] byteContent = Files.readAllBytes(new File(
+                "src/test/resources/appium/bmp/iosBMPCertificate.pem").toPath());
+        args.put("content", Base64.getEncoder().encodeToString(byteContent));
+        driver.executeScript("mobile: installCertificate", args);
+    }
+
 
     /**
      * Constructor with possibility to use BMP and CustomLineArguments
@@ -327,6 +340,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         if (platform == Platform.IOS) {
             capabilities.setCapability("processArguments", commandLineArguments);
             driver = new IOSDriver(new URL(urlAdress), capabilities);
+            installBmpCertificate();
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
             capabilities.setCapability("optionalIntentArguments", commandLineArguments);
@@ -380,7 +394,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         try {
             waitForOMEventMock(event, expectedOccurrences, timeout / 2);
         } catch (NullPointerException | TimeoutException exception) {
-//            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
+            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
         }
     }
 
@@ -419,7 +433,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
                 break;
             case "cache":
                 System.out.println("This is a CACHE event");
-                //RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
                 break;
         }
     }
@@ -445,7 +458,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
                 break;
             case "cache":
                 System.out.println("This is a CACHE event");
-                //RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
                 break;
         }
     }

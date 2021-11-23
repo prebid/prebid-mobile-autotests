@@ -25,9 +25,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
-
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
 
         env.homePage.clickBack();
@@ -36,17 +34,14 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
-
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-
         checkGamOrMoPubEvents(prebidAd);
-
+        System.out.println(validAuctionRequest);
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
@@ -56,6 +51,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
         // It could be 'obstructed' when webBrowser opened or 'clipped', or 'notFound' for android
         String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
+
+
         session.checkOMBaseEvents(platformName);
         // TODO Why to checkViewability
 //        if (isPlatformIOS) {
@@ -90,7 +87,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-
+        System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
         if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
             if (isPlatformIOS) {
                 env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
@@ -156,6 +153,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
+
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
@@ -166,7 +164,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(AD_PRESENT_MODAL_VIEW);
             env.homePage.isDelegateEnabled(AD_DISMISS_MODAL_VIEW);
             //TO DO -- FIX IT v
-            //bannerPage.isDelegateEnabled(AD_WILL_LEAVE_APP);
+//                bannerPage.isDelegateEnabled(AD_WILL_LEAVE_APP);
             env.homePage.isDelegateEnabled(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW);
         } else {
             env.homePage.openInBrowser();

@@ -5,7 +5,7 @@
     &parent;
     <parameter name="prebidTestPlatform" value="iOS"/>
     <parameter name="prebidServerKind" value="Prebid"/>
-    <!-- Disable mac proxy, run only with mock server-->
+    <!-- Run only on mock server, disable proxy-->
     <test verbose="3" name="InApp_Bidding iOS Custom Requests">
         <groups>
             <run>
@@ -27,14 +27,15 @@
             </run>
         </groups>
         <classes>
-            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+            <!-- Currently native ads is not supported               -->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
             <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
-    <test verbose="3" name="InApp_Bidding Android Requests [OM, Auction, Events, OpenRTB] [MOCK]">
+    <test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB] [MOCK]">
         <groups>
             <run>
                 <include name="requests"/>
@@ -42,11 +43,12 @@
             </run>
         </groups>
         <classes>
-            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
-            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
-            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <!--     Currently native ads is not supported               -->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
-            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
         </classes>
     </test>
 </suite>

@@ -27,11 +27,13 @@ public class OMSDKEventHandler {
 
     public OMSDKEventHandler(Har har) {
         this.harResponse = HarParser.getEntriesWithEventInUrl(har, omsdkParser.requestPrefixForHar());
+        System.out.println("Har response: "+ harResponse);
         parseResponse();
     }
 
     public OMSDKEventHandler(LogValidator logValidator) {
         this.harResponse = logValidator.getLogs(omsdkParser.requestPrefixForHar());
+        System.out.println("Required event: "+omsdkParser.requestPrefixForHar()+" Har response: "+harResponse);
         parseResponse();
     }
 
@@ -119,7 +121,7 @@ public class OMSDKEventHandler {
     private void parseResponse() {
         // Sort events by sessionID
         ArrayList<Pair<String, ArrayList<String>>> sessions = splitEventsBySessionID();
-
+        System.out.println("Sessions size: "+sessions.size());
         // Prepare session Descriptors
         for (int i = 0; i < sessions.size(); i++) {
             Pair<String, ArrayList<String>> sessionRecord = sessions.get(i);

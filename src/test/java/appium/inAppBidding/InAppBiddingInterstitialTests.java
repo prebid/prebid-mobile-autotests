@@ -23,7 +23,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-   @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -46,17 +46,15 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-   @Test(groups = {"serverBased"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"serverBased"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         page.isShowButtonEnabled();
-
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
@@ -77,7 +75,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     }
 
-   @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialRandom(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -92,7 +90,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-   @Test(groups = {"serverBased"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"serverBased"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -119,7 +117,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // DELEGATES TEST
     // =============================
 
-   @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -152,7 +150,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-   @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -182,7 +180,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // OMSDK TESTS
     // =============================
 
-   @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testOMEvents() throws TimeoutException, InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 
@@ -210,7 +208,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     }
 
-   @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 
@@ -249,7 +247,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         session.checkNoObstructions();
     }
 
-   @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 

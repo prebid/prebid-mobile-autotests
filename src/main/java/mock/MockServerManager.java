@@ -139,9 +139,10 @@ public class MockServerManager implements LogValidator {
     public int getCountOfEvent(String eventName) {
         int result = 0;
         List<MockRequestModel> loggedRequests = getLoggedRequests();
-
         for (MockRequestModel request : loggedRequests) {
+
             if (request.getPath().contains(eventName)) {
+                System.out.println("Request: "+request.getPath());
                 result++;
             }
         }
@@ -325,6 +326,7 @@ public class MockServerManager implements LogValidator {
             String data = InputStreamUtils.convert(connection.getInputStream());
             JSONObject jsonObject = new JSONObject(data);
             JSONArray requests = (JSONArray) jsonObject.get("requests");
+
             for (int i = 0; i < requests.length(); i++) {
                 JSONObject request = (JSONObject) requests.get(i);
                 MockRequestModel model = new MockRequestModel(request.getString("path"),

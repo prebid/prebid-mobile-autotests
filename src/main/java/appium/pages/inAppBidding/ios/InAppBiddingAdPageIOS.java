@@ -39,6 +39,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By retryButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Retry]']");
         static final By closeButton = MobileBy.AccessibilityId("PBM Close");
         static final By closeButtonVideo = MobileBy.AccessibilityId("Close ad");
+        static final By closeButtonInterstitial = MobileBy.AccessibilityId("Close Advertisement");
         static final By learnMore = MobileBy.AccessibilityId("Learn More");
         static final By closeWebViewButton = MobileBy.AccessibilityId("PBMCloseButtonClickThroughBrowser");
         static final By adDidLoadCounter = MobileBy.xpath("(//XCUIElementTypeStaticText[@name=' - '])[1]/following-sibling::*[1]");
@@ -125,30 +126,18 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         assertEquals(getAdDidLoadCounterValue(), expectedCountValue.toString());
     }
 
-    private String getAdDidLoadCounterValue(){
+    private String getAdDidLoadCounterValue() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.adDidLoadCounter)).getText();
     }
 
     @Override
-    public void waitAndReturnToApp() {
+    public void waitAndReturnToApp() throws InterruptedException {
 
-        // TODO: Refactor me
         // This method should use a separate class for the browser page
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException ignored) {
-
-        }
-
+        Thread.sleep(1000);
         TouchAction action = new TouchAction(driver);
-        action.longPress(PointOption.point(50, 32)).perform().release();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ignored) {
-
-        }
+        action.longPress(PointOption.point(0, 0)).perform().release();
+        Thread.sleep(1000);
     }
 
     @Override
@@ -161,36 +150,17 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
     public void clickCloseRandom() throws InterruptedException {
         //Sleep needed for load DOM xml of locators on the screen
         Thread.sleep(2000);
-
-        TouchAction action = new TouchAction(driver);
-        if(driver.findElements(Locators.closeButtonVideo).size() != 0){
+        if (driver.findElements(Locators.closeButtonVideo).size() != 0) {
             System.out.println("press mopub close video");
-            action
-                    .press(PointOption.point(382, 68))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                    .perform();
-            action
-                    .press(PointOption.point(382, 68))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                    .perform();
-        }else if(driver.findElements(Locators.closeButton).size() != 0){
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.closeButtonVideo)).click();
+        } else if (driver.findElements(Locators.closeButton).size() != 0) {
             System.out.println("press inApp close video");
-            action
-                    .press(PointOption.point(370, 86))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                    .perform();
-            action
-                    .press(PointOption.point(370, 86))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                    .perform();
-        }else {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.closeButton)).click();
+        } else if (driver.findElements(Locators.closeButtonInterstitial).size()!=0){
             System.out.println("press by coordinates");
-            action
-                    .press(PointOption.point(370, 86))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-                    .perform();
-            if(!isShowButtonEnabled()){
-                action
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.closeButtonInterstitial)).click();
+            if (!isShowButtonEnabled()) {
+                new TouchAction(driver)
                         .press(PointOption.point(382, 68))
                         .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                         .perform();
@@ -507,7 +477,11 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
     @Override
     public void smsAppShouldOpen() {
         //TODO add method to check that sms app displayed
-        waitAndReturnToApp();
+        try {
+            waitAndReturnToApp();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -558,6 +532,8 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
 
     @Override
     public void setToggleOffscreenTrue() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.toggleOffScreenFalse))
+                .click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.toggleOffScreenTrue))
                 .isDisplayed();
     }
@@ -654,27 +630,27 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
 
 
     @Override
-    public void clickBtnNativeDeeplinkFallback(){
+    public void clickBtnNativeDeeplinkFallback() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.btnNativeDeeplinkFallback)).click();
     }
 
     @Override
-    public void clickBtnNativeDeeplinkOk(){
+    public void clickBtnNativeDeeplinkOk() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.btnNativeDeeplinkOk)).click();
     }
 
     @Override
-    public void clickBtnNativeLinkRoot(){
+    public void clickBtnNativeLinkRoot() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.btnNativeLinkRoot)).click();
     }
 
     @Override
-    public void clickBtnNativeLinkUrl(){
+    public void clickBtnNativeLinkUrl() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.btnNativeLinkUrl)).click();
     }
 
     @Override
-    public void clickHereToVisitOurSite(){
+    public void clickHereToVisitOurSite() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.clickHereToVisitOurSite)).click();
     }
 
@@ -700,7 +676,6 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         for (int i = 1; i <= 4; i++) {
             touchAction.longPress(PointOption.point(startX, startY))
                     .moveTo(PointOption.point(startX, finishY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
                     .perform();
         }
 
@@ -726,7 +701,6 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         for (int i = 1; i <= 4; i++) {
             touchAction.longPress(PointOption.point(startX, startY))
                     .moveTo(PointOption.point(startX, finishY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(200)))
                     .perform();
         }
     }

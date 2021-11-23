@@ -19,6 +19,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_BANNER_320x50_SKADN = "appium/inAppBidding_requests/%s/inApp_auction_320x50_skadn.json";
 
     private final static String TEMPLATE_BANNER_320x50 = "appium/inAppBidding_requests/%s/inApp_auction_320x50.json";
+
     private final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
     private final static String TEMPLATE_BANNER_728x90 = "appium/inAppBidding_requests/%s/inApp_auction_728x90.json";
     private final static String TEMPLATE_BANNER_MULTISIZE = "appium/inAppBidding_requests/%s/inApp_auction_ms.json";
@@ -42,6 +43,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName) {
         final String filePath = getFilePathAuctionRequest(prebidAd, platformName);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
+
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
 
         return new JSONObject(testJSON);
@@ -180,7 +182,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_STYLES_NO_ASSETS_GAM_MRECT, REQUEST_TEMPLATE_NATIVE);
     }};
 
-    private final static HashMap<String, String> responseTemplates = new HashMap<String, String>() {{
+    private final static HashMap<String, String> responseTemplates = new HashMap<>() {{
         //NATIVE CASES
         put(NATIVE_AD_IN_APP, RESPONSE_TEMPLATE_NATIVE);
         put(NATIVE_AD_FEED_IN_APP, RESPONSE_TEMPLATE_NATIVE);

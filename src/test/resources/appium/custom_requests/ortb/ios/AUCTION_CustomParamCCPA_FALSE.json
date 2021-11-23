@@ -9,7 +9,7 @@
       }
     },
     "ver": "$VARIABLE",
-    "name": "PrebidMobileDemoRendering",
+    "name": "InternalTestApp",
     "publisher": {
       "id": "$VARIABLE"
     },

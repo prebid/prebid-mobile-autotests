@@ -30,6 +30,11 @@
       }
     }
   ],
+  "regs":{
+    "ext":{
+      "gdpr":"$VARIABLE"
+    }
+  },
   "id": "$VARIABLE",
   "app": {
     "name": "Prebid Rendering Kotlin Demo",
@@ -61,9 +66,6 @@
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-      "lat": "$VARIABLE",
-      "lon": "$VARIABLE",
-      "type": "$VARIABLE"
     }
   },
   "user": {

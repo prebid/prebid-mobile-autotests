@@ -58,7 +58,8 @@ public class AndroidBasePage {
 
     public void goToPrebidActivity() {
         openRecentAppsList();
-        if(locatorType.equals("text")){
+        System.out.println(locatorType);
+        if(!locatorType.equals("text")){
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.FrameLayout[@content-desc=\"Prebid Rendering Kotlin Demo\"]"))).click();
         }else {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Prebid Rendering Kotlin Demo\"]"))).click();

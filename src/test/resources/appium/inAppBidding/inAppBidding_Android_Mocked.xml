@@ -27,7 +27,8 @@
             </run>
         </groups>
         <classes>
-            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+<!--     Currently native ads is not supported               -->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
@@ -42,7 +43,8 @@
             </run>
         </groups>
         <classes>
-            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+                <!-- Currently native ads is not supported               -->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>

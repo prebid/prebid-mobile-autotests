@@ -1,7 +1,7 @@
 {
   "app": {
     "bundle": "org.prebid.mobile.renderingtestapp",
-    "name": "PrebidMobileDemoRendering"
+    "name": "InternalTestApp"
   },
   "device": {
     "ext": {

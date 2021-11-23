@@ -75,9 +75,7 @@
     "ua": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-      "lon": "$VARIABLE",
-      "type": 1,
-      "lat": "$VARIABLE"
+
     },
     "lmt": 0,
     "carrier": "Android",

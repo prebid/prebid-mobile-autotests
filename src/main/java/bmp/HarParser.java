@@ -115,7 +115,9 @@ public class HarParser {
      */
     public static JsonArray getEntriesWithEventInUrl(Har harLog, String event) {
         JsonArray results = new JsonArray();
+
         for (JsonElement entry : getEntries(harLog)) {
+
             if (entry.getAsJsonObject().getAsJsonObject("request").get("url").getAsString().contains(event)) {
                 results.add(entry);
             }

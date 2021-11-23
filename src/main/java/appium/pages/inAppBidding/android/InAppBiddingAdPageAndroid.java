@@ -45,7 +45,6 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By scrollableViewArea = getId("scrollView");
         static final By scrollToDelegates = MobileBy.xpath("//android.widget.ScrollView[@scrollable='true']");
 
-        //TODO divide locators and methods to separate page class
         //MRAID EXPAND 1 LOCATORS
         static final By lockToPortrait = MobileBy.xpath("//*[@resource-id='forceport']");
         static final By lockToLandscape = MobileBy.xpath("//*[@resource-id='forceland']");
@@ -268,7 +267,6 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
                 .perform();
     }
 
-    //TODO migrate methods to separate class for mraid expand 1
 
     @Override
     public void adShouldExpand1Part() {
@@ -338,7 +336,6 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         assertEquals(isLogsContainsText(logText), expectedResult);
     }
 
-    //TODO migrate methods to separate class for mraid expand 2
 
     @Override
     public void clickExpand2creative() {
@@ -400,7 +397,6 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         return (portraitHeight == landscapeHeight) && (portraitWidth == landscapeWidth);
     }
 
-    //TODO migrate to separate class Mraid Resize
     @Override
     public void clickResizeCreative() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.resizeButton))
@@ -483,7 +479,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
 
     @Override
     public void mapAppShouldOpen() {
-        //wait.until(ExpectedConditions.presenceOfElementLocated(Locators.mapLocation));
+//        wait.until(ExpectedConditions.presenceOfElementLocated(Locators.mapLocation));
     }
 
     @Override
@@ -507,7 +503,6 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
                 .click();
     }
 
-    //TODO RESIZE WITH ERRORS METHODS
     @Override
     public void isResizeWithErrorsAdLoaded() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.testProperties));

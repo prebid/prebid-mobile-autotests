@@ -29,6 +29,10 @@ public interface InAppBiddingHomePageImpl {
 
     void turnOnMockServerSwitcher();
 
+    void turnOnGDPRSwitcher();
+
+    void turnOffGDPRSwitcher();
+
     void turnOffMockServerSwitcher();
 
     void resetApp();

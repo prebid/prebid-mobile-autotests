@@ -6,8 +6,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Properties;
@@ -78,7 +76,7 @@ public class TestEnvironment {
      * @param name
      * @param propertiesFilePath path to .properties file with default configuration
      * @param useBrowserMobProxy if set to true BrowserMobProxy will be started, by default false
-     * @throws java.io.IOException when propertiesFilePath can't be loaded
+     * @throws IOException when propertiesFilePath can't be loaded
      */
 
     /**
@@ -113,7 +111,7 @@ public class TestEnvironment {
     /**
      * Sets environment type based on 'env' property
      *
-     * @throws java.lang.RuntimeException when wrong 'env' value
+     * @throws RuntimeException when wrong 'env' value
      */
     private void setup() throws RuntimeException {
         envType = config.getProperty("env");
@@ -167,7 +165,7 @@ public class TestEnvironment {
      */
     private void teardownBrowserMobProxy() throws IOException {
         bmp.stop();
-        if (config.getProperty("env").equals(TestEnvironment.EnvType.LOCAL)
+        if (config.getProperty("env").equals(EnvType.LOCAL)
                 && capabilities.getPlatform().equals(Platform.IOS)) {
             TestEnvironment.turnOffHttpProxyOnMac();
             TestEnvironment.turnOffHttpsProxyOnMac();
@@ -178,7 +176,7 @@ public class TestEnvironment {
      * Gets default properties from specified file and update them with command line system properties.
      *
      * @param propertiesFilePath path to .properties file with default configuration
-     * @throws java.io.IOException when propertiesFilePath can't be loaded
+     * @throws IOException when propertiesFilePath can't be loaded
      */
     private void setProperties(String propertiesFilePath) throws IOException {
         Properties defaultConfig = new Properties();
@@ -226,7 +224,6 @@ public class TestEnvironment {
         capabilities.setCapability("androidInstallTimeout", config.getProperty("androidInstallTimeout"));
         capabilities.setCapability("autoGrantPermissions", config.getProperty("autoGrantPermissions"));
         capabilities.setCapability("name", config.getProperty("name"));
-//        capabilities.setCapability("app", config.getProperty("app"));
         capabilities.setCapability("app", new File(config.getProperty("app")).getAbsolutePath());
         capabilities.setCapability("tags", config.getProperty("tags"));
         capabilities.setCapability("newCommandTimeout", config.getProperty("newCommandTimeout"));
@@ -234,8 +231,6 @@ public class TestEnvironment {
         capabilities.setCapability("fullReset", config.getProperty("fullReset"));
         capabilities.setCapability("noReset", config.getProperty("noReset"));
         if (capabilities.getPlatform().equals(Platform.IOS)) {
-            capabilities.setCapability("customSSLCert", new String(Files.readAllBytes(Paths.get(
-                    "src/test/resources/appium/bmp/iosBMPCertificate.cer"))));
             capabilities.setCapability("resetOnSessionStartOnly", true);
         }
 
@@ -372,8 +367,7 @@ public class TestEnvironment {
         if (systemProperty != null) {
             return systemProperty;
         } else {
-            return "USB 10/100/1000 LAN";
-            //return "Wi-fi";
+            return "Wi-fi";
         }
     }
 
@@ -383,12 +377,12 @@ public class TestEnvironment {
      * @param hostname proxy hostname
      * @param port     proxy port
      */
-    private void setProxySystemProperties(String hostname, Integer port) {
+    /*private void setProxySystemProperties(String hostname, Integer port) {
         System.setProperty("http.proxyHost", hostname);
         System.setProperty("https.proxyHost", hostname);
         System.setProperty("http.proxyPort", port.toString());
         System.setProperty("https.proxyPort", port.toString());
-    }
+    }*/
 
     /**
      * Returns a the value in the properties file that corresponds to the key that was passed in.

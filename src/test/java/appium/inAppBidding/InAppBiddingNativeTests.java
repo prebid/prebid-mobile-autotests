@@ -15,7 +15,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     //NATIVE TESTS
 
-    //@Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -178,7 +178,6 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     private void checkDelegates() {
         if (isPlatformIOS) {
-            //TODO add iOS delegates
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.FETCH_DEMAND);
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.GET_NATIVE_AD);
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.NATIVE_AD_DID_CLICK);

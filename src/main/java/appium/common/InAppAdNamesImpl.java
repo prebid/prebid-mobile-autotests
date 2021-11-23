@@ -62,7 +62,7 @@ public interface InAppAdNamesImpl {
     String MRAID_RESIZE_NEGATIVE = "MRAID 3.0: Resize Negative Test (In-App)";
 
     String VIDEO_INTERSTITIAL_320x480_IN_APP = "Video Interstitial 320x480 (In-App)";
-    String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card";
+    String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card (In-App)";
     String VIDEO_INTERSTITIAL_320x480_MOPUB = "Video Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
     String VIDEO_320x480_MOPUB_RANDOM = "Video Interstitial 320x480 (MoPub) [OK, Random]";
     String VIDEO_320x480_NO_BID_MOPUB = "Video Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
