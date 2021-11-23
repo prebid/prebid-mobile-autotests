@@ -164,7 +164,10 @@ public class OMSDKSessionDescriptor {
     }
 
     private void checkPlaybackEvents(ArrayList<String> expectedEvents) {
+        System.out.println("Events: "+expectedEvents);
+
         for (String event : events) {
+            System.out.println("Get event: "+omsdkParser.getEventType(event));
             if (omsdkParser.getEventType(event).equals(expectedEvents.get(0))) {
                 expectedEvents.remove(0);
                 if (expectedEvents.isEmpty()) {

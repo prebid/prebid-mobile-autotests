@@ -102,7 +102,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"ios"})
+    @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(BANNER_SKADNETWORK);
@@ -178,7 +178,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER DELEGATES TEST
-//    @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testBannerAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -368,7 +368,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         session.checkOMBaseEvents(platformName);
     }
 
-    //    @Test(groups = {"smoke"}, enabled = false)
+    @Test(groups = {"smoke"}, enabled = false)
     public void testAdLoadsAfterFailInFirstAttempt() throws TimeoutException, InterruptedException, IOException {
         int autoRefreshDelay = 15;
 
@@ -398,7 +398,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"}, enabled = false)
+    @Test(groups = {"smoke"}, enabled = false)
     public void testRefreshWithFailsInTheMiddle() throws TimeoutException, InterruptedException, IOException {
         int autoRefreshDelay = 15;
 
@@ -434,7 +434,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"}, priority = 1)
+    @Test(groups = {"smoke"}, priority = 1)
     public void testClientRefreshMaxAlwaysFails() throws TimeoutException, InterruptedException, IOException {
         int setUpEventsCount = 4;
 
@@ -489,7 +489,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testDefaultRefresh() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_300x250_IN_APP);
 
@@ -515,7 +515,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testAdRequestLimitation() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
@@ -629,7 +629,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.resetApp();
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testCustomRefresh() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -649,7 +649,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledScrollable() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -685,7 +685,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledTabOverlay() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -715,7 +715,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    //    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledBackgrounded() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;

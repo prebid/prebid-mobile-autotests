@@ -114,10 +114,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_LOAD, "rewardedVideoAdDidLoad called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_FAIL, "rewardedVideoAdDidFailToLoad called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_APPEAR, "rewardedVideoAdWillAppearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_APPEAR, "rewardedVideoAdDidAppearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_DISSAPPEAR, "rewardedVideoAdWillDisappearButton called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_DISSAPPEAR, "rewardedVideoAdDidDisappear called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_PRESENT, "rewardedAdWillPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_PRESENT, "rewardedAdDidPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_WILL_DISMISS, "rewardedAdWillDismiss called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_DISMISS, "rewardedAdDidDismiss called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_EXPIRE, "rewardedVideoAdDidExpire called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_DID_TAP, "rewardedVideoAdDidReceiveTapEvent called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.REWARDED_VIDEO_AD_SHOULD_REWARD, "rewardedVideoAdShouldReward called");
@@ -202,10 +202,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         REWARDED_VIDEO_AD_DID_LOAD,
         REWARDED_VIDEO_AD_DID_FAIL,
-        REWARDED_VIDEO_AD_WILL_APPEAR,
-        REWARDED_VIDEO_AD_DID_APPEAR,
-        REWARDED_VIDEO_AD_WILL_DISSAPPEAR,
-        REWARDED_VIDEO_AD_DID_DISSAPPEAR,
+        REWARDED_VIDEO_AD_WILL_PRESENT,
+        REWARDED_VIDEO_AD_DID_PRESENT,
+        REWARDED_VIDEO_AD_WILL_DISMISS,
+        REWARDED_VIDEO_AD_DID_DISMISS,
         REWARDED_VIDEO_AD_DID_EXPIRE,
         REWARDED_VIDEO_AD_DID_TAP,
         REWARDED_VIDEO_AD_SHOULD_REWARD,

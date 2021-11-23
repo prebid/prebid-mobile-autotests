@@ -133,7 +133,6 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
     @Override
     public void waitAndReturnToApp() throws InterruptedException {
 
-        // TODO: Refactor me
         // This method should use a separate class for the browser page
         Thread.sleep(1000);
         TouchAction action = new TouchAction(driver);

@@ -247,7 +247,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         session.checkNoObstructions();
     }
 
-    //   @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 

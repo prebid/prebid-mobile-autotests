@@ -27,6 +27,7 @@ public class OMSDKEventHandler {
 
     public OMSDKEventHandler(Har har) {
         this.harResponse = HarParser.getEntriesWithEventInUrl(har, omsdkParser.requestPrefixForHar());
+        System.out.println("Har response: "+ harResponse);
         parseResponse();
     }
 
