@@ -1,0 +1,12 @@
+{
+  "app": {
+    "publisher": {
+      "ext": {
+        "prebid": {
+          "parentAccount": "b4eb1475-4e3d-4186-97b7-25b6a6cf8618"
+        }
+      }
+    }
+  },
+  "test": 1
+}
