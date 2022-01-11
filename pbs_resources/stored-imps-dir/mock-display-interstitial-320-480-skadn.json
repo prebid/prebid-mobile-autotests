@@ -1,15 +1,20 @@
 {
     "ext": {
         "openx": {
-            "unit": "420000003",
+            "unit": "420000004",
             "delDomain": "mobile-d.openx.net"
         }
     },
+    "instl": 1,
     "banner": {
         "format": [
             {
-                "h": 50,
+                "h": 480,
                 "w": 320
+            },
+            {
+                "h": 640,
+                "w": 380
             }
         ]
     }
