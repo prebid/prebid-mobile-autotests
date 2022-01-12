@@ -3,7 +3,7 @@
 			"id": "6e1e196d-303f-4afd-826c-9a83f6e131db",
 			"impid": "0E227CE6-C3D3-4427-A33B-00672401FB03",
 			"price": 0.15,
-			"adm": "<div id='beacon_12204' style='position:absolute;left:0px;top:0px;visibility:hidden;'><img src='http://testresource:8082/win/prebid?p=FIRST&t=2DAABBgABAAECAAIBAAsAAgAAAJwcGAo4RkJxUVZkWWMzHBaMk-qAnNX4wuMBFuHd5pad1djO_wEAHBb6q_qDptuMntwBFsm49pGB37KT-wEAFvCB7vYLFQYALBwVAgAcFQIAABwmpMn7gwQVDhUEJrih8YMEFqCAnIAE1qwCABwmnsOggAQWhKLxgwQWkMz7gwQWjsz7gwQVFBwUtAEUsAsAFQQVChasAiasAkUKAAAA&ph=a51065ab-17ee-4394-b5a7-32debc04780a'/></div><script src=\"http://testresource:8082/scripts/omid-validation-verification-script-v1.js\"></script>\n<a href=\"https://www.openx.com/\"><img width=\"728\" height=\"90\" src=\"http://testresource:8082/banner/Pbs_banner_728x90.png\"></img></a>",
+			"adm": "<div id='beacon_12204' style='position:absolute;left:0px;top:0px;visibility:hidden;'></div><script src=\"http://testresource:8082/scripts/omid-validation-verification-script-v1.js\"></script>\n<a href=\"https://www.openx.com/\"><img width=\"728\" height=\"90\" src=\"http://testresource:8082/banner/Pbs_banner_728x90.png\"></img></a>",
 			"crid": "541029128",
 			"w": 728,
 			"h": 90,
