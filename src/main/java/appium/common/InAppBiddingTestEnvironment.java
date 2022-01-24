@@ -53,7 +53,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.GAM_GAMPAD, "/gampad/ads");
         inAppBidding_Events.put(InAppBiddingEvents.GAM_G_DOUBLECLICK, "g.doubleclick.net");
         inAppBidding_Events.put(InAppBiddingEvents.MOPUB_AD, "/m/ad");
-        inAppBidding_Events.put(InAppBiddingEvents.MOPUB_IMP, "/m/imp");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_MADS, "/mads/gma");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_PAGEAD, "/pagead/interaction");
         inAppBidding_Events.put(InAppBiddingEvents.WIN_PREBID, "/win/prebid");
 
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_REQUEST, "ads/video/vast/");
@@ -82,8 +83,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_WILL_LEAVE, "adViewWillLeaveApplication called");
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_LOAD, "adViewDidLoadAd called");
+        inAppBidding_Delegates_iOS.put(AD_VIEW_DID_RECORD_IMPRESSION, "didRecordImpression called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_FAIL, "adViewDidFail called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_PRESENT_MODAL_VIEW, "willPresentModalView called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_PRESENT_SCREEN, "willPresentScreen called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_DISMISS_SCREEN, "willDismissScreen called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_DID_DISMISS_SCREEN, "didDismissScreen called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_DISMISS_MODAL_VIEW, "didDismissModalView called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_LEAVE_APP, "willLeaveApplication called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW, "viewControllerForPresentingModalView called");
@@ -136,6 +141,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_LOADED, "btnAdLoaded");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_FAILED, "btnAdFailed");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_DISPLAYED, "btnAdDisplayed");
+        inAppBidding_Delegates_Android.put(ON_AD_IMPRESSION, "btnAdImpression");
+        inAppBidding_Delegates_Android.put(ON_AD_OPENED, "btnAdOpened");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLICKED, "btnAdClicked");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLOSED, "btnAdClosed");
 
@@ -170,8 +177,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         AD_VIEW_WILL_LEAVE,
 
         AD_VIEW_DID_LOAD,
+        AD_VIEW_DID_RECORD_IMPRESSION,
         AD_VIEW_DID_FAIL,
         AD_PRESENT_MODAL_VIEW,
+        AD_WILL_PRESENT_SCREEN,
+        AD_WILL_DISMISS_SCREEN,
+        AD_DID_DISMISS_SCREEN,
         AD_DISMISS_MODAL_VIEW,
         AD_WILL_LEAVE_APP,
         AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW,
@@ -216,6 +227,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         ON_AD_CLICKED,
         ON_AD_CLOSED,
 
+        ON_AD_IMPRESSION,
+        ON_AD_OPENED,
+
         ON_NATIVE_FETCH_DEMAND_SUCCESS,
         ON_NATIVE_GET_NATIVE_AD_SUCCESS,
 
@@ -252,6 +266,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         GAM_G_DOUBLECLICK,
         MOPUB_AD,
         MOPUB_IMP,
+        ADMOB_MADS,
+        ADMOB_PAGEAD,
         VIDEO_REQUEST,
         VIDEO_REWARDED_REQUEST,
         VIDEO_IMPRESSION,
@@ -394,7 +410,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         try {
             waitForOMEventMock(event, expectedOccurrences, timeout / 2);
         } catch (NullPointerException | TimeoutException exception) {
-            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
+//            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
         }
     }
 

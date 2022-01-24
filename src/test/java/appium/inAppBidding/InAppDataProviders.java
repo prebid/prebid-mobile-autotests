@@ -26,6 +26,7 @@ public class InAppDataProviders {
             {BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_MOPUB},
+            {BANNER_320x50_ADMOB},
             {BANNER_728x90_IN_APP},
             {BANNER_728x90_GAM},
             {BANNER_728x90_MOPUB},
@@ -34,6 +35,7 @@ public class InAppDataProviders {
             {BANNER_MULTISIZE_MOPUB},
             {BANNER_300x250_IN_APP},
             {BANNER_300x250_GAM},
+            {BANNER_300x250_ADMOB},
             {BANNER_300x250_MOPUB}
     };
 
@@ -47,6 +49,7 @@ public class InAppDataProviders {
             {BANNER_320x50_NO_BID_GAM_AD},
             {BANNER_320x50_NO_BID_MOPUB},
             {BANNER_320x50_NO_BID_IN_APP},
+            {BANNER_320x50_NO_BID_ADMOB},
     };
 
     @DataProvider(name = "noBids")
@@ -57,6 +60,7 @@ public class InAppDataProviders {
     private static final String[][] BannerRandom = {
             {BANNER_320x50_GAM_RANDOM},
             {BANNER_320x50_MOPUB_RANDOM},
+            {BANNER_320x50_ADMOB_RANDOM},
     };
 
     @DataProvider(name = "randomAd")
@@ -72,7 +76,8 @@ public class InAppDataProviders {
     private static final String[][] ServerBasedBanner = {
             {BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
-            {BANNER_320x50_MOPUB}
+            {BANNER_320x50_MOPUB},
+            {BANNER_320x50_ADMOB},
     };
 
     @DataProvider(name = "serverBasedBanner")

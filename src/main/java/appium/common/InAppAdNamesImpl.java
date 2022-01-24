@@ -30,6 +30,15 @@ public interface InAppAdNamesImpl {
     String BANNER_728x90_MOPUB = "Banner 728x90 (MoPub)";
     String BANNER_MULTISIZE_MOPUB = "Banner Multisize (MoPub)";
 
+    /** ADMOB*/
+    String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, Random]";
+    String BANNER_320x50_NO_BID_ADMOB = "Banner 320x50 (AdMob) [noBids, AdMob Ad]";
+    String BANNER_320x50_ADMOB_RANDOM = "Banner 320x50 (AdMob) [OK, Random]";
+    String BANNER_300x250_ADMOB = "Banner 300x250 (AdMob)";
+//    String BANNER_FLEXIBLE_MOPUB = "Banner Multisize (MoPub)";
+
+
+
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
 
     String INTERSTITIAL_320x480_MOPUB = "Display Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
