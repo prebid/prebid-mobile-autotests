@@ -28,8 +28,8 @@
 <!--        </groups>-->
 <!--        <classes>-->
 <!--&lt;!&ndash;     Currently native ads is not supported               &ndash;&gt;-->
-<!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>&ndash;&gt;-->
-<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+<!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>&ndash;&gt;-->
 <!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>&ndash;&gt;-->
 <!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>&ndash;&gt;-->
 <!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>&ndash;&gt;-->
