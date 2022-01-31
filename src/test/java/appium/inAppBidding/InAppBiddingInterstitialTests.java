@@ -108,6 +108,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
             }
         } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_MOPUB)) {
             env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
+        } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_ADMOB)){
+            env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
         }
 
         env.homePage.clickBack();
@@ -139,6 +141,11 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
+        } else if(prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
         } else {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
@@ -182,9 +189,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testOMEvents() throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
+        initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_ADMOB);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
 
@@ -210,9 +217,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
+        initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_ADMOB);
 
         page.clickShowButton();
 

@@ -53,8 +53,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.GAM_GAMPAD, "/gampad/ads");
         inAppBidding_Events.put(InAppBiddingEvents.GAM_G_DOUBLECLICK, "g.doubleclick.net");
         inAppBidding_Events.put(InAppBiddingEvents.MOPUB_AD, "/m/ad");
-        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_MADS, "/mads/gma");
-        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_PAGEAD, "/pagead/interaction");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, "/pagead/interaction");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_MADS_GMA, "mads/gma");
         inAppBidding_Events.put(InAppBiddingEvents.WIN_PREBID, "/win/prebid");
 
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_REQUEST, "ads/video/vast/");
@@ -101,6 +101,13 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_DISAPPEAR, "interstitialDidDisappear called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_EXPIRE, "interstitialDidExpire called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED_TAP, "interstitialDidReceiveTapEvent called");
+
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN, "adDidFailToPresentFullScreenContentWithError called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_PRESENT_FULLSCREEN, "adDidPresentFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_WILL_DISMISS_FULLSCREEN, "adWillDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_DISMISS_FULLSCREEN, "adDidDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_RECORD_IMPRESSION, "adDidRecordImpression called");
+
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED, "interstitialDidReceiveAd called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_FAIL_TO_RECEIVE, "interstitialDidFailToReceiveAd called");
@@ -194,6 +201,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         INTERSTITIAL_WILL_LEAVE_APP,
         INTERSTITIAL_DID_CLICK,
 
+        INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN,
+        INTERSTITIAL_DID_PRESENT_FULLSCREEN,
+        INTERSTITIAL_DID_DISMISS_FULLSCREEN,
+        INTERSTITIAL_WILL_DISMISS_FULLSCREEN,
+        INTERSTITIAL_DID_RECORD_IMPRESSION,
+
         INTERSTITIAL_DID_LOAD,
         INTERSTITIAL_WILL_APPEAR,
         INTERSTITIAL_DID_FAIL,
@@ -266,8 +279,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         GAM_G_DOUBLECLICK,
         MOPUB_AD,
         MOPUB_IMP,
-        ADMOB_MADS,
-        ADMOB_PAGEAD,
+        ADMOB_PAGEAD_INTERACTION,
+        ADMOB_MADS_GMA,
         VIDEO_REQUEST,
         VIDEO_REWARDED_REQUEST,
         VIDEO_IMPRESSION,

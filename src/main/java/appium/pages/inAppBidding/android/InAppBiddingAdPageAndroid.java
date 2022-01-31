@@ -104,7 +104,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By videoFeed = getId("exo_overlay");
         static final By watchAgain = getId("btn_watch_again");
 
-        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='CLICK HERE TO VISIT OUR SITE!']");
+        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='Click here to visit our site!']");
         static final By btnNativeLinkUrl = getId("btnNativeLinkUrl");
         static final By btnNativeLinkRoot = getId("btnNativeLinkRoot");
         static final By btnNativeDeeplinkOk = getId("btnNativeDeeplinkOk");
