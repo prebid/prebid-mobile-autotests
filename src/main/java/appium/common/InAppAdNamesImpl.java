@@ -83,9 +83,9 @@ public interface InAppAdNamesImpl {
     String VIDEO_320x480_GAM_RANDOM = "Video Interstitial 320x480 (GAM) [OK, Random]";
     String VIDEO_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
 
-    String VIDEO_INTERSTITIAL_320x480_ADMOB = "Interstitial (AdMob) [OK, Adapter]";
-    String VIDEO_320x480_ADMOB_RANDOM = "Interstitial (AdMob) [OK, Random]";
-    String VIDEO_320x480_NO_BID_ADMOB = "Interstitial (AdMob) [noBids, AdMob Ad]";
+    String VIDEO_INTERSTITIAL_320x480_ADMOB = "Video Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
+    String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
+    String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Video Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
 
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";

@@ -109,7 +109,10 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_MOPUB)) {
             env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
         } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_ADMOB)){
-            env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+            }
+            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
         }
 
         env.homePage.clickBack();
@@ -125,6 +128,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
+        if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
+        }
         interstitialPage.clickShowButton();
 
         interstitialPage.clickInterstitialAd();

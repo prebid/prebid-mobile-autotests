@@ -103,6 +103,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED_TAP, "interstitialDidReceiveTapEvent called");
 
         inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN, "adDidFailToPresentFullScreenContentWithError called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_RECEIVE_BUTTON, "adDidReceiveButton called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_FAIL_TO_RECEIVE_BUTTON, "adDidFailToReceiveButton called");
         inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_PRESENT_FULLSCREEN, "adDidPresentFullScreenContent called");
         inAppBidding_Delegates_iOS.put(INTERSTITIAL_WILL_DISMISS_FULLSCREEN, "adWillDismissFullScreenContent called");
         inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_DISMISS_FULLSCREEN, "adDidDismissFullScreenContent called");
@@ -201,6 +203,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         INTERSTITIAL_WILL_LEAVE_APP,
         INTERSTITIAL_DID_CLICK,
 
+        INTERSTITIAL_DID_RECEIVE_BUTTON,
+        INTERSTITIAL_DID_FAIL_TO_RECEIVE_BUTTON,
         INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN,
         INTERSTITIAL_DID_PRESENT_FULLSCREEN,
         INTERSTITIAL_DID_DISMISS_FULLSCREEN,

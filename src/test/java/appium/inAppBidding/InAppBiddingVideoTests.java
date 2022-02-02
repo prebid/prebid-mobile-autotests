@@ -40,7 +40,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -84,8 +84,10 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
                 env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
             }
         } else if(adName.contains("AdMob")){
-            env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA,1,10);
-        }
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+            }
+            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);        }
 
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
@@ -97,13 +99,16 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         videoPage.isShowButtonEnabled();
+        if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
+        }
         videoPage.clickShowButton();
 
         videoPage.clickLearnMore();
@@ -121,9 +126,12 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
-        } /*else if (adName.contains("AdMob")){
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-        }*/ else {
+        } else if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        } else {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
@@ -195,7 +203,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsLearnMore(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -210,7 +218,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
         if (isPlatformIOS) {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+            if (adName.contains("AdMob")){
+                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+            } else {
+                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+            }
         } else {
             env.homePage.isDelegateEnabled(ON_AD_CLICKED);
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
@@ -232,7 +244,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -250,7 +262,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -314,7 +326,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -360,7 +372,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.isShowButtonEnabled();
         Thread.sleep(3000);
-
+        if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
+        }
         videoPage.clickShowButton();
         Thread.sleep(5000);
 
