@@ -87,10 +87,10 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialAds = {
-            {INTERSTITIAL_320x480_IN_APP},
-            {INTERSTITIAL_320x480_MOPUB},
+//            {INTERSTITIAL_320x480_IN_APP},
+//            {INTERSTITIAL_320x480_MOPUB},
             {INTERSTITIAL_320x480_ADMOB},
-            {INTERSTITIAL_320x480_GAM}
+//            {INTERSTITIAL_320x480_GAM}
     };
 
     @DataProvider(name = "interstitialAds")
@@ -99,9 +99,9 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialRandom = {
-            {INTERSTITIAL_320x480_GAM_RANDOM},
+//            {INTERSTITIAL_320x480_GAM_RANDOM},
             {INTERSTITIAL_320x480_ADMOB_RANDOM},
-            {INTERSTITIAL_320x480_MOPUB_RANDOM},
+//            {INTERSTITIAL_320x480_MOPUB_RANDOM},
     };
 
     @DataProvider(name = "randomAdInterstitial")
@@ -110,9 +110,9 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialNoBids = {
-            {INTERSTITIAL_320x480_NO_BID_MOPUB},
+//            {INTERSTITIAL_320x480_NO_BID_MOPUB},
             {INTERSTITIAL_320x480_NO_BID_ADMOB},
-            {INTERSTITIAL_320x480_NO_BID_GAM},
+//            {INTERSTITIAL_320x480_NO_BID_GAM},
     };
 
     @DataProvider(name = "noBidsInterstitial")
@@ -233,9 +233,9 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoRandom = {
-            {VIDEO_320x480_MOPUB_RANDOM},
-            {VIDEO_320x480_GAM_RANDOM},
-            {VIDEO_320x480_ADMOB_RANDOM},
+//            {VIDEO_320x480_MOPUB_RANDOM},
+//            {VIDEO_320x480_GAM_RANDOM},
+            {VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM},
     };
 
     /* AD_NAME_TYPE*/
@@ -245,11 +245,11 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoNoBids = {
-            {VIDEO_320x480_NO_BID_MOPUB},
-            {VIDEO_320x480_NO_BID_ADMOB},
-            {VIDEO_320x480_NO_BID_GAM_AD},
-            {VIDEO_REWARDED_320x480_NO_BID_GAM},
-            {VIDEO_REWARDED_320x480_NO_BID_MOPUB},
+//            {VIDEO_320x480_NO_BID_MOPUB},
+            {VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB},
+//            {VIDEO_320x480_NO_BID_GAM_AD},
+//            {VIDEO_REWARDED_320x480_NO_BID_GAM},
+//            {VIDEO_REWARDED_320x480_NO_BID_MOPUB},
             {VIDEO_REWARDED_320x480_NO_BID_ADMOB},
     };
 
@@ -260,7 +260,7 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoInterstitial = {
-            {VIDEO_INTERSTITIAL_320x480_IN_APP},
+//            {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
     };
 
@@ -281,9 +281,9 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoRewarded = {
-            {VIDEO_REWARDED_320x480_IN_APP},
-            {VIDEO_REWARDED_320x480_GAM_METADATA},
-            {VIDEO_REWARDED_320x480_MOPUB},
+//            {VIDEO_REWARDED_320x480_IN_APP},
+//            {VIDEO_REWARDED_320x480_GAM_METADATA},
+//            {VIDEO_REWARDED_320x480_MOPUB},
             {VIDEO_REWARDED_320x480_ADMOB},
     };
 

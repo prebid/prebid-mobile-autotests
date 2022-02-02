@@ -121,7 +121,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//        @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+        @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -133,7 +133,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER CUSTOM TESTS
-//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestReload(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
@@ -156,7 +156,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -265,7 +265,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         @Test(groups = {"requests"})
     public void testOMEventsAfterReload() throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
@@ -297,7 +297,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"requests"})
     public void testOMEventsSessionWithOpenClickthrough() throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -336,7 +336,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      */
     @Test(groups = {"requests"})
     public void testOMEventsSessionWithBackground() throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         bannerPage.isAdDisplayed();
 
@@ -468,7 +468,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.logValidator.setResponseError();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
@@ -515,7 +515,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         @Test(groups = {"smoke"})
     public void testDefaultRefresh() throws TimeoutException, InterruptedException {
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
 
@@ -716,7 +716,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_300x250_ADMOB);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
@@ -746,7 +746,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(BANNER_300x250_ADMOB);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
