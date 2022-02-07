@@ -32,10 +32,12 @@ public interface InAppAdNamesImpl {
 
     /** ADMOB*/
     String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, OXB Adapter]";
+//    String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, Adapter]";
     String BANNER_320x50_NO_BID_ADMOB = "Banner 320x50 (AdMob) [noBids, AdMob Ad]";
     String BANNER_320x50_ADMOB_RANDOM = "Banner 320x50 (AdMob) [OK, Random]";
     String BANNER_300x250_ADMOB = "Banner 300x250 (AdMob)";
     String BANNER_ADAPTIVE_ADMOB = "Banner Adaptive (AdMob)";
+//    String BANNER_ADAPTIVE_ADMOB = "Flexible Banner (AdMob)";
 
 
 
@@ -45,7 +47,8 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_320x480_MOPUB_RANDOM = "Display Interstitial 320x480 (MoPub) [OK, Random]";
     String INTERSTITIAL_320x480_NO_BID_MOPUB = "Display Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
 
-    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
+//    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
+    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, Adapter]";
     String INTERSTITIAL_320x480_ADMOB_RANDOM = "Display Interstitial 320x480 (AdMob) [OK, Random]";
     String INTERSTITIAL_320x480_NO_BID_ADMOB = "Display Interstitial 320x480 (AdMob) [noBids, MoPub Ad]";
 
@@ -84,8 +87,11 @@ public interface InAppAdNamesImpl {
     String VIDEO_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
 
     String VIDEO_INTERSTITIAL_320x480_ADMOB = "Video Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
+//    String VIDEO_INTERSTITIAL_320x480_ADMOB = "Interstitial (AdMob) [OK, Adapter]";
     String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
+//    String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Interstitial (AdMob) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Video Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
+//    String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Interstitial (AdMob) [noBids, AdMob Ad]";
 
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";
@@ -103,8 +109,11 @@ public interface InAppAdNamesImpl {
     String VIDEO_REWARDED_320x480_MOPUB_RANDOM = "Video Rewarded 320x480 (MoPub) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_MOPUB = "Video Rewarded 320x480 (MoPub) [noBids, MoPub Ad]";
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
+//    String VIDEO_REWARDED_320x480_ADMOB = "Rewarded (AdMob) [OK, Adapter]";
     String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Video Rewarded 320x480 (AdMob) [OK, Random]";
+//    String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Rewarded (AdMob) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Video Rewarded 320x480 (AdMob) [noBids, AdMob Ad]";
+//    String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Rewarded (AdMob) [noBids, AdMob Ad]";
 
     //CUSTOM AUCTION REQUEST TESTS
     String CUSTOM_USPRIVACY_CCPA_TRUE = "CUSTOM_USPRIVACY_CCPA_TRUE";

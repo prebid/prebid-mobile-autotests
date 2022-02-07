@@ -70,7 +70,9 @@
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-
+      "lat": "$VARIABLE",
+      "lon": "$VARIABLE",
+      "type": "$VARIABLE"
     }
   },
   "user": {
