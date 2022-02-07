@@ -177,13 +177,19 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.clickCloseInterstitial();
         if (prebidAd.contains("MoPub")) {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
+            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
+        } else if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
         } else {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
+            env.homePage.isDelegateEnabled(ON_AD_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
         }
 
         env.homePage.clickBack();

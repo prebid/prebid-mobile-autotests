@@ -347,7 +347,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.isDelegateEnabled(ON_AD_LOADED);
         if(!adName.contains("AdMob")) {
             env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+
+        }
+        env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
         }
 
         if (adName.contains("MoPub")) {
@@ -577,6 +583,12 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         if (prebidAd.contains("MoPub")) {
             env.homePage.isDelegateEnabled(ON_REWARDED_STARTED);
             env.homePage.isDelegateEnabled(ON_REWARDED_COMPLETED);
+        } else if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
         } else {
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
         }

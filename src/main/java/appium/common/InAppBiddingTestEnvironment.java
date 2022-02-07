@@ -153,6 +153,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(ON_AD_IMPRESSION, "btnAdImpression");
         inAppBidding_Delegates_Android.put(ON_AD_OPENED, "btnAdOpened");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLICKED, "btnAdClicked");
+        inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_SHOWED, "btnAdShowed");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLOSED, "btnAdClosed");
 
         inAppBidding_Delegates_Android.put(ON_NATIVE_FETCH_DEMAND_SUCCESS, "btnFetchDemandResultSuccess");
@@ -242,6 +243,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         ON_AD_FAILED,
         ON_AD_DISPLAYED,
         ON_AD_CLICKED,
+        ON_AD_SHOWED,
         ON_AD_CLOSED,
 
         ON_AD_IMPRESSION,
@@ -261,6 +263,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         FETCH_DEMAND,
         GET_NATIVE_AD,
         NATIVE_AD_DID_CLICK,
+        ;
 
     }
 
