@@ -3,7 +3,7 @@
 			"id": "response-prebid-banner-728-90",
 			"impid": "0E227CE6-C3D3-4427-A33B-00672401FB03",
 			"price": 0.15,
-			"adm": "<div id='beacon_12204' style='position:absolute;left:0px;top:0px;visibility:hidden;'><img src='http://testresource:8082/win/prebid?p=FIRST&t=2DAABBgABAAECAAIBAAsAAgAAAJocGApHZzFvb2Z2b25wHBauofqawNDe0wwWpbqfoZOmoJXwAQAcFtSQgurrmNH8exah_q7-nd3g8YABABaSgO72CxUGACwcFQIAHBUCAAAcJryh8YMEFQ4VBCa4ofGDBBaggJyABNasAgAcJp7DoIAEFoSi8YMEFoyi8YMEFoqi8YMEFRQcFPQDFNgEABUEFQoWrAImrAJFCgAAAA&ph=a51065ab-17ee-4394-b5a7-32debc04780a'/></div><script src=\"http://testresource:8082/scripts/omid-validation-verification-script-v1.js\"></script>\n<a href=\"https://www.openx.com/\"><img width=\"728\" height=\"90\" src=\"http://testresource:8082/banner/Pbs_banner_728x90.png\"></img></a>",
+			"adm": "<div id='beacon_12204' style='position:absolute;left:0px;top:0px;visibility:hidden;'><img src='https://prebid-server-test-j.prebid.org/win/prebid?p=FIRST&t=2DAABBgABAAECAAIBAAsAAgAAAJocGApHZzFvb2Z2b25wHBauofqawNDe0wwWpbqfoZOmoJXwAQAcFtSQgurrmNH8exah_q7-nd3g8YABABaSgO72CxUGACwcFQIAHBUCAAAcJryh8YMEFQ4VBCa4ofGDBBaggJyABNasAgAcJp7DoIAEFoSi8YMEFoyi8YMEFoqi8YMEFRQcFPQDFNgEABUEFQoWrAImrAJFCgAAAA&ph=a51065ab-17ee-4394-b5a7-32debc04780a'/></div><script src=\"https://prebid-mobile-ad-assets.s3.amazonaws.com/omid-validation-verification-script-v1.js\"></script>\n<a href=\"https://www.openx.com/\"><img width=\"728\" height=\"90\" src=\"https://prebid-mobile-ad-assets.s3.amazonaws.com/banner/Pbs_banner_728x90.png\"></img></a>",
 			"crid": "541029128",
 			"w": 728,
 			"h": 90,

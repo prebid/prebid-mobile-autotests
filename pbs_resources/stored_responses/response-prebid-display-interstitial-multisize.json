@@ -3,7 +3,7 @@
 			"id": "response-prebid-display-interstitial-multisize",
 			"impid": "5BAB23B6-4C17-4A21-B535-5BF73B48EAE1",
 			"price": 0.15,
-			"adm": "<div id='beacon_50619' style='position:absolute;left:0px;top:0px;visibility:hidden;'></div><a href=\"https://www.openx.com/\"><img src='http://testresource:8082/interstitial/Pbs_intestitial_320x480.png' width='320' height='480' border='0' alt=''></img></a>",
+			"adm": "<div id='beacon_50619' style='position:absolute;left:0px;top:0px;visibility:hidden;'></div><a href=\"https://www.openx.com/\"><img src='https://prebid-mobile-ad-assets.s3.amazonaws.com/interstitial/Pbs_intestitial_320x480.png' width='320' height='480' border='0' alt=''></img></a>",
 			"crid": "541036263",
 			"w": 320,
 			"h": 480,
