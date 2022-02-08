@@ -317,10 +317,10 @@ public class InAppDataProviders {
 
     private static final String[][] NativeAds = {
 //            {NATIVE_AD_ADMOB},
-            {NATIVE_STYLES_PPM_KEYS},
-            {NATIVE_STYLES_PPM_MAP},
-            {NATIVE_STYLES_GAM_MRECT},
-            {NATIVE_STYLES_MO_PUB},
+//            {NATIVE_STYLES_PPM_KEYS},
+//            {NATIVE_STYLES_PPM_MAP},
+//            {NATIVE_STYLES_GAM_MRECT},
+//            {NATIVE_STYLES_MO_PUB},
     };
 
 
@@ -331,11 +331,21 @@ public class InAppDataProviders {
     }
 
     private static final String[][] NativeMockedAds = {
-//            {NATIVE_AD_ADMOB},
-            {NATIVE_STYLES_PPM_KEYS},
-            {NATIVE_STYLES_PPM_MAP},
-            {NATIVE_STYLES_GAM_MRECT},
-            {NATIVE_STYLES_MO_PUB}
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_FEED_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+
+            {NATIVE_AD_MO_PUB},
+            {NATIVE_AD_FEED_MO_PUB},
+
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_FEED_GAM}
+//            {NATIVE_STYLES_PPM_KEYS},
+//            {NATIVE_STYLES_PPM_MAP},
+//            {NATIVE_STYLES_GAM_MRECT},
+//            {NATIVE_STYLES_MO_PUB}
     };
 
     /* AD_NAME_TYPE*/
@@ -347,8 +357,8 @@ public class InAppDataProviders {
     private static final String[][] NativeNoAssets = {
             {NATIVE_STYLES_NO_ASSETS_PPM},
             {NATIVE_STYLES_NO_CREATIVE_PPM},
-            {NATIVE_STYLES_NO_ASSETS_MO_PUB},
-            {NATIVE_STYLES_NO_ASSETS_GAM_MRECT},
+//            {NATIVE_STYLES_NO_ASSETS_MO_PUB},
+//            {NATIVE_STYLES_NO_ASSETS_GAM_MRECT},
     };
 
     /* AD_NAME_TYPE*/

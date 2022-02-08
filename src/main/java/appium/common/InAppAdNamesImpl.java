@@ -133,13 +133,19 @@ public interface InAppAdNamesImpl {
     String NATIVE_STYLES_NO_ASSETS_PPM = "Banner Native Styles No Assets (In-App)";
     String NATIVE_STYLES_NO_CREATIVE_PPM = "Banner Native Styles No Creative (In-App)";
 
-//    String NATIVE_AD_IN_APP = "Native Ad (In-App)";
-    String NATIVE_AD_ADMOB = "Native Ad (AdMob)";
+    String NATIVE_AD_IN_APP = "Native Ad (In-App)";
+    String NATIVE_AD_ADMOB = "Native Ad (AdMob) [OK, OXB Adapter]";
+//    String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad Custom Templates (GAM)";
+    String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
+    String NATIVE_AD_GAM_UNIFIED = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";
+    String NATIVE_AD_FEED_GAM = "Native Ad Feed (GAM)";
+    String NATIVE_AD_FEED_IN_APP = "Native Ad Feed (In-App)";
+    String NATIVE_AD_LINKS_IN_APP = "Native Ad Links (In-App)";
+
     String NATIVE_AD_FEED_MO_PUB = "Native Ad Feed (MoPub)";
-    String NATIVE_AD_VIDEO_MO_PUB = "Native Ad Video (MoPub)";
+//    String NATIVE_AD_VIDEO_MO_PUB = "Native Ad Video (MoPub)";
     String NATIVE_AD_MO_PUB = "Native Ad (MoPub)";
-//    String NATIVE_AD_LINKS_IN_APP = "Native Ad Links (In-App)";
-    String NATIVE_STYLES_PPM_KEYS = "Banner Native Styles (In-App) [KEYS]";
+    /*String NATIVE_STYLES_PPM_KEYS = "Banner Native Styles (In-App) [KEYS]";
     String NATIVE_STYLES_PPM_MAP = "Banner Native Styles (In-App) [MAP]";
 
     String NATIVE_STYLES_GAM_MRECT = "Banner Native Styles (GAM) [MRect]";
@@ -147,5 +153,5 @@ public interface InAppAdNamesImpl {
     String NATIVE_STYLES_GAM_FLUID = "Banner Native Styles (GAM) [Fluid]";
 
     String NATIVE_STYLES_MO_PUB = "Banner Native Styles (MoPub)";
-    String NATIVE_STYLES_NO_ASSETS_MO_PUB = "Banner Native Styles No Assets (MoPub)";
+    String NATIVE_STYLES_NO_ASSETS_MO_PUB = "Banner Native Styles No Assets (MoPub)";*/
 }
