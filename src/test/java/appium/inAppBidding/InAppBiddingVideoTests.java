@@ -280,7 +280,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
