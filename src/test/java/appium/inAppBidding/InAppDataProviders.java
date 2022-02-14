@@ -330,28 +330,84 @@ public class InAppDataProviders {
         return NativeAds;
     }
 
-    private static final String[][] NativeMockedAds = {
+    private static final String[][] NativeMockedRequestAdsIos = {
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+
+            {NATIVE_AD_MO_PUB_PBM},
+            {NATIVE_AD_FEED_MO_PUB},
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_FEED_IN_APP},
+
+//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+//            {NATIVE_AD_GAM_UNIFIED},
+//            {NATIVE_AD_MO_PUB},
+
+    };
+    private static final String[][] NativeMockedAdsIos = {
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
+            {NATIVE_AD_GAM_UNIFIED_GAD},
+//            {NATIVE_AD_GAM},
+            {NATIVE_AD_MO_PUB_MP},
+            {NATIVE_AD_MO_PUB_PBM},
+
+    };
+    private static final String[][] NativeMockedRequestAdsAndroid = {
             {NATIVE_AD_ADMOB},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_FEED_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
 
+//            {NATIVE_AD_MO_PUB},
             {NATIVE_AD_MO_PUB},
-            {NATIVE_AD_FEED_MO_PUB},
+
+//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+//            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+//            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_GAM_UNIFIED},
+
+    };
+    private static final String[][] NativeMockedAdsAndroid = {
+//            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+
+            {NATIVE_AD_MO_PUB},
 
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
+            {NATIVE_AD_GAM_UNIFIED_GAD},
             {NATIVE_AD_GAM_UNIFIED},
-            {NATIVE_AD_FEED_GAM}
-//            {NATIVE_STYLES_PPM_KEYS},
-//            {NATIVE_STYLES_PPM_MAP},
-//            {NATIVE_STYLES_GAM_MRECT},
-//            {NATIVE_STYLES_MO_PUB}
+
     };
 
     /* AD_NAME_TYPE*/
-    @DataProvider(name = "nativeMockedAds")
-    public static Object[][] provideNativeMockedAds() {
-        return NativeMockedAds;
+    @DataProvider(name = "nativeMockedRequestAdsIos")
+    public static Object[][] provideNativeMockedRequestAdsIos() {
+        return NativeMockedRequestAdsIos;
+    }
+
+    @DataProvider(name = "nativeMockedAdsIos")
+    public static Object[][] provideNativeMockedAdsIos() {
+        return NativeMockedAdsIos;
+    }
+
+    @DataProvider(name = "nativeMockedRequestAdsAndroid")
+    public static Object[][] provideNativeMockedRequestAdsAndroid() {
+        return NativeMockedRequestAdsAndroid;
+    }
+
+    @DataProvider(name = "nativeMockedAdsAndroid")
+    public static Object[][] provideNativeMockedAdsAndroid() {
+        return NativeMockedAdsAndroid;
     }
 
     private static final String[][] NativeNoAssets = {
