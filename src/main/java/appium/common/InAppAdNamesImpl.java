@@ -136,15 +136,21 @@ public interface InAppAdNamesImpl {
     String NATIVE_AD_IN_APP = "Native Ad (In-App)";
     String NATIVE_AD_ADMOB = "Native Ad (AdMob) [OK, OXB Adapter]";
 //    String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad Custom Templates (GAM)";
-    String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
-    String NATIVE_AD_GAM_UNIFIED = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";
-    String NATIVE_AD_FEED_GAM = "Native Ad Feed (GAM)";
+    String NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
+    String NATIVE_AD_GAM_UNIFIED_GAD = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";
+    String NATIVE_AD_GAM = "Native Ad (GAM) [OK, NativeAd]";
+    String NATIVE_AD_GAM_UNIFIED = "Native Ad Unified Ad (GAM) [OK, NativeAd]";
+    String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad Custom Templates (GAM) [OK, NativeAd]";
+    String NATIVE_AD_FEED_GAM = "Native Ad Feed (GAM) [OK, NativeAd]";
+//    String NATIVE_AD_FEED_GAM = "Native Ad Feed (GAM) [OK, OXANativeAd]";
     String NATIVE_AD_FEED_IN_APP = "Native Ad Feed (In-App)";
     String NATIVE_AD_LINKS_IN_APP = "Native Ad Links (In-App)";
 
-    String NATIVE_AD_FEED_MO_PUB = "Native Ad Feed (MoPub)";
+    String NATIVE_AD_FEED_MO_PUB = "Native Ad Feed (MoPub) [OK, PBM Native AdAdapter]";
 //    String NATIVE_AD_VIDEO_MO_PUB = "Native Ad Video (MoPub)";
-    String NATIVE_AD_MO_PUB = "Native Ad (MoPub)";
+    String NATIVE_AD_MO_PUB_PBM = "Native Ad (MoPub) [OK, PBM Native AdAdapter]";
+    String NATIVE_AD_MO_PUB = "Native Ad (MoPub) [OK, NativeAdAdapter]";
+    String NATIVE_AD_MO_PUB_MP = "Native Ad (MoPub) [OK, MPNativeAd]";
     /*String NATIVE_STYLES_PPM_KEYS = "Banner Native Styles (In-App) [KEYS]";
     String NATIVE_STYLES_PPM_MAP = "Banner Native Styles (In-App) [MAP]";
 

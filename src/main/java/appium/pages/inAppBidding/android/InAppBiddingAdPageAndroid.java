@@ -104,11 +104,12 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By videoFeed = getId("exo_overlay");
         static final By watchAgain = getId("btn_watch_again");
 
-        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='Click here to visit our site!']");
+        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='CLICK HERE TO VISIT OUR SITE!']");
         static final By btnNativeLinkUrl = getId("btnNativeLinkUrl");
         static final By btnNativeLinkRoot = getId("btnNativeLinkRoot");
         static final By btnNativeDeeplinkOk = getId("btnNativeDeeplinkOk");
         static final By btnNativeDeeplinkFallback = getId("btnNativeDeeplinkFallback");
+        static final By clickTvBodyAdMob = getId("tvBody");
 
     }
 
@@ -638,6 +639,11 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     @Override
     public void clickHereToVisitOurSite() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.clickHereToVisitOurSite)).click();
+    }
+
+    @Override
+    public void clickTvBody() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.clickTvBodyAdMob)).click();
     }
 
     //Private

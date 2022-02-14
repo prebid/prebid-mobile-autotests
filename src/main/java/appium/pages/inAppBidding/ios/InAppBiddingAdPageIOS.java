@@ -115,6 +115,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By btnNativeLinkRoot = MobileBy.xpath("//XCUIElementTypeButton[@name='Link Root']");
         static final By btnNativeDeeplinkOk = MobileBy.xpath("//XCUIElementTypeButton[@name='Deeplink OK']");
         static final By btnNativeDeeplinkFallback = MobileBy.xpath("//XCUIElementTypeButton[@name='Deeplink Fallback']");
+        static final By btnTvClick = MobileBy.xpath("//XCUIElementTypeButton[@name='PBMAdView']");
 
     }
 
@@ -652,6 +653,11 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
     @Override
     public void clickHereToVisitOurSite() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.clickHereToVisitOurSite)).click();
+    }
+
+    @Override
+    public void clickTvBody() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.btnTvClick)).click();
     }
 
 
