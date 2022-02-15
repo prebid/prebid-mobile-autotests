@@ -18,6 +18,7 @@
       "atts": 0
     },
     "h": "$VARIABLE",
+    "ua": "$VARIABLE",
     "ifa": "$VARIABLE",
     "lmt": "$VARIABLE",
     "make": "Apple",

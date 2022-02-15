@@ -10,15 +10,14 @@ import java.util.concurrent.TimeoutException;
 
 import static appium.common.InAppAdNamesImpl.NATIVE_AD_LINKS_IN_APP;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.ON_AD_CLOSED;
-import static appium.common.InAppTemplatesInit.NATIVE_AD_FEED_MO_PUB;
+import static appium.common.InAppTemplatesInit.NATIVE_AD_FEED_MOPUB_PBM;
 //import static appium.common.InAppTemplatesInit.NATIVE_AD_LINKS_IN_APP;
 
 public class InAppBiddingNativeTests extends InAppBaseTest {
 
     //NATIVE TESTS
 
-    @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -37,7 +36,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedRequestAdsIos", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedRequestAdsIos", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsIos(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -63,7 +62,38 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
         env.homePage.clickBack();
     }
-    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
+
+    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedNoBidsAdsIos", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeNoBidsAdsIos(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(prebidAd);
+
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
+
+        if (prebidAd.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
+
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedNoBidsAdsAndroid", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeNoBidsAdsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(prebidAd);
+
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
+
+        /*if (prebidAd.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }*/
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
+
+        env.homePage.clickBack();
+    }
+
+//    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -103,6 +133,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
+
     @Test(groups = {"android"}, dataProvider = "nativeMockedAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
@@ -114,70 +145,6 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         checkNativeAdsAndroidDelegates(prebidAd, nativePage);
         env.homePage.clickBack();
 
-    }
-
-    private void checkNativeAdsIosDelegates(String prebidAd, InAppBiddingAdPageImpl nativePage) throws InterruptedException {
-        if (prebidAd.contains("In-App")) {
-            if (prebidAd.contains("Links")){
-                nativePage.clickBtnNativeLinkRoot();
-            } else {
-                nativePage.clickHereToVisitOurSite();
-            }
-            nativePage.waitAndReturnToApp();
-            env.homePage.isDelegateEnabled(GET_NATIVE_AD);
-            env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-            env.homePage.isDelegateEnabled(NATIVE_AD_DID_CLICK);
-        } else if (prebidAd.contains("GAM")){
-            if (prebidAd.contains("Custom")) {
-                env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
-                env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
-            } else {
-                env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
-                env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
-            }
-        } else if (prebidAd.contains("MoPub")){
-            env.homePage.isDelegateEnabled(GET_NATIVE_AD);
-            env.homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
-            env.homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);
-        } else if (prebidAd.contains("AdMob")){
-            env.homePage.isDelegateEnabled(LOADER_DID_RECEIVE_BUTTON);
-            env.homePage.isDelegateEnabled(LOADER_DID_FINISH_LOADING_BUTTON);
-        }
-    }
-
-    private void checkNativeAdsAndroidDelegates(String prebidAd, InAppBiddingAdPageImpl nativePage) throws InterruptedException {
-        if (prebidAd.contains("GAM")){
-            if (prebidAd.contains("Custom")) {
-                env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
-                env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
-            } else {
-                env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
-                env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
-            }
-        } else if (prebidAd.contains("AdMob")){
-            nativePage.clickTvBody();
-            env.homePage.clickBack();
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
-            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-        } else {
-            if (prebidAd.contains("Links")){
-                nativePage.clickBtnNativeLinkRoot();
-            } else {
-                nativePage.clickHereToVisitOurSite();
-            }
-            env.homePage.clickBack();
-            env.homePage.isDelegateEnabled(ON_NATIVE_GET_NATIVE_AD_SUCCESS);
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            if (prebidAd.contains("MoPub")) {
-                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-            } else {
-                env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-            }
-
-        }
     }
 
     //    @Test(groups = {"requests"}, dataProvider = "nativeMockedAds", dataProviderClass = InAppDataProviders.class)
@@ -209,7 +176,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 //        session.checkNativeOMBaseEvents(platformName);
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "nativeMockedAds", dataProviderClass = InAppDataProviders.class)
+    //    @Test(groups = {"requests"}, dataProvider = "nativeMockedAds", dataProviderClass = InAppDataProviders.class)
     // OM is temporarily disabled for native ads
     public void testNativeAdsOMEventsBackgrounded(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
@@ -236,10 +203,10 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 //        session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-//    @Test(groups = {"requests"})
+    //    @Test(groups = {"requests"})
     // OM is temporarily disabled for native ads
     public void testNativeAdFeedEventsAndOM() throws TimeoutException, InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(NATIVE_AD_FEED_MO_PUB);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(NATIVE_AD_FEED_MOPUB_PBM);
 
         if (isPlatformIOS) {
             page.scrollToFeedAd();
@@ -266,7 +233,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 //        session.checkNoObstructions();
     }
 
-//    @Test(groups = {"requests"})
+    //    @Test(groups = {"requests"})
     public void testNativeAdLinks() throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(NATIVE_AD_LINKS_IN_APP);
 
@@ -311,6 +278,101 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.ON_NATIVE_FETCH_DEMAND_SUCCESS);
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.ON_NATIVE_GET_NATIVE_AD_SUCCESS);
             env.homePage.isDelegateEnabled(InAppBiddingDelegates.ON_AD_CLICKED);
+        }
+    }
+
+    private void checkNativeAdsIosDelegates(String prebidAd, InAppBiddingAdPageImpl nativePage) throws InterruptedException {
+        switch (getAdapter(prebidAd)) {
+            case "In-App": {
+                if (prebidAd.contains("Links")) {
+                    nativePage.clickBtnNativeLinkRoot();
+                } else {
+                    nativePage.clickHereToVisitOurSite();
+                }
+                nativePage.waitAndReturnToApp();
+                env.homePage.isDelegateEnabled(GET_NATIVE_AD);
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_CLICK);
+                break;
+            }
+            case "GAM": {
+                if (prebidAd.contains("Custom")) {
+                    env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
+                    if (prebidAd.contains("GAD")) {
+                        env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
+                    }
+                } else {
+                    env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
+                    if (prebidAd.contains("GAD")) {
+                        env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
+                    }
+                }
+                if (!prebidAd.contains("GAD")) {
+                    env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOAD);
+                }
+                break;
+            }
+            case "MoPub": {
+                env.homePage.isDelegateEnabled(GET_NATIVE_AD);
+                env.homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);
+                break;
+            }
+            case "AdMob": {
+                env.homePage.isDelegateEnabled(LOADER_DID_RECEIVE_BUTTON);
+                env.homePage.isDelegateEnabled(LOADER_DID_FINISH_LOADING_BUTTON);
+                break;
+            }
+        }
+    }
+
+    private String getAdapter(String prebidAd) {
+        return prebidAd.substring(prebidAd.indexOf("(")+1, prebidAd.indexOf(")"));
+    }
+
+    private void checkNativeAdsAndroidDelegates(String prebidAd, InAppBiddingAdPageImpl nativePage) throws InterruptedException {
+        switch (getAdapter(prebidAd)) {
+            case "GAM": {
+                if (prebidAd.contains("Custom")) {
+                    env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
+                    if (prebidAd.contains("GAD")) {
+                        env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
+                    }
+                } else {
+                    env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
+                    if (prebidAd.contains("GAD")) {
+                        env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
+                    }
+                }
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
+                nativePage.clickHereToVisitOurSite();
+                env.homePage.clickBack();
+                env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+                break;
+            }
+            case "MoPub": {
+                env.homePage.isDelegateEnabled(GET_NATIVE_AD);
+                env.homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);
+                break;
+            }
+            default: {
+                if (prebidAd.contains("Links")) {
+                    nativePage.clickBtnNativeLinkRoot();
+                } else {
+                    nativePage.clickHereToVisitOurSite();
+                }
+                env.homePage.clickBack();
+                env.homePage.isDelegateEnabled(ON_NATIVE_GET_NATIVE_AD_SUCCESS);
+                env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+                if (prebidAd.contains("MoPub")) {
+                    env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
+                } else {
+                    env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+                }
+                break;
+            }
+
         }
     }
 
