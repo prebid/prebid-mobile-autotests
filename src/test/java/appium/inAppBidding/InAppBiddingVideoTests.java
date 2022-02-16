@@ -40,7 +40,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-//    @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 

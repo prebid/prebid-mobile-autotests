@@ -156,7 +156,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -362,7 +362,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testOMEventsSessionWithScroll() throws InterruptedException, TimeoutException {
         String scrollableBanner;
 
@@ -526,7 +526,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//        @Test(groups = {"requests"})
+        @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
@@ -673,7 +673,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//        @Test(groups = {"smoke"})
+        @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledScrollable() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -739,7 +739,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+        @Test(groups = {"smoke"} )
     public void testNoRefreshIfBannerViewDisabledBackgrounded() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
