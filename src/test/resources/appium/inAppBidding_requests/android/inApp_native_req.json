@@ -52,6 +52,7 @@
   "device": {
     "pxratio":"$VARIABLE",
     "ifa": "$VARIABLE",
+    "ua": "$VARIABLE",
     "lmt":"$VARIABLE",
     "carrier":"$VARIABLE",
     "osv":"$VARIABLE",

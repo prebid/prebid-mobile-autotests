@@ -36,7 +36,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     }
 
-//    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedRequestAdsIos", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedRequestAdsIos", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsIos(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -93,7 +93,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 

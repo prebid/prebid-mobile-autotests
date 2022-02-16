@@ -47,8 +47,7 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_320x480_MOPUB_RANDOM = "Display Interstitial 320x480 (MoPub) [OK, Random]";
     String INTERSTITIAL_320x480_NO_BID_MOPUB = "Display Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
 
-//    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
-    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, Adapter]";
+    String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
     String INTERSTITIAL_320x480_ADMOB_RANDOM = "Display Interstitial 320x480 (AdMob) [OK, Random]";
     String INTERSTITIAL_320x480_NO_BID_ADMOB = "Display Interstitial 320x480 (AdMob) [noBids, MoPub Ad]";
 
@@ -87,11 +86,8 @@ public interface InAppAdNamesImpl {
     String VIDEO_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
 
     String VIDEO_INTERSTITIAL_320x480_ADMOB = "Video Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
-//    String VIDEO_INTERSTITIAL_320x480_ADMOB = "Interstitial (AdMob) [OK, Adapter]";
     String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
-//    String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Interstitial (AdMob) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Video Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
-//    String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Interstitial (AdMob) [noBids, AdMob Ad]";
 
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";
@@ -109,11 +105,9 @@ public interface InAppAdNamesImpl {
     String VIDEO_REWARDED_320x480_MOPUB_RANDOM = "Video Rewarded 320x480 (MoPub) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_MOPUB = "Video Rewarded 320x480 (MoPub) [noBids, MoPub Ad]";
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
-//    String VIDEO_REWARDED_320x480_ADMOB = "Rewarded (AdMob) [OK, Adapter]";
     String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Video Rewarded 320x480 (AdMob) [OK, Random]";
-//    String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Rewarded (AdMob) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Video Rewarded 320x480 (AdMob) [noBids, AdMob Ad]";
-//    String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Rewarded (AdMob) [noBids, AdMob Ad]";
+
 
     //CUSTOM AUCTION REQUEST TESTS
     String CUSTOM_USPRIVACY_CCPA_TRUE = "CUSTOM_USPRIVACY_CCPA_TRUE";
@@ -128,12 +122,6 @@ public interface InAppAdNamesImpl {
     String ATTS_3 = "ATTS_3";
 
     //NATIVE ADS NAME
-   /* String NATIVE_STYLES_IN_APP_MAP = "Banner Native Styles (In-App) [MAP]";
-    String NATIVE_STYLES_IN_APP_KEYS = "Banner Native Styles (In-App) [KEYS]";
-    String NATIVE_STYLES_NO_ASSETS_PPM = "Banner Native Styles No Assets (In-App)";
-    String NATIVE_STYLES_NO_CREATIVE_PPM = "Banner Native Styles No Creative (In-App)";*/
-
-
     String NATIVE_AD_ADMOB = "Native Ad (AdMob) [OK, OXB Adapter]";
     String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, AdMob ad]";
     String NATIVE_AD_ADMOB_GAD_NO_BIDS = "Native Ad (AdMob) [noBids, GADNativeAd]";
@@ -157,13 +145,5 @@ public interface InAppAdNamesImpl {
     String NATIVE_AD_MOPUB = "Native Ad (MoPub) [OK, NativeAdAdapter]";
     String NATIVE_AD_MOPUB_MP = "Native Ad (MoPub) [OK, MPNativeAd]";
     String NATIVE_AD_MOPUB_MP_NO_BIDS = "Native Ad (MoPub) [noBids, MPNativeAd]";
-    /*String NATIVE_STYLES_PPM_KEYS = "Banner Native Styles (In-App) [KEYS]";
-    String NATIVE_STYLES_PPM_MAP = "Banner Native Styles (In-App) [MAP]";
 
-    String NATIVE_STYLES_GAM_MRECT = "Banner Native Styles (GAM) [MRect]";
-    String NATIVE_STYLES_NO_ASSETS_GAM_MRECT = "Banner Native Styles No Assets (GAM) [MRect]";
-    String NATIVE_STYLES_GAM_FLUID = "Banner Native Styles (GAM) [Fluid]";
-
-    String NATIVE_STYLES_MO_PUB = "Banner Native Styles (MoPub)";
-    String NATIVE_STYLES_NO_ASSETS_MO_PUB = "Banner Native Styles No Assets (MoPub)";*/
 }

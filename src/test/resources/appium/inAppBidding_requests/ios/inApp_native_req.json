@@ -10,6 +10,7 @@
     "publisher": {
       "id": "$VARIABLE"
     },
+    "name": "InternalTestApp",
     "ver": "$VARIABLE"
   },
   "device": {

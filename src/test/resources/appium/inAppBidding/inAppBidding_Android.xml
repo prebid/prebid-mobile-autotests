@@ -13,9 +13,9 @@
             </run>
         </groups>
         <classes>
-<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <!-- Currently native ads is not supported               -->
 <!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
