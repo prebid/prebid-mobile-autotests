@@ -110,6 +110,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By btnNativeDeeplinkOk = getId("btnNativeDeeplinkOk");
         static final By btnNativeDeeplinkFallback = getId("btnNativeDeeplinkFallback");
         static final By clickTvBodyAdMob = getId("tvBody");
+        static final By btnCallToAction = getId("ad_call_to_action");
 
     }
 
@@ -644,6 +645,12 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     @Override
     public void clickTvBody() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.clickTvBodyAdMob)).click();
+    }
+
+    @Override
+    public void clickButtonCallToAction() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.btnCallToAction)).click();
+
     }
 
     //Private

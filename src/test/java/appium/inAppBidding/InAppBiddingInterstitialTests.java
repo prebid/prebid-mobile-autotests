@@ -181,7 +181,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
             env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
         } else if (prebidAd.contains("AdMob")){
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_LOADED);
             env.homePage.isDelegateEnabled(ON_AD_CLICKED);
             env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
             env.homePage.isDelegateEnabled(ON_AD_SHOWED);

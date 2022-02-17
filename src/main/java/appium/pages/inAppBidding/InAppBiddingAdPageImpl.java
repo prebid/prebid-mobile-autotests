@@ -161,4 +161,6 @@ public interface InAppBiddingAdPageImpl {
 
     void clickTvBody();
 
+    void clickButtonCallToAction();
+
 }

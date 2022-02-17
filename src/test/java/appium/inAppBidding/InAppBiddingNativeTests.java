@@ -301,7 +301,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
                     if (prebidAd.contains("GAD")) {
                         env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
                     }
-                } else {
+                } else if (prebidAd.contains("Unified")){
                     env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
                     if (prebidAd.contains("GAD")) {
                         env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
@@ -335,41 +335,54 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
             case "GAM": {
                 if (prebidAd.contains("Custom")) {
                     env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
+                } else if (prebidAd.contains("Unified")) {
+                    env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
+                }
+                env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+                if (prebidAd.contains("GADUnified")){
+                    env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
+                    nativePage.clickButtonCallToAction();
+                } else {
                     if (prebidAd.contains("GAD")) {
                         env.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
                     }
-                } else {
-                    env.homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
-                    if (prebidAd.contains("GAD")) {
-                        env.homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
-                    }
+                    nativePage.clickHereToVisitOurSite();
                 }
-                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-                nativePage.clickHereToVisitOurSite();
+                Thread.sleep(1000);
                 env.homePage.clickBack();
                 env.homePage.isDelegateEnabled(ON_AD_CLICKED);
                 break;
             }
-            case "MoPub": {
-                env.homePage.isDelegateEnabled(GET_NATIVE_AD);
-                env.homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
-                env.homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);
+            case "AdMob":{
+                nativePage.clickTvBody();
+                Thread.sleep(1000);
+                env.homePage.clickBack();
+                env.homePage.isDelegateEnabled(ON_AD_LOADED);
+                env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+                env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+                env.homePage.isDelegateEnabled(ON_AD_OPENED);
                 break;
             }
-            default: {
+            case "In-App": {
                 if (prebidAd.contains("Links")) {
                     nativePage.clickBtnNativeLinkRoot();
                 } else {
                     nativePage.clickHereToVisitOurSite();
                 }
+                Thread.sleep(1000);
                 env.homePage.clickBack();
                 env.homePage.isDelegateEnabled(ON_NATIVE_GET_NATIVE_AD_SUCCESS);
                 env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-                if (prebidAd.contains("MoPub")) {
-                    env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-                } else {
-                    env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-                }
+                env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+                break;
+            }
+            case "MoPub":{
+                nativePage.clickHereToVisitOurSite();
+                Thread.sleep(1000);
+                env.homePage.clickBack();
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOAD);
+                env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+                env.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
                 break;
             }
 
