@@ -3,38 +3,31 @@
     "bundle": "org.prebid.mobile.renderingtestapp",
     "ext": {
       "prebid": {
-        "data": {
-
-        },
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
     },
-    "name": "InternalTestApp",
     "publisher": {
       "id": "$VARIABLE"
     },
+    "name": "InternalTestApp",
     "ver": "$VARIABLE"
   },
   "device": {
     "connectiontype": "$VARIABLE",
     "ext": {
-      "atts": 0,
-      "ifv": "$VARIABLE"
-    },
-    "geo": {
-
+      "atts": 0
     },
     "h": "$VARIABLE",
+    "ua": "$VARIABLE",
     "ifa": "$VARIABLE",
-    "language": "$VARIABLE",
     "lmt": "$VARIABLE",
     "make": "Apple",
-    "model": "iPhone",
+    "model": "Simulator",
     "os": "iOS",
     "osv": "$VARIABLE",
     "pxratio": "$VARIABLE",
-    "ua": "$VARIABLE",
+    "devtime":"$VARIABLE",
     "w": "$VARIABLE"
   },
   "ext": {
@@ -42,15 +35,7 @@
       "cache": {
         "bids": {
 
-        },
-        "vastxml": {
-
         }
-      },
-      "data": {
-        "bidders": [
-
-        ]
       },
       "storedrequest": {
         "id": "$VARIABLE"
@@ -61,22 +46,12 @@
     }
   },
   "id": "$VARIABLE",
-  "regs":{
-    "ext":{
-      "gdpr":"$VARIABLE"
-    }
-  },
+
   "imp": [
     {
-      "clickbrowser": 0,
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
-      "ext": {
-        "context": {
-          "data": {
 
-          }
-        },
+      "ext": {
+
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
@@ -84,26 +59,17 @@
         }
       },
       "id": "$VARIABLE",
-      "instl": 0,
       "native": {
-        "request": "{\"assets\":[{\"required\":1,\"title\":{\"len\":90}},{\"img\":{\"hmin\":50,\"type\":1,\"wmin\":50},\"required\":1},{\"img\":{\"hmin\":50,\"type\":3,\"wmin\":150},\"required\":1},{\"data\":{\"type\":2},\"required\":1},{\"data\":{\"type\":12},\"required\":1},{\"data\":{\"type\":1},\"required\":1}],\"context\":2,\"contextsubtype\":20,\"eventtrackers\":[{\"event\":1,\"methods\":[1,2]}],\"plcmttype\":1,\"ver\":\"1.2\"}",
+        "request":"$VARIABLE",
         "ver": "$VARIABLE"
       },
       "secure": 1
     }
   ],
   "source": {
-    "ext": {
-      "omidpn": "Prebid",
-      "omidpv": "$VARIABLE"
-    },
     "tid": "$VARIABLE"
   },
   "user": {
-    "ext": {
-      "data": {
-
-      }
-    }
+    "gender":"$VARIABLE"
   }
 }

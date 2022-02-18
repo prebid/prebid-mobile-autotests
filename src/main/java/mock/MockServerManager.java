@@ -140,6 +140,7 @@ public class MockServerManager implements LogValidator {
         int result = 0;
         List<MockRequestModel> loggedRequests = getLoggedRequests();
         for (MockRequestModel request : loggedRequests) {
+            System.out.println("Event: "+request.getPath());
 
             if (request.getPath().contains(eventName)) {
                 System.out.println("Request: "+request.getPath());

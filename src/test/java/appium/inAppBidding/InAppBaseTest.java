@@ -152,6 +152,13 @@ public class InAppBaseTest {
             env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_AD, 1, 60);
             env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_IMP, 1, 60);
         }
+        if (prebidAd.contains("AdMob")) {
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_MADS_GMA, 1, 60);
+            }
+            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+
+        }
     }
 
 }

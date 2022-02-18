@@ -83,7 +83,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
             } catch (TimeoutException e) {
                 env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
             }
-        }
+        } else if(adName.contains("AdMob")){
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+            }
+            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);        }
 
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
@@ -102,6 +106,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         videoPage.isShowButtonEnabled();
+        if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
+        }
         videoPage.clickShowButton();
 
         videoPage.clickLearnMore();
@@ -119,6 +126,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
+        } else if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
         } else {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
             env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
@@ -206,7 +218,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
         if (isPlatformIOS) {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+            if (adName.contains("AdMob")){
+                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+            } else {
+                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+            }
         } else {
             env.homePage.isDelegateEnabled(ON_AD_CLICKED);
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
@@ -329,12 +345,20 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.clickCloseInterstitial();
 
         env.homePage.isDelegateEnabled(ON_AD_LOADED);
-        env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+        if(!adName.contains("AdMob")) {
+            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+
+        }
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        if (adName.contains("AdMob")){
+            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
+        }
 
         if (adName.contains("MoPub")) {
             env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-        } else {
+        } else if(!adName.contains("AdMob")){
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
         }
 
@@ -354,7 +378,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.isShowButtonEnabled();
         Thread.sleep(3000);
-
+        if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
+        }
         videoPage.clickShowButton();
         Thread.sleep(5000);
 
@@ -374,6 +400,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(REWARDED_VIDEO_AD_DID_DISMISS);
             env.homePage.isDelegateEnabled(REWARDED_VIDEO_AD_DID_TAP);
             env.homePage.isDelegateEnabled(REWARDED_VIDEO_AD_SHOULD_REWARD);
+        } else if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
+            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
         } else {
             env.homePage.isDelegateEnabled(REWARDED_AD_DID_RECEIVE);
             env.homePage.isDelegateEnabled(REWARDED_AD_WILL_PRESENT);
@@ -552,6 +583,12 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         if (prebidAd.contains("MoPub")) {
             env.homePage.isDelegateEnabled(ON_REWARDED_STARTED);
             env.homePage.isDelegateEnabled(ON_REWARDED_COMPLETED);
+        } else if (prebidAd.contains("AdMob")){
+            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
+            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
+            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
         } else {
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
         }

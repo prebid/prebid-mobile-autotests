@@ -5,7 +5,7 @@
     &parent;
     <parameter name="prebidTestPlatform" value="iOS"/>
     <parameter name="prebidServerKind" value="Prebid"/>
-    <!-- Run only on mock server, disable proxy-->
+<!--     Run only on mock server, disable proxy-->
     <test verbose="3" name="InApp_Bidding iOS Custom Requests">
         <groups>
             <run>
@@ -27,8 +27,7 @@
             </run>
         </groups>
         <classes>
-            <!-- Currently native ads is not supported               -->
-<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
@@ -43,12 +42,11 @@
             </run>
         </groups>
         <classes>
-            <!--     Currently native ads is not supported               -->
-<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
-<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
 </suite>

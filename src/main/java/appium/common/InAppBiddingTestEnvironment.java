@@ -53,7 +53,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.GAM_GAMPAD, "/gampad/ads");
         inAppBidding_Events.put(InAppBiddingEvents.GAM_G_DOUBLECLICK, "g.doubleclick.net");
         inAppBidding_Events.put(InAppBiddingEvents.MOPUB_AD, "/m/ad");
-        inAppBidding_Events.put(InAppBiddingEvents.MOPUB_IMP, "/m/imp");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, "/pagead/interaction");
+        inAppBidding_Events.put(InAppBiddingEvents.ADMOB_MADS_GMA, "mads/gma");
         inAppBidding_Events.put(InAppBiddingEvents.WIN_PREBID, "/win/prebid");
 
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_REQUEST, "ads/video/vast/");
@@ -82,8 +83,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_WILL_LEAVE, "adViewWillLeaveApplication called");
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_LOAD, "adViewDidLoadAd called");
+        inAppBidding_Delegates_iOS.put(AD_VIEW_DID_RECORD_IMPRESSION, "didRecordImpression called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_FAIL, "adViewDidFail called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_PRESENT_MODAL_VIEW, "willPresentModalView called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_PRESENT_SCREEN, "willPresentScreen called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_DISMISS_SCREEN, "willDismissScreen called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_DID_DISMISS_SCREEN, "didDismissScreen called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_DISMISS_MODAL_VIEW, "didDismissModalView called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_LEAVE_APP, "willLeaveApplication called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW, "viewControllerForPresentingModalView called");
@@ -96,6 +101,15 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_DISAPPEAR, "interstitialDidDisappear called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_EXPIRE, "interstitialDidExpire called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED_TAP, "interstitialDidReceiveTapEvent called");
+
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN, "adDidFailToPresentFullScreenContentWithError called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_RECEIVE_BUTTON, "adDidReceiveButton called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_FAIL_TO_RECEIVE_BUTTON, "adDidFailToReceiveButton called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_PRESENT_FULLSCREEN, "adDidPresentFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_WILL_DISMISS_FULLSCREEN, "adWillDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_DISMISS_FULLSCREEN, "adDidDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(INTERSTITIAL_DID_RECORD_IMPRESSION, "adDidRecordImpression called");
+
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED, "interstitialDidReceiveAd called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_FAIL_TO_RECEIVE, "interstitialDidFailToReceiveAd called");
@@ -125,7 +139,19 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         inAppBidding_Delegates_iOS.put(FETCH_DEMAND, "fetchDemand success");
         inAppBidding_Delegates_iOS.put(GET_NATIVE_AD, "getNativeAd success");
-        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "nativeAdDidLogClick called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "adWasClicked called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_LOG_IMPRESSION, "adDidLogImpression called");
+        inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "custom ad request successful");
+        inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called (custom)");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_TRACK_IMPRESSION, "nativeAdDidTrackImpression called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_WILL_LEAVE_APPLICATION, "nativeAdWillLeaveApplication called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_DISMISS_MODAL, "nativeAdDidDismissModal called");
+        inAppBidding_Delegates_iOS.put(UNIFIED_NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called (unified)");
+        inAppBidding_Delegates_iOS.put(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS, "unified ad request successful");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_LOAD, "onNativeAdLoaded called");
+        inAppBidding_Delegates_iOS.put(LOADER_DID_RECEIVE_BUTTON, "adLoaderDidReceiveAdButton called");
+        inAppBidding_Delegates_iOS.put(LOADER_DID_FINISH_LOADING_BUTTON, "adLoaderDidFinishLoadingButton called");
 
     }
 
@@ -136,11 +162,20 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_LOADED, "btnAdLoaded");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_FAILED, "btnAdFailed");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_DISPLAYED, "btnAdDisplayed");
+        inAppBidding_Delegates_Android.put(ON_AD_IMPRESSION, "btnAdImpression");
+        inAppBidding_Delegates_Android.put(ON_AD_OPENED, "btnAdOpened");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLICKED, "btnAdClicked");
+        inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_SHOWED, "btnAdShowed");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLOSED, "btnAdClosed");
 
         inAppBidding_Delegates_Android.put(ON_NATIVE_FETCH_DEMAND_SUCCESS, "btnFetchDemandResultSuccess");
         inAppBidding_Delegates_Android.put(ON_NATIVE_GET_NATIVE_AD_SUCCESS, "btnGetNativeAdResultSuccess");
+        inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOAD, "btnNativeAdLoaded");
+        inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOG_IMPRESSION, "btnAdEventImpression");
+        inAppBidding_Delegates_Android.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "btnCustomAdRequestSuccess");
+        inAppBidding_Delegates_Android.put(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS, "btnUnifiedRequestSuccess");
+        inAppBidding_Delegates_Android.put(CUSTOM_NATIVE_AD_PRIMARY_WIN, "btnPrimaryAdWinCustom");
+        inAppBidding_Delegates_Android.put(UNIFIED_NATIVE_AD_PRIMARY_WIN, "btnPrimaryAdWinUnified");
 
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_BANNER_LOADED, "btnAdDidLoad");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_BANNER_EXPANDED, "btnAdExpanded");
@@ -170,8 +205,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         AD_VIEW_WILL_LEAVE,
 
         AD_VIEW_DID_LOAD,
+        AD_VIEW_DID_RECORD_IMPRESSION,
         AD_VIEW_DID_FAIL,
         AD_PRESENT_MODAL_VIEW,
+        AD_WILL_PRESENT_SCREEN,
+        AD_WILL_DISMISS_SCREEN,
+        AD_DID_DISMISS_SCREEN,
         AD_DISMISS_MODAL_VIEW,
         AD_WILL_LEAVE_APP,
         AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW,
@@ -182,6 +221,14 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         INTERSTITIAL_DID_DISMISS,
         INTERSTITIAL_WILL_LEAVE_APP,
         INTERSTITIAL_DID_CLICK,
+
+        INTERSTITIAL_DID_RECEIVE_BUTTON,
+        INTERSTITIAL_DID_FAIL_TO_RECEIVE_BUTTON,
+        INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN,
+        INTERSTITIAL_DID_PRESENT_FULLSCREEN,
+        INTERSTITIAL_DID_DISMISS_FULLSCREEN,
+        INTERSTITIAL_WILL_DISMISS_FULLSCREEN,
+        INTERSTITIAL_DID_RECORD_IMPRESSION,
 
         INTERSTITIAL_DID_LOAD,
         INTERSTITIAL_WILL_APPEAR,
@@ -214,7 +261,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         ON_AD_FAILED,
         ON_AD_DISPLAYED,
         ON_AD_CLICKED,
+        ON_AD_SHOWED,
         ON_AD_CLOSED,
+
+        ON_AD_IMPRESSION,
+        ON_AD_OPENED,
 
         ON_NATIVE_FETCH_DEMAND_SUCCESS,
         ON_NATIVE_GET_NATIVE_AD_SUCCESS,
@@ -230,6 +281,19 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         FETCH_DEMAND,
         GET_NATIVE_AD,
         NATIVE_AD_DID_CLICK,
+        NATIVE_AD_DID_LOG_IMPRESSION,
+        CUSTOM_NATIVE_AD_REQUEST_SUCCESS,
+        CUSTOM_NATIVE_AD_PRIMARY_WIN,
+        NATIVE_AD_PRIMARY_WIN,
+        UNIFIED_NATIVE_AD_PRIMARY_WIN,
+        UNIFIED_CUSTOM_AD_REQUEST_SUCCESS,
+        NATIVE_AD_DID_LOAD,
+        NATIVE_AD_DID_TRACK_IMPRESSION,
+        NATIVE_AD_WILL_LEAVE_APPLICATION,
+        NATIVE_AD_DID_DISMISS_MODAL,
+        LOADER_DID_RECEIVE_BUTTON,
+        LOADER_DID_FINISH_LOADING_BUTTON,
+        ;
 
     }
 
@@ -252,6 +316,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         GAM_G_DOUBLECLICK,
         MOPUB_AD,
         MOPUB_IMP,
+        ADMOB_PAGEAD_INTERACTION,
+        ADMOB_MADS_GMA,
         VIDEO_REQUEST,
         VIDEO_REWARDED_REQUEST,
         VIDEO_IMPRESSION,
@@ -394,7 +460,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         try {
             waitForOMEventMock(event, expectedOccurrences, timeout / 2);
         } catch (NullPointerException | TimeoutException exception) {
-            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
+//            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
         }
     }
 
