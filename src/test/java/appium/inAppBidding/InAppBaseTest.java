@@ -34,13 +34,13 @@ public class InAppBaseTest {
     public OMSDKEventHandler eventHandler;
 
 
-    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
+//    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
     public void setupMock(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOCK_SERVER);
     }
 
-    @BeforeTest(groups = {"serverBased", "serverBased-ios"})
+    @BeforeTest(groups = {"serverBased", "serverBased-ios","smoke", "android", "ios", "exec", "requests"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOB_PROXY);
@@ -56,7 +56,7 @@ public class InAppBaseTest {
     }
 
 
-    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
+//    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
     public void setupMethodMock(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
@@ -122,7 +122,7 @@ public class InAppBaseTest {
 
     public void initEventHandler() {
         System.out.println("Log validator: "+env.logValidator.getLogs());
-        eventHandler = new OMSDKEventHandler(env.logValidator);
+        eventHandler = new OMSDKEventHandler(env.bmp.getHar());
     }
 
     private void setup(ITestContext itc, Set<TestEnvironment.TrafficInspectorKind> trafficInsprctors) throws IOException {

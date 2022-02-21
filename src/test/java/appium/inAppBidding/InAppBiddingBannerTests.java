@@ -40,7 +40,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-        checkGamOrMoPubEvents(prebidAd);
+//        checkGamOrMoPubEvents(prebidAd);
         System.out.println(validAuctionRequest);
         env.homePage.clickBack();
 
@@ -89,21 +89,21 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
 
-        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-            } else {
-                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-            }
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
-            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-            }
-            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-        }
+//        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
+//            if (isPlatformIOS) {
+//                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
+//            } else {
+//                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
+//            }
+//        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
+//            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
+//            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
+//        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
+//            if (isPlatformIOS) {
+//                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+//            }
+//            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+//        }
 
         env.homePage.clickBack();
     }
@@ -241,7 +241,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.isAdDisplayed();
 
@@ -252,7 +252,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -267,15 +267,15 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         bannerPage.clickReloadButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 50);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 50);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(2));
@@ -299,7 +299,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.clickBanner();
 
@@ -313,7 +313,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -340,7 +340,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         bannerPage.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         env.homePage.runAppInBackground(5);
 
@@ -350,7 +350,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
 
         // CHECK OM EVENTS
         initEventHandler();
@@ -376,13 +376,13 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         checkLoadDelegates();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.performScrollUpAndDown();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
 
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -495,14 +495,14 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         checkLoadDelegates();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, expectedEventCount, autoRefreshDelay * expectedEventCount);
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, expectedEventCount, autoRefreshDelay * expectedEventCount);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, expectedEventCount, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, expectedEventCount, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(expectedEventCount));
