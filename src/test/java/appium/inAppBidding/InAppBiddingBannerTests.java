@@ -40,7 +40,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-//        checkGamOrMoPubEvents(prebidAd);
+        checkGamOrMoPubEvents(prebidAd);
         System.out.println(validAuctionRequest);
         env.homePage.clickBack();
 
@@ -89,21 +89,21 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
 
-//        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
-//            if (isPlatformIOS) {
-//                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-//            } else {
-//                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-//            }
-//        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
-//            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-//            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
-//        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
-//            if (isPlatformIOS) {
-//                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-//            }
-//            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-//        }
+        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
+            } else {
+                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
+            }
+        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
+            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
+            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
+        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
+            }
+            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+        }
 
         env.homePage.clickBack();
     }

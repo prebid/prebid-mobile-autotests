@@ -68,7 +68,7 @@ public class InAppBaseTest {
         env.logValidator.clearLogs();
     }
 
-    @BeforeMethod(groups = {"serverBased"})
+    @BeforeMethod(groups = {"serverBased", "serverBased-ios","smoke", "android", "ios", "exec", "requests"})
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
@@ -121,7 +121,7 @@ public class InAppBaseTest {
     }
 
     public void initEventHandler() {
-        System.out.println("Log validator: "+env.logValidator.getLogs());
+//        System.out.println("Log validator: "+env.logValidator.getLogs());
         eventHandler = new OMSDKEventHandler(env.bmp.getHar());
     }
 
