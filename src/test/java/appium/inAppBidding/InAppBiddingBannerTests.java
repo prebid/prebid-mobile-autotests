@@ -770,7 +770,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     private void checkLoadDelegates() {
         if (isPlatformIOS) {
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         } else {
             env.homePage.isDelegateEnabled(ON_AD_LOADED);
         }
