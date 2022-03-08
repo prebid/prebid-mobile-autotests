@@ -32,35 +32,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-//    @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
-//    public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
-//        initValidTemplatesJson(prebidAd);
-//        env.homePage.goToAd(prebidAd);
-//        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-//
-//        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-//        checkGamOrMoPubEvents(prebidAd);
-//        System.out.println(validAuctionRequest);
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-//        // CHECK OM EVENTS
-//        OMSDKEventHandler eventHandler = new OMSDKEventHandler(env.bmp.getHar());
-//        assertTrue(eventHandler.checkSessionsCount(1));
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        // It could be 'obstructed' when webBrowser opened or 'clipped', or 'notFound' for android
-//        String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
-//
-//
-//        session.checkOMBaseEvents(platformName);
-//        // TODO Why to checkViewability
-////        if (isPlatformIOS) {
-////            session.checkHideAndRestoreViewabilityWithReasons(reasons);
-////        }
-//    }
-
-    @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
     public void testVersionParametersInRequest(String prebidAd) throws InterruptedException, TimeoutException {
         env.homePage.goToAd(prebidAd);
 
@@ -71,7 +43,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-    @Test(groups = {"serverBased"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
@@ -89,7 +61,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
 
-        /*if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
+        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
             if (isPlatformIOS) {
                 env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
             } else {
@@ -103,7 +75,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
                 env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
             }
             env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-        }*/
+        }
 
         env.homePage.clickBack();
     }
@@ -249,7 +221,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotateLandscape();
             env.homePage.rotatePortrait();
         }
-
+        checkGamOrMoPubEvents(bannerAds);
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
