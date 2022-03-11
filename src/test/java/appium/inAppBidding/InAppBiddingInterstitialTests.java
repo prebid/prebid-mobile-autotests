@@ -31,49 +31,13 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 15);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         env.homePage.clickBack();
-    }
-
-    @Test(groups = {"serverBased"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testVersionParametersInRequest(String prebidAd) throws InterruptedException, TimeoutException {
-        env.homePage.goToAd(prebidAd);
-
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-
-        env.homePage.clickBack();
-
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
-    }
-
-    @Test(groups = {"serverBased"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd);
-
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
-
-        page.isShowButtonEnabled();
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        page.clickShowButton();
-
-        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-
-        checkGamOrMoPubEvents(prebidAd);
-
-        page.clickCloseInterstitial();
-
-        env.homePage.clickBack();
-
-        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-        // CHECK OM EVENTS
-        OMSDKEventHandler eventHandler = new OMSDKEventHandler(env.bmp.getHar());
-        assertTrue(eventHandler.checkSessionsCount(1));
-        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-        session.checkOMBaseEvents(platformName);
-        session.checkNoObstructions();
 
     }
+
+
+
 
     @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialRandom(String prebidAd) throws TimeoutException, InterruptedException {
@@ -90,7 +54,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"serverBased"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -209,15 +173,17 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         page.isEndCardDisplayed();
 
         page.clickCloseInterstitial();
 
+        checkGamOrMoPubEvents(INTERSTITIAL_320x480_ADMOB);
+
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
 
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -235,7 +201,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 5);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 5);
 
         page.isEndCardDisplayed();
 
@@ -248,7 +214,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         Thread.sleep(3000);
 
         env.homePage.clickBack();
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
 
         // CHECK OM EVENTS
         initEventHandler();
