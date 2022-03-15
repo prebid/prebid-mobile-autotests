@@ -3,6 +3,8 @@ package appium.inAppBidding;
 import OMSDK.OMSDKEventHandler;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
+import delegates.factory.DelegatesCheckFactory;
+import delegates.factory.DelegatesCheckFactoryImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -32,13 +34,8 @@ public class InAppBaseTest {
     public JSONObject auctionRequestCCPA_FALSE;
     public JSONObject auctionRequestJson;
     public OMSDKEventHandler eventHandler;
+    public DelegatesCheckFactory delegatesCheckFactory = new DelegatesCheckFactoryImpl();
 
-
-//    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
-    public void setupMock(ITestContext itc) throws IOException {
-        System.out.println(itc.getName());
-        setup(itc, TestEnvironment.INSPECTORS_MOCK_SERVER);
-    }
 
     @BeforeTest(groups = {"serverBased", "serverBased-ios","smoke", "android", "ios", "exec", "requests"})
     public void setupBMP(ITestContext itc) throws IOException {
@@ -141,7 +138,9 @@ public class InAppBaseTest {
         omidpv = env.getProperty("omidpv");
         isPlatformIOS = platformName.equalsIgnoreCase("iOS");
     }
-
+    protected String getAdapter(String prebidAd) {
+        return prebidAd.substring(prebidAd.indexOf("(")+1, prebidAd.indexOf(")"));
+    }
     protected void checkGamOrMoPubEvents(String prebidAd) throws TimeoutException, InterruptedException {
         if (isPlatformIOS) {
             if (prebidAd.contains("GAM")) {

@@ -326,9 +326,6 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         }
     }
 
-    private String getAdapter(String prebidAd) {
-        return prebidAd.substring(prebidAd.indexOf("(")+1, prebidAd.indexOf(")"));
-    }
 
     private void checkNativeAdsAndroidDelegates(String prebidAd, InAppBiddingAdPageImpl nativePage) throws InterruptedException {
         switch (getAdapter(prebidAd)) {

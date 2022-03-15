@@ -1,18 +1,17 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
-import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import delegates.DelegatesCheck;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
-import static OMSDK.OMSDKAssert.assertTrue;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
+import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVE_BUTTON;
 import static appium.common.InAppTemplatesInit.*;
 import static org.testng.Assert.assertEquals;
 
@@ -35,8 +34,6 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
 
     }
-
-
 
 
     @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
@@ -72,7 +69,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
             }
         } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_MOPUB)) {
             env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-        } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_ADMOB)){
+        } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_ADMOB)) {
             if (isPlatformIOS) {
                 env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
             }
@@ -87,12 +84,12 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // =============================
 
     @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException {
+    public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
-        if (prebidAd.contains("AdMob")){
+        if (prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         }
         interstitialPage.clickShowButton();
@@ -103,32 +100,15 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.waitAndReturnToApp();
 
-        if (prebidAd.contains("MoPub")) {
-            interstitialPage.clickCloseInterstitial();
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_APPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
-        } else if(prebidAd.contains("AdMob")){
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
-        } else {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
-        }
+        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, interstitialPage);
+
+        delegatesCheck.checkIosDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }
 
     @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException {
+    public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -140,21 +120,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         interstitialPage.closeWebViewCreative();
 
         interstitialPage.clickCloseInterstitial();
-        if (prebidAd.contains("MoPub")) {
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-        } else if (prebidAd.contains("AdMob")){
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-            env.homePage.isDelegateEnabled(ON_AD_SHOWED);
-            env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-        } else {
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        }
+        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
+        delegatesCheck.checkAndroidDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }

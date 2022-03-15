@@ -1,9 +1,9 @@
 package appium.inAppBidding;
 
-import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import delegates.DelegatesCheck;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
@@ -18,7 +18,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
 
-        @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -93,7 +93,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -129,69 +129,26 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
+    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
 
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
-
-        if (prebidAd.contains("MoPub")) {
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_PRESENT_MODAL_VIEW);
-            env.homePage.isDelegateEnabled(AD_DISMISS_MODAL_VIEW);
-            //TO DO -- FIX IT v
-//                bannerPage.isDelegateEnabled(AD_WILL_LEAVE_APP);
-            env.homePage.isDelegateEnabled(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW);
-        } else if (prebidAd.contains("AdMob")) {
-            env.homePage.openInBrowser();
-            bannerPage.waitAndReturnToApp();
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_RECORD_IMPRESSION);
-            env.homePage.isDelegateEnabled(AD_WILL_PRESENT_SCREEN);
-            env.homePage.isDelegateEnabled(AD_WILL_DISMISS_SCREEN);
-            env.homePage.isDelegateEnabled(AD_DID_DISMISS_SCREEN);
-        } else {
-            env.homePage.openInBrowser();
-            bannerPage.waitAndReturnToApp();
-            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
-            env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
-            env.homePage.isDelegateEnabled(AD_VIEW_WILL_LEAVE);
-        }
+        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
+        delegatesCheck.checkIosBannerDelegates();
         env.homePage.clickBack();
 
     }
 
     //BANNER DELEGATES TEST
     @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBannerAndroidDelegates(String prebidAd) throws InterruptedException {
+    public void testBannerAndroidDelegates(String prebidAd) throws NoSuchFieldException, InterruptedException {
         initValidTemplatesJson(prebidAd);
-
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
-
-        if (prebidAd.contains("MoPub")) {
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
-            bannerPage.clickBanner();
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-        } else {
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            if (prebidAd.contains("AdMob")) {
-                env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-            } else {
-                env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            }
-            bannerPage.clickBanner();
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            if (prebidAd.contains("AdMob")) {
-                env.homePage.isDelegateEnabled(ON_AD_OPENED);
-            }
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        }
+        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
+        delegatesCheck.checkAndroidBannerDelegates();
         env.homePage.clickBack();
     }
 
@@ -234,7 +191,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testOMEventsAfterReload() throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
@@ -430,7 +387,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"}, priority = 1)
+    @Test(groups = {"smoke"}, priority = 1)
     public void testClientRefreshMaxAlwaysFails() throws TimeoutException, InterruptedException, IOException {
         int setUpEventsCount = 4;
 
@@ -453,7 +410,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.logValidator.cancelResponseError();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testRefreshClientSide() throws TimeoutException, InterruptedException {
         int expectedEventCount = 4;
 
@@ -485,7 +442,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testDefaultRefresh() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_ADMOB);
 
@@ -498,7 +455,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
@@ -511,7 +468,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testAdRequestLimitation() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
@@ -539,7 +496,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testSlowConnection() throws TimeoutException, InterruptedException {
         // regular 2G network (250/50 KB/s, 300ms latency -  diff because of real network latency)
 
@@ -625,7 +582,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.resetApp();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testCustomRefresh() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -645,7 +602,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledScrollable() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -681,7 +638,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledTabOverlay() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -711,7 +668,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"} )
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledBackgrounded() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
