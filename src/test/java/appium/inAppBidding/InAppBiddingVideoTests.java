@@ -99,7 +99,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -141,7 +141,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -149,13 +149,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickCloseInterstitial();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -167,13 +167,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
 
@@ -183,7 +183,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -203,13 +203,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsLearnMore(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickLearnMore();
 
@@ -234,7 +234,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
         String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
@@ -248,7 +248,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -266,7 +266,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -284,7 +284,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -292,7 +292,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickInterstitialAd();
 
@@ -316,7 +316,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
         String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
@@ -330,7 +330,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -431,13 +431,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         page.clickCloseInterstitial();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
         System.out.println("Total sessions: " + eventHandler.getSessions().length);
@@ -457,11 +457,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         env.homePage.runAppInBackground(5);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.FIRST_QUARTILE, 3, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.FIRST_QUARTILE, 3, 60);
 
         page.isEndCardDisplayed();
 
@@ -469,7 +469,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -497,9 +497,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.THIRD_QUARTILE, 3, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.THIRD_QUARTILE, 3, 60);
 
         page.clickInterstitialAd();
 
@@ -511,7 +511,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -668,15 +668,15 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoOutstreamOMEventsSingleSessionMinimize(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.COMPLETE, 2, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.COMPLETE, 2, 60);
 
         videoPage.waitWhenWatchAgainDisplayed();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -692,13 +692,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         videoPage.waitWhenWatchAgainDisplayed();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -713,7 +713,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
 
         videoPage.isEndCardDisplayed();
@@ -723,7 +723,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -742,7 +742,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoOutstreamOMEventsBackgrounded(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         env.homePage.runAppInBackground(5);
 
@@ -750,7 +750,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
@@ -776,7 +776,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoOutstreamOMEventsBackgroundedEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
 
@@ -785,7 +785,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKAssert.assertTrue(eventHandler.checkSessions());
