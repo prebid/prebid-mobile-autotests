@@ -132,6 +132,7 @@ public class RequestValidator {
         JSONObject sentJson = HarParser.getRequestPostDataTextJson(harLog, event);
         boolean checkResult;
         System.out.println("Sent json: "+sentJson);
+        System.out.println("Sent json: "+validJson);
         String errorMessage = null;
         try {
             checkResult = isJsonValid(sentJson, validJson, ROOT_JSON_KEY);

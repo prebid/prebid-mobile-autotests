@@ -28,11 +28,11 @@
             </run>
         </groups>
         <classes>
-<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>&ndash;&gt;-->
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
-<!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>&ndash;&gt;-->
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
     <test verbose="3" name="InApp_Bidding Android Requests [OM, Auction, Events, OpenRTB] [MOCK]">
@@ -47,7 +47,7 @@
             <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
             <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
 <!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
 </suite>

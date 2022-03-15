@@ -58,7 +58,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"serverBased"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -225,7 +225,11 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
             }
         } else {
             env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
+            if (adName.contains("AdMob")||adName.contains("MoPub")) {
+                env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
+            } else {
+                env.homePage.isDelegateEnabled(ON_AD_CLOSED);
+            }
         }
 
         env.homePage.clickBack();
@@ -343,11 +347,14 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(5000);
 
         videoPage.clickCloseInterstitial();
-
-        env.homePage.isDelegateEnabled(ON_AD_LOADED);
+        if(adName.contains("MoPub")) {
+            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
+        }
+        else {
+            env.homePage.isDelegateEnabled(ON_AD_LOADED);
+        }
         if(!adName.contains("AdMob")) {
             env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-
         }
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
         if (adName.contains("AdMob")){

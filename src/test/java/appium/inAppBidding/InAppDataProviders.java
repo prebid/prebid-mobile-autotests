@@ -201,20 +201,20 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoAds = {
-            {VIDEO_OUTSTREAM_IN_APP},
-            {VIDEO_OUTSTREAM_ENDCARD},
-            {VIDEO_OUTSTREAM_FEED_IN_APP},
-            {VIDEO_OUTSTREAM_FEED_GAM},
-            {VIDEO_OUTSTREAM_GAM},
+//            {VIDEO_OUTSTREAM_IN_APP},
+//            {VIDEO_OUTSTREAM_ENDCARD},
+//            {VIDEO_OUTSTREAM_FEED_IN_APP},
+//            {VIDEO_OUTSTREAM_FEED_GAM},
+//            {VIDEO_OUTSTREAM_GAM},
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ENDCARD},
             {VIDEO_INTERSTITIAL_320x480_MOPUB},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
-            {VIDEO_320x480_GAM},
-            {VIDEO_REWARDED_320x480_IN_APP},
-            {VIDEO_REWARDED_320x480_GAM_METADATA},
-            {VIDEO_REWARDED_320x480_MOPUB},
-            {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_GAM},
+//            {VIDEO_REWARDED_320x480_IN_APP},
+//            {VIDEO_REWARDED_320x480_GAM_METADATA},
+//            {VIDEO_REWARDED_320x480_MOPUB},
+//            {VIDEO_REWARDED_320x480_ADMOB},
     };
 
     /* AD_NAME_TYPE*/
@@ -231,7 +231,7 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_REWARDED_320x480_MOPUB},
             {VIDEO_REWARDED_320x480_ADMOB},
-            {VIDEO_320x480_GAM},
+            {VIDEO_INTERSTITIAL_320x480_GAM},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
     };
 
@@ -242,8 +242,8 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoRandom = {
-            {VIDEO_320x480_MOPUB_RANDOM},
-            {VIDEO_320x480_GAM_RANDOM},
+            {VIDEO_INTERSTITIAL_320x480_MOPUB_RANDOM},
+            {VIDEO_INTERSTITIAL_320x480_GAM_RANDOM},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM},
     };
 
@@ -254,12 +254,12 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoNoBids = {
-            {VIDEO_320x480_NO_BID_MOPUB},
+            {VIDEO_INTERSTITIAL_320x480_NO_BID_MOPUB},
             {VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB},
-            {VIDEO_320x480_NO_BID_GAM_AD},
-            {VIDEO_REWARDED_320x480_NO_BID_GAM},
-            {VIDEO_REWARDED_320x480_NO_BID_MOPUB},
-            {VIDEO_REWARDED_320x480_NO_BID_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD},
+//            {VIDEO_REWARDED_320x480_NO_BID_GAM},
+//            {VIDEO_REWARDED_320x480_NO_BID_MOPUB},
+//            {VIDEO_REWARDED_320x480_NO_BID_ADMOB},
     };
 
     /* AD_NAME_TYPE*/
@@ -271,6 +271,8 @@ public class InAppDataProviders {
     private static final String[][] VideoInterstitial = {
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_MOPUB},
+            {VIDEO_INTERSTITIAL_320x480_GAM},
     };
 
     /* AD_NAME_TYPE*/

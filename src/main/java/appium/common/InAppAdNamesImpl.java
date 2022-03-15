@@ -79,11 +79,11 @@ public interface InAppAdNamesImpl {
     String VIDEO_INTERSTITIAL_320x480_IN_APP = "Video Interstitial 320x480 (In-App)";
     String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card (In-App)";
     String VIDEO_INTERSTITIAL_320x480_MOPUB = "Video Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
-    String VIDEO_320x480_MOPUB_RANDOM = "Video Interstitial 320x480 (MoPub) [OK, Random]";
-    String VIDEO_320x480_NO_BID_MOPUB = "Video Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
-    String VIDEO_320x480_GAM = "Video Interstitial 320x480 (GAM) [OK, AppEvent]";
-    String VIDEO_320x480_GAM_RANDOM = "Video Interstitial 320x480 (GAM) [OK, Random]";
-    String VIDEO_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
+    String VIDEO_INTERSTITIAL_320x480_MOPUB_RANDOM = "Video Interstitial 320x480 (MoPub) [OK, Random]";
+    String VIDEO_INTERSTITIAL_320x480_NO_BID_MOPUB = "Video Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
+    String VIDEO_INTERSTITIAL_320x480_GAM = "Video Interstitial 320x480 (GAM) [OK, AppEvent]";
+    String VIDEO_INTERSTITIAL_320x480_GAM_RANDOM = "Video Interstitial 320x480 (GAM) [OK, Random]";
+    String VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
 
     String VIDEO_INTERSTITIAL_320x480_ADMOB = "Video Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
