@@ -67,8 +67,14 @@ public class AdMobDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkAndroidNativeAdsDelegates() throws InterruptedException {
-
+    public void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        adPage.clickTvBody();
+        Thread.sleep(1000);
+        homePage.clickBack();
+        homePage.isDelegateEnabled(ON_AD_LOADED);
+        homePage.isDelegateEnabled(ON_AD_CLICKED);
+        homePage.isDelegateEnabled(ON_AD_SHOWED);
+        homePage.isDelegateEnabled(ON_AD_OPENED);
     }
 
     @Override
@@ -117,7 +123,8 @@ public class AdMobDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosNativeAdsDelegates() throws InterruptedException {
-
+    public void checkIosNativeAdsDelegates(String prebidAd) {
+        homePage.isDelegateEnabled(LOADER_DID_RECEIVE_BUTTON);
+        homePage.isDelegateEnabled(LOADER_DID_FINISH_LOADING_BUTTON);
     }
 }

@@ -57,8 +57,13 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkAndroidNativeAdsDelegates() throws InterruptedException {
-
+    public void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        adPage.clickHereToVisitOurSite();
+        Thread.sleep(1000);
+        homePage.clickBack();
+        homePage.isDelegateEnabled(NATIVE_AD_DID_LOAD);
+        homePage.isDelegateEnabled(ON_AD_CLICKED);
+        homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
     }
 
     @Override
@@ -114,7 +119,9 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosNativeAdsDelegates() throws InterruptedException {
-
+    public void checkIosNativeAdsDelegates(String prebidAd)  {
+        homePage.isDelegateEnabled(GET_NATIVE_AD);
+        homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
+        homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);
     }
 }

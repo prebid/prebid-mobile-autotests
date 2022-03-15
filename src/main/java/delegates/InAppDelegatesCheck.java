@@ -9,6 +9,7 @@ public class InAppDelegatesCheck implements DelegatesCheck {
     private InAppBiddingHomePageImpl homePage;
     private InAppBiddingAdPageImpl adPage;
 
+
     public InAppDelegatesCheck(InAppBiddingHomePageImpl homePage, InAppBiddingAdPageImpl adPage) {
         this.homePage = homePage;
         this.adPage = adPage;
@@ -57,8 +58,17 @@ public class InAppDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkAndroidNativeAdsDelegates() throws InterruptedException {
-
+    public void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        if (prebidAd.contains("Links")) {
+            adPage.clickBtnNativeLinkRoot();
+        } else {
+            adPage.clickHereToVisitOurSite();
+        }
+        Thread.sleep(1000);
+        homePage.clickBack();
+        homePage.isDelegateEnabled(ON_NATIVE_GET_NATIVE_AD_SUCCESS);
+        homePage.isDelegateEnabled(ON_AD_CLICKED);
+        homePage.isDelegateEnabled(ON_AD_IMPRESSION);
     }
 
     @Override
@@ -108,7 +118,15 @@ public class InAppDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosNativeAdsDelegates() throws InterruptedException {
-
+    public void checkIosNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        if (prebidAd.contains("Links")) {
+            adPage.clickBtnNativeLinkRoot();
+        } else {
+            adPage.clickHereToVisitOurSite();
+        }
+        adPage.waitAndReturnToApp();
+        homePage.isDelegateEnabled(GET_NATIVE_AD);
+        homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
+        homePage.isDelegateEnabled(NATIVE_AD_DID_CLICK);
     }
 }

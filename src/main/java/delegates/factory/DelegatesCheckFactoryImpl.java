@@ -18,7 +18,7 @@ public class DelegatesCheckFactoryImpl implements DelegatesCheckFactory {
             case PrebidConstants.ADMOB:
                 return new AdMobDelegatesCheck(homePage, adPage);
             default:
-                throw new NoSuchFieldException("Adapter does not exist");
+                throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }
     }
 
@@ -34,7 +34,7 @@ public class DelegatesCheckFactoryImpl implements DelegatesCheckFactory {
             case PrebidConstants.ADMOB:
                 return new AdMobDelegatesCheck(homePage);
             default:
-                throw new NoSuchFieldException("Adapter does not exist");
+                throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }
     }
 }

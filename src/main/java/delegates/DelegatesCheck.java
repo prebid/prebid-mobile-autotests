@@ -11,7 +11,7 @@ public interface DelegatesCheck {
 
     void checkAndroidVideoOutstreamDelegates();
 
-    void checkAndroidNativeAdsDelegates() throws InterruptedException;
+    void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException;
 
     void checkIosBannerDelegates() throws InterruptedException;
 
@@ -23,5 +23,5 @@ public interface DelegatesCheck {
 
     void checkIosVideoOutstreamDelegates();
 
-    void checkIosNativeAdsDelegates() throws InterruptedException;
+    void checkIosNativeAdsDelegates(String prebidAd) throws InterruptedException;
 }

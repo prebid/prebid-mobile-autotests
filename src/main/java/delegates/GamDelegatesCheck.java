@@ -58,8 +58,25 @@ public class GamDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkAndroidNativeAdsDelegates() throws InterruptedException {
-
+    public void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        if (prebidAd.contains("Custom")) {
+            homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
+        } else if (prebidAd.contains("Unified")) {
+            homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
+        }
+        homePage.isDelegateEnabled(ON_AD_IMPRESSION);
+        if (prebidAd.contains("GADUnified")){
+            homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
+            adPage.clickButtonCallToAction();
+        } else {
+            if (prebidAd.contains("GAD")) {
+                homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
+            }
+            adPage.clickHereToVisitOurSite();
+        }
+        Thread.sleep(1000);
+        homePage.clickBack();
+        homePage.isDelegateEnabled(ON_AD_CLICKED);
     }
 
     @Override
@@ -109,7 +126,20 @@ public class GamDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosNativeAdsDelegates() throws InterruptedException {
-
+    public void checkIosNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        if (prebidAd.contains("Custom")) {
+            homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
+            if (prebidAd.contains("GAD")) {
+                homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_PRIMARY_WIN);
+            }
+        } else if (prebidAd.contains("Unified")){
+            homePage.isDelegateEnabled(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS);
+            if (prebidAd.contains("GAD")) {
+                homePage.isDelegateEnabled(UNIFIED_NATIVE_AD_PRIMARY_WIN);
+            }
+        }
+        if (!prebidAd.contains("GAD")) {
+            homePage.isDelegateEnabled(NATIVE_AD_DID_LOAD);
+        }
     }
 }
