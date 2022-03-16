@@ -137,7 +137,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         bannerPage.clickBanner();
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
-        delegatesCheck.checkIosBannerDelegates();
+        delegatesCheck.checkBannerDelegates();
         env.homePage.clickBack();
 
     }
@@ -148,7 +148,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
-        delegatesCheck.checkAndroidBannerDelegates();
+        delegatesCheck.checkBannerDelegates();
         env.homePage.clickBack();
     }
 

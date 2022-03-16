@@ -3,20 +3,24 @@ package delegates.factory;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
 import delegates.*;
+import delegates.android.AdMobDelegatesCheckAndroid;
+import delegates.android.GamDelegatesCheckAndroid;
+import delegates.android.InAppDelegatesCheckAndroid;
+import delegates.android.MoPubDelegatesCheckAndroid;
 import utils.PrebidConstants;
 
-public class DelegatesCheckFactoryImpl implements DelegatesCheckFactory {
+public class DelegatesCheckFactoryAndroid implements DelegatesCheckFactory {
     @Override
     public DelegatesCheck provideDelegatesCheck(String adapter, InAppBiddingHomePageImpl homePage, InAppBiddingAdPageImpl adPage) throws NoSuchFieldException {
         switch (adapter) {
             case PrebidConstants.IN_APP:
-                return new InAppDelegatesCheck(homePage, adPage);
+                return new InAppDelegatesCheckAndroid(homePage, adPage);
             case PrebidConstants.GAM:
-                return new GamDelegatesCheck(homePage, adPage);
+                return new GamDelegatesCheckAndroid(homePage, adPage);
             case PrebidConstants.MOPUB:
-                return new MoPubDelegatesCheck(homePage, adPage);
+                return new MoPubDelegatesCheckAndroid(homePage, adPage);
             case PrebidConstants.ADMOB:
-                return new AdMobDelegatesCheck(homePage, adPage);
+                return new AdMobDelegatesCheckAndroid(homePage, adPage);
             default:
                 throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }
@@ -26,13 +30,13 @@ public class DelegatesCheckFactoryImpl implements DelegatesCheckFactory {
     public DelegatesCheck provideDelegatesCheck(String adapter, InAppBiddingHomePageImpl homePage) throws NoSuchFieldException {
         switch (adapter) {
             case PrebidConstants.IN_APP:
-                return new InAppDelegatesCheck(homePage);
+                return new InAppDelegatesCheckAndroid(homePage);
             case PrebidConstants.GAM:
-                return new GamDelegatesCheck(homePage);
+                return new GamDelegatesCheckAndroid(homePage);
             case PrebidConstants.MOPUB:
-                return new MoPubDelegatesCheck(homePage);
+                return new MoPubDelegatesCheckAndroid(homePage);
             case PrebidConstants.ADMOB:
-                return new AdMobDelegatesCheck(homePage);
+                return new AdMobDelegatesCheckAndroid(homePage);
             default:
                 throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }

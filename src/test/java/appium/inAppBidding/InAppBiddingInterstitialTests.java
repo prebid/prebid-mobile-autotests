@@ -102,7 +102,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, interstitialPage);
 
-        delegatesCheck.checkIosDisplayInterstitialDelegates();
+        delegatesCheck.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }
@@ -121,7 +121,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.clickCloseInterstitial();
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
-        delegatesCheck.checkAndroidDisplayInterstitialDelegates();
+        delegatesCheck.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }

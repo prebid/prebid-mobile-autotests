@@ -1,73 +1,26 @@
-package delegates;
+package delegates.ios;
 
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
+import delegates.DelegatesCheck;
 
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
 
-public class MoPubDelegatesCheck implements DelegatesCheck {
-    private InAppBiddingHomePageImpl homePage;
+public class MoPubDelegatesCheckIOS implements DelegatesCheck {
+    private final InAppBiddingHomePageImpl homePage;
     private InAppBiddingAdPageImpl adPage;
 
-    public MoPubDelegatesCheck(InAppBiddingHomePageImpl homePage, InAppBiddingAdPageImpl adPage) {
+    public MoPubDelegatesCheckIOS(InAppBiddingHomePageImpl homePage, InAppBiddingAdPageImpl adPage) {
         this.homePage = homePage;
         this.adPage = adPage;
     }
 
-    public MoPubDelegatesCheck(InAppBiddingHomePageImpl homePage) {
+    public MoPubDelegatesCheckIOS(InAppBiddingHomePageImpl homePage) {
         this.homePage = homePage;
     }
 
     @Override
-    public void checkAndroidBannerDelegates() {
-        homePage.isDelegateEnabled(ON_BANNER_LOADED);
-        adPage.clickBanner();
-        homePage.clickCloseButtonClickThroughBrowser();
-        homePage.isDelegateEnabled(ON_AD_CLICKED);
-    }
-
-    @Override
-    public void checkAndroidDisplayInterstitialDelegates() {
-        homePage.isDelegateEnabled(ON_BANNER_LOADED);
-        homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-    }
-
-    @Override
-    public void checkAndroidVideoInterstitialDelegates()  {
-        homePage.isDelegateEnabled(ON_BANNER_LOADED);
-        homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        homePage.isDelegateEnabled(ON_AD_CLICKED);
-        homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-
-    }
-
-    @Override
-    public void checkAndroidVideoRewardedDelegates() {
-        homePage.isDelegateEnabled(ON_REWARDED_STARTED);
-        homePage.isDelegateEnabled(ON_REWARDED_COMPLETED);
-        homePage.isDelegateEnabled(ON_AD_CLICKED);
-    }
-
-    @Override
-    public void checkAndroidVideoOutstreamDelegates() {
-        homePage.isDelegateEnabled(ON_AD_LOADED);
-        homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        homePage.isDelegateEnabled(ON_AD_CLICKED);
-    }
-
-    @Override
-    public void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException {
-        adPage.clickHereToVisitOurSite();
-        Thread.sleep(1000);
-        homePage.clickBack();
-        homePage.isDelegateEnabled(NATIVE_AD_DID_LOAD);
-        homePage.isDelegateEnabled(ON_AD_CLICKED);
-        homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-    }
-
-    @Override
-    public void checkIosBannerDelegates() {
+    public void checkBannerDelegates() {
         homePage.clickCloseButtonClickThroughBrowser();
         homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
         homePage.isDelegateEnabled(AD_PRESENT_MODAL_VIEW);
@@ -78,7 +31,7 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosDisplayInterstitialDelegates() {
+    public void checkDisplayInterstitialDelegates() {
         adPage.clickCloseInterstitial();
         homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
         homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
@@ -89,7 +42,7 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosVideoInterstitialDelegates() {
+    public void checkVideoInterstitialDelegates() {
         adPage.clickCloseInterstitial();
         homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
         homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
@@ -100,7 +53,7 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosVideoRewardedDelegates() {
+    public void checkVideoRewardedDelegates() {
         homePage.isDelegateEnabled(REWARDED_VIDEO_AD_DID_LOAD);
         homePage.isDelegateEnabled(REWARDED_VIDEO_AD_WILL_PRESENT);
         homePage.isDelegateEnabled(REWARDED_VIDEO_AD_DID_PRESENT);
@@ -111,7 +64,7 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosVideoOutstreamDelegates() {
+    public void checkVideoOutstreamDelegates() {
         homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         homePage.isDelegateEnabled(AD_VIEW_PRESENT);
         homePage.isDelegateEnabled(AD_VIEW_WILL_LEAVE);
@@ -119,7 +72,7 @@ public class MoPubDelegatesCheck implements DelegatesCheck {
     }
 
     @Override
-    public void checkIosNativeAdsDelegates(String prebidAd)  {
+    public void checkNativeAdsDelegates(String prebidAd)  {
         homePage.isDelegateEnabled(GET_NATIVE_AD);
         homePage.isDelegateEnabled(NATIVE_AD_PRIMARY_WIN);
         homePage.isDelegateEnabled(NATIVE_AD_DID_TRACK_IMPRESSION);

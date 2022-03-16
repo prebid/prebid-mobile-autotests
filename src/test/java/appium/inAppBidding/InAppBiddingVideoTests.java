@@ -117,7 +117,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         Thread.sleep(3000);
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage, videoPage);
-        delegatesCheck.checkIosVideoInterstitialDelegates();
+        delegatesCheck.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
 
@@ -328,7 +328,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.clickCloseInterstitial();
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkAndroidVideoInterstitialDelegates();
+        delegatesCheck.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
 
@@ -356,7 +356,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
-        delegatesCheck.checkIosVideoRewardedDelegates();
+        delegatesCheck.checkVideoRewardedDelegates();
         env.homePage.clickBack();
 
     }
@@ -525,7 +525,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
 
-        delegatesCheck.checkAndroidVideoRewardedDelegates();
+        delegatesCheck.checkVideoRewardedDelegates();
 
         env.homePage.clickBack();
     }
@@ -549,7 +549,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkIosVideoOutstreamDelegates();
+        delegatesCheck.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
     }
@@ -750,7 +750,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.closeWebViewCreative();
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkAndroidVideoOutstreamDelegates();
+        delegatesCheck.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
     }

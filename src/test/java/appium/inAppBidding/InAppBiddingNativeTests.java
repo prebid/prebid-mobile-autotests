@@ -132,7 +132,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(FETCH_DEMAND);
         }
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, nativePage);
-        delegatesCheck.checkIosNativeAdsDelegates(prebidAd);
+        delegatesCheck.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
     }
@@ -146,7 +146,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
             env.homePage.isDelegateEnabled(ON_NATIVE_FETCH_DEMAND_SUCCESS);
         }
         DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, nativePage);
-        delegatesCheck.checkAndroidNativeAdsDelegates(prebidAd);
+        delegatesCheck.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
     }

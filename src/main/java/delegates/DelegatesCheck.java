@@ -1,27 +1,16 @@
 package delegates;
 
 public interface DelegatesCheck {
-    void checkAndroidBannerDelegates();
+    void checkBannerDelegates() throws InterruptedException;
 
-    void checkAndroidDisplayInterstitialDelegates() throws InterruptedException;
+    void checkDisplayInterstitialDelegates() throws InterruptedException;
 
-    void checkAndroidVideoInterstitialDelegates();
+    void checkVideoInterstitialDelegates();
 
-    void checkAndroidVideoRewardedDelegates();
+    void checkVideoRewardedDelegates();
 
-    void checkAndroidVideoOutstreamDelegates();
+    void checkVideoOutstreamDelegates();
 
-    void checkAndroidNativeAdsDelegates(String prebidAd) throws InterruptedException;
+    void checkNativeAdsDelegates(String prebidAd) throws InterruptedException;
 
-    void checkIosBannerDelegates() throws InterruptedException;
-
-    void checkIosDisplayInterstitialDelegates();
-
-    void checkIosVideoInterstitialDelegates();
-
-    void checkIosVideoRewardedDelegates();
-
-    void checkIosVideoOutstreamDelegates();
-
-    void checkIosNativeAdsDelegates(String prebidAd) throws InterruptedException;
 }
