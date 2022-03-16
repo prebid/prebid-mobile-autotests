@@ -3,6 +3,9 @@ package appium.inAppBidding;
 import OMSDK.OMSDKEventHandler;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
+import delegates.factory.DelegatesCheckFactory;
+import delegates.factory.DelegatesCheckFactoryAndroid;
+import delegates.factory.DelegatesCheckFactoryIOS;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -19,28 +22,24 @@ import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
 import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
 
 public class InAppBaseTest {
-    public static InAppBiddingTestEnvironment env;
-    public static JSONObject validAuctionRequest;
-    public static JSONObject validAuctionResponse;
-    public static String platformName;
-    public static String displaymanagerver;
-    public static String ver;
-    public static String version;
-    public static String omidpv;
-    public static boolean isPlatformIOS;
-    public JSONObject auctionRequestCCPA_TRUE;
-    public JSONObject auctionRequestCCPA_FALSE;
-    public JSONObject auctionRequestJson;
-    public OMSDKEventHandler eventHandler;
+    protected static InAppBiddingTestEnvironment env;
+    protected static JSONObject validAuctionRequest;
+    protected static JSONObject validAuctionResponse;
+    protected static String platformName;
+    protected static String displaymanagerver;
+    protected static String ver;
+    protected static String version;
+    protected static String omidpv;
+    protected static boolean isPlatformIOS;
+    protected static DelegatesCheckFactory delegatesCheckFactory;
+    protected JSONObject auctionRequestCCPA_TRUE;
+    protected JSONObject auctionRequestCCPA_FALSE;
+    protected JSONObject auctionRequestJson;
+    protected OMSDKEventHandler eventHandler;
 
 
-//    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
-    public void setupMock(ITestContext itc) throws IOException {
-        System.out.println(itc.getName());
-        setup(itc, TestEnvironment.INSPECTORS_MOCK_SERVER);
-    }
 
-    @BeforeTest(groups = {"serverBased", "serverBased-ios","smoke", "android", "ios", "exec", "requests"})
+    @BeforeTest(groups = {"serverBased", "serverBased-ios", "smoke", "android", "ios", "exec", "requests"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOB_PROXY);
@@ -56,7 +55,7 @@ public class InAppBaseTest {
     }
 
 
-//    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
+    //    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
     public void setupMethodMock(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
@@ -68,7 +67,7 @@ public class InAppBaseTest {
         env.logValidator.clearLogs();
     }
 
-    @BeforeMethod(groups = {"serverBased", "serverBased-ios","smoke", "android", "ios", "exec", "requests"})
+    @BeforeMethod(groups = {"serverBased", "serverBased-ios", "smoke", "android", "ios", "exec", "requests"})
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
@@ -140,6 +139,15 @@ public class InAppBaseTest {
         displaymanagerver = version;
         omidpv = env.getProperty("omidpv");
         isPlatformIOS = platformName.equalsIgnoreCase("iOS");
+        if (isPlatformIOS) {
+            delegatesCheckFactory = new DelegatesCheckFactoryIOS();
+        } else {
+            delegatesCheckFactory = new DelegatesCheckFactoryAndroid();
+        }
+    }
+
+    protected String getAdapter(String prebidAd) {
+        return prebidAd.substring(prebidAd.indexOf("(") + 1, prebidAd.indexOf(")"));
     }
 
     protected void checkGamOrMoPubEvents(String prebidAd) throws TimeoutException, InterruptedException {
