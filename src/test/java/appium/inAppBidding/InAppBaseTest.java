@@ -3,9 +3,9 @@ package appium.inAppBidding;
 import OMSDK.OMSDKEventHandler;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
-import delegates.factory.DelegatesCheckFactory;
-import delegates.factory.DelegatesCheckFactoryAndroid;
-import delegates.factory.DelegatesCheckFactoryIOS;
+import adapters.factory.PrebidAdapterFactory;
+import adapters.factory.PrebidAdapterFactoryAndroid;
+import adapters.factory.PrebidAdapterFactoryIOS;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -31,7 +31,7 @@ public class InAppBaseTest {
     protected static String version;
     protected static String omidpv;
     protected static boolean isPlatformIOS;
-    protected static DelegatesCheckFactory delegatesCheckFactory;
+    protected static PrebidAdapterFactory prebidAdapterFactory;
     protected JSONObject auctionRequestCCPA_TRUE;
     protected JSONObject auctionRequestCCPA_FALSE;
     protected JSONObject auctionRequestJson;
@@ -140,32 +140,9 @@ public class InAppBaseTest {
         omidpv = env.getProperty("omidpv");
         isPlatformIOS = platformName.equalsIgnoreCase("iOS");
         if (isPlatformIOS) {
-            delegatesCheckFactory = new DelegatesCheckFactoryIOS();
+            prebidAdapterFactory = new PrebidAdapterFactoryIOS();
         } else {
-            delegatesCheckFactory = new DelegatesCheckFactoryAndroid();
-        }
-    }
-
-    protected String getAdapter(String prebidAd) {
-        return prebidAd.substring(prebidAd.indexOf("(") + 1, prebidAd.indexOf(")"));
-    }
-
-    protected void checkGamOrMoPubEvents(String prebidAd) throws TimeoutException, InterruptedException {
-        if (isPlatformIOS) {
-            if (prebidAd.contains("GAM")) {
-                env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_GAMPAD, 1, 60);
-            }
-        }
-        if (prebidAd.contains("MoPub")) {
-            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_AD, 1, 60);
-//            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_IMP, 1, 60);
-        }
-        if (prebidAd.contains("AdMob")) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_MADS_GMA, 1, 60);
-            }
-            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-
+            prebidAdapterFactory = new PrebidAdapterFactoryAndroid();
         }
     }
 

@@ -1,10 +1,11 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import delegates.DelegatesCheck;
+import adapters.delegates.DelegatesInspector;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeoutException;
@@ -131,8 +132,8 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         if (!prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(FETCH_DEMAND);
         }
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, nativePage);
-        delegatesCheck.checkNativeAdsDelegates(prebidAd);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,nativePage);
+        prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
     }
@@ -145,8 +146,8 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         if (!prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(ON_NATIVE_FETCH_DEMAND_SUCCESS);
         }
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, nativePage);
-        delegatesCheck.checkNativeAdsDelegates(prebidAd);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,nativePage);
+        prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
     }

@@ -2,9 +2,9 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import delegates.DelegatesCheck;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
@@ -22,7 +22,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -52,7 +52,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
+    public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
 
@@ -60,21 +60,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
-        if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_GAM)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-            } else {
-                //TODO find correct event for Android
-                //env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-            }
-        } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_MOPUB)) {
-            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-        } else if (prebidAd.equalsIgnoreCase(INTERSTITIAL_320x480_NO_BID_ADMOB)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-            }
-            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-        }
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
     }
@@ -100,9 +87,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.waitAndReturnToApp();
 
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, interstitialPage);
-
-        delegatesCheck.checkDisplayInterstitialDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }
@@ -120,8 +106,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         interstitialPage.closeWebViewCreative();
 
         interstitialPage.clickCloseInterstitial();
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
-        delegatesCheck.checkDisplayInterstitialDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }
@@ -131,7 +117,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // =============================
 
     @Test(groups = {"requests"})
-    public void testOMEvents() throws TimeoutException, InterruptedException {
+    public void testOMEvents() throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_ADMOB);
@@ -146,7 +132,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        checkGamOrMoPubEvents(INTERSTITIAL_320x480_ADMOB);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(INTERSTITIAL_320x480_ADMOB, env);
+        prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
 

@@ -1,9 +1,9 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import delegates.DelegatesCheck;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
@@ -18,7 +18,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
 
-    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -44,7 +44,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
+    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
 
@@ -60,22 +60,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
-
-        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-            } else {
-                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-            }
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
-            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-            }
-            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-        }
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
     }
@@ -136,8 +122,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
-        delegatesCheck.checkBannerDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, bannerPage);
+        prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
 
     }
@@ -147,8 +133,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testBannerAndroidDelegates(String prebidAd) throws NoSuchFieldException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage, bannerPage);
-        delegatesCheck.checkBannerDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, bannerPage);
+        prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
     }
 
@@ -166,7 +152,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      * @throws IOException
      */
     @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException {
+    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException, NoSuchFieldException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
@@ -178,7 +164,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotateLandscape();
             env.homePage.rotatePortrait();
         }
-        checkGamOrMoPubEvents(bannerAds);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(bannerAds, env);
+        prebidAdapter.checkEvents();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
