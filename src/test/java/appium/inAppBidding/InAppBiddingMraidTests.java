@@ -2,6 +2,7 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.openqa.selenium.Dimension;
@@ -356,7 +357,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
     }
 
     @Test(groups = {"serverBased"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
-    public void testMraidResizeAppolloBased(String adName) throws InterruptedException, TimeoutException {
+    public void testMraidResizeAppolloBased(String adName) throws InterruptedException, TimeoutException, NoSuchFieldException {
         initValidTemplatesJson(adName);
 
 
@@ -366,8 +367,8 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
-        checkGamOrMoPubEvents(adName);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env, page);
+        prebidAdapter.checkEvents();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 

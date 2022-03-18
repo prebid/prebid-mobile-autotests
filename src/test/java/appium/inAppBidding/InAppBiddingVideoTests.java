@@ -2,15 +2,16 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import delegates.DelegatesCheck;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
+import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_ADMOB;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
 import static appium.common.InAppTemplatesInit.VIDEO_OUTSTREAM_ENDCARD;
 
@@ -59,7 +60,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     @Test(groups = {"requests"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
+    public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(adName);
 
         env.homePage.goToAd(adName);
@@ -67,28 +68,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        if (adName.contains("GAM")) {
-            try {
-                env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
-            } catch (TimeoutException e) {
-                if (isPlatformIOS) {
-                    env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-                } else {
-                    env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-                }
-            }
-        } else if (adName.contains("MoPub")) {
-            try {
-                env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
-            } catch (TimeoutException e) {
-                env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-            }
-        } else if (adName.contains("AdMob")) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-            }
-            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        try {
+            env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
+        } catch (TimeoutException e) {
+            prebidAdapter.checkEvents();
         }
+
 
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
@@ -116,8 +102,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.waitAndReturnToApp();
 
         Thread.sleep(3000);
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage, videoPage);
-        delegatesCheck.checkVideoInterstitialDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env,videoPage);
+        prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
 
@@ -327,8 +313,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(5000);
 
         videoPage.clickCloseInterstitial();
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkVideoInterstitialDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
 
@@ -355,14 +341,14 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
-        delegatesCheck.checkVideoRewardedDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,videoPage);
+        prebidAdapter.checkVideoRewardedDelegates();
         env.homePage.clickBack();
 
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
+    public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException, NoSuchFieldException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         page.clickShowButton();
@@ -370,7 +356,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         page.clickCloseInterstitial();
-        checkGamOrMoPubEvents(adName);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkEvents();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
@@ -523,9 +510,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.sleep(3);
 
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(prebidAd), env.homePage);
-
-        delegatesCheck.checkVideoRewardedDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,videoPage);
+        prebidAdapter.checkVideoRewardedDelegates();
 
         env.homePage.clickBack();
     }
@@ -548,8 +534,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkVideoOutstreamDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
     }
@@ -749,8 +735,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(5000);
 
         videoPage.closeWebViewCreative();
-        DelegatesCheck delegatesCheck = delegatesCheckFactory.provideDelegatesCheck(getAdapter(adName), env.homePage);
-        delegatesCheck.checkVideoOutstreamDelegates();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
     }
