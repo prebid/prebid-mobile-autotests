@@ -29,8 +29,6 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_FALSE);
 
-        env.logValidator.clearLogs();
-
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
@@ -62,7 +60,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"CustomOpenRTB"}, enabled = false)
+   @Test(groups = {"CustomOpenRTB"},enabled = false)
     public void testCustomOpenRtbUser(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(CUSTOM_OPENRTB));

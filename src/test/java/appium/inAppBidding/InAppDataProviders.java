@@ -83,17 +83,6 @@ public class InAppDataProviders {
         return BannerAd;
     }
 
-    private static final String[][] ServerBasedBanner = {
-            {BANNER_320x50_IN_APP},
-            {BANNER_320x50_GAM},
-            {BANNER_320x50_MOPUB},
-            {BANNER_320x50_ADMOB},
-    };
-
-    @DataProvider(name = "serverBasedBanner")
-    public static Object[][] provideServerBasedBanner() {
-        return ServerBasedBanner;
-    }
 
     private static final String[][] InterstitialAds = {
             {INTERSTITIAL_320x480_IN_APP},
@@ -309,7 +298,7 @@ public class InAppDataProviders {
     }
 
 
-    private static final String[][] NativeMockedRequestAdsIos = {
+    private static final String[][] NativeRequestAdsIos = {
             {NATIVE_AD_ADMOB},
 
             {NATIVE_AD_IN_APP},
@@ -325,7 +314,7 @@ public class InAppDataProviders {
             {NATIVE_AD_GAM_UNIFIED},
 
     };
-    private static final String[][] NativeMockedAdsIos = {
+    private static final String[][] NativeAdsIos = {
             {NATIVE_AD_ADMOB},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
@@ -338,7 +327,7 @@ public class InAppDataProviders {
             {NATIVE_AD_MOPUB_PBM},
 
     };
-    private static final String[][] NativeMockedRequestAdsAndroid = {
+    private static final String[][] NativeRequestAdsAndroid = {
             {NATIVE_AD_ADMOB},
 
             {NATIVE_AD_IN_APP},
@@ -353,7 +342,7 @@ public class InAppDataProviders {
             {NATIVE_AD_GAM_UNIFIED},
 
     };
-    private static final String[][] NativeMockedAdsAndroid = {
+    private static final String[][] NativeAdsAndroid = {
             {NATIVE_AD_ADMOB},
 
             {NATIVE_AD_IN_APP},
@@ -368,14 +357,14 @@ public class InAppDataProviders {
 
     };
 
-    private static final String[][] NativeMockedNoBidsAndroidAds = {
+    private static final String[][] NativeNoBidsAndroidAds = {
             {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
             {NATIVE_AD_FEED_MOPUB_MP_NO_BIDS},
             {NATIVE_AD_ADMOB_NO_BIDS},
 
     };
-    private static final String[][] NativeMockedNoBidsIosAds = {
+    private static final String[][] NativeNoBidsIosAds = {
             {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
             {NATIVE_AD_FEED_MOPUB_MP_NO_BIDS},
@@ -385,33 +374,33 @@ public class InAppDataProviders {
     };
 
     /* AD_NAME_TYPE*/
-    @DataProvider(name = "nativeMockedRequestAdsIos")
-    public static Object[][] provideNativeMockedRequestAdsIos() {
-        return NativeMockedRequestAdsIos;
+    @DataProvider(name = "nativeRequestAdsIos")
+    public static Object[][] provideNativeRequestAdsIos() {
+        return NativeRequestAdsIos;
     }
 
-    @DataProvider(name = "nativeMockedAdsIos")
-    public static Object[][] provideNativeMockedAdsIos() {
-        return NativeMockedAdsIos;
+    @DataProvider(name = "nativeAdsIos")
+    public static Object[][] provideNativeAdsIos() {
+        return NativeAdsIos;
     }
 
-    @DataProvider(name = "nativeMockedRequestAdsAndroid")
-    public static Object[][] provideNativeMockedRequestAdsAndroid() {
-        return NativeMockedRequestAdsAndroid;
+    @DataProvider(name = "nativeRequestAdsAndroid")
+    public static Object[][] provideNativeRequestAdsAndroid() {
+        return NativeRequestAdsAndroid;
     }
 
-    @DataProvider(name = "nativeMockedAdsAndroid")
-    public static Object[][] provideNativeMockedAdsAndroid() {
-        return NativeMockedAdsAndroid;
+    @DataProvider(name = "nativeAdsAndroid")
+    public static Object[][] provideNativeAdsAndroid() {
+        return NativeAdsAndroid;
     }
 
-    @DataProvider(name = "nativeMockedNoBidsAdsIos")
-    public static Object[][] provideNativeMockedNoBidsAdsIos() {
-        return NativeMockedNoBidsIosAds;
+    @DataProvider(name = "nativeNoBidsAdsIos")
+    public static Object[][] provideNativeNoBidsAdsIos() {
+        return NativeNoBidsIosAds;
     }
 
-    @DataProvider(name = "nativeMockedNoBidsAdsAndroid")
-    public static Object[][] provideNativeMockedNoBidsAdsAndroid() {
-        return NativeMockedNoBidsAndroidAds;
+    @DataProvider(name = "nativeNoBidsAdsAndroid")
+    public static Object[][] provideNativeNoBidsAdsAndroid() {
+        return NativeNoBidsAndroidAds;
     }
 }

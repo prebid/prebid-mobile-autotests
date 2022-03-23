@@ -373,13 +373,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         }
 
         this.trafficInspectors = trafficInspectors;
-        if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
-            bmp.newHar();
-            bmp.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
-        }
-        if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-            logValidator.clearLogs();
-        }
+        bmp.newHar();
+        bmp.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
+
 
         homePage.rotatePortrait();
     }
@@ -415,13 +411,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         }
 
         this.trafficInspectors = trafficInspectors;
-        if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
-            bmp.newHar();
-            bmp.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
-        }
-        if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-            logValidator.clearLogs();
-        }
+        bmp.newHar();
+        bmp.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
+
 
         homePage.rotatePortrait();
     }
@@ -441,28 +433,15 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
     // Methods
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
-        if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
-            waitForEventBmp(event, expectedOccurrences, timeout);
-        } else if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-            waitForEventMock(event, expectedOccurrences, timeout);
-        }
+        waitForEventBmp(event, expectedOccurrences, timeout);
+
     }
 
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout, int delay) throws InterruptedException, TimeoutException {
-        if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
-            waitForEventBmp(event, expectedOccurrences, timeout, delay);
-        } else if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-            waitForEventMock(event, expectedOccurrences, timeout, delay);
-        }
+         waitForEventBmp(event, expectedOccurrences, timeout, delay);
     }
 
-    public void waitForOMEvent(String event, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
-        try {
-            waitForOMEventMock(event, expectedOccurrences, timeout / 2);
-        } catch (NullPointerException | TimeoutException exception) {
-//            waitForOMEventBmp(event, expectedOccurrences, timeout / 2);
-        }
-    }
+
 
     public String getEvent(InAppBiddingEvents event) {
         return inAppBidding_Events.get(event);
@@ -487,8 +466,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
                 if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
                     RequestValidator.validateInAppBiddingRequest(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
-                } else if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-                    RequestValidator.validateAuctionRequest(logValidator.getLogs(inAppBiddingEvent_value), jsonValidTemplate);
                 } else {
                     try {
                         RequestValidator.validateInAppBiddingRequest(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
@@ -512,8 +489,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
                 if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
                     RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
-                } else if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-                    RequestValidator.validateAuctionResponse(logValidator.getLogs(inAppBiddingEvent_value), jsonValidTemplate);
                 } else {
                     try {
                         RequestValidator.validateInAppBiddingResponse(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
@@ -537,19 +512,4 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         bmp.waitForEvent(getEvent(event), expectedOccurrences, timeout, delay);
     }
 
-    private void waitForEventMock(InAppBiddingEvents event, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
-        logValidator.waitForEvent(getEvent(event), expectedOccurrences, timeout);
-    }
-
-    private void waitForEventMock(InAppBiddingEvents event, int expectedOccurrences, int timeout, int delay) throws InterruptedException, TimeoutException {
-        logValidator.waitForEvent(getEvent(event), expectedOccurrences, timeout, delay);
-    }
-
-    private void waitForOMEventBmp(String events, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
-        bmp.waitForEvent(events, expectedOccurrences, timeout);
-    }
-
-    private void waitForOMEventMock(String events, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
-        logValidator.waitForEvent(events, expectedOccurrences, timeout);
-    }
 }
