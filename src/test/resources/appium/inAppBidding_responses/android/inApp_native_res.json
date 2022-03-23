@@ -8,18 +8,12 @@
           "impid": "$VARIABLE",
           "price": "$VARIABLE",
           "adm": "$VARIABLE",
-          "adid": "$VARIABLE",
-          "adomain": [
-            "prebid.com"
-          ],
           "crid": "$VARIABLE",
           "w": "$VARIABLE",
           "h": "$VARIABLE",
           "ext": {
             "prebid": {
               "cache": {
-                "key": "",
-                "url": "",
                 "bids": {
                   "url": "$VARIABLE",
                   "cacheId": "$VARIABLE"
@@ -27,48 +21,40 @@
               },
               "targeting": {
                 "hb_bidder": "$VARIABLE",
-                "hb_bidder_prebid": "$VARIABLE",
+                "hb_bidder_openx": "$VARIABLE",
                 "hb_cache_host": "$VARIABLE",
-                "hb_cache_host_prebid": "$VARIABLE",
+                "hb_cache_host_openx": "$VARIABLE",
                 "hb_cache_id": "$VARIABLE",
-                "hb_cache_id_prebid": "$VARIABLE",
+                "hb_cache_id_openx": "$VARIABLE",
                 "hb_cache_path": "$VARIABLE",
-                "hb_cache_path_prebid": "$VARIABLE",
+                "hb_cache_path_openx": "$VARIABLE",
                 "hb_env": "$VARIABLE",
-                "hb_env_prebid": "$VARIABLE",
+                "hb_env_openx": "$VARIABLE",
                 "hb_pb": "$VARIABLE",
-                "hb_pb_prebid": "$VARIABLE",
+                "hb_pb_openx": "$VARIABLE",
                 "hb_size": "$VARIABLE",
-                "hb_size_prebid": "$VARIABLE"
+                "hb_size_openx": "$VARIABLE"
               },
-              "type": "banner",
-              "video": {
-                "duration": "$VARIABLE",
-                "primary_category": "$VARIABLE"
-              }
+              "type": "native"
             },
-            "bidder": {
-              "ad_ox_cats": "$VARIABLE",
-              "agency_id": "$VARIABLE",
-              "brand_id": "$VARIABLE",
-              "buyer_id": "$VARIABLE",
-              "matching_ad_id": {
-                "campaign_id": "$VARIABLE",
-                "creative_id": "$VARIABLE",
-                "placement_id": "$VARIABLE"
-              },
-              "next_highest_bid_price": "$VARIABLE"
-            }
+            "origbidcpm":"$VARIABLE",
+            "origbidcur":"$VARIABLE"
           }
         }
       ],
-      "seat": "$VARIABLE"
+      "seat": "$VARIABLE",
+      "group": "$VARIABLE"
     }
   ],
   "cur": "$VARIABLE",
   "ext": {
     "responsetimemillis": {
-      "prebid": "$VARIABLE"
+      "cache":"$VARIABLE",
+      "openx":"$VARIABLE"
+    },
+    "tmaxrequest":"$VARIABLE",
+    "prebid":{
+      "auctiontimestamp":"$VARIABLE"
     }
   }
 }
