@@ -5,7 +5,6 @@ import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import adapters.delegates.DelegatesInspector;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeoutException;
@@ -31,7 +30,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         //env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.IMPRESSION, 1, 60);
 
@@ -39,7 +38,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedRequestAdsIos", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-iOS"}, dataProvider = "nativeRequestAdsIos", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsIos(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -66,7 +65,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests-iOS"}, dataProvider = "nativeMockedNoBidsAdsIos", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-iOS"}, dataProvider = "nativeNoBidsAdsIos", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeNoBidsAdsIos(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -81,7 +80,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedNoBidsAdsAndroid", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-Android"}, dataProvider = "nativeNoBidsAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeNoBidsAdsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -96,7 +95,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests-Android"}, dataProvider = "nativeMockedRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-Android"}, dataProvider = "nativeRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -124,7 +123,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"ios"}, dataProvider = "nativeMockedAdsIos", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "nativeAdsIos", dataProviderClass = InAppDataProviders.class)
     public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
@@ -138,7 +137,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"android"}, dataProvider = "nativeMockedAdsAndroid", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"android"}, dataProvider = "nativeAdsAndroid", dataProviderClass = InAppDataProviders.class)
     public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 

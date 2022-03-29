@@ -72,6 +72,6 @@ public class InAppAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkEvents() {
-        throw new UnsupportedOperationException("Not yet implemented");
+
     }
 }

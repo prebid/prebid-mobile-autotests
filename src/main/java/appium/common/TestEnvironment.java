@@ -1,7 +1,6 @@
 package appium.common;
 
 import bmp.BMPWrapper;
-import mock.MockServerManager;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -35,11 +34,9 @@ public class TestEnvironment {
 
     public enum TrafficInspectorKind {
         MOB_PROXY,
-        MOCK_SERVER
     }
 
     public static final Set<TrafficInspectorKind> INSPECTORS_MOB_PROXY = new HashSet<>(Arrays.asList(TrafficInspectorKind.MOB_PROXY));
-    public static final Set<TrafficInspectorKind> INSPECTORS_MOCK_SERVER = new HashSet<>(Arrays.asList(TrafficInspectorKind.MOCK_SERVER));
 
     private static class RemoteServer {
         public String host;
@@ -61,7 +58,6 @@ public class TestEnvironment {
 
     private static final RemoteServer appiumServer = new RemoteServer("localhost", 4723);
     private static final RemoteServer bmpServer = new RemoteServer("127.0.0.1", 9091);
-    private static final RemoteServer mockServer = new RemoteServer("localhost", 8000);
 
     private static final String APPIUM_LOCAL_URL_TEMPLATE = "http://%s:%s/wd/hub";
 
@@ -96,15 +92,7 @@ public class TestEnvironment {
         if (capabilities.getCapability("name") == null) {
             capabilities.setCapability("name", name);
         }
-
-        if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
-            initMobProxy();
-        }
-
-        if (trafficInspectors.contains(TrafficInspectorKind.MOCK_SERVER)) {
-            initMockServer();
-        }
-
+        initMobProxy();
         setup();
     }
 
@@ -154,10 +142,6 @@ public class TestEnvironment {
         }
     }
 
-    private void initMockServer() throws IOException {
-        logValidator = new MockServerManager(mockServer.host + ":" + mockServer.port);
-    }
-
     /**
      * Stops BrowserMob Proxy. For localMAC also turns off proxies.
      *
@@ -191,13 +175,6 @@ public class TestEnvironment {
         }
         if (config.getProperty("bmp_port") != null) {
             bmpServer.port = Integer.valueOf(config.getProperty("bmp_port"));
-        }
-
-        if (config.getProperty("mockServerIP") != null) {
-            mockServer.host = config.getProperty("mockServerIP");
-        }
-        if (config.getProperty("mockServerPort") != null) {
-            mockServer.port = Integer.valueOf(config.getProperty("mockServerPort"));
         }
     }
 

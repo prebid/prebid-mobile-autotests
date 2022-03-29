@@ -18,7 +18,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
 
-//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -27,16 +27,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
-
-        env.homePage.clickBack();
-
-    }
-
-    @Test(groups = {"requests"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
-    public void testVersionParametersInRequest(String prebidAd) throws InterruptedException, TimeoutException {
-        env.homePage.goToAd(prebidAd);
-
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
         env.homePage.clickBack();
 
