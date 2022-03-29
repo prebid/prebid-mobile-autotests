@@ -22,7 +22,6 @@
     },
     "connectiontype": "$VARIABLE",
     "geo": {
-
     },
     "h": "$VARIABLE",
     "ifa": "$VARIABLE",
@@ -40,17 +39,14 @@
     "prebid": {
       "cache": {
         "bids": {
-
         },
         "vastxml": {
-
         }
       },
       "storedrequest": {
         "id": "$VARIABLE"
       },
       "targeting": {
-
       },
       "data": {
         "bidders": []
@@ -58,9 +54,9 @@
     }
   },
   "id": "$VARIABLE",
-  "regs":{
-    "ext":{
-      "gdpr":"$VARIABLE"
+  "regs": {
+    "ext": {
+      "gdpr": "$VARIABLE"
     }
   },
   "imp": [
@@ -71,7 +67,6 @@
       "ext": {
         "context": {
           "data": {
-
           }
         },
         "prebid": {
@@ -116,9 +111,8 @@
   },
   "user": {
     "ext": {
-      "data": {
-
-      }
-    }
+      "data": {}
+    },
+    "yob": 0
   }
 }
