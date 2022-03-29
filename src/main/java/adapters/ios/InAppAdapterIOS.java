@@ -78,6 +78,6 @@ public class InAppAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkEvents() {
-        throw new UnsupportedOperationException("Not yet implemented");
+
     }
 }

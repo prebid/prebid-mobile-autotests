@@ -46,6 +46,8 @@
       },
       "storedrequest": {
         "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
       },
       "targeting": {
       },
