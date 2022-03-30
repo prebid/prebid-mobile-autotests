@@ -42,17 +42,22 @@ public interface InAppAdNamesImpl {
 
 
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
+    String INTERSTITIAL_MULTI_FORMAT_IN_APP = "Multiformat Interstitial 320x480 (In-App)";
 
     String INTERSTITIAL_320x480_MOPUB = "Display Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
     String INTERSTITIAL_320x480_MOPUB_RANDOM = "Display Interstitial 320x480 (MoPub) [OK, Random]";
+    String INTERSTITIAL_MULTI_FORMAT_MOPUB = "Multiformat Interstitial 320x480 (MoPub)";
+
     String INTERSTITIAL_320x480_NO_BID_MOPUB = "Display Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
 
     String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
     String INTERSTITIAL_320x480_ADMOB_RANDOM = "Display Interstitial 320x480 (AdMob) [OK, Random]";
+    String INTERSTITIAL_MULTI_FORMAT_ADMOB = "Multiformat Interstitial 320x480 (AdMob)";
     String INTERSTITIAL_320x480_NO_BID_ADMOB = "Display Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
 
     String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
     String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
+    String INTERSTITIAL_MULTI_FORMAT_GAM = "Multiformat Interstitial 320x480 (GAM)";
     String INTERSTITIAL_320x480_NO_BID_GAM = "Display Interstitial 320x480 (GAM) [noBids, GAM Ad]";
     String INTERSTITIAL_320x480_GAM_RANDOM = "Display Interstitial 320x480 (GAM) [OK, Random]";
 

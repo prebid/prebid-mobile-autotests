@@ -118,6 +118,16 @@ public class InAppDataProviders {
         return InterstitialNoBids;
     }
 
+    private static final String[][] InterstitialMultiFormatAds = {
+//            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
+            {INTERSTITIAL_MULTI_FORMAT_GAM},
+            {INTERSTITIAL_MULTI_FORMAT_MOPUB},
+            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
+    };
+    @DataProvider(name = "interstitialMultiFormat")
+    public static Object[][] provideInterstitialMultiFormat() {
+        return InterstitialMultiFormatAds;
+    }
     //MRAID DATA
 
     private static final String[][] MraidAds = {

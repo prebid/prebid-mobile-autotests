@@ -3,8 +3,6 @@ package adapters.ios;
 import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
-import adapters.delegates.DelegatesInspector;
 
 import java.util.concurrent.TimeoutException;
 
@@ -32,8 +30,8 @@ public class GamAdapterIOS extends PrebidAdapter {
     @Override
     public void checkDisplayInterstitialDelegates() {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT_AD);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_AD);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
     }
@@ -41,8 +39,8 @@ public class GamAdapterIOS extends PrebidAdapter {
     @Override
     public void checkVideoInterstitialDelegates() {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT_AD);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_AD);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
     }

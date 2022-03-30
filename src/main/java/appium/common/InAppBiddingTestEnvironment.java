@@ -113,8 +113,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVED, "interstitialDidReceiveAd called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_FAIL_TO_RECEIVE, "interstitialDidFailToReceiveAd called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_WILL_PRESENT, "interstitialWillPresentAd called");
-        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_DISMISS, "interstitialDidDismissAd called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_WILL_PRESENT_AD, "interstitialWillPresentAd called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_WILL_PRESENT, "interstitialWillPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_PRESENT, "interstitialDidPresent called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_DISMISS_AD, "interstitialDidDismissAd called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_DISMISS, "interstitialDidDismiss called");
+        inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_WILL_DISMISS, "interstitialWillDismiss called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_WILL_LEAVE_APP, "interstitialWillLeaveApplication called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_CLICK, "interstitialDidClickAd called");
 
@@ -187,8 +191,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_COMPLETED, "btnAdCompleted");
 
         inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_RECEIVED, "btnAdLoaded");
-        inAppBidding_Delegates_Android.put(INTERSTITIAL_WILL_PRESENT, "btnAdDisplayed");
-        inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_DISMISS, "btnAdClosed");
+        inAppBidding_Delegates_Android.put(INTERSTITIAL_WILL_PRESENT_AD, "btnAdDisplayed");
+        inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_DISMISS_AD, "btnAdClosed");
         inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_LOAD, "btnAdDidLoad");
         inAppBidding_Delegates_Android.put(INTERSTITIAL_WILL_APPEAR, "btnInterstitialShown");
         inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_DISAPPEAR, "btnAdDismissed");
@@ -217,8 +221,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         INTERSTITIAL_DID_RECEIVED,
         INTERSTITIAL_DID_FAIL_TO_RECEIVE,
-        INTERSTITIAL_WILL_PRESENT,
-        INTERSTITIAL_DID_DISMISS,
+        INTERSTITIAL_WILL_PRESENT_AD,
+        INTERSTITIAL_DID_DISMISS_AD,
         INTERSTITIAL_WILL_LEAVE_APP,
         INTERSTITIAL_DID_CLICK,
 
@@ -226,6 +230,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         INTERSTITIAL_DID_FAIL_TO_RECEIVE_BUTTON,
         INTERSTITIAL_DID_FAIL_TO_PRESENT_FULLSCREEN,
         INTERSTITIAL_DID_PRESENT_FULLSCREEN,
+        INTERSTITIAL_DID_PRESENT,
+        INTERSTITIAL_DID_DISMISS,
+        INTERSTITIAL_WILL_DISMISS,
+        INTERSTITIAL_WILL_PRESENT,
         INTERSTITIAL_DID_DISMISS_FULLSCREEN,
         INTERSTITIAL_WILL_DISMISS_FULLSCREEN,
         INTERSTITIAL_DID_RECORD_IMPRESSION,

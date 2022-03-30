@@ -3,8 +3,6 @@ package adapters.ios;
 import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
-import adapters.delegates.DelegatesInspector;
 
 import java.util.concurrent.TimeoutException;
 
@@ -32,12 +30,12 @@ public class MoPubAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkDisplayInterstitialDelegates() {
-        adPage.clickCloseInterstitial();
+//        adPage.clickCloseInterstitial();
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_LOAD);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_APPEAR);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_APPEAR);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISAPPEAR);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISAPPEAR);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS);
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED_TAP);
     }
 
