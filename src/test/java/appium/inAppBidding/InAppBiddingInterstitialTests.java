@@ -23,7 +23,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestInterstitial(String prebidAd) throws TimeoutException, InterruptedException {
         testAuctionRequest(prebidAd);
     }
@@ -33,7 +33,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         testAuctionRequest(prebidAd);
     }
 
-    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialRandom(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -48,7 +48,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+//        @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -67,7 +67,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // DELEGATES TEST
     // =============================
 
-    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
@@ -140,7 +140,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // OMSDK TESTS
     // =============================
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testOMEvents() throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
 
@@ -202,7 +202,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
         initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
 
@@ -287,7 +287,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         }
     }
 
-    @Test(groups = {"smoke"})
+//    @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 

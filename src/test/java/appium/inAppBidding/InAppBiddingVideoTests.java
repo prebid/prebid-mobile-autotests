@@ -21,7 +21,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -325,7 +325,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
@@ -415,7 +415,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedOMEventsClickEndCard(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -450,7 +450,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
