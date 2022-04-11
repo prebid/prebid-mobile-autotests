@@ -1,7 +1,7 @@
 package appium.inAppBidding;
 
-import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.annotations.Test;
@@ -18,7 +18,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
 
-        @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -30,49 +30,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-    }
-
-    @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestServerBased(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd);
-        env.homePage.goToAd(prebidAd);
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-        checkGamOrMoPubEvents(prebidAd);
-        System.out.println(validAuctionRequest);
-        env.homePage.clickBack();
-
-        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-        // CHECK OM EVENTS
-        OMSDKEventHandler eventHandler = new OMSDKEventHandler(env.bmp.getHar());
-        assertTrue(eventHandler.checkSessionsCount(1));
-        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-        // It could be 'obstructed' when webBrowser opened or 'clipped', or 'notFound' for android
-        String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
-
-
-        session.checkOMBaseEvents(platformName);
-        // TODO Why to checkViewability
-//        if (isPlatformIOS) {
-//            session.checkHideAndRestoreViewabilityWithReasons(reasons);
-//        }
-    }
-
-    @Test(groups = {"serverBased"}, dataProvider = "serverBasedBanner", dataProviderClass = InAppDataProviders.class)
-    public void testVersionParametersInRequest(String prebidAd) throws InterruptedException, TimeoutException {
-        env.homePage.goToAd(prebidAd);
-
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-
-        env.homePage.clickBack();
-
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-    @Test(groups = {"serverBased"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
+    @Test(groups = {"requests"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
 
@@ -88,22 +50,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
-
-        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_GAM_AD)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 10);
-            } else {
-                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
-            }
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_MOPUB)) {
-            env.waitForEvent(InAppBiddingEvents.MOPUB_AD, 1, 10);
-            env.waitForEvent(InAppBiddingEvents.MOPUB_IMP, 1, 10);
-        } else if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_ADMOB)) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingEvents.ADMOB_MADS_GMA, 1, 10);
-            }
-            env.waitForEvent(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-        }
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
     }
@@ -121,7 +69,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -157,69 +105,26 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
+    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
 
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
-
-        if (prebidAd.contains("MoPub")) {
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_PRESENT_MODAL_VIEW);
-            env.homePage.isDelegateEnabled(AD_DISMISS_MODAL_VIEW);
-            //TO DO -- FIX IT v
-//                bannerPage.isDelegateEnabled(AD_WILL_LEAVE_APP);
-            env.homePage.isDelegateEnabled(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW);
-        } else if (prebidAd.contains("AdMob")) {
-            env.homePage.openInBrowser();
-            bannerPage.waitAndReturnToApp();
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_RECORD_IMPRESSION);
-            env.homePage.isDelegateEnabled(AD_WILL_PRESENT_SCREEN);
-            env.homePage.isDelegateEnabled(AD_WILL_DISMISS_SCREEN);
-            env.homePage.isDelegateEnabled(AD_DID_DISMISS_SCREEN);
-        } else {
-            env.homePage.openInBrowser();
-            bannerPage.waitAndReturnToApp();
-            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
-            env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
-            env.homePage.isDelegateEnabled(AD_VIEW_WILL_LEAVE);
-        }
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, bannerPage);
+        prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
 
     }
 
     //BANNER DELEGATES TEST
     @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBannerAndroidDelegates(String prebidAd) throws InterruptedException {
+    public void testBannerAndroidDelegates(String prebidAd) throws NoSuchFieldException, InterruptedException {
         initValidTemplatesJson(prebidAd);
-
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
-
-        if (prebidAd.contains("MoPub")) {
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
-            bannerPage.clickBanner();
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-        } else {
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            if (prebidAd.contains("AdMob")) {
-                env.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-            } else {
-                env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            }
-            bannerPage.clickBanner();
-            env.homePage.clickCloseButtonClickThroughBrowser();
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            if (prebidAd.contains("AdMob")) {
-                env.homePage.isDelegateEnabled(ON_AD_OPENED);
-            }
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        }
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, bannerPage);
+        prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
     }
 
@@ -237,11 +142,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      * @throws IOException
      */
     @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException {
+    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException, NoSuchFieldException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.isAdDisplayed();
 
@@ -249,10 +154,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotateLandscape();
             env.homePage.rotatePortrait();
         }
-
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(bannerAds, env);
+        prebidAdapter.checkEvents();
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -262,20 +168,20 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testOMEventsAfterReload() throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         bannerPage.clickReloadButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 50);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 50);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(2));
@@ -299,7 +205,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_ADMOB);
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.clickBanner();
 
@@ -313,7 +219,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -340,7 +246,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         bannerPage.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         env.homePage.runAppInBackground(5);
 
@@ -350,7 +256,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
 
         // CHECK OM EVENTS
         initEventHandler();
@@ -376,13 +282,13 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         checkLoadDelegates();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         bannerPage.performScrollUpAndDown();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
 
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -458,7 +364,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"}, priority = 1)
+    @Test(groups = {"smoke"}, priority = 1)
     public void testClientRefreshMaxAlwaysFails() throws TimeoutException, InterruptedException, IOException {
         int setUpEventsCount = 4;
 
@@ -481,7 +387,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.logValidator.cancelResponseError();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testRefreshClientSide() throws TimeoutException, InterruptedException {
         int expectedEventCount = 4;
 
@@ -495,14 +401,14 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         checkLoadDelegates();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, expectedEventCount, autoRefreshDelay * expectedEventCount);
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, expectedEventCount, autoRefreshDelay * expectedEventCount);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, expectedEventCount, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, expectedEventCount, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(expectedEventCount));
@@ -513,7 +419,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testDefaultRefresh() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_ADMOB);
 
@@ -526,7 +432,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
@@ -539,7 +445,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testAdRequestLimitation() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
@@ -567,7 +473,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testSlowConnection() throws TimeoutException, InterruptedException {
         // regular 2G network (250/50 KB/s, 300ms latency -  diff because of real network latency)
 
@@ -653,7 +559,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.resetApp();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testCustomRefresh() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -673,7 +579,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledScrollable() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -709,7 +615,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledTabOverlay() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -739,7 +645,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"smoke"} )
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledBackgrounded() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
@@ -770,7 +676,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     private void checkLoadDelegates() {
         if (isPlatformIOS) {
-            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
+            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
         } else {
             env.homePage.isDelegateEnabled(ON_AD_LOADED);
         }

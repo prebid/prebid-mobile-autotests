@@ -36,7 +36,6 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         static final By allowButton = MobileBy.AccessibilityId("Allow");
         static final By alertOk = MobileBy.AccessibilityId("OK");
         static final By searchField = MobileBy.xpath("//XCUIElementTypeSearchField");
-        static final By mockServerSwitcher = MobileBy.AccessibilityId("useMockServerSwitch");
         static final By GDPRSwitcher = MobileBy.AccessibilityId("GDPRSwitch");
     }
 
@@ -54,12 +53,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         return new InAppBiddingAdPageIOS(super.driver);
     }
 
-    @Override
-    public void turnOnMockServerSwitcher(){
-        if(isMockServerOff()){
-            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
-        }
-    }
+
 
     @Override
     public void turnOnGDPRSwitcher() {
@@ -73,16 +67,6 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
     }
 
-    @Override
-    public void turnOffMockServerSwitcher(){
-        if(wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected()){
-            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
-        }
-    }
-
-    private boolean isMockServerOff(){
-        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected();
-    }
     private boolean isGDPROff(){
         return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).isSelected();
     }

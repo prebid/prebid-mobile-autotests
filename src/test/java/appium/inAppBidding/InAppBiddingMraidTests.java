@@ -2,6 +2,7 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.openqa.selenium.Dimension;
@@ -35,7 +36,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"serverBased"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
     public void testVersionParametersAuctionRequest(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -124,7 +125,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickBanner();
 
@@ -136,7 +137,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -178,7 +179,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickExpand2creative();
 
@@ -190,7 +191,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -281,7 +282,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickResizeCreative();
 
@@ -304,7 +305,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -322,7 +323,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickResizeCreative();
 
@@ -345,7 +346,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -355,8 +356,8 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         session.checkGeometryChangeReasons(reasons);
     }
 
-    @Test(groups = {"serverBased"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
-    public void testMraidResizeAppolloBased(String adName) throws InterruptedException, TimeoutException {
+    @Test(groups = {"requests"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+    public void testMraidResizeAppolloBased(String adName) throws InterruptedException, TimeoutException, NoSuchFieldException {
         initValidTemplatesJson(adName);
 
 
@@ -366,8 +367,8 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
-        checkGamOrMoPubEvents(adName);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env, page);
+        prebidAdapter.checkEvents();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -516,7 +517,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isResizeWithErrorsAdLoaded();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         Dimension defaultAdSize = page.getResizeWithErrorsAdSize();
 
@@ -546,7 +547,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -560,7 +561,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isResizeWithErrorsAdLoaded();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         Dimension defaultAdSize = page.getResizeWithErrorsAdSize();
 
@@ -592,7 +593,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         assertNotEquals(defaultAdSize, page.getResizeWithErrorsAdSize(), "Ad should resize");
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -612,11 +613,11 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
 
         // CHECK OM EVENTS
         initEventHandler();
@@ -633,13 +634,13 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickCloseInterstitial();
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         assertTrue(eventHandler.checkSessionsCount(1));
@@ -655,17 +656,17 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         page.clickReloadButton();
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 10);
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 10);
         initEventHandler();
         // CHECK OM EVENTS
         assertTrue(eventHandler.checkSessionsCount(2));
@@ -682,7 +683,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         page.clickCloseRandom();
 
@@ -693,10 +694,10 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
                 page.clickReloadButton();
             }
             page.clickShowButton();
-            env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 30);
+            env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 30);
             page.clickCloseInterstitial();
             env.homePage.clickBack();
-            env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 30);
+            env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 2, 30);
             initEventHandler();
             // CHECK OM EVENTS
             assertTrue(eventHandler.checkSessionsCount(2));
@@ -707,7 +708,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
             //TODO there should be same behaiviour for iOS , but no reload button for now
         } else {
             env.homePage.clickBack();
-            env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+            env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
             initEventHandler();
             // CHECK OM EVENTS
             OMSDKSessionDescriptor session = eventHandler.getFirstSession();
@@ -722,7 +723,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.isAdDisplayed();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
         env.homePage.runAppInBackground(5);
 
@@ -730,7 +731,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 10);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
@@ -747,7 +748,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickShowButton();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
         //sleep needed to render creative and getting correct percentageInView
         Thread.sleep(5000);
 
@@ -759,7 +760,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.homePage.clickBack();
 
-        env.waitForOMEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();

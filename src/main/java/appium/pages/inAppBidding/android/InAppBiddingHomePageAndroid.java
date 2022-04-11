@@ -26,7 +26,6 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
         static final By loadAd = MobileBy.id("org.prebid.mobile.renderingtestapp:id/btnLoad");
         static final By examples = MobileBy.AccessibilityId("Examples");
         static final By utilities = MobileBy.AccessibilityId("Utilities");
-        static final By mockServerSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchUseMock");
         static final By GDPRSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchEnableGdpr");
 
         static final By closeButton = MobileBy.id("org.prebid.mobile.renderingtestapp:id/iv_close_interstitial");
@@ -48,12 +47,7 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.utilities)).click();
     }
 
-    @Override
-    public void turnOnMockServerSwitcher() {
-        if (isMockServerOff()) {
-            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
-        }
-    }
+
 
     @Override
     public void turnOnGDPRSwitcher() {
@@ -65,15 +59,6 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     @Override
     public void turnOffGDPRSwitcher() {
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
-    }
-
-    @Override
-    public void turnOffMockServerSwitcher() {
-        wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).click();
-    }
-
-    private boolean isMockServerOff() {
-        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.mockServerSwitcher)).isSelected();
     }
 
     public boolean isGDPROff() {

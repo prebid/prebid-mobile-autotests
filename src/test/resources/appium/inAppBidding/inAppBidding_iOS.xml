@@ -6,20 +6,47 @@
 	<parameter name="prebidTestPlatform" value="iOS"/>
 	<parameter name="prebidServerKind" value="Prebid"/>
 	<!-- Run with enabled mac proxy for BMP -->
-	<test verbose="3" name="InApp_Bidding iOS Server Based">
+	<test verbose="3" name="InApp_Bidding iOS Custom Requests">
 		<groups>
 			<run>
-				<include name="serverBased"/>
-				<include name="serverBased-ios"/>
+				<include name="USPrivacy"/>
+				<include name="TCFv1"/>
+				<include name="CustomOpenRTB"/>
+				<include name="LiveRampATS"/>
 			</run>
 		</groups>
 		<classes>
+			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>
+		</classes>
+	</test>
+	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke] [MOCK]]">
+		<groups>
+			<run>
+				<include name="ios"/>
+				<include name="smoke"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
 			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
-			<!-- Currently native ads is not supported               -->
-<!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
 			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
-            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
-            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+		</classes>
+	</test>
+	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB] [MOCK]">
+		<groups>
+			<run>
+				<include name="requests"/>
+				<include name="requests-iOS"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
 	</test>
 </suite>

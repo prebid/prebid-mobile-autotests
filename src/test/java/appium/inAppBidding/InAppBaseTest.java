@@ -3,6 +3,9 @@ package appium.inAppBidding;
 import OMSDK.OMSDKEventHandler;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
+import adapters.factory.PrebidAdapterFactory;
+import adapters.factory.PrebidAdapterFactoryAndroid;
+import adapters.factory.PrebidAdapterFactoryIOS;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -19,34 +22,30 @@ import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
 import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
 
 public class InAppBaseTest {
-    public static InAppBiddingTestEnvironment env;
-    public static JSONObject validAuctionRequest;
-    public static JSONObject validAuctionResponse;
-    public static String platformName;
-    public static String displaymanagerver;
-    public static String ver;
-    public static String version;
-    public static String omidpv;
-    public static boolean isPlatformIOS;
-    public JSONObject auctionRequestCCPA_TRUE;
-    public JSONObject auctionRequestCCPA_FALSE;
-    public JSONObject auctionRequestJson;
-    public OMSDKEventHandler eventHandler;
+    protected static InAppBiddingTestEnvironment env;
+    protected static JSONObject validAuctionRequest;
+    protected static JSONObject validAuctionResponse;
+    protected static String platformName;
+    protected static String displaymanagerver;
+    protected static String ver;
+    protected static String version;
+    protected static String omidpv;
+    protected static boolean isPlatformIOS;
+    protected static PrebidAdapterFactory prebidAdapterFactory;
+    protected JSONObject auctionRequestCCPA_TRUE;
+    protected JSONObject auctionRequestCCPA_FALSE;
+    protected JSONObject auctionRequestJson;
+    protected OMSDKEventHandler eventHandler;
+
 
 
     @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
-    public void setupMock(ITestContext itc) throws IOException {
-        System.out.println(itc.getName());
-        setup(itc, TestEnvironment.INSPECTORS_MOCK_SERVER);
-    }
-
-    @BeforeTest(groups = {"serverBased", "serverBased-ios"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
         setup(itc, TestEnvironment.INSPECTORS_MOB_PROXY);
     }
 
-    @AfterTest(groups = {"smoke", "android", "ios", "exec", "serverBased", "requests", "serverBased-ios"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
@@ -55,20 +54,7 @@ public class InAppBaseTest {
         env.teardown();
     }
 
-
     @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
-    public void setupMethodMock(ITestContext itc) throws InterruptedException {
-        if (!env.homePage.isSearchFieldDisplayed()) {
-            env.homePage.relaunchApp();
-            env.homePage.turnOnMockServerSwitcher();
-            env.homePage.turnOffGDPRSwitcher();
-        }
-
-        env.homePage.turnOffCustomConfig();
-        env.logValidator.clearLogs();
-    }
-
-    @BeforeMethod(groups = {"serverBased"})
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
@@ -78,7 +64,7 @@ public class InAppBaseTest {
         env.bmp.newHar();
     }
 
-    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "serverBased", "requests"})
+    @AfterMethod(groups = {"smoke", "android", "ios", "exec",  "requests"})
     public void teardownMethod() {
         eventHandler = null;
         validAuctionRequest = null;
@@ -102,13 +88,11 @@ public class InAppBaseTest {
 
     public void setupEnvWithCommandLineArguments(Method method, ITestContext itc, String commandLineArguments) throws IOException {
         final String testName = String.format("%s_%s", this.getClass().getSimpleName(), method.getName());
-        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOCK_SERVER, commandLineArguments);
+        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, commandLineArguments);
         platformName = env.getProperty("platformName");
         System.out.println("commandLineArguments ==> " + commandLineArguments);
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
         itc.setAttribute("authToken", env.capabilities.getCapability("authToken").toString());
-        env.homePage.turnOnMockServerSwitcher();
-        env.logValidator.clearLogs();
     }
 
     public void initValidTemplatesJson(String prebidAd) {
@@ -121,16 +105,13 @@ public class InAppBaseTest {
     }
 
     public void initEventHandler() {
-        System.out.println("Log validator: "+env.logValidator.getLogs());
-        eventHandler = new OMSDKEventHandler(env.logValidator);
+//        System.out.println("Log validator: "+env.logValidator.getLogs());
+        eventHandler = new OMSDKEventHandler(env.bmp.getHar());
     }
 
     private void setup(ITestContext itc, Set<TestEnvironment.TrafficInspectorKind> trafficInsprctors) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
         env = new InAppBiddingTestEnvironment(testName, itc, trafficInsprctors);
-        if (trafficInsprctors.contains(TestEnvironment.TrafficInspectorKind.MOCK_SERVER)) {
-            env.homePage.turnOnMockServerSwitcher();
-        }
         env.homePage.turnOffGDPRSwitcher();
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
         itc.setAttribute("authToken", env.capabilities.getCapability("authToken").toString());
@@ -140,24 +121,10 @@ public class InAppBaseTest {
         displaymanagerver = version;
         omidpv = env.getProperty("omidpv");
         isPlatformIOS = platformName.equalsIgnoreCase("iOS");
-    }
-
-    protected void checkGamOrMoPubEvents(String prebidAd) throws TimeoutException, InterruptedException {
         if (isPlatformIOS) {
-            if (prebidAd.contains("GAM")) {
-                env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_GAMPAD, 1, 60);
-            }
-        }
-        if (prebidAd.contains("MoPub")) {
-            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_AD, 1, 60);
-            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MOPUB_IMP, 1, 60);
-        }
-        if (prebidAd.contains("AdMob")) {
-            if (isPlatformIOS) {
-                env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_MADS_GMA, 1, 60);
-            }
-            env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
-
+            prebidAdapterFactory = new PrebidAdapterFactoryIOS();
+        } else {
+            prebidAdapterFactory = new PrebidAdapterFactoryAndroid();
         }
     }
 

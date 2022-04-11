@@ -1,0 +1,146 @@
+{
+  "app": {
+    "ext": {
+      "prebid": {
+        "data": {
+        },
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "ver": "$VARIABLE",
+    "name": "InternalTestApp",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "bundle": "org.prebid.mobile.renderingtestapp"
+  },
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "storedauctionresponse": {
+        "id": "$VARIABLE"
+      },
+      "cache": {
+        "bids": {
+        },
+        "vastxml": {
+        }
+      },
+      "targeting": {
+      },
+      "data": {
+        "bidders": []
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "regs": {
+    "ext": {
+      "gdpr": "$VARIABLE"
+    }
+  },
+  "source": {
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    },
+    "tid": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE",
+      "prebid": {
+        "interstitial": {
+          "minheightperc": 30,
+          "minwidthperc": 30
+        }
+      }
+    },
+    "os": "iOS",
+    "ifa": "$VARIABLE",
+    "h": "$VARIABLE",
+    "language": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "geo": {
+    },
+    "pxratio": "$VARIABLE",
+    "lmt": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "w": "$VARIABLE",
+    "model": "iPhone",
+    "connectiontype": "$VARIABLE",
+    "make": "Apple"
+  },
+  "imp": [
+    {
+      "ext": {
+        "context": {
+          "data": {
+          }
+        },
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          },
+          "storedauctionresponse": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "banner": {
+        "format": [
+          {
+            "w": "$VARIABLE",
+            "h": "$VARIABLE"
+          }
+        ],
+        "pos": 7,
+        "api": [
+          3,
+          5,
+          6,
+          7
+        ]
+      },
+      "id": "$VARIABLE",
+      "secure": 1,
+      "instl": 1,
+      "video": {
+        "delivery": [
+          3
+        ],
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "mimes": [
+          "video\/mp4",
+          "video\/quicktime",
+          "video\/x-m4v",
+          "video\/3gpp",
+          "video\/3gpp2"
+        ],
+        "placement": 5,
+        "playbackend": 2,
+        "pos": 7,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE"
+      }
+    }
+  ],
+  "user": {
+    "ext": {
+      "data": {
+      }
+    },
+    "yob": 0
+  }
+}

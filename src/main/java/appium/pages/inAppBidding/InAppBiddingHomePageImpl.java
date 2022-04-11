@@ -27,13 +27,9 @@ public interface InAppBiddingHomePageImpl {
 
     void clickAllow() throws InterruptedException;
 
-    void turnOnMockServerSwitcher();
-
     void turnOnGDPRSwitcher();
 
     void turnOffGDPRSwitcher();
-
-    void turnOffMockServerSwitcher();
 
     void resetApp();
 

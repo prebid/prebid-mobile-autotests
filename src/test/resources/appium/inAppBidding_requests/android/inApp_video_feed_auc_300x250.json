@@ -30,6 +30,8 @@
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
+          },"storedauctionresponse": {
+            "id": "$VARIABLE"
           }
         }
       }
@@ -71,7 +73,9 @@
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-
+      "lat": "$VARIABLE",
+      "lon": "$VARIABLE",
+      "type": "$VARIABLE"
     }
   },
   "user": {
@@ -87,6 +91,8 @@
   "ext": {
     "prebid": {
       "storedrequest": {
+        "id": "$VARIABLE"
+      },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
       "cache": {

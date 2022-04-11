@@ -40,11 +40,11 @@ public class RequestValidator {
     }
 
     public static void validateAuctionRequest(JsonArray data, JSONObject validJson) {
-        validateMockedRequest(data, validJson, "/openrtb2/auction");
+        validateRequest(data, validJson, "/openrtb2/auction");
     }
 
     public static void validateAuctionResponse(JsonArray data, JSONObject validJson) {
-        validateMockedResponse(data, validJson, "/openrtb2/auction");
+        validateResponse(data, validJson, "/openrtb2/auction");
     }
 
     public static void checkVersionParametersFromRequest(Har harLog, String validAppVer, String validAppExtPrebidVersion, String validOmidpv, String validImpDisplaymanagerver) {
@@ -88,7 +88,7 @@ public class RequestValidator {
     //PRIVATE METHODS
 
 
-    private static void validateMockedRequest(JsonArray data, JSONObject validJson, String event) {
+    private static void validateRequest(JsonArray data, JSONObject validJson, String event) {
         if (data == null) {
             throw new InvalidArgumentException("Passed data is null");
         }
@@ -115,7 +115,7 @@ public class RequestValidator {
         assertTrue(checkResult, "Invalid OpenRTB parameters: " + errorMessage);
     }
 
-    private static void validateMockedResponse(JsonArray data, JSONObject validJson, String event) {
+    private static void validateResponse(JsonArray data, JSONObject validJson, String event) {
         if (data == null) {
             throw new InvalidArgumentException("Passed data is null");
         }
@@ -132,6 +132,7 @@ public class RequestValidator {
         JSONObject sentJson = HarParser.getRequestPostDataTextJson(harLog, event);
         boolean checkResult;
         System.out.println("Sent json: "+sentJson);
+        System.out.println("Valid json: "+validJson);
         String errorMessage = null;
         try {
             checkResult = isJsonValid(sentJson, validJson, ROOT_JSON_KEY);
