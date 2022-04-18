@@ -22,14 +22,6 @@ public interface InAppAdNamesImpl {
     String BANNER_728x90_GAM = "Banner 728x90 (GAM)";
     String BANNER_MULTISIZE_GAM = "Banner Multisize (GAM)";
 
-    String BANNER_320x50_MOPUB = "Banner 320x50 (MoPub) [OK, OXB Adapter]";
-    String BANNER_320x50_MOPUB_VANILLA = "Banner 320x50 (MoPub) [Vanilla Prebid Order]";
-    String BANNER_320x50_NO_BID_MOPUB = "Banner 320x50 (MoPub) [noBids, MoPub Ad]";
-    String BANNER_320x50_MOPUB_RANDOM = "Banner 320x50 (MoPub) [OK, Random]";
-    String BANNER_300x250_MOPUB = "Banner 300x250 (MoPub)";
-    String BANNER_728x90_MOPUB = "Banner 728x90 (MoPub)";
-    String BANNER_MULTISIZE_MOPUB = "Banner Multisize (MoPub)";
-
     /** ADMOB*/
     String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, OXB Adapter]";
 //    String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, Adapter]";
@@ -43,12 +35,6 @@ public interface InAppAdNamesImpl {
 
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
     String INTERSTITIAL_MULTI_FORMAT_IN_APP = "Multiformat Interstitial 320x480 (In-App)";
-
-    String INTERSTITIAL_320x480_MOPUB = "Display Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
-    String INTERSTITIAL_320x480_MOPUB_RANDOM = "Display Interstitial 320x480 (MoPub) [OK, Random]";
-    String INTERSTITIAL_MULTI_FORMAT_MOPUB = "Multiformat Interstitial 320x480 (MoPub)";
-
-    String INTERSTITIAL_320x480_NO_BID_MOPUB = "Display Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
 
     String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
     String INTERSTITIAL_320x480_ADMOB_RANDOM = "Display Interstitial 320x480 (AdMob) [OK, Random]";
@@ -70,10 +56,6 @@ public interface InAppAdNamesImpl {
     String MRAID_VIDEO_INTERSTITIAL_GAM = "MRAID 2.0: Video Interstitial (GAM)";
     String MRAID_RESIZE_GAM = "MRAID 2.0: Resize (GAM)";
 
-    String MRAID_EXPAND_1_MOPUB = "MRAID 2.0: Expand - 1 Part (MoPub)";
-    String MRAID_VIDEO_INTERSTITIAL_MOPUB = "MRAID 2.0: Video Interstitial (MoPub)";
-    String MRAID_RESIZE_MOPUB = "MRAID 2.0: Resize (MoPub)";
-
     String MRAID_FULLSCREEN_IN_APP = "MRAID 2.0: Fullscreen (In-App)";
     String MRAID_RESIZE_WITH_ERRORS_IN_APP = "MRAID 2.0: Resize with Errors (In-App)";
 
@@ -83,9 +65,6 @@ public interface InAppAdNamesImpl {
 
     String VIDEO_INTERSTITIAL_320x480_IN_APP = "Video Interstitial 320x480 (In-App)";
     String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card (In-App)";
-    String VIDEO_INTERSTITIAL_320x480_MOPUB = "Video Interstitial 320x480 (MoPub) [OK, OXB Adapter]";
-    String VIDEO_INTERSTITIAL_320x480_MOPUB_RANDOM = "Video Interstitial 320x480 (MoPub) [OK, Random]";
-    String VIDEO_INTERSTITIAL_320x480_NO_BID_MOPUB = "Video Interstitial 320x480 (MoPub) [noBids, MoPub Ad]";
     String VIDEO_INTERSTITIAL_320x480_GAM = "Video Interstitial 320x480 (GAM) [OK, AppEvent]";
     String VIDEO_INTERSTITIAL_320x480_GAM_RANDOM = "Video Interstitial 320x480 (GAM) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
@@ -106,9 +85,6 @@ public interface InAppAdNamesImpl {
     String VIDEO_REWARDED_320x480_GAM_METADATA = "Video Rewarded 320x480 (GAM) [OK, Metadata]";
     String VIDEO_REWARDED_320x480_NO_BID_GAM = "Video Rewarded 320x480 (GAM) [noBids, GAM Ad]";
     String VIDEO_REWARDED_320x480_GAM_RANDOM = "Video Rewarded 320x480 (GAM) [OK, Random]";
-    String VIDEO_REWARDED_320x480_MOPUB = "Video Rewarded 320x480 (MoPub) [OK, OXB Adapter]";
-    String VIDEO_REWARDED_320x480_MOPUB_RANDOM = "Video Rewarded 320x480 (MoPub) [OK, Random]";
-    String VIDEO_REWARDED_320x480_NO_BID_MOPUB = "Video Rewarded 320x480 (MoPub) [noBids, MoPub Ad]";
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Video Rewarded 320x480 (AdMob) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Video Rewarded 320x480 (AdMob) [noBids, AdMob Ad]";
@@ -143,12 +119,5 @@ public interface InAppAdNamesImpl {
     String NATIVE_AD_FEED_IN_APP = "Native Ad Feed (In-App)";
     String NATIVE_AD_LINKS_IN_APP = "Native Ad Links (In-App)";
 
-    String NATIVE_AD_FEED_MOPUB_PBM = "Native Ad Feed (MoPub) [OK, PBM Native AdAdapter]";
-    String NATIVE_AD_FEED_MOPUB_MP_NO_BIDS = "Native Ad Feed (MoPub) [noBids, MPNativeAd]";
-    String NATIVE_AD_MOPUB_PBM = "Native Ad (MoPub) [OK, PBM Native AdAdapter]";
-    String NATIVE_AD_MO_PUB_PBM_NIB = "Native Ad (MoPub) [OK, PBM Native AdAdapter,Nib]";
-    String NATIVE_AD_MOPUB = "Native Ad (MoPub) [OK, NativeAdAdapter]";
-    String NATIVE_AD_MOPUB_MP = "Native Ad (MoPub) [OK, MPNativeAd]";
-    String NATIVE_AD_MOPUB_MP_NO_BIDS = "Native Ad (MoPub) [noBids, MPNativeAd]";
 
 }

@@ -52,7 +52,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.CLICK_DATA_FALLBACK, "/events/click/data/fallback");
         inAppBidding_Events.put(InAppBiddingEvents.GAM_GAMPAD, "/gampad/ads");
         inAppBidding_Events.put(InAppBiddingEvents.GAM_G_DOUBLECLICK, "g.doubleclick.net");
-        inAppBidding_Events.put(InAppBiddingEvents.MOPUB_AD, "/m/ad");
         inAppBidding_Events.put(InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, "/pagead/interaction");
         inAppBidding_Events.put(InAppBiddingEvents.ADMOB_MADS_GMA, "mads/gma");
         inAppBidding_Events.put(InAppBiddingEvents.WIN_PREBID, "/win/prebid");
@@ -322,8 +321,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         WIN_PREBID,
         GAM_GAMPAD,
         GAM_G_DOUBLECLICK,
-        MOPUB_AD,
-        MOPUB_IMP,
         ADMOB_PAGEAD_INTERACTION,
         ADMOB_MADS_GMA,
         VIDEO_REQUEST,

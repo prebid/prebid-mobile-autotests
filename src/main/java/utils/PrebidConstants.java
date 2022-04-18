@@ -6,7 +6,6 @@ public class PrebidConstants {
 
     public static final String IN_APP = "In-App";
     public static final String GAM = "GAM";
-    public static final String MOPUB = "MoPub";
     public static final String ADMOB = "AdMob";
     public static final String ADAPTER_NOT_EXIST_MESSAGE = "Adapter does not exist";
 }
