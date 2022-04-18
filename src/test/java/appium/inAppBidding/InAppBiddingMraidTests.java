@@ -63,14 +63,11 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        if (adName.equalsIgnoreCase(MRAID_EXPAND_1_MOPUB)) {
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_COLLAPSED);
-        } else {
+
             env.homePage.isDelegateEnabled(ON_AD_LOADED);
             env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        }
+
 
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
 
@@ -87,12 +84,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        if (adName.equalsIgnoreCase(MRAID_EXPAND_1_MOPUB)) {
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW);
-        } else {
+
             env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
-        }
+
         env.homePage.clickBack();
     }
 
@@ -292,14 +286,11 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickCloseMRAIDResizeButton();
 
-        if (adName.equalsIgnoreCase(MRAID_RESIZE_MOPUB)) {
-            env.homePage.isDelegateEnabled(ON_BANNER_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_COLLAPSED);
-        } else {
+
             env.homePage.isDelegateEnabled(ON_AD_LOADED);
             env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
             env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        }
+
 
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
 
@@ -333,16 +324,11 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickCloseMRAIDResizeButton();
 
-        if (adName.equalsIgnoreCase(MRAID_RESIZE_MOPUB)) {
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
-            env.homePage.isDelegateEnabled(AD_PRESENT_MODAL_VIEW);
-            env.homePage.isDelegateEnabled(AD_DISMISS_MODAL_VIEW);
-            env.homePage.isDelegateEnabled(AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW);
-        } else {
+
             env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
             env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
             env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
-        }
+
 
         env.homePage.clickBack();
 
@@ -688,11 +674,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickCloseRandom();
 
         if (platformName.equalsIgnoreCase("Android")) {
-            if (adName.equalsIgnoreCase(MRAID_VIDEO_INTERSTITIAL_MOPUB)) {
-                page.clickRetryButton();
-            } else {
-                page.clickReloadButton();
-            }
+
+            page.clickReloadButton();
+
             page.clickShowButton();
             env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 2, 30);
             page.clickCloseInterstitial();

@@ -9,11 +9,11 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeoutException;
 
+import static appium.common.InAppAdNamesImpl.NATIVE_AD_FEED_GAM;
 import static appium.common.InAppAdNamesImpl.NATIVE_AD_LINKS_IN_APP;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.FETCH_DEMAND;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.ON_NATIVE_FETCH_DEMAND_SUCCESS;
-import static appium.common.InAppTemplatesInit.NATIVE_AD_FEED_MOPUB_PBM;
-//import static appium.common.InAppTemplatesInit.NATIVE_AD_LINKS_IN_APP;
+
 
 public class InAppBiddingNativeTests extends InAppBaseTest {
 
@@ -210,7 +210,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
     //    @Test(groups = {"requests"})
     // OM is temporarily disabled for native ads
     public void testNativeAdFeedEventsAndOM() throws TimeoutException, InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(NATIVE_AD_FEED_MOPUB_PBM);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(NATIVE_AD_FEED_GAM);
 
         if (isPlatformIOS) {
             page.scrollToFeedAd();
