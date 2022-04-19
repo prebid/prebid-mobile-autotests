@@ -26,7 +26,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     private static class Locators {
         static final By examples = MobileBy.AccessibilityId("Examples");
         static final By utilities = MobileBy.AccessibilityId("Utilities");
-        static final By adView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc='adView']/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View");
+        static final By adView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc=\"adView\"]/android.webkit.WebView");
         static final By endCard = MobileBy.xpath("//android.view.View[@clickable='true']");
         static final By videoView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc='adView']");
         static final By viewContainer = getId("viewContainer");

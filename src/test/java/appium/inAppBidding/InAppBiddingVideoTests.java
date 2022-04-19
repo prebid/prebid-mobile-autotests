@@ -310,7 +310,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(10000);
 
         env.homePage.clickBack();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         videoPage.clickCloseInterstitial();
         PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
@@ -325,7 +325,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
