@@ -370,7 +370,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
             driver = new IOSDriver(new URL(urlAdress), capabilities);
-            installBmpCertificate();
+//            installBmpCertificate();
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);

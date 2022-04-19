@@ -135,11 +135,11 @@ public class TestEnvironment {
 
         bmp.start(bmpServer.port);
 
-        if (config.getProperty("env").equals(EnvType.LOCAL)
-                && capabilities.getPlatform().equals(Platform.IOS)) {
-            TestEnvironment.turnOnHttpProxyOnMac();
-            TestEnvironment.turnOnHttpsProxyOnMac();
-        }
+//        if (config.getProperty("env").equals(EnvType.LOCAL)
+//                && capabilities.getPlatform().equals(Platform.IOS)) {
+//            TestEnvironment.turnOnHttpProxyOnMac();
+//            TestEnvironment.turnOnHttpsProxyOnMac();
+//        }
     }
 
     /**
@@ -209,6 +209,7 @@ public class TestEnvironment {
         capabilities.setCapability("noReset", config.getProperty("noReset"));
         if (capabilities.getPlatform().equals(Platform.IOS)) {
             capabilities.setCapability("resetOnSessionStartOnly", true);
+            capabilities.setCapability("udid", config.getProperty("udid"));
         }
 
         if (trafficInspecors.contains(TrafficInspectorKind.MOB_PROXY)

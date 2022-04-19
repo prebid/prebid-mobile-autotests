@@ -56,7 +56,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"ios"})
+//    @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(BANNER_SKADNETWORK);
