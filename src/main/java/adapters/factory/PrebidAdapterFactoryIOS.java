@@ -1,6 +1,7 @@
 package adapters.factory;
 
 import adapters.PrebidAdapter;
+import adapters.ios.MaxAdapterIOS;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import adapters.ios.AdMobAdapterIOS;
@@ -18,6 +19,8 @@ public class PrebidAdapterFactoryIOS implements PrebidAdapterFactory {
                 return new GamAdapterIOS(testEnvironment, adPage);
             case PrebidConstants.ADMOB:
                 return new AdMobAdapterIOS(testEnvironment, adPage);
+            case PrebidConstants.MAX:
+                return new MaxAdapterIOS(testEnvironment, adPage);
             default:
                 throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }
@@ -32,6 +35,8 @@ public class PrebidAdapterFactoryIOS implements PrebidAdapterFactory {
                 return new GamAdapterIOS(testEnvironment);
             case PrebidConstants.ADMOB:
                 return new AdMobAdapterIOS(testEnvironment);
+            case PrebidConstants.MAX:
+                return new MaxAdapterIOS(testEnvironment);
             default:
                 throw new NoSuchFieldException(PrebidConstants.ADAPTER_NOT_EXIST_MESSAGE);
         }
