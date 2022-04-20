@@ -240,9 +240,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
-    public void testOMEventsSessionWithBackground(String bannerAds) throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
+    @Test(groups = {"requests"})
+    public void testOMEventsSessionWithBackground() throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
 
         bannerPage.isAdDisplayed();
 
@@ -445,7 +445,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testAdRequestLimitation() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
@@ -676,7 +676,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     private void checkLoadDelegates() {
         if (isPlatformIOS) {
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         } else {
             env.homePage.isDelegateEnabled(ON_AD_LOADED);
         }

@@ -16,9 +16,10 @@ public class MaxAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() {
+    public void checkBannerDelegates() throws InterruptedException {
+        testEnvironment.homePage.openInBrowser();
+        adPage.waitAndReturnToApp();
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD);
-        adPage.clickBanner();
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_HIDE_AD);
 //        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_COLLAPSED_AD);
 //        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_EXPAND_AD);
