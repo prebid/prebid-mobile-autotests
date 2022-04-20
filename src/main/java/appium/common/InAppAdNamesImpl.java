@@ -31,7 +31,13 @@ public interface InAppAdNamesImpl {
     String BANNER_ADAPTIVE_ADMOB = "Banner Adaptive (AdMob)";
 //    String BANNER_ADAPTIVE_ADMOB = "Flexible Banner (AdMob)";
 
-
+    /** MAX*/
+    String BANNER_320x50_MAX = "Banner 320x50 (MAX) [OK, OXB Adapter]";
+    //    String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, Adapter]";
+    String BANNER_320x50_NO_BID_MAX = "Banner 320x50 (MAX) [noBids, No Ad]";
+    String BANNER_320x50_MAX_RANDOM = "Banner 320x50 (MAX) [OK, Random]";
+    String BANNER_300x250_MAX = "Banner 300x250 (MAX)";
+    String BANNER_ADAPTIVE_MAX = "Banner Adaptive (MAX)";
 
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
     String INTERSTITIAL_MULTI_FORMAT_IN_APP = "Multiformat Interstitial 320x480 (In-App)";

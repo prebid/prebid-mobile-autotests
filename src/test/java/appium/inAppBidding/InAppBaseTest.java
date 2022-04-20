@@ -26,6 +26,7 @@ public class InAppBaseTest {
     protected static JSONObject validAuctionRequest;
     protected static JSONObject validAuctionResponse;
     protected static String platformName;
+    protected static String platformType;
     protected static String displaymanagerver;
     protected static String ver;
     protected static String version;
@@ -116,6 +117,7 @@ public class InAppBaseTest {
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
         itc.setAttribute("authToken", env.capabilities.getCapability("authToken").toString());
         platformName = env.getProperty("platformName");
+        platformType = env.getProperty("platformType");
         ver = env.getProperty("ver");
         version = env.getProperty("version");
         displaymanagerver = version;

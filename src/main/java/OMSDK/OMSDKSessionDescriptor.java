@@ -45,7 +45,7 @@ public class OMSDKSessionDescriptor {
         public static final String HTML = "html";
         public static final String CLID = "clid";
         public static final String VLID = "vlid";
-        public static final String APP_ID = "org.prebid.mobile.renderingtestapp";
+        public static final String APP_ID_IOS = "org.prebid.mobile.renderingtestapp";
         public static final String APP_ID_ANDROID = "org.prebid.mobile.renderingtestapp";
         public static final String LIBRARY_VERSION = "1.3.17-Prebidorg";
         public static final String LIBRARY_VERSION_ANDROID = "1.3.17-Prebidorg";
@@ -437,7 +437,7 @@ public class OMSDKSessionDescriptor {
         final String validAppId = getAppId(platformName);
         final String validLibraryVersion = getLibraryVersion(platformName);
 
-        final Boolean isValidAppID = appId.equalsIgnoreCase(validAppId);
+        final Boolean isValidAppID = appId.contains(validAppId);
         final Boolean isValidAppVersion = libraryVersion.equalsIgnoreCase(validLibraryVersion);
 
         return new OMSDKCheckResult(isValidAppID && isValidAppVersion, errorMessage(" OM data not valid " + "APP_ID " + validAppId + " != " + appId
@@ -451,7 +451,7 @@ public class OMSDKSessionDescriptor {
         if (platformName.equalsIgnoreCase("Android")) {
             return EVENT_VALUE.APP_ID_ANDROID;
         } else {
-            return EVENT_VALUE.APP_ID;
+            return EVENT_VALUE.APP_ID_IOS;
         }
     }
 

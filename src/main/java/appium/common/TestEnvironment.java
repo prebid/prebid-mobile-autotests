@@ -134,12 +134,17 @@ public class TestEnvironment {
         bmp.setTrustAllServers(true);
 
         bmp.start(bmpServer.port);
+        System.out.println(bmp.getWhitelistUrls());
+        if (isIosSimulator()) {
+            TestEnvironment.turnOnHttpProxyOnMac();
+            TestEnvironment.turnOnHttpsProxyOnMac();
+        }
+    }
 
-//        if (config.getProperty("env").equals(EnvType.LOCAL)
-//                && capabilities.getPlatform().equals(Platform.IOS)) {
-//            TestEnvironment.turnOnHttpProxyOnMac();
-//            TestEnvironment.turnOnHttpsProxyOnMac();
-//        }
+    private boolean isIosSimulator() {
+        return config.getProperty("env").equals(EnvType.LOCAL)
+                && capabilities.getPlatform().equals(Platform.IOS)
+                && config.getProperty("platformType").equals("Simulator");
     }
 
     /**
@@ -149,8 +154,7 @@ public class TestEnvironment {
      */
     private void teardownBrowserMobProxy() throws IOException {
         bmp.stop();
-        if (config.getProperty("env").equals(EnvType.LOCAL)
-                && capabilities.getPlatform().equals(Platform.IOS)) {
+        if (isIosSimulator()) {
             TestEnvironment.turnOffHttpProxyOnMac();
             TestEnvironment.turnOffHttpsProxyOnMac();
         }
