@@ -221,6 +221,11 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     }
 
     @Override
+    public void clickStopRefreshButton() {
+
+    }
+
+    @Override
     public void clickRetryButton() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.retryButton))
                 .click();

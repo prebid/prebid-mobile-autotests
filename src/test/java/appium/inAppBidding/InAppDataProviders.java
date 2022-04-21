@@ -24,18 +24,18 @@ public class InAppDataProviders {
 
     private static final String[][] BannerAd = {
             {BANNER_320x50_IN_APP},
-//            {BANNER_320x50_GAM},
-//            {BANNER_320x50_ADMOB},
+            {BANNER_320x50_GAM},
+            {BANNER_320x50_ADMOB},
             {BANNER_320x50_MAX},
             {BANNER_728x90_IN_APP},
-//            {BANNER_728x90_GAM},
-//            {BANNER_MULTISIZE_IN_APP},
-//            {BANNER_MULTISIZE_GAM},
+            {BANNER_728x90_GAM},
+            {BANNER_MULTISIZE_IN_APP},
+            {BANNER_MULTISIZE_GAM},
             {BANNER_300x250_IN_APP},
-//            {BANNER_300x250_GAM},
-//            {BANNER_300x250_ADMOB},
+            {BANNER_300x250_GAM},
+            {BANNER_300x250_ADMOB},
             {BANNER_300x250_MAX},
-//            {BANNER_ADAPTIVE_ADMOB},
+            {BANNER_ADAPTIVE_ADMOB},
             {BANNER_ADAPTIVE_MAX},
     };
     private static final String[][] BannerRefreshAd = {
@@ -44,7 +44,7 @@ public class InAppDataProviders {
     };
     private static final String[][] BannerCustomOmAds = {
             {BANNER_320x50_IN_APP},
-//            {BANNER_320x50_ADMOB},
+            {BANNER_320x50_ADMOB},
             {BANNER_320x50_MAX},
     };
 
@@ -65,9 +65,9 @@ public class InAppDataProviders {
     }
 
     private static final String[][] BannerNoBids = {
-//            {BANNER_320x50_NO_BID_GAM_AD},
-//            {BANNER_320x50_NO_BID_IN_APP},
-//            {BANNER_320x50_NO_BID_ADMOB},
+            {BANNER_320x50_NO_BID_GAM_AD},
+            {BANNER_320x50_NO_BID_IN_APP},
+            {BANNER_320x50_NO_BID_ADMOB},
             {BANNER_320x50_NO_BID_MAX},
     };
 

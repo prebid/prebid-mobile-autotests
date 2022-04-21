@@ -206,7 +206,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-
+        if (bannerAds.contains("MAX")){
+            bannerPage.clickStopRefreshButton();
+        }
         bannerPage.clickBanner();
 
         env.homePage.openInBrowser();
@@ -395,7 +397,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        env.homePage.goToAd(BANNER_320x50_ADMOB);
+        env.homePage.goToAd(BANNER_320x50_IN_APP);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 

@@ -33,6 +33,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By mraidVideoContainer = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"PrebidMobileDemoRendering\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther");
         static final By showButton = MobileBy.xpath("//XCUIElementTypeButton[@name='Show']");
         static final By reloadButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Reload]']");
+        static final By stopRefreshButton = MobileBy.xpath("//XCUIElementTypeButton[@name=\"[Stop Refresh]\"]");
         static final By retryButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Retry]']");
         static final By closeButton = MobileBy.AccessibilityId("PBM Close");
         static final By closeButtonVideo = MobileBy.AccessibilityId("Close ad");
@@ -223,7 +224,11 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         wait.until(ExpectedConditions.elementToBeClickable(Locators.reloadButton))
                 .click();
     }
-
+    @Override
+    public void clickStopRefreshButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.stopRefreshButton))
+                .click();
+    }
     @Override
     public void clickRetryButton() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.retryButton))
