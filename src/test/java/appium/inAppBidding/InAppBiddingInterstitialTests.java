@@ -11,6 +11,7 @@ import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
+import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_MAX;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVE_BUTTON;
 import static appium.common.InAppTemplatesInit.INTERSTITIAL_320x480_ADMOB;
 import static appium.common.InAppTemplatesInit.INTERSTITIAL_320x480_IN_APP;
@@ -23,7 +24,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-//    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestInterstitial(String prebidAd) throws TimeoutException, InterruptedException {
         testAuctionRequest(prebidAd);
     }
@@ -33,22 +34,31 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         testAuctionRequest(prebidAd);
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialRandom(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
-        interstitialPage.clickShowButton();
+        try {
+            env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        } catch (AssertionError assertionError){
+            if (assertionError.getMessage().contains("maxduration")){
+                System.out.println("maxduration is not supported for "+PrebidAdapter.getAdapterFromAd(prebidAd));
+            } else {
+                throw new AssertionError(assertionError.getMessage());
+            }
+        }
+        if (!prebidAd.contains("MAX")) {
+            interstitialPage.clickShowButton();
+        }
 
         interstitialPage.clickCloseRandom();
 
         env.homePage.clickBack();
     }
 
-//        @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+        @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -67,7 +77,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // DELEGATES TEST
     // =============================
 
-//    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
@@ -76,8 +86,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         if (prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         }
-        interstitialPage.clickShowButton();
-
+        if (!prebidAd.contains("MAX")) {
+            interstitialPage.clickShowButton();
+        }
         interstitialPage.clickInterstitialAd();
 
         env.homePage.openInBrowser();
@@ -99,8 +110,10 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         if (prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         }
-        multiformatPage.isShowButtonEnabled();
-        multiformatPage.clickShowButton();
+        if (!prebidAd.contains("MAX")) {
+            multiformatPage.isShowButtonEnabled();
+            multiformatPage.clickShowButton();
+        }
         try {
             multiformatPage.clickLearnMore();
         } catch (Exception exception) {
@@ -140,23 +153,25 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // OMSDK TESTS
     // =============================
 
-//    @Test(groups = {"requests"})
-    public void testOMEvents() throws TimeoutException, InterruptedException, NoSuchFieldException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
+    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    public void testOMEvents(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
+        initValidTemplatesJson(prebidAd);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_ADMOB);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
 
-        page.clickShowButton();
+        if (!prebidAd.contains("MAX")) {
+            page.clickShowButton();
+        }
 
-        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.isEndCardDisplayed();
 
         page.clickCloseInterstitial();
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(INTERSTITIAL_320x480_ADMOB, env);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -178,8 +193,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
-
-        page.clickShowButton();
+        if (!prebidAd.contains("MAX")) {
+            page.clickShowButton();
+        }
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
@@ -202,11 +218,11 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_ADMOB);
+        initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_ADMOB);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_IN_APP);
 
         page.clickShowButton();
 
@@ -247,7 +263,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
-        page.clickShowButton();
+        if (!prebidAd.contains("MAX")) {
+            page.clickShowButton();
+        }
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 5);
         try {
@@ -282,12 +300,12 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
             session.checkVideoStartEvent(platformName);
             session.checkNonAutoPlaySkippableAndStandalonePosition();
             session.checkPlayerStateIsNormal();
-        } catch (Exception exception) {
+        } catch (AssertionError assertionError) {
             session.checkNoObstructions();
         }
     }
 
-//    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 
@@ -312,7 +330,15 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 15);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        try {
+            env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        } catch (AssertionError assertionError){
+            if (assertionError.getMessage().contains("maxduration")){
+                System.out.println("maxduration is not supported for "+PrebidAdapter.getAdapterFromAd(prebidAd));
+            } else {
+                throw new AssertionError(assertionError.getMessage());
+            }
+        }
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }

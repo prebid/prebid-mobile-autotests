@@ -19,21 +19,21 @@
 <!--			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>-->
 <!--		</classes>-->
 <!--	</test>-->
-<!--	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke] [MOCK]]">-->
-<!--		<groups>-->
-<!--			<run>-->
-<!--				<include name="ios"/>-->
-<!--&lt;!&ndash;				<include name="smoke"/>&ndash;&gt;-->
-<!--			</run>-->
-<!--		</groups>-->
-<!--		<classes>-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>&ndash;&gt;-->
+	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke] [MOCK]]">
+		<groups>
+			<run>
+				<include name="ios"/>
+<!--				<include name="smoke"/>-->
+			</run>
+		</groups>
+		<classes>
+<!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>&ndash;&gt;-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>&ndash;&gt;-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>&ndash;&gt;-->
-<!--		</classes>-->
-<!--	</test>-->
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+<!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+		</classes>
+	</test>
 	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB] [MOCK]">
 		<groups>
 			<run>
@@ -43,8 +43,8 @@
 		</groups>
 		<classes>
 <!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+<!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
 		</classes>

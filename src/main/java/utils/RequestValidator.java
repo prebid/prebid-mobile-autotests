@@ -197,11 +197,7 @@ public class RequestValidator {
 
     protected static boolean isJsonValid(JSONObject sentJson, JSONObject validJson, String parentKey) throws ValidationException {
         compareKeySets(parentKey, sentJson, validJson);
-        Set<String> validJsonKeys = validJson.keySet();
-        if (isRealDevice(validJsonKeys)) {
-            validJsonKeys.remove("carrier");
-            validJsonKeys.remove("mccmnc");
-        }
+        Set<String> validJsonKeys = getWithoutIosRealDeviceKeys(validJson);
         for (String key : validJsonKeys) {
             Object validEntry = validJson.get(key);
             if (isVariable(validEntry)) {
@@ -215,6 +211,15 @@ public class RequestValidator {
             }
         }
         return true;
+    }
+
+    private static Set<String> getWithoutIosRealDeviceKeys(JSONObject validJson) {
+        Set<String> validJsonKeys = validJson.keySet();
+        if (isRealDevice(validJsonKeys)) {
+            validJsonKeys.remove("carrier");
+            validJsonKeys.remove("mccmnc");
+        }
+        return validJsonKeys;
     }
 
     private static void compareKeySets(String parentKey, JSONObject sentJson, JSONObject validJson) throws ValidationException {

@@ -56,7 +56,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"ios"})
+    //    @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(BANNER_SKADNETWORK);
@@ -108,10 +108,10 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testBanneriOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
         initValidTemplatesJson(prebidAd);
 
-
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
+
         PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
@@ -206,7 +206,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-        if (bannerAds.contains("MAX")){
+        if (bannerAds.contains("MAX")) {
             bannerPage.clickStopRefreshButton();
         }
         bannerPage.clickBanner();

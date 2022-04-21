@@ -77,8 +77,8 @@ public class InAppDataProviders {
     }
 
     private static final String[][] BannerRandom = {
-//            {BANNER_320x50_GAM_RANDOM},
-//            {BANNER_320x50_ADMOB_RANDOM},
+            {BANNER_320x50_GAM_RANDOM},
+            {BANNER_320x50_ADMOB_RANDOM},
             {BANNER_320x50_MAX_RANDOM},
     };
 
@@ -96,6 +96,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialAds = {
             {INTERSTITIAL_320x480_IN_APP},
             {INTERSTITIAL_320x480_ADMOB},
+            {INTERSTITIAL_320x480_MAX},
             {INTERSTITIAL_320x480_GAM}
     };
 
@@ -107,6 +108,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialRandom = {
             {INTERSTITIAL_320x480_GAM_RANDOM},
             {INTERSTITIAL_320x480_ADMOB_RANDOM},
+            {INTERSTITIAL_320x480_MAX_RANDOM},
     };
 
     @DataProvider(name = "randomAdInterstitial")
@@ -117,6 +119,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialNoBids = {
             {INTERSTITIAL_320x480_NO_BID_ADMOB},
             {INTERSTITIAL_320x480_NO_BID_GAM},
+            {INTERSTITIAL_320x480_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBidsInterstitial")
@@ -127,6 +130,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialMultiFormatAds = {
             {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
+            {INTERSTITIAL_MULTI_FORMAT_MAX},
             {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
     @DataProvider(name = "interstitialMultiFormat")

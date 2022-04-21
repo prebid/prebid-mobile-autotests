@@ -143,8 +143,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(FETCH_DEMAND, "fetchDemand success");
         inAppBidding_Delegates_iOS.put(DID_LOAD_AD, "didLoadAd called");
         inAppBidding_Delegates_iOS.put(DID_HIDE_AD, "didHideAd called");
-//        inAppBidding_Delegates_iOS.put(DID_EXPAND_AD, "didExpandAd called");
-//        inAppBidding_Delegates_iOS.put(DID_COLLAPSED_AD, "didCollapsedAd called");
+        inAppBidding_Delegates_iOS.put(DID_DISPLAY_AD, "didDisplayAd called");
+        inAppBidding_Delegates_iOS.put(DID_EXPAND_AD, "didExpandAd called");
+        inAppBidding_Delegates_iOS.put(DID_COLLAPSED_AD, "didCollapsedAd called");
         inAppBidding_Delegates_iOS.put(DID_CLICK_AD, "didClickAd called");
         inAppBidding_Delegates_iOS.put(GET_NATIVE_AD, "getNativeAd success");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "adWasClicked called");
@@ -382,7 +383,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
             driver = new IOSDriver(new URL(urlAdress), capabilities);
-//            installBmpCertificate();
+            if (capabilities.getCapability("udid") == null) {
+                installBmpCertificate();
+            }
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);
@@ -455,9 +458,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
     }
 
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout, int delay) throws InterruptedException, TimeoutException {
-         waitForEventBmp(event, expectedOccurrences, timeout, delay);
+        waitForEventBmp(event, expectedOccurrences, timeout, delay);
     }
-
 
 
     public String getEvent(InAppBiddingEvents event) {

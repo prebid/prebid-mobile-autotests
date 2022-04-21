@@ -47,6 +47,11 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_MULTI_FORMAT_ADMOB = "Multiformat Interstitial 320x480 (AdMob)";
     String INTERSTITIAL_320x480_NO_BID_ADMOB = "Display Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
 
+    String INTERSTITIAL_320x480_MAX = "Display Interstitial 320x480 (MAX) [OK, OXB Adapter]";
+    String INTERSTITIAL_320x480_MAX_RANDOM = "Display Interstitial 320x480 (MAX) [OK, Random]";
+    String INTERSTITIAL_MULTI_FORMAT_MAX = "Multiformat Interstitial 320x480 (MAX)";
+    String INTERSTITIAL_320x480_NO_BID_MAX = "Display Interstitial 320x480 (MAX) [noBids, No Ad]";
+
     String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
     String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
     String INTERSTITIAL_MULTI_FORMAT_GAM = "Multiformat Interstitial 320x480 (GAM)";
