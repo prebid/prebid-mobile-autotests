@@ -11,9 +11,7 @@ import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
-import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_MAX;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVE_BUTTON;
-import static appium.common.InAppTemplatesInit.INTERSTITIAL_320x480_ADMOB;
 import static appium.common.InAppTemplatesInit.INTERSTITIAL_320x480_IN_APP;
 import static org.testng.Assert.assertEquals;
 
@@ -40,18 +38,10 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
-        try {
-            env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        } catch (AssertionError assertionError){
-            if (assertionError.getMessage().contains("maxduration")){
-                System.out.println("maxduration is not supported for "+PrebidAdapter.getAdapterFromAd(prebidAd));
-            } else {
-                throw new AssertionError(assertionError.getMessage());
-            }
-        }
-        if (!prebidAd.contains("MAX")) {
-            interstitialPage.clickShowButton();
-        }
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        clickShowButton(prebidAd,interstitialPage);
+
 
         interstitialPage.clickCloseRandom();
 
@@ -83,12 +73,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
-        if (prebidAd.contains("AdMob")) {
-            env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
-        }
-        if (!prebidAd.contains("MAX")) {
-            interstitialPage.clickShowButton();
-        }
+        clickShowButton(prebidAd,interstitialPage);
+
         interstitialPage.clickInterstitialAd();
 
         env.homePage.openInBrowser();
@@ -110,10 +96,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         if (prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         }
-        if (!prebidAd.contains("MAX")) {
-            multiformatPage.isShowButtonEnabled();
-            multiformatPage.clickShowButton();
-        }
+        checkShowButton(prebidAd,multiformatPage);
         try {
             multiformatPage.clickLearnMore();
         } catch (Exception exception) {
@@ -161,9 +144,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
 
-        if (!prebidAd.contains("MAX")) {
-            page.clickShowButton();
-        }
+        clickShowButton(prebidAd,page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -193,9 +174,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
-        if (!prebidAd.contains("MAX")) {
-            page.clickShowButton();
-        }
+        clickShowButton(prebidAd,page);
+
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
@@ -263,9 +243,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
-        if (!prebidAd.contains("MAX")) {
-            page.clickShowButton();
-        }
+        clickShowButton(prebidAd,page);
+
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 5);
         try {
@@ -330,15 +309,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 15);
-        try {
-            env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        } catch (AssertionError assertionError){
-            if (assertionError.getMessage().contains("maxduration")){
-                System.out.println("maxduration is not supported for "+PrebidAdapter.getAdapterFromAd(prebidAd));
-            } else {
-                throw new AssertionError(assertionError.getMessage());
-            }
-        }
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }

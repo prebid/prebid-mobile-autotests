@@ -84,6 +84,10 @@ public interface InAppAdNamesImpl {
     String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Video Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
 
+    String VIDEO_INTERSTITIAL_320x480_MAX = "Video Interstitial 320x480 (MAX) [OK, OXB Adapter]";
+    String VIDEO_INTERSTITIAL_320x480_MAX_RANDOM = "Video Interstitial 320x480 (MAX) [OK, Random]";
+    String VIDEO_INTERSTITIAL_320x480_NO_BID_MAX = "Video Interstitial 320x480 (MAX) [noBids, No Ad]";
+
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";
     String VIDEO_OUTSTREAM_FEED_IN_APP = "Video Outstream Feed (In-App)";
@@ -99,6 +103,10 @@ public interface InAppAdNamesImpl {
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Video Rewarded 320x480 (AdMob) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Video Rewarded 320x480 (AdMob) [noBids, AdMob Ad]";
+
+    String VIDEO_REWARDED_320x480_MAX = "Video Rewarded 320x480 (MAX) [OK, OXB Adapter]";
+    String VIDEO_REWARDED_320x480_MAX_RANDOM = "Video Rewarded 320x480 (MAX) [OK, Random]";
+    String VIDEO_REWARDED_320x480_NO_BID_MAX = "Video Rewarded 320x480 (MAX) [noBids, No Ad]";
 
 
     //CUSTOM AUCTION REQUEST TESTS

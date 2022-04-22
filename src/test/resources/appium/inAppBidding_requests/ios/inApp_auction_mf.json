@@ -118,6 +118,7 @@
         ],
         "h": "$VARIABLE",
         "maxduration":30,
+        "linearity": 1,
         "mimes": [
           "video\/mp4",
           "video\/quicktime",
@@ -126,6 +127,7 @@
           "video\/3gpp2"
         ],
         "playbackend": 2,
+        "placement": 5,
         "pos": 7,
         "protocols": [
           2,

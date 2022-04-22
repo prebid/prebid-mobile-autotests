@@ -22,4 +22,5 @@ public abstract class PrebidAdapter implements DelegatesInspector, EventsInspect
     public static String getAdapterFromAd(String prebidAd) {
         return prebidAd.substring(prebidAd.indexOf("(") + 1, prebidAd.indexOf(")"));
     }
+
 }

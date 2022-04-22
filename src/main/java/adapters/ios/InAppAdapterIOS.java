@@ -36,11 +36,7 @@ public class InAppAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkVideoInterstitialDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVED);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT_AD);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_AD);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+        checkDisplayInterstitialDelegates();
     }
 
     @Override

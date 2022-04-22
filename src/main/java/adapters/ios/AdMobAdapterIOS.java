@@ -33,6 +33,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkDisplayInterstitialDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);

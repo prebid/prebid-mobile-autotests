@@ -6,6 +6,7 @@ import appium.common.TestEnvironment;
 import adapters.factory.PrebidAdapterFactory;
 import adapters.factory.PrebidAdapterFactoryAndroid;
 import adapters.factory.PrebidAdapterFactoryIOS;
+import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
 import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
@@ -108,6 +111,19 @@ public class InAppBaseTest {
     public void initEventHandler() {
 //        System.out.println("Log validator: "+env.logValidator.getLogs());
         eventHandler = new OMSDKEventHandler(env.bmp.getHar());
+    }
+
+    public void clickShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
+        if (!prebidAd.contains("MAX")){
+            adPage.clickShowButton();
+        }
+    }
+
+    public void checkShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
+        if (!prebidAd.contains("MAX")){
+            adPage.isShowButtonEnabled();
+            adPage.clickShowButton();
+        }
     }
 
     private void setup(ITestContext itc, Set<TestEnvironment.TrafficInspectorKind> trafficInsprctors) throws IOException {

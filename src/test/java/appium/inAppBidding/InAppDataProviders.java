@@ -211,9 +211,11 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_ENDCARD},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_INTERSTITIAL_320x480_GAM},
+            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
             {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_REWARDED_320x480_MAX},
     };
 
     /* AD_NAME_TYPE*/
@@ -225,6 +227,10 @@ public class InAppDataProviders {
     private static final String[][] VideoRandom = {
             {VIDEO_INTERSTITIAL_320x480_GAM_RANDOM},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM},
+            {VIDEO_INTERSTITIAL_320x480_MAX_RANDOM},
+            {VIDEO_REWARDED_320x480_MAX_RANDOM},
+            {VIDEO_REWARDED_320x480_ADMOB_RANDOM},
+            {VIDEO_REWARDED_320x480_GAM_RANDOM},
     };
 
     /* AD_NAME_TYPE*/
@@ -235,9 +241,11 @@ public class InAppDataProviders {
 
     private static final String[][] VideoNoBids = {
             {VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_NO_BID_MAX},
             {VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD},
             {VIDEO_REWARDED_320x480_NO_BID_GAM},
             {VIDEO_REWARDED_320x480_NO_BID_ADMOB},
+            {VIDEO_REWARDED_320x480_NO_BID_MAX},
     };
 
     /* AD_NAME_TYPE*/
@@ -249,6 +257,7 @@ public class InAppDataProviders {
     private static final String[][] VideoInterstitial = {
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_INTERSTITIAL_320x480_GAM},
     };
 
@@ -272,6 +281,7 @@ public class InAppDataProviders {
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
             {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_REWARDED_320x480_MAX},
     };
 
     /* AD_NAME_TYPE*/

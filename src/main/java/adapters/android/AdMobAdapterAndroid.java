@@ -43,11 +43,7 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkVideoInterstitialDelegates()  {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_SHOWED);
-        testEnvironment.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
+        checkDisplayInterstitialDelegates();
     }
 
     @Override

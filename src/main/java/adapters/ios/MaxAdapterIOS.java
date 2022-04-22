@@ -28,7 +28,7 @@ public class MaxAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkDisplayInterstitialDelegates() throws InterruptedException {
+    public void checkDisplayInterstitialDelegates() {
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_HIDE_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_DISPLAY_AD);
@@ -37,12 +37,12 @@ public class MaxAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkVideoInterstitialDelegates() {
-
+        checkDisplayInterstitialDelegates();
     }
 
     @Override
     public void checkVideoRewardedDelegates() {
-
+        checkDisplayInterstitialDelegates();
     }
 
     @Override

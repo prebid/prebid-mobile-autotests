@@ -29,9 +29,9 @@
 		<classes>
 <!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
-			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
 	</test>
 	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB] [MOCK]">
@@ -43,10 +43,10 @@
 		</groups>
 		<classes>
 <!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
 <!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
 	</test>
 </suite>
