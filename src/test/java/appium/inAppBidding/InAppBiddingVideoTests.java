@@ -21,7 +21,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -217,10 +217,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        if (!adName.contains("MAX")) {
-            page.isShowButtonEnabled();
-            page.clickShowButton();
-        }
+        checkShowButton(adName,page);
         env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
@@ -253,9 +250,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        page.isShowButtonEnabled();
-
-        page.clickShowButton();
+        checkShowButton(adName,page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 

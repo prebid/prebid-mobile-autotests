@@ -60,7 +60,8 @@ public class GamAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkNativeAdsDelegates(String prebidAd) throws InterruptedException {
+    public void checkNativeAdsDelegates(String prebidAd) {
+        testEnvironment.homePage.isDelegateEnabled(FETCH_DEMAND);
         if (prebidAd.contains("Custom")) {
             testEnvironment.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
             if (prebidAd.contains("GAD")) {

@@ -52,7 +52,10 @@ public class MaxAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkNativeAdsDelegates(String prebidAd) throws InterruptedException {
-
+        adPage.clickTvBody();
+        adPage.waitAndReturnToApp();
+        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_NATIVE_AD);
+        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_CLICK_NATIVE_AD);
     }
 
     @Override

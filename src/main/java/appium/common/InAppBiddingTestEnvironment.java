@@ -149,6 +149,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(DID_CLICK_AD, "didClickAd called");
         inAppBidding_Delegates_iOS.put(GET_NATIVE_AD, "getNativeAd success");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "adWasClicked called");
+        inAppBidding_Delegates_iOS.put(DID_CLICK_NATIVE_AD, "didClickNativeAd called");
+        inAppBidding_Delegates_iOS.put(DID_LOAD_NATIVE_AD, "didLoadNativeAd called");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_LOG_IMPRESSION, "adDidLogImpression called");
         inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "custom ad request successful");
         inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called (custom)");
@@ -301,6 +303,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         FETCH_DEMAND,
         GET_NATIVE_AD,
         NATIVE_AD_DID_CLICK,
+        DID_CLICK_NATIVE_AD,
+        DID_LOAD_NATIVE_AD,
         NATIVE_AD_DID_LOG_IMPRESSION,
         CUSTOM_NATIVE_AD_REQUEST_SUCCESS,
         CUSTOM_NATIVE_AD_PRIMARY_WIN,

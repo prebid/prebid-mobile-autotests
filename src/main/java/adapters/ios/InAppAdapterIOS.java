@@ -59,6 +59,7 @@ public class InAppAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        testEnvironment.homePage.isDelegateEnabled(FETCH_DEMAND);
         if (prebidAd.contains("Links")) {
             adPage.clickBtnNativeLinkRoot();
         } else {

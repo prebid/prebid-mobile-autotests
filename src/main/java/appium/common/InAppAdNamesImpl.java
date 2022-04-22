@@ -126,6 +126,9 @@ public interface InAppAdNamesImpl {
     String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, AdMob ad]";
     String NATIVE_AD_ADMOB_GAD_NO_BIDS = "Native Ad (AdMob) [noBids, GADNativeAd]";
 
+    String NATIVE_AD_MAX = "Native Ad (MAX) [OK, OXB Adapter]";
+    String NATIVE_AD_MAX_NO_BIDS = "Native Ad (MAX) [noBids, No Ad]";
+
     String NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
     String NATIVE_AD_GAM_UNIFIED_GAD = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";
     String NATIVE_AD_GAM_UNIFIED = "Native Ad Unified Ad (GAM) [OK, NativeAd]";
