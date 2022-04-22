@@ -21,7 +21,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-//    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -510,221 +510,221 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 //
 //
 //    //VIDEO DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException, NoSuchFieldException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//
-//        videoPage.clickVideoAd();
-//        Thread.sleep(5000);
-//
-//        env.homePage.openInBrowser();
-//
-//        videoPage.waitAndReturnToApp();
-//        Thread.sleep(3000);
-//        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
-//        prebidAdapter.checkVideoOutstreamDelegates();
-//
-//        env.homePage.clickBack();
-//    }
-//
-//    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamOMEventsSingleSessionMinimize(String adName) throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.COMPLETE, 2, 60);
-//
-//        videoPage.waitWhenWatchAgainDisplayed();
-//
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
-//        // CHECK OM EVENTS
-//        initEventHandler();
-//        assertTrue(eventHandler.checkSessionsCount(1));
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        session.checkOMBaseEvents(platformName);
-//        session.checkMediaTypeIsVideo();
-//        session.checkOutstreamPlaybackEvents(platformName);
-//        session.checkNonAutoPlaySkippableAndStandalonePosition();
-//        session.checkPlayerStateIsNormal();
-//    }
-//
-//    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
-//
-//        videoPage.waitWhenWatchAgainDisplayed();
-//
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
-//        // CHECK OM EVENTS
-//        initEventHandler();
-//        assertTrue(eventHandler.checkSessionsCount(1));
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        session.checkOMBaseEvents(platformName);
-//        session.checkMediaTypeIsVideo();
-//        session.checkOutstreamPlaybackEvents(platformName);
-//        session.checkNonAutoPlaySkippableAndStandalonePosition();
-//    }
-//
-//    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
-//
-//        videoPage.isEndCardDisplayed();
-//        if (!isPlatformIOS) {
-//            env.homePage.clickBack();
-//        }
-//
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-//        // CHECK OM EVENTS
-//        initEventHandler();
-//        OMSDKAssert.assertTrue(eventHandler.checkSessions());
-//        String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND,};
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        session.checkOMBaseEvents(platformName);
-//        session.checkMediaTypeIsVideo();
-//        session.checkNonAutoPlaySkippableAndStandalonePosition();
-//        session.checkOutstreamPlaybackEvents(platformName);
-//        session.checkPauseAndResumeAreEqual();
-//        session.checkGeometryChangeReasons(reasons);
-//        session.checkPlayerStateIsNormal();
-//    }
-//
-//    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamOMEventsBackgrounded(String adName) throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-//
-//        env.homePage.runAppInBackground(5);
-//
-//        videoPage.waitWhenWatchAgainDisplayed();
-//
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-//        // CHECK OM EVENTS
-//        initEventHandler();
-//        OMSDKAssert.assertTrue(eventHandler.checkSessions());
-//        String[] reasons;
-//
-//        if (isPlatformIOS) {
-//            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED};
-//        } else {
-//            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND, OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED,};
-//        }
-//
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        session.checkOMBaseEvents(platformName);
-//        session.checkMediaTypeIsVideo();
-//        session.checkHideAndRestoreViewabilityWithReasons(reasons);
-//        session.checkPauseAndResumeAreEqual();
-//        session.checkVideoStartEvent(platformName);
-//        session.checkNonAutoPlaySkippableAndStandalonePosition();
-//        session.checkPlayerStateIsNormal();
-//    }
-//
-//    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamOMEventsBackgroundedEndCard() throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
-//
-//        env.homePage.runAppInBackground(5);
-//        videoPage.isEndCardDisplayed();
-//
-//        env.homePage.clickBack();
-//
-//        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
-//        // CHECK OM EVENTS
-//        initEventHandler();
-//        OMSDKAssert.assertTrue(eventHandler.checkSessions());
-//        String[] reasons;
-//
-//        if (isPlatformIOS) {
-//            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED};
-//        } else {
-//            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
-//        }
-//
-//        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
-//        session.checkOMBaseEvents(platformName);
-//        session.checkMediaTypeIsVideo();
-//        session.checkHideAndRestoreViewabilityWithReasons(reasons);
-//        session.checkPauseAndResumeAreEqual();
-//        session.checkVideoStartEvent(platformName);
-//        session.checkNonAutoPlaySkippableAndStandalonePosition();
-//        session.checkPlayerStateIsNormal();
-//    }
-//
-//    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamVideoEventsPauseResume(String adName) throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
-//
-//        videoPage.clickVideoAd();
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_PAUSE, 1, 30);
-//        videoPage.closeWebViewCreative();
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_RESUME, 1, 30);
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_MIDPOINT, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_THIRDQUARTILE, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
-//
-//        videoPage.waitWhenWatchAgainDisplayed();
-//        env.homePage.clickBack();
-//    }
-//
-//    @Test(groups = {"smoke"})
-//    public void testVideoOutstreamVideoEventsPauseResumeEndCard() throws InterruptedException, TimeoutException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
-//
-//        videoPage.clickVideoAd();
-//        videoPage.closeWebViewCreative();
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
-//
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_MIDPOINT, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_THIRDQUARTILE, 1, 30);
-//        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
-//
-//        videoPage.isEndCardDisplayed();
-//
-//        env.homePage.clickBack();
-//    }
-//
-//
-//    @Test(groups = {"android"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-//    public void testVideoOutstreamAndroidDelegates(String adName) throws InterruptedException, NoSuchFieldException {
-//        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
-//        Thread.sleep(5000);
-//
-//        videoPage.clickVideoAd();
-//        Thread.sleep(5000);
-//
-//        videoPage.closeWebViewCreative();
-//        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
-//        prebidAdapter.checkVideoOutstreamDelegates();
-//
-//        env.homePage.clickBack();
-//    }
+    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+
+        videoPage.clickVideoAd();
+        Thread.sleep(5000);
+
+        env.homePage.openInBrowser();
+
+        videoPage.waitAndReturnToApp();
+        Thread.sleep(3000);
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkVideoOutstreamDelegates();
+
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamOMEventsSingleSessionMinimize(String adName) throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.COMPLETE, 2, 60);
+
+        videoPage.waitWhenWatchAgainDisplayed();
+
+        env.homePage.clickBack();
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        // CHECK OM EVENTS
+        initEventHandler();
+        assertTrue(eventHandler.checkSessionsCount(1));
+        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
+        session.checkOMBaseEvents(platformName);
+        session.checkMediaTypeIsVideo();
+        session.checkOutstreamPlaybackEvents(platformName);
+        session.checkNonAutoPlaySkippableAndStandalonePosition();
+        session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
+
+        videoPage.waitWhenWatchAgainDisplayed();
+
+        env.homePage.clickBack();
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);
+        // CHECK OM EVENTS
+        initEventHandler();
+        assertTrue(eventHandler.checkSessionsCount(1));
+        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
+        session.checkOMBaseEvents(platformName);
+        session.checkMediaTypeIsVideo();
+        session.checkOutstreamPlaybackEvents(platformName);
+        session.checkNonAutoPlaySkippableAndStandalonePosition();
+    }
+
+    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
+
+        videoPage.isEndCardDisplayed();
+        if (!isPlatformIOS) {
+            env.homePage.clickBack();
+        }
+
+        env.homePage.clickBack();
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        // CHECK OM EVENTS
+        initEventHandler();
+        OMSDKAssert.assertTrue(eventHandler.checkSessions());
+        String[] reasons = {OMSDKSessionDescriptor.EVENT_VALUE.OBSTRUCTED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND,};
+        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
+        session.checkOMBaseEvents(platformName);
+        session.checkMediaTypeIsVideo();
+        session.checkNonAutoPlaySkippableAndStandalonePosition();
+        session.checkOutstreamPlaybackEvents(platformName);
+        session.checkPauseAndResumeAreEqual();
+        session.checkGeometryChangeReasons(reasons);
+        session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamOMEventsBackgrounded(String adName) throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+
+        env.homePage.runAppInBackground(5);
+
+        videoPage.waitWhenWatchAgainDisplayed();
+
+        env.homePage.clickBack();
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        // CHECK OM EVENTS
+        initEventHandler();
+        OMSDKAssert.assertTrue(eventHandler.checkSessions());
+        String[] reasons;
+
+        if (isPlatformIOS) {
+            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED};
+        } else {
+            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND, OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED,};
+        }
+
+        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
+        session.checkOMBaseEvents(platformName);
+        session.checkMediaTypeIsVideo();
+        session.checkHideAndRestoreViewabilityWithReasons(reasons);
+        session.checkPauseAndResumeAreEqual();
+        session.checkVideoStartEvent(platformName);
+        session.checkNonAutoPlaySkippableAndStandalonePosition();
+        session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamOMEventsBackgroundedEndCard() throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
+
+        env.homePage.runAppInBackground(5);
+        videoPage.isEndCardDisplayed();
+
+        env.homePage.clickBack();
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
+        // CHECK OM EVENTS
+        initEventHandler();
+        OMSDKAssert.assertTrue(eventHandler.checkSessions());
+        String[] reasons;
+
+        if (isPlatformIOS) {
+            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.CLIPPED};
+        } else {
+            reasons = new String[]{OMSDKSessionDescriptor.EVENT_VALUE.BACKGROUNDED, OMSDKSessionDescriptor.EVENT_VALUE.NOT_FOUND};
+        }
+
+        OMSDKSessionDescriptor session = eventHandler.getFirstSession();
+        session.checkOMBaseEvents(platformName);
+        session.checkMediaTypeIsVideo();
+        session.checkHideAndRestoreViewabilityWithReasons(reasons);
+        session.checkPauseAndResumeAreEqual();
+        session.checkVideoStartEvent(platformName);
+        session.checkNonAutoPlaySkippableAndStandalonePosition();
+        session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"smoke"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamVideoEventsPauseResume(String adName) throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
+
+        videoPage.clickVideoAd();
+        env.waitForEvent(InAppBiddingEvents.VIDEO_PAUSE, 1, 30);
+        videoPage.closeWebViewCreative();
+        env.waitForEvent(InAppBiddingEvents.VIDEO_RESUME, 1, 30);
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_MIDPOINT, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_THIRDQUARTILE, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
+
+        videoPage.waitWhenWatchAgainDisplayed();
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"smoke"})
+    public void testVideoOutstreamVideoEventsPauseResumeEndCard() throws InterruptedException, TimeoutException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
+
+        videoPage.clickVideoAd();
+        videoPage.closeWebViewCreative();
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
+
+        env.waitForEvent(InAppBiddingEvents.VIDEO_MIDPOINT, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_THIRDQUARTILE, 1, 30);
+        env.waitForEvent(InAppBiddingEvents.VIDEO_COMPLETE, 1, 30);
+
+        videoPage.isEndCardDisplayed();
+
+        env.homePage.clickBack();
+    }
+
+
+    @Test(groups = {"android"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOutstreamAndroidDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+        InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
+        Thread.sleep(5000);
+
+        videoPage.clickVideoAd();
+        Thread.sleep(5000);
+
+        videoPage.closeWebViewCreative();
+        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        prebidAdapter.checkVideoOutstreamDelegates();
+
+        env.homePage.clickBack();
+    }
 }

@@ -317,25 +317,25 @@ public class InAppDataProviders {
             {NATIVE_AD_ADMOB},
             {NATIVE_AD_MAX},
 
-//            {NATIVE_AD_IN_APP},
-//            {NATIVE_AD_LINKS_IN_APP},
-//            {NATIVE_AD_FEED_IN_APP},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+            {NATIVE_AD_FEED_IN_APP},
 
-//            {NATIVE_AD_FEED_GAM},
-//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-//            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED},
 
     };
     private static final String[][] NativeAdsIos = {
-//            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_ADMOB},
             {NATIVE_AD_MAX},
-//            {NATIVE_AD_IN_APP},
-//            {NATIVE_AD_LINKS_IN_APP},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
 
-//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
-//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-//            {NATIVE_AD_GAM_UNIFIED_GAD},
-//            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED_GAD},
+            {NATIVE_AD_GAM_UNIFIED},
     };
     private static final String[][] NativeRequestAdsAndroid = {
             {NATIVE_AD_ADMOB},
