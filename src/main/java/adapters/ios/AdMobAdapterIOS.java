@@ -21,9 +21,8 @@ public class AdMobAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() throws InterruptedException {
-
-        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+    public void checkBannerDelegates() {
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_RECORD_IMPRESSION);
         testEnvironment.homePage.isDelegateEnabled(AD_WILL_PRESENT_SCREEN);
         testEnvironment.homePage.isDelegateEnabled(AD_WILL_DISMISS_SCREEN);
@@ -36,7 +35,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -45,7 +44,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -54,7 +53,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -78,12 +77,17 @@ public class AdMobAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkLoadDelegates() {
+    public void checkLoadDelegate() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
     }
 
     @Override
-    public void checkLoadFailDelegates() {
+    public void checkLoadFailDelegate() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
+    }
+
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
     }
 }

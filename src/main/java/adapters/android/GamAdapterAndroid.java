@@ -22,38 +22,38 @@ public class GamAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates()  {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
     }
 
     @Override
     public void checkDisplayInterstitialDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
     }
 
     @Override
     public void checkVideoInterstitialDelegates()  {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
     }
 
     @Override
     public void checkVideoRewardedDelegates() {
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
     }
 
     @Override
     public void checkVideoOutstreamDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
     }
 
     @Override
@@ -84,12 +84,18 @@ public class GamAdapterAndroid extends PrebidAdapter {
     }
 
     @Override
-    public void checkLoadDelegates() {
+    public void checkLoadDelegate() {
         testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
     }
 
     @Override
-    public void checkLoadFailDelegates() {
+    public void checkLoadFailDelegate() {
         testEnvironment.homePage.isDelegateEnabled(ON_AD_FAILED);
+    }
+
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+
     }
 }

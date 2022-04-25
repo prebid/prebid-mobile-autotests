@@ -18,7 +18,7 @@ public class GamAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() throws InterruptedException {
+    public void checkBannerDelegates() {
 
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
@@ -32,7 +32,7 @@ public class GamAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_PRESENT_AD);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_AD);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_LEAVE_APP);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+        checkClickDelegate();
     }
 
     @Override
@@ -83,13 +83,17 @@ public class GamAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkLoadDelegates() {
+    public void checkLoadDelegate() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
     }
 
     @Override
-    public void checkLoadFailDelegates() {
+    public void checkLoadFailDelegate() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
     }
 
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
+    }
 }

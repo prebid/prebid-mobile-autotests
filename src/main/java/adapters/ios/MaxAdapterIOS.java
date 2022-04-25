@@ -6,8 +6,7 @@ import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 
 import java.util.concurrent.TimeoutException;
 
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.AD_VIEW_DID_FAIL;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD;
+import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
 
 public class MaxAdapterIOS extends PrebidAdapter {
     public MaxAdapterIOS(InAppBiddingTestEnvironment testEnvironment, InAppBiddingAdPageImpl adPage) {
@@ -20,19 +19,19 @@ public class MaxAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_HIDE_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_COLLAPSED_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_EXPAND_AD);
-        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_CLICK_AD);
+        checkClickDelegate();
     }
 
     @Override
     public void checkDisplayInterstitialDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_HIDE_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_DISPLAY_AD);
-        testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_CLICK_AD);
+        checkClickDelegate();
     }
 
     @Override
@@ -69,12 +68,17 @@ public class MaxAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkLoadDelegates() {
+    public void checkLoadDelegate() {
         testEnvironment.homePage.isDelegateEnabled(DID_LOAD_AD);
     }
 
     @Override
-    public void checkLoadFailDelegates() {
+    public void checkLoadFailDelegate() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
+    }
+
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(DID_CLICK_AD);
     }
 }

@@ -1,7 +1,6 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKSessionDescriptor;
-import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.annotations.Test;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
 import static appium.common.InAppTemplatesInit.*;
 
 public class InAppBiddingBannerTests extends InAppBaseTest {
@@ -254,7 +252,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         bannerPage.isAdDisplayed();
         initPrebidAdapter(BANNER_320x50_IN_APP,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.homePage.clickBack();
 
@@ -283,7 +281,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(scrollableBanner);
 
         initPrebidAdapter(scrollableBanner,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -314,7 +312,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 5);
@@ -325,7 +323,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 2, 5, autoRefreshDelay);
 
-        prebidAdapter.checkLoadFailDelegates();
+        prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 5, autoRefreshDelay);
 
@@ -344,7 +342,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
 
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
 
@@ -354,7 +352,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 2, autoRefreshDelay);
 
-        prebidAdapter.checkLoadFailDelegates();
+        prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, autoRefreshDelay);
 
@@ -363,7 +361,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 3, autoRefreshDelay);
 
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 2, autoRefreshDelay);
 
@@ -406,7 +404,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
         initPrebidAdapter(BANNER_320x50_IN_APP,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
@@ -433,7 +431,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
         //wait for reload
         env.waitForEvent(InAppBiddingEvents.AUCTION, 2, 30, 60);
 
@@ -447,7 +445,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
 
         initPrebidAdapter(BANNER_320x50_IN_APP_VAST,env);
-        prebidAdapter.checkLoadFailDelegates();
+        prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
 
@@ -465,7 +463,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
 
@@ -494,7 +492,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
-        prebidAdapter.checkLoadDelegates();
+        prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 35);
 
@@ -512,7 +510,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
         initPrebidAdapter(BANNER_320x50_ADMOB,env);
-        prebidAdapter.checkLoadFailDelegates();
+        prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
 

@@ -2,7 +2,6 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
-import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.annotations.Test;
@@ -11,8 +10,6 @@ import utils.RequestValidator;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
-import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_ADMOB;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
 import static appium.common.InAppTemplatesInit.VIDEO_OUTSTREAM_ENDCARD;
 
 public class InAppBiddingVideoTests extends InAppBaseTest {
@@ -68,7 +65,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        initPrebidAdapter(adName,env);
+        initPrebidAdapter(adName, env);
         try {
             env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
         } catch (TimeoutException e) {
@@ -86,13 +83,13 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
-        checkShowButton(adName,videoPage);
+        checkShowButton(adName, videoPage);
 
         videoPage.clickLearnMore();
         Thread.sleep(5000);
@@ -101,7 +98,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.waitAndReturnToApp();
 
         Thread.sleep(3000);
-        initPrebidAdapter(adName,env,videoPage);
+        initPrebidAdapter(adName, env, videoPage);
         prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
@@ -110,7 +107,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName,page);
+        checkShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -134,7 +131,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -170,7 +167,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsLearnMore(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -179,23 +176,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         page.closeWebViewCreative();
 
         page.clickCloseInterstitial();
-
-        if (isPlatformIOS) {
-            if (adName.contains("AdMob")) {
-                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
-            } else if (adName.contains("MAX")) {
-                env.homePage.isDelegateEnabled(DID_CLICK_AD);
-            } else {
-                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
-            }
-        } else {
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
-            if (adName.contains("AdMob") ) {
-                env.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
-            } else {
-                env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-            }
-        }
+        initPrebidAdapter(adName, env);
+        prebidAdapter.checkClickDelegate();
 
         env.homePage.clickBack();
 
@@ -217,7 +199,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName,page);
+        checkShowButton(adName, page);
         env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
@@ -232,7 +214,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         page.clickLearnMore();
 
@@ -250,25 +232,20 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName,page);
+        checkShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickInterstitialAd();
 
         page.closeWebViewCreative();
-
-        if (isPlatformIOS) {
-            if (adName.contains("MAX")){
-                env.homePage.isDelegateEnabled(DID_CLICK_AD);
-            } else {
-                env.homePage.isDelegateEnabled(INTERSTITIAL_DID_CLICK);
-            }
-        } else {
+        initPrebidAdapter(adName, env);
+        if (!isPlatformIOS) {
             page.isEndCardDisplayed();
             page.clickCloseInterstitial();
-            env.homePage.isDelegateEnabled(ON_AD_CLICKED);
         }
+        prebidAdapter.checkClickDelegate();
+
 
         env.homePage.clickBack();
 
@@ -303,7 +280,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(2000);
 
         videoPage.clickCloseInterstitial();
-        initPrebidAdapter(adName,env);
+        initPrebidAdapter(adName, env);
         prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
@@ -319,7 +296,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
-        checkShowButton(prebidAd,videoPage);
+        checkShowButton(prebidAd, videoPage);
         Thread.sleep(5000);
         videoPage.clickInterstitialAd();
         Thread.sleep(3000);
@@ -328,7 +305,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        initPrebidAdapter(prebidAd,env,videoPage);
+        initPrebidAdapter(prebidAd, env, videoPage);
         prebidAdapter.checkVideoRewardedDelegates();
         env.homePage.clickBack();
 
@@ -338,12 +315,12 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         page.clickCloseInterstitial();
-        initPrebidAdapter(adName,env);
+        initPrebidAdapter(adName, env);
         prebidAdapter.checkEvents();
         env.homePage.clickBack();
 
@@ -366,7 +343,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
@@ -406,7 +383,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsClickEndCard(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
@@ -441,7 +418,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         Thread.sleep(2 * 1000);
 
@@ -463,7 +440,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedVideoEvents(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName,page);
+        clickShowButton(adName, page);
 
         env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 2, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_START, 2, 30);
@@ -483,7 +460,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.sleep(3);
 
-        clickShowButton(prebidAd,videoPage);
+        clickShowButton(prebidAd, videoPage);
 
         videoPage.clickInterstitialAd();
 
@@ -497,7 +474,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.sleep(3);
 
-        initPrebidAdapter(prebidAd,env,videoPage);
+        initPrebidAdapter(prebidAd, env, videoPage);
         prebidAdapter.checkVideoRewardedDelegates();
 
         env.homePage.clickBack();
@@ -521,7 +498,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        initPrebidAdapter(adName,env);
+        initPrebidAdapter(adName, env);
         prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
@@ -722,7 +699,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(5000);
 
         videoPage.closeWebViewCreative();
-        initPrebidAdapter(adName,env);
+        initPrebidAdapter(adName, env);
         prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
