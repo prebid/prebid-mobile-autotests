@@ -69,6 +69,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_PAUSE, "/rv?t=pause");
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_RESUME, "/rv?t=resume");
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_CLOSE, "/rv?t=close");
+
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_LOAD, "event/load");
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_MIMP, "event/mimp");
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_CIMP, "event/cimp");
     }
 
     private static final Map<InAppBiddingDelegates, String> inAppBidding_Delegates_iOS;
@@ -353,6 +357,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         VIDEO_PAUSE,
         VIDEO_RESUME,
         VIDEO_CLOSE,
+
+        /** MAX Load events*/
+        MAX_LOAD,
+        MAX_MIMP,
+        MAX_CIMP,
     }
 
     public InAppBiddingHomePageImpl homePage;

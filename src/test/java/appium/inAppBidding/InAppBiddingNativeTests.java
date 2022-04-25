@@ -124,7 +124,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
     }
 
     @Test(groups = {"ios"}, dataProvider = "nativeAdsIos", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
@@ -135,7 +135,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
     }
 
     @Test(groups = {"android"}, dataProvider = "nativeAdsAndroid", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);

@@ -34,7 +34,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
 
@@ -105,7 +105,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testBanneriOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
@@ -121,7 +121,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER DELEGATES TEST
     @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testBannerAndroidDelegates(String prebidAd) throws NoSuchFieldException, InterruptedException {
+    public void testBannerAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
         bannerPage.clickBanner();
@@ -145,7 +145,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      * @throws IOException
      */
     @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
-    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException, NoSuchFieldException {
+    public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
 
@@ -243,7 +243,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      * @throws IOException
      */
     @Test(groups = {"requests"})
-    public void testOMEventsSessionWithBackground() throws InterruptedException, TimeoutException, NoSuchFieldException {
+    public void testOMEventsSessionWithBackground() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
 
         bannerPage.isAdDisplayed();
@@ -271,7 +271,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"})
-    public void testOMEventsSessionWithScroll() throws InterruptedException, TimeoutException, NoSuchFieldException {
+    public void testOMEventsSessionWithScroll() throws InterruptedException, TimeoutException {
         String scrollableBanner;
 
         if (platformName.equalsIgnoreCase("iOS")) {
@@ -302,7 +302,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"smoke"}, enabled = false)
-    public void testAdLoadsAfterFailInFirstAttempt() throws TimeoutException, InterruptedException, IOException, NoSuchFieldException {
+    public void testAdLoadsAfterFailInFirstAttempt() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
         env.bmp.setResponseError();
@@ -333,7 +333,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"smoke"}, enabled = false)
-    public void testRefreshWithFailsInTheMiddle() throws TimeoutException, InterruptedException, IOException, NoSuchFieldException {
+    public void testRefreshWithFailsInTheMiddle() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
         env.homePage.turnOnCustomConfig();
@@ -394,7 +394,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"})
-    public void testRefreshClientSide() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testRefreshClientSide() throws TimeoutException, InterruptedException {
         int expectedEventCount = 4;
 
         int autoRefreshDelay = 15;
@@ -427,7 +427,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void testDefaultRefresh() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testDefaultRefresh() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_ADMOB);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
@@ -441,7 +441,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"})
-    public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
@@ -455,7 +455,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"smoke"})
-    public void testAdRequestLimitation() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testAdRequestLimitation() throws TimeoutException, InterruptedException {
         int autoRefreshDelay = 15;
 
         env.homePage.turnOnCustomConfig();
@@ -484,7 +484,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"})
-    public void testSlowConnection() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testSlowConnection() throws TimeoutException, InterruptedException {
         // regular 2G network (250/50 KB/s, 300ms latency -  diff because of real network latency)
 
         env.logValidator.setLatency(300);
@@ -504,7 +504,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, priority = 1)
-    public void testNoConnection() throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testNoConnection() throws TimeoutException, InterruptedException {
         env.logValidator.setLatency(30 * 1000);
 
         env.homePage.goToAd(BANNER_320x50_ADMOB);

@@ -63,11 +63,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-
         env.homePage.isDelegateEnabled(ON_AD_LOADED);
         env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
         env.homePage.isDelegateEnabled(ON_AD_CLOSED);
-
 
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
 
@@ -83,7 +81,6 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.adShouldExpand1Part();
 
         page.clickCloseInterstitial();
-
 
         env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
 

@@ -49,7 +49,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
         @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
 
@@ -68,7 +68,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // =============================
 
     @Test(groups = {"ios"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testInterstitialiOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -114,7 +114,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
     @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -137,7 +137,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // =============================
 
     @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
-    public void testOMEvents(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testOMEvents(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
@@ -168,7 +168,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialMultiFormatOMEvents(String prebidAd) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testInterstitialMultiFormatOMEvents(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);

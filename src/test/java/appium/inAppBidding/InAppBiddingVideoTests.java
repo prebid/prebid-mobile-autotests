@@ -60,7 +60,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     @Test(groups = {"requests"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
         env.homePage.goToAd(adName);
@@ -87,7 +87,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
     //VIDEO DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+    public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
@@ -287,7 +287,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoInterstitialAndroidDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+    public void testVideoInterstitialAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         videoPage.isShowButtonEnabled();
@@ -316,7 +316,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
     //VIDEO DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
         checkShowButton(prebidAd,videoPage);
@@ -335,7 +335,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException, NoSuchFieldException {
+    public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         clickShowButton(adName,page);
@@ -478,7 +478,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"android"}, dataProvider = "videoRewardedAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoRewardedAndroidDelegates(String prebidAd) throws InterruptedException, TimeoutException, NoSuchFieldException {
+    public void testVideoRewardedAndroidDelegates(String prebidAd) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
         env.homePage.sleep(3);
@@ -511,7 +511,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 //
 //    //VIDEO DELEGATES TEST
     @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+    public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         videoPage.clickVideoAd();
@@ -714,7 +714,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     @Test(groups = {"android"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoOutstreamAndroidDelegates(String adName) throws InterruptedException, NoSuchFieldException {
+    public void testVideoOutstreamAndroidDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
         Thread.sleep(5000);
 
