@@ -22,8 +22,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.openInBrowser();
-        adPage.waitAndReturnToApp();
+
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_RECORD_IMPRESSION);
         testEnvironment.homePage.isDelegateEnabled(AD_WILL_PRESENT_SCREEN);
@@ -76,5 +75,15 @@ public class AdMobAdapterIOS extends PrebidAdapter {
     public void checkEvents() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_MADS_GMA, 1, 60);
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+    }
+
+    @Override
+    public void checkLoadDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+    }
+
+    @Override
+    public void checkLoadFailDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
     }
 }

@@ -1,6 +1,7 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKEventHandler;
+import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
 import adapters.factory.PrebidAdapterFactory;
@@ -36,6 +37,7 @@ public class InAppBaseTest {
     protected static String omidpv;
     protected static boolean isPlatformIOS;
     protected static PrebidAdapterFactory prebidAdapterFactory;
+    protected PrebidAdapter prebidAdapter;
     protected JSONObject auctionRequestCCPA_TRUE;
     protected JSONObject auctionRequestCCPA_FALSE;
     protected JSONObject auctionRequestJson;
@@ -109,8 +111,23 @@ public class InAppBaseTest {
     }
 
     public void initEventHandler() {
-//        System.out.println("Log validator: "+env.logValidator.getLogs());
         eventHandler = new OMSDKEventHandler(env.bmp.getHar());
+    }
+
+    public void initPrebidAdapter( String prebidAd,InAppBiddingTestEnvironment env,InAppBiddingAdPageImpl adPage)  {
+        try {
+            prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, adPage);
+        } catch (NoSuchFieldException noSuchFieldException){
+            noSuchFieldException.printStackTrace();
+        }
+    }
+
+    public void initPrebidAdapter(String prebidAd,InAppBiddingTestEnvironment env) {
+        try {
+            prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        } catch (NoSuchFieldException noSuchFieldException){
+            noSuchFieldException.printStackTrace();
+        }
     }
 
     public void clickShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){

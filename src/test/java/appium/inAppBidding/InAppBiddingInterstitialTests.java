@@ -57,7 +57,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -81,14 +81,14 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.waitAndReturnToApp();
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
     }
 
     @Test(groups = {"ios"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
-    public void testInterstitialMultiFormatiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    public void testInterstitialMultiFormatiOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl multiformatPage = env.homePage.goToAd(prebidAd);
@@ -107,7 +107,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         multiformatPage.waitAndReturnToApp();
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -126,7 +126,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         interstitialPage.closeWebViewCreative();
 
         interstitialPage.clickCloseInterstitial();
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);;
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -152,7 +152,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -183,7 +183,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
+        initPrebidAdapter(prebidAd,env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();

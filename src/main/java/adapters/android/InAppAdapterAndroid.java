@@ -22,8 +22,6 @@ public class InAppAdapterAndroid extends PrebidAdapter {
     public void checkBannerDelegates()  {
         testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        adPage.clickBanner();
-        testEnvironment.homePage.clickCloseButtonClickThroughBrowser();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
     }
@@ -73,5 +71,15 @@ public class InAppAdapterAndroid extends PrebidAdapter {
     @Override
     public void checkEvents() {
 
+    }
+
+    @Override
+    public void checkLoadDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+    }
+
+    @Override
+    public void checkLoadFailDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_FAILED);
     }
 }

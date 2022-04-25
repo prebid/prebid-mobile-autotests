@@ -19,8 +19,7 @@ public class GamAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.openInBrowser();
-        adPage.waitAndReturnToApp();
+
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
@@ -82,4 +81,15 @@ public class GamAdapterIOS extends PrebidAdapter {
     public void checkEvents() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_GAMPAD, 1, 60);
     }
+
+    @Override
+    public void checkLoadDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
+    }
+
+    @Override
+    public void checkLoadFailDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
+    }
+
 }

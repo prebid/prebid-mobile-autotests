@@ -64,9 +64,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
 
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
+        env.homePage.isDelegateEnabled(ON_AD_LOADED);
+        env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+        env.homePage.isDelegateEnabled(ON_AD_CLOSED);
 
 
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
@@ -85,7 +85,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
 
-            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
+        env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
 
         env.homePage.clickBack();
     }
@@ -287,9 +287,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickCloseMRAIDResizeButton();
 
 
-            env.homePage.isDelegateEnabled(ON_AD_LOADED);
-            env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-            env.homePage.isDelegateEnabled(ON_AD_CLOSED);
+        env.homePage.isDelegateEnabled(ON_AD_LOADED);
+        env.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
+        env.homePage.isDelegateEnabled(ON_AD_CLOSED);
 
 
         env.homePage.isDelegateEnabled(ON_AD_CLICKED);
@@ -325,9 +325,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickCloseMRAIDResizeButton();
 
 
-            env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
-            env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
-            env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
+        env.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
+        env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
+        env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
 
 
         env.homePage.clickBack();

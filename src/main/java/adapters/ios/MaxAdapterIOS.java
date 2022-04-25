@@ -6,6 +6,9 @@ import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 
 import java.util.concurrent.TimeoutException;
 
+import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.AD_VIEW_DID_FAIL;
+import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD;
+
 public class MaxAdapterIOS extends PrebidAdapter {
     public MaxAdapterIOS(InAppBiddingTestEnvironment testEnvironment, InAppBiddingAdPageImpl adPage) {
         super(testEnvironment, adPage);
@@ -16,15 +19,12 @@ public class MaxAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.openInBrowser();
-        adPage.waitAndReturnToApp();
+    public void checkBannerDelegates() {
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_LOAD_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_HIDE_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_COLLAPSED_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_EXPAND_AD);
         testEnvironment.homePage.isDelegateEnabled(InAppBiddingTestEnvironment.InAppBiddingDelegates.DID_CLICK_AD);
-
     }
 
     @Override
@@ -47,7 +47,7 @@ public class MaxAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkVideoOutstreamDelegates() {
-
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
@@ -61,5 +61,15 @@ public class MaxAdapterIOS extends PrebidAdapter {
     @Override
     public void checkEvents() throws InterruptedException, TimeoutException {
 
+    }
+
+    @Override
+    public void checkLoadDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(DID_LOAD_AD);
+    }
+
+    @Override
+    public void checkLoadFailDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
     }
 }

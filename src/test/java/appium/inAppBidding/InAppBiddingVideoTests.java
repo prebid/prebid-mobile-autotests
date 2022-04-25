@@ -68,7 +68,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        initPrebidAdapter(adName,env);
         try {
             env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
         } catch (TimeoutException e) {
@@ -101,7 +101,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         videoPage.waitAndReturnToApp();
 
         Thread.sleep(3000);
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env,videoPage);
+        initPrebidAdapter(adName,env,videoPage);
         prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
@@ -133,8 +133,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
-        clickShowButton(adName,page);
 
+        clickShowButton(adName,page);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -303,7 +303,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(2000);
 
         videoPage.clickCloseInterstitial();
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        initPrebidAdapter(adName,env);
         prebidAdapter.checkVideoInterstitialDelegates();
         env.homePage.clickBack();
     }
@@ -328,7 +328,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,videoPage);
+        initPrebidAdapter(prebidAd,env,videoPage);
         prebidAdapter.checkVideoRewardedDelegates();
         env.homePage.clickBack();
 
@@ -343,7 +343,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
         page.clickCloseInterstitial();
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        initPrebidAdapter(adName,env);
         prebidAdapter.checkEvents();
         env.homePage.clickBack();
 
@@ -497,7 +497,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.sleep(3);
 
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,videoPage);
+        initPrebidAdapter(prebidAd,env,videoPage);
         prebidAdapter.checkVideoRewardedDelegates();
 
         env.homePage.clickBack();
@@ -521,7 +521,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         videoPage.waitAndReturnToApp();
         Thread.sleep(3000);
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        initPrebidAdapter(adName,env);
         prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();
@@ -722,7 +722,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         Thread.sleep(5000);
 
         videoPage.closeWebViewCreative();
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env);
+        initPrebidAdapter(adName,env);
         prebidAdapter.checkVideoOutstreamDelegates();
 
         env.homePage.clickBack();

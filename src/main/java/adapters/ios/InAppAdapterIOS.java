@@ -16,9 +16,7 @@ public class InAppAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.openInBrowser();
-        adPage.waitAndReturnToApp();
+    public void checkBannerDelegates() {
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
@@ -74,5 +72,15 @@ public class InAppAdapterIOS extends PrebidAdapter {
     @Override
     public void checkEvents() {
 
+    }
+
+    @Override
+    public void checkLoadDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_RECEIVED);
+    }
+
+    @Override
+    public void checkLoadFailDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
     }
 }
