@@ -268,7 +268,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testOMEventsSessionWithScroll() throws InterruptedException, TimeoutException {
         String scrollableBanner;
 
@@ -589,7 +589,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"smoke"})
+    @Test(groups = {"smoke"})
     public void testNoRefreshIfBannerViewDisabledScrollable() throws TimeoutException, InterruptedException {
 
         int autoRefreshDelay = 15;
