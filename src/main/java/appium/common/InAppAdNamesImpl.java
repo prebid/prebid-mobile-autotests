@@ -134,6 +134,7 @@ public interface InAppAdNamesImpl {
     //NATIVE ADS NAME
     String NATIVE_AD_ADMOB = "Native Ad (AdMob) [OK, OXB Adapter]";
     String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, AdMob ad]";
+//    String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, GADNative ad]";
     String NATIVE_AD_ADMOB_GAD_NO_BIDS = "Native Ad (AdMob) [noBids, GADNativeAd]";
 
 //    String NATIVE_AD_MAX = "Native Ad (MAX) [OK, OXB Adapter]";

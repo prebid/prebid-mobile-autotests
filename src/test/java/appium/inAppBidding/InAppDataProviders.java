@@ -312,43 +312,7 @@ public class InAppDataProviders {
     }
 
 
-    private static final String[][] NativeRequestAdsIos = {
-            {NATIVE_AD_ADMOB},
-            {NATIVE_AD_MAX},
-
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-            {NATIVE_AD_FEED_IN_APP},
-
-            {NATIVE_AD_FEED_GAM},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED},
-
-    };
-    private static final String[][] NativeAdsIos = {
-            {NATIVE_AD_ADMOB},
-            {NATIVE_AD_MAX},
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED_GAD},
-            {NATIVE_AD_GAM_UNIFIED},
-    };
-    private static final String[][] NativeRequestAdsAndroid = {
-            {NATIVE_AD_ADMOB},
-            {NATIVE_AD_MAX},
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_FEED_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-
-            {NATIVE_AD_FEED_GAM},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED},
-
-    };
-    private static final String[][] NativeAdsAndroid = {
+    private static final String[][] NativeAds = {
             {NATIVE_AD_ADMOB},
             {NATIVE_AD_MAX},
             {NATIVE_AD_IN_APP},
@@ -361,49 +325,41 @@ public class InAppDataProviders {
 
     };
 
-    private static final String[][] NativeNoBidsAndroidAds = {
+
+    private static final String[][] NativeRequestAds = {
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_MAX},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+            {NATIVE_AD_FEED_IN_APP},
+
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED},
+
+    };
+
+    private static final String[][] NativeNoBidsAds = {
             {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
             {NATIVE_AD_ADMOB_NO_BIDS},
             {NATIVE_AD_MAX_NO_BIDS},
 
     };
-    private static final String[][] NativeNoBidsIosAds = {
-            {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
-            {NATIVE_AD_ADMOB_GAD_NO_BIDS},
-            {NATIVE_AD_MAX_NO_BIDS},
-
-    };
-
     /* AD_NAME_TYPE*/
-    @DataProvider(name = "nativeRequestAdsIos")
+    @DataProvider(name = "nativeRequestAds")
     public static Object[][] provideNativeRequestAdsIos() {
-        return NativeRequestAdsIos;
+        return NativeRequestAds;
     }
 
-    @DataProvider(name = "nativeAdsIos")
-    public static Object[][] provideNativeAdsIos() {
-        return NativeAdsIos;
-    }
 
-    @DataProvider(name = "nativeRequestAdsAndroid")
-    public static Object[][] provideNativeRequestAdsAndroid() {
-        return NativeRequestAdsAndroid;
-    }
-
-    @DataProvider(name = "nativeAdsAndroid")
+    @DataProvider(name = "nativeAds")
     public static Object[][] provideNativeAdsAndroid() {
-        return NativeAdsAndroid;
+        return NativeAds;
     }
 
-    @DataProvider(name = "nativeNoBidsAdsIos")
-    public static Object[][] provideNativeNoBidsAdsIos() {
-        return NativeNoBidsIosAds;
-    }
-
-    @DataProvider(name = "nativeNoBidsAdsAndroid")
+    @DataProvider(name = "nativeNoBidsAds")
     public static Object[][] provideNativeNoBidsAdsAndroid() {
-        return NativeNoBidsAndroidAds;
+        return NativeNoBidsAds;
     }
 }
