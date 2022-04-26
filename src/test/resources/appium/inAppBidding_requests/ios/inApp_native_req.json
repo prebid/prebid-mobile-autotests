@@ -87,7 +87,7 @@
         "ver": "$VARIABLE"
       },
       "displaymanager":"prebid-mobile",
-      "displaymanagerver":"1.14.0-beta1",
+      "displaymanagerver":"$VARIABLE",
       "secure": 1,
       "instl":0
 

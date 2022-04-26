@@ -181,11 +181,13 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(ON_AD_OPENED, "btnAdOpened");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLICKED, "btnAdClicked");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_SHOWED, "btnAdShowed");
+        inAppBidding_Delegates_Android.put(DID_HIDE_AD, "btnAdHidden");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLOSED, "btnAdClosed");
 
         inAppBidding_Delegates_Android.put(ON_NATIVE_FETCH_DEMAND_SUCCESS, "btnFetchDemandResultSuccess");
         inAppBidding_Delegates_Android.put(ON_NATIVE_GET_NATIVE_AD_SUCCESS, "btnGetNativeAdResultSuccess");
         inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOAD, "btnNativeAdLoaded");
+        inAppBidding_Delegates_Android.put(NATIVE_AD_DID_CLICK, "btnNativeAdClicked");
         inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOG_IMPRESSION, "btnAdEventImpression");
         inAppBidding_Delegates_Android.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "btnCustomAdRequestSuccess");
         inAppBidding_Delegates_Android.put(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS, "btnUnifiedRequestSuccess");
@@ -198,8 +200,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_INTERSTITIAL_DISMISSED, "btnAdDismissed");
 
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_STARTED, "btnAdVideoStarted");
+        inAppBidding_Delegates_Android.put(ON_REWARDED_VIDEO_STARTED, "btnRewardedVideoStarted");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_PLAYBACK_ERROR, "btnAdVideoPlaybackError");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_COMPLETED, "btnAdCompleted");
+        inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_VIDEO_COMPLETED, "btnRewardedVideoCompleted");
+        inAppBidding_Delegates_Android.put(REWARDED_AD_USER_DID_EARN_REWARD, "btnUserRewarded");
 
         inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_RECEIVED, "btnAdLoaded");
         inAppBidding_Delegates_Android.put(INTERSTITIAL_WILL_PRESENT_AD, "btnAdDisplayed");
@@ -294,8 +299,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         ON_AD_COLLAPSED,
         ON_INTERSTITIAL_DISMISSED,
         ON_REWARDED_STARTED,
+        ON_REWARDED_VIDEO_STARTED,
         ON_REWARDED_PLAYBACK_ERROR,
         ON_REWARDED_COMPLETED,
+        ON_REWARDED_VIDEO_COMPLETED,
 
         DID_LOAD_AD,
         DID_DISPLAY_AD,

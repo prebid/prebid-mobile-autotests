@@ -131,13 +131,13 @@ public class InAppBaseTest {
     }
 
     public void clickShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
-        if (!prebidAd.contains("MAX")){
+        if (!prebidAd.contains("MAX")||!isPlatformIOS){
             adPage.clickShowButton();
         }
     }
 
     public void checkShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
-        if (!prebidAd.contains("MAX")){
+        if (!prebidAd.contains("MAX")||!isPlatformIOS){
             adPage.isShowButtonEnabled();
             adPage.clickShowButton();
         }

@@ -62,7 +62,7 @@
   "device": {
     "ua": "$VARIABLE",
     "lmt": 0,
-    "make": "Google",
+    "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
     "osv": "$VARIABLE",
@@ -75,9 +75,7 @@
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-      "lat": "$VARIABLE",
-      "lon": "$VARIABLE",
-      "type": "$VARIABLE"
+
     }
   },
   "user": {

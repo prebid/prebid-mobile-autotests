@@ -93,7 +93,7 @@
     "w": "$VARIABLE",
     "model": "$VARIABLE",
     "connectiontype": "$VARIABLE",
-    "make": "Google"
+    "make": "$VARIABLE"
   },
   "user": {
 

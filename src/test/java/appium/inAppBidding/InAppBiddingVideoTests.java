@@ -83,7 +83,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
 
     //VIDEO DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialIOSDelegates(String adName) throws InterruptedException {
         initValidTemplatesJson(adName);
 

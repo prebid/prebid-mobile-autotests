@@ -139,9 +139,6 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
-        if (!prebidAd.contains("AdMob")) {
-            env.homePage.isDelegateEnabled(ON_NATIVE_FETCH_DEMAND_SUCCESS);
-        }
         initPrebidAdapter(prebidAd,env,nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();

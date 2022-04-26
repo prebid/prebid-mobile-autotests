@@ -40,7 +40,6 @@ public class InAppDataProviders {
     };
     private static final String[][] BannerRefreshAd = {
             {BANNER_320x50_IN_APP},
-            {BANNER_320x50_ADMOB},
     };
     private static final String[][] BannerCustomOmAds = {
             {BANNER_320x50_IN_APP},
@@ -339,7 +338,7 @@ public class InAppDataProviders {
     };
     private static final String[][] NativeRequestAdsAndroid = {
             {NATIVE_AD_ADMOB},
-
+            {NATIVE_AD_MAX},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_FEED_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
@@ -351,7 +350,7 @@ public class InAppDataProviders {
     };
     private static final String[][] NativeAdsAndroid = {
             {NATIVE_AD_ADMOB},
-
+            {NATIVE_AD_MAX},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
 
@@ -366,12 +365,13 @@ public class InAppDataProviders {
             {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
             {NATIVE_AD_ADMOB_NO_BIDS},
+            {NATIVE_AD_MAX_NO_BIDS},
 
     };
     private static final String[][] NativeNoBidsIosAds = {
-//            {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
-//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
-//            {NATIVE_AD_ADMOB_GAD_NO_BIDS},
+            {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
+            {NATIVE_AD_ADMOB_GAD_NO_BIDS},
             {NATIVE_AD_MAX_NO_BIDS},
 
     };

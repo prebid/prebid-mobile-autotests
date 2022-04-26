@@ -58,6 +58,7 @@ public class GamAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkNativeAdsDelegates(String prebidAd) throws InterruptedException {
+        testEnvironment.homePage.isDelegateEnabled(ON_NATIVE_FETCH_DEMAND_SUCCESS);
         if (prebidAd.contains("Custom")) {
             testEnvironment.homePage.isDelegateEnabled(CUSTOM_NATIVE_AD_REQUEST_SUCCESS);
         } else if (prebidAd.contains("Unified")) {
