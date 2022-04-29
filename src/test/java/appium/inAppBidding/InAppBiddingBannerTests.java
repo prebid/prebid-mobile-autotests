@@ -505,11 +505,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testNoConnection() throws TimeoutException, InterruptedException {
         env.bmp.setLatency(30 * 1000);
 
-        env.homePage.goToAd(BANNER_320x50_ADMOB);
+        env.homePage.goToAd(BANNER_320x50_IN_APP);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
-        initPrebidAdapter(BANNER_320x50_ADMOB,env);
+        initPrebidAdapter(BANNER_320x50_IN_APP,env);
         prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);

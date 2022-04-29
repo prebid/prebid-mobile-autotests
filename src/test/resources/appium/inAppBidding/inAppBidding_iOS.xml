@@ -22,7 +22,7 @@
 	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke] [MOCK]]">
 		<groups>
 			<run>
-<!--				<include name="ios"/>-->
+				<include name="ios"/>
 				<include name="smoke"/>
 			</run>
 		</groups>

@@ -19,6 +19,8 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
       },
       "cache": {
         "bids": {
@@ -76,6 +78,8 @@
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
+          },"storedauctionresponse": {
+            "id": "$VARIABLE"
           }
         }
       },
@@ -106,6 +110,6 @@
       "data": {
 
       }
-    }
+    },"yob":0
   }
 }

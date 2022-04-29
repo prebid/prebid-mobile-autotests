@@ -113,6 +113,29 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
+    @Test(groups = {"android"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
+    public void testInterstitialMultiFormatAndroidDelegates(String prebidAd) throws InterruptedException {
+        initValidTemplatesJson(prebidAd);
+
+        InAppBiddingAdPageImpl multiformatPage = env.homePage.goToAd(prebidAd);
+
+        checkShowButton(prebidAd,multiformatPage);
+        try {
+            multiformatPage.clickLearnMore();
+        } catch (Exception exception) {
+            multiformatPage.clickInterstitialAd();
+        }
+        Thread.sleep(3000);
+        env.homePage.openInBrowser();
+
+        multiformatPage.waitAndReturnToApp();
+
+        initPrebidAdapter(prebidAd,env);
+        prebidAdapter.checkDisplayInterstitialDelegates();
+
+        env.homePage.clickBack();
+    }
+
     @Test(groups = {"android"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
