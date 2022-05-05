@@ -38,6 +38,12 @@ public class InAppDataProviders {
             {BANNER_ADAPTIVE_ADMOB},
             {BANNER_ADAPTIVE_MAX},
     };
+    private static final String[][] BannerAdRealDevice = {
+            {BANNER_320x50_IN_APP},
+            {BANNER_320x50_GAM},
+            {BANNER_320x50_ADMOB},
+            {BANNER_320x50_MAX},
+    };
     private static final String[][] BannerRefreshAd = {
             {BANNER_320x50_IN_APP},
     };
@@ -51,6 +57,11 @@ public class InAppDataProviders {
     @DataProvider(name = "adName")
     public static Object[][] provideBannerFormatAndSettings() {
         return BannerAd;
+    }
+
+    @DataProvider(name = "adNameReal")
+    public static Object[][] provideBannerFoRealDevices() {
+        return BannerAdRealDevice;
     }
 
     @DataProvider(name = "customOmAdName")
@@ -254,8 +265,8 @@ public class InAppDataProviders {
     }
 
     private static final String[][] VideoInterstitial = {
-            {VIDEO_INTERSTITIAL_320x480_IN_APP},
-            {VIDEO_INTERSTITIAL_320x480_ADMOB},
+//            {VIDEO_INTERSTITIAL_320x480_IN_APP},
+//            {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_INTERSTITIAL_320x480_GAM},
     };

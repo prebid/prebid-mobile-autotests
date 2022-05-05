@@ -42,6 +42,7 @@ public class MaxAdapterIOS extends PrebidAdapter {
     @Override
     public void checkVideoRewardedDelegates() {
         checkDisplayInterstitialDelegates();
+        testEnvironment.homePage.isDelegateEnabled(DID_REWARD_USER);
     }
 
     @Override

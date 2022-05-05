@@ -89,7 +89,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
-        checkShowButton(adName, videoPage);
+        videoPage.isShowButtonEnabled();
+        videoPage.clickShowButton();
 
         videoPage.clickLearnMore();
         Thread.sleep(5000);
@@ -107,7 +108,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName, page);
+        page.isShowButtonEnabled();
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -131,7 +133,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
+
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -167,7 +170,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsLearnMore(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -199,7 +202,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialVideoEventsAndAutoclose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName, page);
+        page.isShowButtonEnabled();
+        page.clickShowButton();
         env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_START, 1, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_FIRSTQUARTILE, 1, 30);
@@ -214,7 +218,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialVideoClickPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         page.clickLearnMore();
 
@@ -232,7 +236,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        checkShowButton(adName, page);
+        page.isShowButtonEnabled();
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -296,7 +301,9 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedIOSDelegates(String prebidAd) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(prebidAd);
 
-        checkShowButton(prebidAd, videoPage);
+        videoPage.isShowButtonEnabled();
+        videoPage.clickShowButton();
+
         Thread.sleep(5000);
         videoPage.clickInterstitialAd();
         Thread.sleep(3000);
@@ -315,7 +322,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsSingleSession(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
@@ -343,7 +350,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsBackgrounded(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
         env.homePage.runAppInBackground(5);
@@ -382,7 +389,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedOMEventsClickEndCard(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
 
@@ -417,7 +424,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedPauseResumeClose(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         Thread.sleep(2 * 1000);
 
@@ -439,7 +446,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testVideoRewardedVideoEvents(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        clickShowButton(adName, page);
+        page.clickShowButton();
 
         env.waitForEvent(InAppBiddingEvents.VIDEO_CREATIVEVIEW, 2, 30);
         env.waitForEvent(InAppBiddingEvents.VIDEO_START, 2, 30);
@@ -459,7 +466,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.homePage.sleep(3);
 
-        clickShowButton(prebidAd, videoPage);
+        videoPage.clickShowButton();
 
         videoPage.clickInterstitialAd();
 
@@ -486,7 +493,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 //
 //
 //    //VIDEO DELEGATES TEST
-    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 

@@ -2,11 +2,11 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKEventHandler;
 import adapters.PrebidAdapter;
-import appium.common.InAppBiddingTestEnvironment;
-import appium.common.TestEnvironment;
 import adapters.factory.PrebidAdapterFactory;
 import adapters.factory.PrebidAdapterFactoryAndroid;
 import adapters.factory.PrebidAdapterFactoryIOS;
+import appium.common.InAppBiddingTestEnvironment;
+import appium.common.TestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
@@ -17,10 +17,6 @@ import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Set;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
 import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
@@ -30,12 +26,12 @@ public class InAppBaseTest {
     protected static JSONObject validAuctionRequest;
     protected static JSONObject validAuctionResponse;
     protected static String platformName;
-    protected static String platformType;
     protected static String displaymanagerver;
     protected static String ver;
     protected static String version;
     protected static String omidpv;
     protected static boolean isPlatformIOS;
+    protected static boolean isRealDevice;
     protected static PrebidAdapterFactory prebidAdapterFactory;
     protected PrebidAdapter prebidAdapter;
     protected JSONObject auctionRequestCCPA_TRUE;
@@ -44,14 +40,14 @@ public class InAppBaseTest {
     protected OMSDKEventHandler eventHandler;
 
 
-
-    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests"})
+    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
-        setup(itc, TestEnvironment.INSPECTORS_MOB_PROXY);
+//        xmlTest.addExcludedGroup("requests-iOS");
+        setup(itc);
     }
 
-    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
@@ -60,8 +56,9 @@ public class InAppBaseTest {
         env.teardown();
     }
 
-    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests"})
+    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
+
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
             env.homePage.turnOffGDPRSwitcher();
@@ -70,7 +67,7 @@ public class InAppBaseTest {
         env.bmp.newHar();
     }
 
-    @AfterMethod(groups = {"smoke", "android", "ios", "exec",  "requests"})
+    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
     public void teardownMethod() {
         eventHandler = null;
         validAuctionRequest = null;
@@ -102,6 +99,7 @@ public class InAppBaseTest {
     }
 
     public void initValidTemplatesJson(String prebidAd) {
+
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
@@ -114,43 +112,33 @@ public class InAppBaseTest {
         eventHandler = new OMSDKEventHandler(env.bmp.getHar());
     }
 
-    public void initPrebidAdapter( String prebidAd,InAppBiddingTestEnvironment env,InAppBiddingAdPageImpl adPage)  {
+    public void initPrebidAdapter(String prebidAd, InAppBiddingTestEnvironment env, InAppBiddingAdPageImpl adPage) {
         try {
             prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env, adPage);
-        } catch (NoSuchFieldException noSuchFieldException){
+        } catch (NoSuchFieldException noSuchFieldException) {
             noSuchFieldException.printStackTrace();
         }
     }
 
-    public void initPrebidAdapter(String prebidAd,InAppBiddingTestEnvironment env) {
+    public void initPrebidAdapter(String prebidAd, InAppBiddingTestEnvironment env) {
         try {
             prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env);
-        } catch (NoSuchFieldException noSuchFieldException){
+        } catch (NoSuchFieldException noSuchFieldException) {
             noSuchFieldException.printStackTrace();
         }
     }
 
-    public void clickShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
-        if (!prebidAd.contains("MAX")||!isPlatformIOS){
-            adPage.clickShowButton();
-        }
-    }
 
-    public void checkShowButton(String prebidAd, InAppBiddingAdPageImpl adPage){
-        if (!prebidAd.contains("MAX")||!isPlatformIOS){
-            adPage.isShowButtonEnabled();
-            adPage.clickShowButton();
-        }
-    }
 
-    private void setup(ITestContext itc, Set<TestEnvironment.TrafficInspectorKind> trafficInsprctors) throws IOException {
+    private void setup(ITestContext itc) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
-        env = new InAppBiddingTestEnvironment(testName, itc, trafficInsprctors);
+        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
         env.homePage.turnOffGDPRSwitcher();
+
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
         itc.setAttribute("authToken", env.capabilities.getCapability("authToken").toString());
         platformName = env.getProperty("platformName");
-        platformType = env.getProperty("platformType");
+
         ver = env.getProperty("ver");
         version = env.getProperty("version");
         displaymanagerver = version;
@@ -161,6 +149,9 @@ public class InAppBaseTest {
         } else {
             prebidAdapterFactory = new PrebidAdapterFactoryAndroid();
         }
+        isRealDevice = env.getProperty("platformType").equals("Real Device");
+
+
     }
 
 }

@@ -197,7 +197,7 @@ public class RequestValidator {
 
     protected static boolean isJsonValid(JSONObject sentJson, JSONObject validJson, String parentKey) throws ValidationException {
         compareKeySets(parentKey, sentJson, validJson);
-        Set<String> validJsonKeys = getWithoutRealDeviceKeys(validJson);
+        Set<String> validJsonKeys = validJson.keySet();
         for (String key : validJsonKeys) {
             Object validEntry = validJson.get(key);
             if (isVariable(validEntry)) {
@@ -213,14 +213,7 @@ public class RequestValidator {
         return true;
     }
 
-    private static Set<String> getWithoutRealDeviceKeys(JSONObject validJson) {
-        Set<String> validJsonKeys = validJson.keySet();
-        if (isRealDevice(validJsonKeys)) {
-            validJsonKeys.remove("carrier");
-            validJsonKeys.remove("mccmnc");
-        }
-        return validJsonKeys;
-    }
+
 
     private static void compareKeySets(String parentKey, JSONObject sentJson, JSONObject validJson) throws ValidationException {
         if (sentJson == null) {
@@ -228,14 +221,10 @@ public class RequestValidator {
         }
         Set<String> sample = sentJson.keySet();
         Set<String> exampleKeySet = validJson.keySet();
-        if (!sample.equals(exampleKeySet) && !isRealDevice(sample)) {
+        if (!sample.equals(exampleKeySet)) {
             throw new ValidationException(parentKey + ": " + "key sets are not equal.\nExpected: " + exampleKeySet.toString()
                     + "\nActual: " + sample.toString());
         }
-    }
-
-    private static boolean isRealDevice(Set<String> sample) {
-        return sample.contains("carrier") && sample.contains("mccmnc");
     }
 
     private static boolean isArray(Object entry) {

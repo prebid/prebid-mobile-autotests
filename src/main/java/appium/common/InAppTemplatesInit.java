@@ -19,6 +19,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_BANNER_320x50_SKADN = "appium/inAppBidding_requests/%s/inApp_auction_320x50_skadn.json";
 
     private final static String TEMPLATE_BANNER_320x50 = "appium/inAppBidding_requests/%s/inApp_auction_320x50.json";
+    private final static String TEMPLATE_BANNER_320x50_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x50_real_device.json";
 
     private final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
     private final static String TEMPLATE_BANNER_728x90 = "appium/inAppBidding_requests/%s/inApp_auction_728x90.json";
@@ -42,6 +43,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String RESPONSE_TEMPLATE_NATIVE = "appium/inAppBidding_responses/%s/inApp_native_res.json";
 
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName) {
+
         final String filePath = getFilePathAuctionRequest(prebidAd, platformName);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
 
@@ -49,7 +51,15 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
         return new JSONObject(testJSON);
     }
+    public static JSONObject getRealDeviceAuctionRequestTemplate(String prebidAd, String platformName) {
 
+        final String filePath = getFilePathRealDeviceAuctionRequest(prebidAd, platformName);
+        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
+
+        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
+
+        return new JSONObject(testJSON);
+    }
     public static JSONObject getAuctionResponseTemplate(String prebidAd, String platformName) {
         final String filePath = getFilePathAuctionResponse(prebidAd, platformName);
         System.out.println("RESPONSE TEMPLATE PATH IS ==> " + filePath + "\n");
@@ -62,12 +72,14 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         String path = requestTemplates.get(prebidAd);
         return String.format(path, platformName);
     }
-
+    private static String getFilePathRealDeviceAuctionRequest(String prebidAd, String platformName) {
+        String path = realDeviceRequestTemplates.get(prebidAd);
+        return String.format(path, platformName);
+    }
     private static String getFilePathAuctionResponse(String prebidAd, String platformName) {
         String path = responseTemplates.get(prebidAd);
         return String.format(path, platformName);
     }
-
 
 
     private final static HashMap<String, String> requestTemplates = new HashMap<String, String>() {{
@@ -197,20 +209,26 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_AD_MAX, REQUEST_TEMPLATE_NATIVE);
         put(NATIVE_AD_MAX_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_IN_APP,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_IN_APP,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_LINKS_IN_APP,REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_IN_APP, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_FEED_IN_APP, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_LINKS_IN_APP, REQUEST_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_GAM,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS,REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS,REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED_GAD, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_FEED_GAM, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
 
     }};
+    private final static HashMap<String, String> realDeviceRequestTemplates = new HashMap<String, String>() {{
+        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_REAL_DEVICE);
 
+    }};
     private final static HashMap<String, String> responseTemplates = new HashMap<>() {{
         //NATIVE CASES
 
@@ -221,17 +239,17 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_AD_MAX, RESPONSE_TEMPLATE_NATIVE);
         put(NATIVE_AD_MAX_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_IN_APP,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_IN_APP,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_LINKS_IN_APP,RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_IN_APP, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_FEED_IN_APP, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_LINKS_IN_APP, RESPONSE_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_GAM,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS,RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS,RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED_GAD, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_FEED_GAM, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
 
     }};
 }

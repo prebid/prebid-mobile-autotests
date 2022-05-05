@@ -151,6 +151,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(DID_EXPAND_AD, "didExpandAd called");
         inAppBidding_Delegates_iOS.put(DID_COLLAPSED_AD, "didCollapsedAd called");
         inAppBidding_Delegates_iOS.put(DID_CLICK_AD, "didClickAd called");
+        inAppBidding_Delegates_iOS.put(DID_REWARD_USER, "didRewardUser called");
         inAppBidding_Delegates_iOS.put(GET_NATIVE_AD, "getNativeAd success");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "adWasClicked called");
         inAppBidding_Delegates_iOS.put(DID_CLICK_NATIVE_AD, "didClickNativeAd called");
@@ -310,6 +311,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         DID_EXPAND_AD,
         DID_COLLAPSED_AD,
         DID_CLICK_AD,
+        DID_REWARD_USER,
 
         FETCH_DEMAND,
         GET_NATIVE_AD,

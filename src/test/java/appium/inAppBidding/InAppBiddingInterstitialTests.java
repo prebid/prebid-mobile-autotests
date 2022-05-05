@@ -40,8 +40,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        clickShowButton(prebidAd,interstitialPage);
-
+        interstitialPage.clickShowButton();
 
         interstitialPage.clickCloseRandom();
 
@@ -73,7 +72,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
 
-        clickShowButton(prebidAd,interstitialPage);
+        interstitialPage.clickShowButton();
 
         interstitialPage.clickInterstitialAd();
 
@@ -96,7 +95,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         if (prebidAd.contains("AdMob")) {
             env.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         }
-        checkShowButton(prebidAd,multiformatPage);
+        multiformatPage.isShowButtonEnabled();
+        multiformatPage.clickShowButton();
         try {
             multiformatPage.clickLearnMore();
         } catch (Exception exception) {
@@ -119,7 +119,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl multiformatPage = env.homePage.goToAd(prebidAd);
 
-        checkShowButton(prebidAd,multiformatPage);
+        multiformatPage.isShowButtonEnabled();
+        multiformatPage.clickShowButton();
         try {
             multiformatPage.clickLearnMore();
         } catch (Exception exception) {
@@ -167,7 +168,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
 
-        clickShowButton(prebidAd,page);
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
@@ -197,8 +198,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
-        clickShowButton(prebidAd,page);
-
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
@@ -266,8 +266,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
-        clickShowButton(prebidAd,page);
-
+        page.clickShowButton();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 5);
         try {
