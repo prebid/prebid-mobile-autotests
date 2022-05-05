@@ -512,7 +512,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 //
 //
 //    //VIDEO DELEGATES TEST
-//    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamIOSDelegates(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 

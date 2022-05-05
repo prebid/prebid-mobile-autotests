@@ -46,7 +46,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
@@ -82,7 +82,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -94,7 +94,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER CUSTOM TESTS
-//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestReload(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
@@ -157,7 +157,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-//    @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -184,7 +184,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsAfterReload(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -216,7 +216,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-//    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSessionWithOpenClickthrough(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -255,7 +255,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-//    @Test(groups = {"requests"},dataProvider = "customOmAdName",dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"},dataProvider = "customOmAdName",dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSessionWithBackground(String prebidAd) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
@@ -406,7 +406,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.bmp.cancelResponseError();
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testRefreshClientSide() throws TimeoutException, InterruptedException {
         int expectedEventCount = 4;
 
@@ -453,7 +453,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
@@ -496,7 +496,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests"})
+    @Test(groups = {"requests"})
     public void testSlowConnection() throws TimeoutException, InterruptedException {
         // regular 2G network (250/50 KB/s, 300ms latency -  diff because of real network latency)
 
@@ -516,7 +516,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.bmp.cancelLatency();
     }
 
-//    @Test(groups = {"requests"}, priority = 1)
+    @Test(groups = {"requests"}, priority = 1)
     public void testNoConnection() throws TimeoutException, InterruptedException {
         env.bmp.setLatency(30 * 1000);
 
