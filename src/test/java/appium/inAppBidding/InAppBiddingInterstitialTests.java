@@ -22,17 +22,27 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-    @Test(groups = {"requests"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestInterstitial(String prebidAd) throws TimeoutException, InterruptedException {
         testAuctionRequest(prebidAd);
     }
 
-    @Test(groups = {"requests"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestInterstitialMultiFormat(String prebidAd) throws TimeoutException, InterruptedException {
         testAuctionRequest(prebidAd);
     }
 
-    @Test(groups = {"requests"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-realDevice"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestInterstitialRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
+        testAuctionRequestRealDevice(prebidAd);
+    }
+
+    @Test(groups = {"requests-realDevice"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestInterstitialMultiFormatRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
+        testAuctionRequestRealDevice(prebidAd);
+    }
+
+    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialRandom(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl interstitialPage = env.homePage.goToAd(prebidAd);
@@ -47,7 +57,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+        @Test(groups = {"requests-simulator"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -327,6 +337,17 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     private void testAuctionRequest(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
+
+        env.homePage.goToAd(prebidAd);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 15);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.homePage.clickBack();
+        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+    }
+    private void testAuctionRequestRealDevice(String prebidAd) throws InterruptedException, TimeoutException {
+        initValidTemplatesJsonRealDevice(prebidAd);
 
         env.homePage.goToAd(prebidAd);
 

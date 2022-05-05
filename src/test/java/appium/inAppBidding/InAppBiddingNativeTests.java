@@ -53,9 +53,37 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "nativeRequestAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "nativeRequestAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEvents(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
+
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
+
+        if (prebidAd.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        if (!isPlatformIOS) {
+            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        }
+
+        env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
+
+        env.waitForEvent(InAppBiddingEvents.MRC50, 1, 60);
+
+        env.waitForEvent(InAppBiddingEvents.MRC100, 1, 60);
+
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"requests-realDevice"}, dataProvider = "nativeRequestAdsReal", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeAdsEventsRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJsonRealDevice(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 

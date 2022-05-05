@@ -18,7 +18,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-    @Test(groups = {"smoke"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -37,8 +37,27 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
     }
 
+    @Test(groups = {"requests-realDevice"}, dataProvider = "adNameVideoReal", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestVideoRealDevice(String adName) throws TimeoutException, InterruptedException {
 
-    @Test(groups = {"requests"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
+        initValidTemplatesJsonRealDevice(adName);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
+
+        if (adName.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.homePage.clickBack();
+
+    }
+
+
+    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -56,7 +75,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"requests"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 

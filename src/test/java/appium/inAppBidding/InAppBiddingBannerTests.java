@@ -16,7 +16,7 @@ import static appium.common.InAppTemplatesInit.*;
 public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
-    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -31,7 +31,22 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-realDevice"}, dataProvider = "adNameReal", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJsonRealDevice(prebidAd);
+
+        env.homePage.goToAd(prebidAd);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
+
+        env.homePage.clickBack();
+
+        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+    }
+
+//    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
@@ -67,7 +82,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);

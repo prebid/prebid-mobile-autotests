@@ -305,7 +305,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"requests-iOS"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"ios"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
     public void testMraidResizeDelegatesAndOMEventsIos(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 

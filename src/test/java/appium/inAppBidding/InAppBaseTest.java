@@ -18,8 +18,7 @@ import org.testng.annotations.BeforeTest;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
-import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
+import static appium.common.InAppTemplatesInit.*;
 
 public class InAppBaseTest {
     protected static InAppBiddingTestEnvironment env;
@@ -31,7 +30,6 @@ public class InAppBaseTest {
     protected static String version;
     protected static String omidpv;
     protected static boolean isPlatformIOS;
-    protected static boolean isRealDevice;
     protected static PrebidAdapterFactory prebidAdapterFactory;
     protected PrebidAdapter prebidAdapter;
     protected JSONObject auctionRequestCCPA_TRUE;
@@ -40,14 +38,13 @@ public class InAppBaseTest {
     protected OMSDKEventHandler eventHandler;
 
 
-    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
+    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
-//        xmlTest.addExcludedGroup("requests-iOS");
         setup(itc);
     }
 
-    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
@@ -56,7 +53,7 @@ public class InAppBaseTest {
         env.teardown();
     }
 
-    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
+    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
     public void setupMethodBMP(ITestContext itc) throws InterruptedException {
 
         if (!env.homePage.isSearchFieldDisplayed()) {
@@ -67,7 +64,7 @@ public class InAppBaseTest {
         env.bmp.newHar();
     }
 
-    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-iOS"})
+    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests","requests-realDevice","requests-simulator"})
     public void teardownMethod() {
         eventHandler = null;
         validAuctionRequest = null;
@@ -101,6 +98,15 @@ public class InAppBaseTest {
     public void initValidTemplatesJson(String prebidAd) {
 
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+
+        System.out.println(prebidAd);
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
+            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
+        }
+    }
+    public void initValidTemplatesJsonRealDevice(String prebidAd) {
+
+        validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
@@ -149,7 +155,6 @@ public class InAppBaseTest {
         } else {
             prebidAdapterFactory = new PrebidAdapterFactoryAndroid();
         }
-        isRealDevice = env.getProperty("platformType").equals("Real Device");
 
 
     }

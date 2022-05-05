@@ -26,18 +26,23 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_BANNER_MULTISIZE = "appium/inAppBidding_requests/%s/inApp_auction_ms.json";
 
     private final static String TEMPLATE_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_auction_320x480.json";
+    private final static String TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x480_real_device.json";
     private final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT = "appium/inAppBidding_requests/%s/inApp_auction_mf.json";
+    private final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_mf_real_device.json";
 
     private final static String TEMPLATE_MRAID_FULLSCREEN = "appium/inAppBidding_requests/%s/inApp_mraid_fullscreen_auc.json";
     private final static String TEMPLATE_MRAID_VIDEO_INTERSTITIAL = "appium/inAppBidding_requests/%s/inApp_mraid_video_int_auc.json";
 
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480.json";
+    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480_real_device.json";
     private final static String TEMPLATE_VIDEO_OUTSTREAM_300x250 = "appium/inAppBidding_requests/%s/inApp_video_outstream_auc_300x250.json";
     private final static String TEMPLATE_VIDEO_FEED_300x250 = "appium/inAppBidding_requests/%s/inApp_video_feed_auc_300x250.json";
     private final static String TEMPLATE_VIDEO_REWARDED_320x480 = "appium/inAppBidding_requests/%s/inApp_video_rew_auc_320x480.json";
+    private final static String TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_rew_auc_320x480_real_device.json";
 
     //NATIVE TEMPLATES
     private final static String REQUEST_TEMPLATE_NATIVE = "appium/inAppBidding_requests/%s/inApp_native_req.json";
+    private final static String REQUEST_TEMPLATE_NATIVE_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_native_req_real_device.json";
 
     //RESPONSES
     private final static String RESPONSE_TEMPLATE_NATIVE = "appium/inAppBidding_responses/%s/inApp_native_res.json";
@@ -227,6 +232,32 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_REAL_DEVICE);
         put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_REAL_DEVICE);
         put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_REAL_DEVICE);
+
+        put(INTERSTITIAL_320x480_IN_APP,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(INTERSTITIAL_320x480_ADMOB,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(INTERSTITIAL_320x480_GAM,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(INTERSTITIAL_320x480_MAX,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+
+        put(INTERSTITIAL_MULTI_FORMAT_IN_APP,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(INTERSTITIAL_MULTI_FORMAT_MAX,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(INTERSTITIAL_MULTI_FORMAT_GAM,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(INTERSTITIAL_MULTI_FORMAT_ADMOB,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+
+        put(VIDEO_INTERSTITIAL_320x480_IN_APP,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(VIDEO_INTERSTITIAL_320x480_ADMOB,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(VIDEO_INTERSTITIAL_320x480_GAM,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(VIDEO_INTERSTITIAL_320x480_MAX,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+
+        put(VIDEO_REWARDED_320x480_IN_APP,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(VIDEO_REWARDED_320x480_ADMOB,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(VIDEO_REWARDED_320x480_GAM_METADATA,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(VIDEO_REWARDED_320x480_MAX,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+
+        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(NATIVE_AD_GAM_UNIFIED, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(NATIVE_AD_ADMOB, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(NATIVE_AD_IN_APP, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(NATIVE_AD_MAX, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
 
     }};
     private final static HashMap<String, String> responseTemplates = new HashMap<>() {{
