@@ -18,7 +18,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -36,7 +36,17 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
+    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideoWithAdConfiguration", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestVideoWithAdConfiguration(String adName) throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(adName);
+        env.homePage.goToAd(adName);
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.validateEventResponse(InAppBiddingEvents.AUCTION,validAuctionResponse);
+        env.homePage.clickBack();
+
+    }
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameVideoReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRealDevice(String adName) throws TimeoutException, InterruptedException {
 
@@ -57,7 +67,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -75,7 +85,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 

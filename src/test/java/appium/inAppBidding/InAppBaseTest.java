@@ -100,7 +100,7 @@ public class InAppBaseTest {
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")||prebidAd.contains("Ad Configuration")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }

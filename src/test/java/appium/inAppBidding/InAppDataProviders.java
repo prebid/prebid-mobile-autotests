@@ -2,6 +2,7 @@ package appium.inAppBidding;
 
 import org.testng.annotations.DataProvider;
 
+import static appium.common.InAppAdNamesImpl.VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION;
 import static appium.common.InAppTemplatesInit.*;
 
 public class InAppDataProviders {
@@ -237,11 +238,29 @@ public class InAppDataProviders {
             {VIDEO_REWARDED_320x480_ADMOB},
             {VIDEO_REWARDED_320x480_MAX},
     };
+
+    private static final String[][] VideoAdsWithAdConfiguration = {
+            {VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION},
+            {VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION},
+            {VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION},
+//            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
+    };
+
     /* AD_NAME_TYPE*/
     @DataProvider(name = "adNameVideo")
     public static Object[][] provideVideoAd() {
         return VideoAds;
     }
+
+    @DataProvider(name = "adNameVideoWithAdConfiguration")
+    public static Object[][] provideVideoWithAdConfiguration() {
+        return VideoAdsWithAdConfiguration;
+    }
+
     @DataProvider(name = "adNameVideoReal")
     public static Object[][] provideVideoAdRealDevice() {
         return VideoAdsRealDevice;
@@ -396,4 +415,6 @@ public class InAppDataProviders {
     public static Object[][] provideNativeNoBidsAdsAndroid() {
         return NativeNoBidsAds;
     }
+
+
 }
