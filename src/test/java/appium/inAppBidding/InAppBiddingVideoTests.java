@@ -18,7 +18,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     //AUCTION REQUEST TESTS
     ////////////////////////////
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideo(String adName) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(adName);
@@ -67,7 +67,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "randomAdVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRandom(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 
@@ -85,7 +85,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsVideo", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoNoBidsAd(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
 

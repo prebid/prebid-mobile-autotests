@@ -38,7 +38,7 @@
     <test verbose="3" name="InApp_Bidding Android Requests [OM, Auction, Events, OpenRTB]">
         <groups>
             <run>
-                <include name="requests"/>
+<!--                <include name="requests"/>-->
                 <include name="requests-simulator"/>
             </run>
         </groups>

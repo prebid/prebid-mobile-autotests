@@ -1,0 +1,80 @@
+{
+  "id": "$VARIABLE",
+  "seatbid": [
+    {
+      "bid": [
+        {
+          "id": "$VARIABLE",
+          "impid": "$VARIABLE",
+          "price":"$VARIABLE",
+          "adm": "$VARIABLE",
+          "crid": "$VARIABLE",
+          "w": 414,
+          "h": 896,
+          "ext": {
+            "prebid": {
+              "type": "video",
+              "targeting": {
+                "hb_env": "mobile-app",
+                "hb_uuid_openx": "$VARIABLE",
+                "hb_bidder_openx": "openx",
+                "hb_cache_id": "$VARIABLE",
+                "hb_cache_id_openx": "$VARIABLE",
+                "hb_size_openx": "414x896",
+                "hb_cache_path_openx": "/cache",
+                "hb_pb": "0.10",
+                "hb_env_openx": "mobile-app",
+                "hb_cache_path": "/cache",
+                "hb_uuid": "$VARIABLE",
+                "hb_size": "414x896",
+                "hb_bidder": "openx",
+                "hb_pb_openx": "0.10",
+                "hb_cache_host": "prebid-server-test-j.prebid.org",
+                "hb_cache_host_openx": "prebid-server-test-j.prebid.org"
+              },
+              "cache": {
+                "bids": {
+                  "url": "$VARIABLE",
+                  "cacheId": "$VARIABLE"
+                },
+                "vastXml": {
+                  "url": "$VARIABLE",
+                  "cacheId": "$VARIABLE"
+                }
+              }
+            },
+            "passthrough": [
+              {
+                "type": "prebidmobilesdk",
+                "adconfiguration": {
+                  "maxvideoduration ": 10,
+                  "ismuted": false,
+                  "closebuttonarea": 0.11,
+                  "closebuttonposition": "topleft",
+                  "skipbuttonarea": 0.11,
+                  "skipbuttonposition": "topleft",
+                  "skipdelay": 5
+                }
+              }
+            ],
+            "origbidcpm": "$VARIABLE",
+            "origbidcur": "$VARIABLE"
+          }
+        }
+      ],
+      "seat": "openx",
+      "group": "$VARIABLE"
+    }
+  ],
+  "cur": "USD",
+  "ext": {
+    "responsetimemillis": {
+      "cache": "$VARIABLE",
+      "openx": "$VARIABLE"
+    },
+    "tmaxrequest": "$VARIABLE",
+    "prebid": {
+      "auctiontimestamp": "$VARIABLE"
+    }
+  }
+}

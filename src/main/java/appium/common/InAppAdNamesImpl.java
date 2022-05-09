@@ -114,12 +114,13 @@ public interface InAppAdNamesImpl {
 
     /** Videos with ad configuration*/
     String VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (In-App)";
+//    String VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Interstitial 320x480 With Ad Configuration (In-App)";
     String VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (GAM) [OK, AppEvent]";
     String VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (MAX) [OK, OXB Adapter]";
 
     String VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (In-App)";
-    String VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (GAM) [OK, AppEvent]";
+    String VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (GAM) [OK, Metadata]";
     String VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (MAX) [OK, OXB Adapter]";
 
