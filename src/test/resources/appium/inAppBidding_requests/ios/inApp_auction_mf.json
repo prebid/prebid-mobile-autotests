@@ -13,7 +13,7 @@
     "publisher": {
       "id": "$VARIABLE"
     },
-    "bundle": "org.prebid.mobile.renderingtestapp"
+    "bundle": "$VARIABLE"
   },
   "ext": {
     "prebid": {
@@ -117,6 +117,7 @@
           3
         ],
         "h": "$VARIABLE",
+        "maxduration":30,
         "linearity": 1,
         "mimes": [
           "video\/mp4",
@@ -125,8 +126,8 @@
           "video\/3gpp",
           "video\/3gpp2"
         ],
-        "placement": 5,
         "playbackend": 2,
+        "placement": 5,
         "pos": 7,
         "protocols": [
           2,

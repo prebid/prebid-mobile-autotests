@@ -17,6 +17,8 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
       },
       "cache": {
         "bids": {
@@ -28,8 +30,17 @@
       }
     }
   },
+  "regs":{
+    "ext":{
+      "gdpr":0
+    }
+  },
   "id": "$VARIABLE",
   "source": {
+    "ext":{
+      "omidpv":"$VARIABLE",
+      "omidpn":"Prebid"
+    },
     "tid": "$VARIABLE"
   },
   "imp": [
@@ -43,12 +54,18 @@
           }
         }
       },
+      "id": "$VARIABLE",
+      "clickbrowser":0,
+
       "native": {
-        "request":"{\"context\":2,\"contextsubtype\":20,\"plcmttype\":1,\"plcmtcnt\":1,\"seq\":0,\"aurlsupport\":0,\"durlsupport\":0,\"eventtrackers\":[{\"event\":1,\"methods\":[1,2]}],\"privacy\":0,\"assets\":[{\"title\":{\"len\":90},\"required\":1},{\"img\":{\"type\":1,\"wmin\":20,\"hmin\":20},\"required\":1},{\"img\":{\"type\":3,\"wmin\":200,\"hmin\":200},\"required\":1},{\"data\":{\"type\":1,\"len\":90},\"required\":1},{\"data\":{\"type\":2},\"required\":1},{\"data\":{\"type\":12},\"required\":1}],\"ver\":\"1.2\"}",
+        "request": "$VARIABLE",
         "ver": "$VARIABLE"
       },
-      "id": "$VARIABLE",
-      "secure": 1
+      "displaymanager":"prebid-mobile",
+      "displaymanagerver":"$VARIABLE",
+      "secure": 1,
+      "instl":0
+
     }
   ],
   "device": {
@@ -58,7 +75,7 @@
     "lmt":"$VARIABLE",
     "carrier":"$VARIABLE",
     "osv":"$VARIABLE",
-    "os":"android",
+    "os":"Android",
     "mccmnc":"$VARIABLE",
     "w":"$VARIABLE",
     "h":"$VARIABLE",
@@ -68,6 +85,6 @@
     "make":"$VARIABLE"
   },
   "user": {
-    "gender":"$VARIABLE"
+
   }
 }

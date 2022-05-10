@@ -25,16 +25,18 @@
 
     },
     "h": "$VARIABLE",
-    "ifa": "00000000-0000-0000-0000-000000000000",
-    "language": "en",
+    "ifa": "$VARIABLE",
+    "language": "$VARIABLE",
     "lmt": "$VARIABLE",
     "make": "Apple",
     "model": "iPhone",
     "os": "iOS",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
     "osv": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "ua": "$VARIABLE",
-    "w":"$VARIABLE"
+    "w": "$VARIABLE"
   },
   "ext": {
     "prebid": {
@@ -59,28 +61,14 @@
       }
     }
   },
+  "id": "$VARIABLE",
   "regs":{
     "ext":{
       "gdpr":"$VARIABLE"
     }
   },
-  "id": "$VARIABLE",
   "imp": [
     {
-      "banner": {
-        "api": [
-          3,
-          5,
-          6,
-          7
-        ],
-        "format": [
-          {
-            "h": 50,
-            "w": 320
-          }
-        ]
-      },
       "clickbrowser": 0,
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
@@ -91,6 +79,7 @@
           }
         },
         "prebid": {
+          "is_rewarded_inventory": 1,
           "storedrequest": {
             "id": "$VARIABLE"
           },"storedauctionresponse": {
@@ -99,8 +88,30 @@
         }
       },
       "id": "$VARIABLE",
-      "instl": 0,
-      "secure": 1
+      "instl": 1,
+      "secure": 1,
+      "video": {
+        "delivery": [
+          3
+        ],
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "mimes": [
+          "video\/mp4",
+          "video\/quicktime",
+          "video\/x-m4v",
+          "video\/3gpp",
+          "video\/3gpp2"
+        ],
+        "placement": 5,
+        "playbackend": 2,
+        "pos": 7,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE"
+      }
     }
   ],
   "source": {
@@ -112,10 +123,8 @@
   },
   "user": {
     "ext": {
-      "data": {
-
-      }
+      "data": {}
     },
-    "yob":0
+    "yob": 0
   }
 }

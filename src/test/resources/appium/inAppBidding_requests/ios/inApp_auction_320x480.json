@@ -13,7 +13,7 @@
     "publisher": {
       "id": "$VARIABLE"
     },
-    "bundle": "org.prebid.mobile.renderingtestapp"
+    "bundle": "$VARIABLE"
   },
   "ext": {
     "prebid": {

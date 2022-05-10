@@ -2,6 +2,7 @@ package appium.inAppBidding;
 
 import org.testng.annotations.DataProvider;
 
+import static appium.common.InAppAdNamesImpl.VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION;
 import static appium.common.InAppTemplatesInit.*;
 
 public class InAppDataProviders {
@@ -26,6 +27,7 @@ public class InAppDataProviders {
             {BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_ADMOB},
+            {BANNER_320x50_MAX},
             {BANNER_728x90_IN_APP},
             {BANNER_728x90_GAM},
             {BANNER_MULTISIZE_IN_APP},
@@ -33,17 +35,39 @@ public class InAppDataProviders {
             {BANNER_300x250_IN_APP},
             {BANNER_300x250_GAM},
             {BANNER_300x250_ADMOB},
+            {BANNER_300x250_MAX},
             {BANNER_ADAPTIVE_ADMOB},
+            {BANNER_ADAPTIVE_MAX},
+    };
+    private static final String[][] BannerAdRealDevice = {
+            {BANNER_320x50_IN_APP},
+            {BANNER_320x50_GAM},
+            {BANNER_320x50_ADMOB},
+            {BANNER_320x50_MAX},
     };
     private static final String[][] BannerRefreshAd = {
             {BANNER_320x50_IN_APP},
+    };
+    private static final String[][] BannerCustomOmAds = {
+            {BANNER_320x50_IN_APP},
             {BANNER_320x50_ADMOB},
+            {BANNER_320x50_MAX},
     };
 
     /* AD_NAME_TYPE*/
     @DataProvider(name = "adName")
     public static Object[][] provideBannerFormatAndSettings() {
         return BannerAd;
+    }
+
+    @DataProvider(name = "adNameReal")
+    public static Object[][] provideBannerFoRealDevices() {
+        return BannerAdRealDevice;
+    }
+
+    @DataProvider(name = "customOmAdName")
+    public static Object[][] provideBannerWithCustomOm() {
+        return BannerCustomOmAds;
     }
 
     @DataProvider(name = "refreshAds")
@@ -55,6 +79,7 @@ public class InAppDataProviders {
             {BANNER_320x50_NO_BID_GAM_AD},
             {BANNER_320x50_NO_BID_IN_APP},
             {BANNER_320x50_NO_BID_ADMOB},
+            {BANNER_320x50_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBids")
@@ -65,6 +90,7 @@ public class InAppDataProviders {
     private static final String[][] BannerRandom = {
             {BANNER_320x50_GAM_RANDOM},
             {BANNER_320x50_ADMOB_RANDOM},
+            {BANNER_320x50_MAX_RANDOM},
     };
 
     @DataProvider(name = "randomAd")
@@ -81,6 +107,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialAds = {
             {INTERSTITIAL_320x480_IN_APP},
             {INTERSTITIAL_320x480_ADMOB},
+            {INTERSTITIAL_320x480_MAX},
             {INTERSTITIAL_320x480_GAM}
     };
 
@@ -92,6 +119,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialRandom = {
             {INTERSTITIAL_320x480_GAM_RANDOM},
             {INTERSTITIAL_320x480_ADMOB_RANDOM},
+            {INTERSTITIAL_320x480_MAX_RANDOM},
     };
 
     @DataProvider(name = "randomAdInterstitial")
@@ -102,6 +130,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialNoBids = {
             {INTERSTITIAL_320x480_NO_BID_ADMOB},
             {INTERSTITIAL_320x480_NO_BID_GAM},
+            {INTERSTITIAL_320x480_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBidsInterstitial")
@@ -112,6 +141,7 @@ public class InAppDataProviders {
     private static final String[][] InterstitialMultiFormatAds = {
             {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
+            {INTERSTITIAL_MULTI_FORMAT_MAX},
             {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
     @DataProvider(name = "interstitialMultiFormat")
@@ -192,9 +222,32 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_ENDCARD},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_INTERSTITIAL_320x480_GAM},
+            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
             {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_REWARDED_320x480_MAX},
+    };
+    private static final String[][] VideoAdsRealDevice = {
+            {VIDEO_INTERSTITIAL_320x480_IN_APP},
+            {VIDEO_INTERSTITIAL_320x480_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_GAM},
+            {VIDEO_INTERSTITIAL_320x480_MAX},
+            {VIDEO_REWARDED_320x480_IN_APP},
+            {VIDEO_REWARDED_320x480_GAM_METADATA},
+            {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_REWARDED_320x480_MAX},
+    };
+
+    private static final String[][] VideoAdsWithAdConfiguration = {
+            {VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION},
+            {VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION},
+            {VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION},
+//            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
+            {VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION},
+            {VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION},
+            {VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
     };
 
     /* AD_NAME_TYPE*/
@@ -203,9 +256,22 @@ public class InAppDataProviders {
         return VideoAds;
     }
 
+    @DataProvider(name = "adNameVideoWithAdConfiguration")
+    public static Object[][] provideVideoWithAdConfiguration() {
+        return VideoAdsWithAdConfiguration;
+    }
+
+    @DataProvider(name = "adNameVideoReal")
+    public static Object[][] provideVideoAdRealDevice() {
+        return VideoAdsRealDevice;
+    }
     private static final String[][] VideoRandom = {
             {VIDEO_INTERSTITIAL_320x480_GAM_RANDOM},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM},
+            {VIDEO_INTERSTITIAL_320x480_MAX_RANDOM},
+            {VIDEO_REWARDED_320x480_MAX_RANDOM},
+            {VIDEO_REWARDED_320x480_ADMOB_RANDOM},
+            {VIDEO_REWARDED_320x480_GAM_RANDOM},
     };
 
     /* AD_NAME_TYPE*/
@@ -216,9 +282,11 @@ public class InAppDataProviders {
 
     private static final String[][] VideoNoBids = {
             {VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_NO_BID_MAX},
             {VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD},
             {VIDEO_REWARDED_320x480_NO_BID_GAM},
             {VIDEO_REWARDED_320x480_NO_BID_ADMOB},
+            {VIDEO_REWARDED_320x480_NO_BID_MAX},
     };
 
     /* AD_NAME_TYPE*/
@@ -230,6 +298,7 @@ public class InAppDataProviders {
     private static final String[][] VideoInterstitial = {
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
+            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_INTERSTITIAL_320x480_GAM},
     };
 
@@ -253,6 +322,7 @@ public class InAppDataProviders {
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
             {VIDEO_REWARDED_320x480_ADMOB},
+            {VIDEO_REWARDED_320x480_MAX},
     };
 
     /* AD_NAME_TYPE*/
@@ -284,43 +354,9 @@ public class InAppDataProviders {
     }
 
 
-    private static final String[][] NativeRequestAdsIos = {
+    private static final String[][] NativeAds = {
             {NATIVE_AD_ADMOB},
-
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-            {NATIVE_AD_FEED_IN_APP},
-
-            {NATIVE_AD_FEED_GAM},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED},
-
-    };
-    private static final String[][] NativeAdsIos = {
-            {NATIVE_AD_ADMOB},
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED_GAD},
-            {NATIVE_AD_GAM_UNIFIED},
-    };
-    private static final String[][] NativeRequestAdsAndroid = {
-            {NATIVE_AD_ADMOB},
-
-            {NATIVE_AD_IN_APP},
-            {NATIVE_AD_FEED_IN_APP},
-            {NATIVE_AD_LINKS_IN_APP},
-
-            {NATIVE_AD_FEED_GAM},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_UNIFIED},
-
-    };
-    private static final String[][] NativeAdsAndroid = {
-            {NATIVE_AD_ADMOB},
-
+            {NATIVE_AD_MAX},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
 
@@ -331,47 +367,54 @@ public class InAppDataProviders {
 
     };
 
-    private static final String[][] NativeNoBidsAndroidAds = {
+
+    private static final String[][] NativeRequestAds = {
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_MAX},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+            {NATIVE_AD_FEED_IN_APP},
+
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED},
+
+    };
+    private static final String[][] NativeRequestAdsRealDevice = {
+            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_MAX},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_GAM_UNIFIED},
+
+    };
+    private static final String[][] NativeNoBidsAds = {
             {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
             {NATIVE_AD_ADMOB_NO_BIDS},
+            {NATIVE_AD_MAX_NO_BIDS},
 
     };
-    private static final String[][] NativeNoBidsIosAds = {
-            {NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS},
-            {NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS},
-            {NATIVE_AD_ADMOB_GAD_NO_BIDS},
-
-    };
-
     /* AD_NAME_TYPE*/
-    @DataProvider(name = "nativeRequestAdsIos")
+    @DataProvider(name = "nativeRequestAds")
     public static Object[][] provideNativeRequestAdsIos() {
-        return NativeRequestAdsIos;
+        return NativeRequestAds;
     }
 
-    @DataProvider(name = "nativeAdsIos")
-    public static Object[][] provideNativeAdsIos() {
-        return NativeAdsIos;
+    @DataProvider(name = "nativeRequestAdsReal")
+    public static Object[][] provideNativeRequestAdsRealDevice() {
+        return NativeRequestAdsRealDevice;
     }
 
-    @DataProvider(name = "nativeRequestAdsAndroid")
-    public static Object[][] provideNativeRequestAdsAndroid() {
-        return NativeRequestAdsAndroid;
-    }
-
-    @DataProvider(name = "nativeAdsAndroid")
+    @DataProvider(name = "nativeAds")
     public static Object[][] provideNativeAdsAndroid() {
-        return NativeAdsAndroid;
+        return NativeAds;
     }
 
-    @DataProvider(name = "nativeNoBidsAdsIos")
-    public static Object[][] provideNativeNoBidsAdsIos() {
-        return NativeNoBidsIosAds;
-    }
-
-    @DataProvider(name = "nativeNoBidsAdsAndroid")
+    @DataProvider(name = "nativeNoBidsAds")
     public static Object[][] provideNativeNoBidsAdsAndroid() {
-        return NativeNoBidsAndroidAds;
+        return NativeNoBidsAds;
     }
+
+
 }

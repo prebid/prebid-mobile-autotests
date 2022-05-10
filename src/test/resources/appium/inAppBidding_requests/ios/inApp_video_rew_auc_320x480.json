@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundle": "org.prebid.mobile.renderingtestapp",
+    "bundle": "$VARIABLE",
     "ext": {
       "prebid": {
         "data": {
@@ -48,6 +48,8 @@
       },
       "storedrequest": {
         "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
       },
       "targeting": {
 
@@ -77,6 +79,8 @@
         "prebid": {
           "is_rewarded_inventory": 1,
           "storedrequest": {
+            "id": "$VARIABLE"
+          },"storedauctionresponse": {
             "id": "$VARIABLE"
           }
         }

@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundle": "org.prebid.mobile.renderingtestapp",
+    "bundle": "$VARIABLE",
     "ext": {
       "prebid": {
         "data": {
@@ -102,6 +102,7 @@
         "placement": 5,
         "playbackend": 2,
         "pos": 7,
+        "maxduration":30,
         "protocols": [
           2,
           5

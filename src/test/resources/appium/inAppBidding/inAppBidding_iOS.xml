@@ -3,49 +3,54 @@
 		[<!ENTITY parent SYSTEM "src/test/resources/appium/config/env_resources.xml">]>
 <suite name="InApp_Bidding.xml" thread-count="1" verbose="1" configfailurepolicy="continue" time-out="360000">
 	&parent;
+
 	<parameter name="prebidTestPlatform" value="iOS"/>
 	<parameter name="prebidServerKind" value="Prebid"/>
+
 	<!-- Run with enabled mac proxy for BMP -->
-	<test verbose="3" name="InApp_Bidding iOS Custom Requests">
-		<groups>
-			<run>
-				<include name="USPrivacy"/>
-				<include name="TCFv1"/>
-				<include name="CustomOpenRTB"/>
-				<include name="LiveRampATS"/>
-			</run>
-		</groups>
-		<classes>
-			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>
-		</classes>
-	</test>
-	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke] [MOCK]]">
-		<groups>
-			<run>
-				<include name="ios"/>
-				<include name="smoke"/>
-			</run>
-		</groups>
-		<classes>
-			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
-			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
-			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
-			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
-			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
-		</classes>
-	</test>
-	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB] [MOCK]">
+<!--	<test verbose="3" name="InApp_Bidding iOS Custom Requests">-->
+<!--		<groups>-->
+<!--			<run>-->
+<!--				<include name="USPrivacy"/>-->
+<!--				<include name="TCFv1"/>-->
+<!--				<include name="CustomOpenRTB"/>-->
+<!--				<include name="LiveRampATS"/>-->
+<!--			</run>-->
+<!--		</groups>-->
+<!--		<classes>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>-->
+<!--		</classes>-->
+<!--	</test>-->
+<!--	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke]">-->
+<!--		<groups>-->
+<!--			<run>-->
+<!--				<include name="ios"/>-->
+<!--				<include name="smoke"/>-->
+<!--			</run>-->
+<!--		</groups>-->
+<!--		<classes>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+<!--		</classes>-->
+<!--	</test>-->
+	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB]">
+
 		<groups>
 			<run>
 				<include name="requests"/>
-				<include name="requests-iOS"/>
+				<!-- When running on real device change include requests-simulator to exclude and vice versa-->
+<!--				<include name="requests-simulator"/>-->
+<!--				<exclude name="requests-realDevice"/>-->
 			</run>
 		</groups>
 		<classes>
-			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
-			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
-			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
-			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+<!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
+<!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
 			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
 	</test>

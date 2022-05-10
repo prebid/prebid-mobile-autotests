@@ -58,22 +58,22 @@ public class RequestValidator {
         assertEquals(impDisplaymanagerver, validImpDisplaymanagerver, "imp.DISPLAYMANAGERVER " + impDisplaymanagerver + " not equal to " + validImpDisplaymanagerver);
     }
 
-    private static String getAppVer(Har harLog){
+    private static String getAppVer(Har harLog) {
         JSONObject appObject = (JSONObject) HarParser.getRequestPostDataTextJson(harLog, "auction").get("app");
         return appObject.get("ver").toString();
     }
 
-    private static String getAppExtPrebidVersion(Har harLog){
+    private static String getAppExtPrebidVersion(Har harLog) {
         JSONObject appObject = (JSONObject) HarParser.getRequestPostDataTextJson(harLog, "auction").get("app");
         return appObject.getJSONObject("ext").getJSONObject("prebid").get("version").toString();
     }
 
-    private static String getOmidpv(Har harLog){
+    private static String getOmidpv(Har harLog) {
         JSONObject sourceObject = (JSONObject) HarParser.getRequestPostDataTextJson(harLog, "auction").get("source");
         return sourceObject.getJSONObject("ext").get("omidpv").toString();
     }
 
-    private static String getImpDisplaymanagerver(Har harLog){
+    private static String getImpDisplaymanagerver(Har harLog) {
         JSONArray impArray = (JSONArray) HarParser.getRequestPostDataTextJson(harLog, "auction").get("imp");
         return impArray.getJSONObject(0).get("displaymanagerver").toString();
     }
@@ -101,8 +101,8 @@ public class RequestValidator {
         }
 
         JSONObject sentJson = new JSONObject(lastValidData);
-        System.out.println("Sent json: "+sentJson);
-        System.out.println("Valid Json: "+validJson);
+        System.out.println("Sent json: " + sentJson);
+        System.out.println("Valid Json: " + validJson);
         boolean checkResult;
         String errorMessage = null;
         try {
@@ -131,8 +131,8 @@ public class RequestValidator {
         }
         JSONObject sentJson = HarParser.getRequestPostDataTextJson(harLog, event);
         boolean checkResult;
-        System.out.println("Sent json: "+sentJson);
-        System.out.println("Valid json: "+validJson);
+        System.out.println("Sent json: " + sentJson);
+        System.out.println("Valid json: " + validJson);
         String errorMessage = null;
         try {
             checkResult = isJsonValid(sentJson, validJson, ROOT_JSON_KEY);
@@ -197,8 +197,8 @@ public class RequestValidator {
 
     protected static boolean isJsonValid(JSONObject sentJson, JSONObject validJson, String parentKey) throws ValidationException {
         compareKeySets(parentKey, sentJson, validJson);
-
-        for (String key : validJson.keySet()) {
+        Set<String> validJsonKeys = validJson.keySet();
+        for (String key : validJsonKeys) {
             Object validEntry = validJson.get(key);
             if (isVariable(validEntry)) {
                 checkVariable(sentJson, key);
@@ -212,6 +212,8 @@ public class RequestValidator {
         }
         return true;
     }
+
+
 
     private static void compareKeySets(String parentKey, JSONObject sentJson, JSONObject validJson) throws ValidationException {
         if (sentJson == null) {

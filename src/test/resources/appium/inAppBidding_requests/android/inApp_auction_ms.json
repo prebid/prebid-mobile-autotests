@@ -16,12 +16,12 @@
         ],
         "format": [
           {
-            "w": 320,
-            "h": 50
-          },
-          {
             "w": 728,
             "h": 90
+          },
+          {
+            "w": 320,
+            "h": 50
           }
         ]
       },
@@ -59,7 +59,7 @@
   "device": {
     "ua": "$VARIABLE",
     "lmt": 0,
-    "make": "Google",
+    "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
     "osv": "$VARIABLE",

@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundle": "org.prebid.mobile.renderingtestapp",
+    "bundle": "$VARIABLE",
     "ext": {
       "prebid": {
         "data": {
@@ -87,7 +87,7 @@
         "ver": "$VARIABLE"
       },
       "displaymanager":"prebid-mobile",
-      "displaymanagerver":"1.14.0-beta1",
+      "displaymanagerver":"$VARIABLE",
       "secure": 1,
       "instl":0
 

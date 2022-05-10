@@ -9,41 +9,41 @@
         "version": "$VARIABLE"
       }
     },
-    "name": "InternalTestApp",
     "publisher": {
       "id": "$VARIABLE"
     },
+    "name": "InternalTestApp",
     "ver": "$VARIABLE"
   },
   "device": {
-    "ext": {
-      "atts": 0,
-      "ifv": "$VARIABLE"
-    },
     "connectiontype": "$VARIABLE",
-    "geo": {
-
+    "ext": {
+      "ifv":"$VARIABLE",
+      "atts": 0
     },
     "h": "$VARIABLE",
-    "ifa": "00000000-0000-0000-0000-000000000000",
-    "language": "en",
+    "ua": "$VARIABLE",
+    "ifa": "$VARIABLE",
     "lmt": "$VARIABLE",
+    "language":"en",
     "make": "Apple",
     "model": "iPhone",
     "os": "iOS",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
     "osv": "$VARIABLE",
+    "geo":{
+
+    },
     "pxratio": "$VARIABLE",
-    "ua": "$VARIABLE",
-    "w":"$VARIABLE"
+    "w": "$VARIABLE"
   },
   "ext": {
     "prebid": {
       "cache": {
         "bids": {
-
         },
         "vastxml": {
-
         }
       },
       "storedrequest": {
@@ -52,41 +52,24 @@
         "id": "$VARIABLE"
       },
       "targeting": {
-
       },
       "data": {
-        "bidders": []
+        "bidders": [
+        ]
       }
     }
   },
-  "regs":{
-    "ext":{
-      "gdpr":"$VARIABLE"
+  "regs": {
+    "ext": {
+      "gdpr": 0
     }
   },
   "id": "$VARIABLE",
   "imp": [
     {
-      "banner": {
-        "api": [
-          3,
-          5,
-          6,
-          7
-        ],
-        "format": [
-          {
-            "h": 50,
-            "w": 320
-          }
-        ]
-      },
-      "clickbrowser": 0,
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
       "ext": {
-        "context": {
-          "data": {
+        "context":{
+          "data":{
 
           }
         },
@@ -99,23 +82,30 @@
         }
       },
       "id": "$VARIABLE",
-      "instl": 0,
-      "secure": 1
+      "clickbrowser":0,
+
+      "native": {
+        "request": "$VARIABLE",
+        "ver": "$VARIABLE"
+      },
+      "displaymanager":"prebid-mobile",
+      "displaymanagerver":"$VARIABLE",
+      "secure": 1,
+      "instl":0
+
     }
   ],
   "source": {
-    "ext": {
-      "omidpn": "Prebid",
-      "omidpv": "$VARIABLE"
+    "ext":{
+      "omidpv":"$VARIABLE",
+      "omidpn":"Prebid"
     },
     "tid": "$VARIABLE"
   },
   "user": {
     "ext": {
-      "data": {
-
-      }
+      "data": {}
     },
-    "yob":0
+    "yob": 0
   }
 }

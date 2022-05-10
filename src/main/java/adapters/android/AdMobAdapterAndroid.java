@@ -23,19 +23,17 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates()  {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-        adPage.clickBanner();
-        testEnvironment.homePage.clickCloseButtonClickThroughBrowser();
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_OPENED);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_CLOSED);
     }
 
     @Override
     public void checkDisplayInterstitialDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkLoadDelegate();
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_SHOWED);
         testEnvironment.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
@@ -43,17 +41,13 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkVideoInterstitialDelegates()  {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_SHOWED);
-        testEnvironment.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
+        checkDisplayInterstitialDelegates();
     }
 
     @Override
     public void checkVideoRewardedDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkLoadDelegate();
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_IMPRESSION);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_SHOWED);
         testEnvironment.homePage.isDelegateEnabled(ON_INTERSTITIAL_DISMISSED);
@@ -62,9 +56,9 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
 
     @Override
     public void checkVideoOutstreamDelegates() {
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_DISPLAYED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkClickDelegate();
     }
 
     @Override
@@ -72,8 +66,8 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
         adPage.clickTvBody();
         Thread.sleep(1000);
         testEnvironment.homePage.clickBack();
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
+        checkLoadDelegate();
+        checkClickDelegate();
         testEnvironment.homePage.isDelegateEnabled(ON_AD_SHOWED);
         testEnvironment.homePage.isDelegateEnabled(ON_AD_OPENED);
     }
@@ -81,5 +75,20 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
     @Override
     public void checkEvents() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+    }
+
+    @Override
+    public void checkLoadDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_LOADED);
+    }
+
+    @Override
+    public void checkLoadFailDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_FAILED);
+    }
+
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(ON_AD_CLICKED);
     }
 }

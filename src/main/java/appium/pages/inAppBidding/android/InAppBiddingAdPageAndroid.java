@@ -26,7 +26,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     private static class Locators {
         static final By examples = MobileBy.AccessibilityId("Examples");
         static final By utilities = MobileBy.AccessibilityId("Utilities");
-        static final By adView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc='adView']/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View");
+        static final By adView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc=\"adView\"]/android.webkit.WebView");
         static final By endCard = MobileBy.xpath("//android.view.View[@clickable='true']");
         static final By videoView = MobileBy.xpath("//android.widget.FrameLayout[@content-desc='adView']");
         static final By viewContainer = getId("viewContainer");
@@ -35,6 +35,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By reloadButton = MobileBy.xpath("//*[@text='Load']");
         static final By retryButton = MobileBy.xpath("//*[@text='Retry']");
         static final By closeButton = getId("iv_close_interstitial");
+        static final By skipButton = getId("iv_skip");
         static final By closeWebViewButton = MobileBy.xpath("//android.widget.Button[@content-desc='close']");
         static final By learnMore = getId("tv_learn_more");
 
@@ -104,13 +105,13 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By videoFeed = getId("exo_overlay");
         static final By watchAgain = getId("btn_watch_again");
 
-        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='Click here to visit our site!']");
+        static final By clickHereToVisitOurSite = MobileBy.xpath("//*[@text='CLICK HERE TO VISIT OUR SITE!']");
         static final By btnNativeLinkUrl = getId("btnNativeLinkUrl");
         static final By btnNativeLinkRoot = getId("btnNativeLinkRoot");
         static final By btnNativeDeeplinkOk = getId("btnNativeDeeplinkOk");
         static final By btnNativeDeeplinkFallback = getId("btnNativeDeeplinkFallback");
         static final By clickTvBodyAdMob = getId("tvBody");
-        static final By btnCallToAction = getId("ad_call_to_action");
+        static final By btnCallToAction = getId("btnCallToAction");
 
     }
 
@@ -221,6 +222,11 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     }
 
     @Override
+    public void clickStopRefreshButton() {
+
+    }
+
+    @Override
     public void clickRetryButton() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.retryButton))
                 .click();
@@ -229,6 +235,12 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     @Override
     public void clickBanner() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
+                .click();
+    }
+
+    @Override
+    public void clickSkipButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.skipButton))
                 .click();
     }
 

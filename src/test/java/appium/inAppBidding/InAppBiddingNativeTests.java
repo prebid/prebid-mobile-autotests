@@ -19,7 +19,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     //NATIVE TESTS
 
-    //    @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+//        @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -38,50 +38,8 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests-iOS"}, dataProvider = "nativeRequestAdsIos", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionNativeAdsEventsIos(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd);
-
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
-
-        if (prebidAd.contains("Feed")) {
-            System.out.println("PERFORM SCROLL TO FEED");
-            page.scrollToFeedAd();
-        }
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
-        if (!isPlatformIOS) {
-            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
-        }
-
-        env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
-
-        env.waitForEvent(InAppBiddingEvents.MRC50, 1, 60);
-
-        env.waitForEvent(InAppBiddingEvents.MRC100, 1, 60);
-
-        env.homePage.clickBack();
-    }
-
-    @Test(groups = {"requests-iOS"}, dataProvider = "nativeNoBidsAdsIos", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionNativeNoBidsAdsIos(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd);
-
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
-
-        if (prebidAd.contains("Feed")) {
-            System.out.println("PERFORM SCROLL TO FEED");
-            page.scrollToFeedAd();
-        }
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
-
-        env.homePage.clickBack();
-    }
-
-    @Test(groups = {"requests-Android"}, dataProvider = "nativeNoBidsAdsAndroid", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionNativeNoBidsAdsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
+    @Test(groups = {"requests"}, dataProvider = "nativeNoBidsAds", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeNoBidsAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
@@ -95,8 +53,8 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests-Android"}, dataProvider = "nativeRequestAdsAndroid", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionNativeAdsEventsAndroid(String prebidAd) throws TimeoutException, InterruptedException {
+    @Test(groups = {"requests-simulator"}, dataProvider = "nativeRequestAds", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeAdsEvents(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
@@ -123,29 +81,51 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"ios"}, dataProvider = "nativeAdsIos", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    @Test(groups = {"requests-realDevice"}, dataProvider = "nativeRequestAdsReal", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionNativeAdsEventsRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJsonRealDevice(prebidAd);
+
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
+
+        if (prebidAd.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        if (!isPlatformIOS) {
+            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        }
+
+        env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
+
+        env.waitForEvent(InAppBiddingEvents.MRC50, 1, 60);
+
+        env.waitForEvent(InAppBiddingEvents.MRC100, 1, 60);
+
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"ios"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
-        if (!prebidAd.contains("AdMob")) {
-            env.homePage.isDelegateEnabled(FETCH_DEMAND);
-        }
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,nativePage);
+        initPrebidAdapter(prebidAd,env,nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
     }
 
-    @Test(groups = {"android"}, dataProvider = "nativeAdsAndroid", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException, NoSuchFieldException {
+    @Test(groups = {"android"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
-        if (!prebidAd.contains("AdMob")) {
-            env.homePage.isDelegateEnabled(ON_NATIVE_FETCH_DEMAND_SUCCESS);
-        }
-        PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(prebidAd, env,nativePage);
+        initPrebidAdapter(prebidAd,env,nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 

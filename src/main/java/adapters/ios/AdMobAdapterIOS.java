@@ -21,10 +21,8 @@ public class AdMobAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.openInBrowser();
-        adPage.waitAndReturnToApp();
-        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+    public void checkBannerDelegates() {
+        checkLoadDelegate();
         testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_RECORD_IMPRESSION);
         testEnvironment.homePage.isDelegateEnabled(AD_WILL_PRESENT_SCREEN);
         testEnvironment.homePage.isDelegateEnabled(AD_WILL_DISMISS_SCREEN);
@@ -33,10 +31,11 @@ public class AdMobAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkDisplayInterstitialDelegates() {
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECEIVE_BUTTON);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -45,7 +44,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -54,7 +53,7 @@ public class AdMobAdapterIOS extends PrebidAdapter {
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_PRESENT_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_WILL_DISMISS_FULLSCREEN);
         testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_DISMISS_FULLSCREEN);
-        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
+        checkClickDelegate();
     }
 
     @Override
@@ -75,5 +74,20 @@ public class AdMobAdapterIOS extends PrebidAdapter {
     public void checkEvents() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_MADS_GMA, 1, 60);
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
+    }
+
+    @Override
+    public void checkLoadDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_LOAD);
+    }
+
+    @Override
+    public void checkLoadFailDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(AD_VIEW_DID_FAIL);
+    }
+
+    @Override
+    public void checkClickDelegate() {
+        testEnvironment.homePage.isDelegateEnabled(INTERSTITIAL_DID_RECORD_IMPRESSION);
     }
 }

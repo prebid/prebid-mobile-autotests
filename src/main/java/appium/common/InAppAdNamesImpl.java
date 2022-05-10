@@ -31,7 +31,17 @@ public interface InAppAdNamesImpl {
     String BANNER_ADAPTIVE_ADMOB = "Banner Adaptive (AdMob)";
 //    String BANNER_ADAPTIVE_ADMOB = "Flexible Banner (AdMob)";
 
-
+    /** MAX*/
+//    String BANNER_320x50_MAX = "Banner 320x50 (MAX) [OK, OXB Adapter]";
+    String BANNER_320x50_MAX = "Banner 320x50 (MAX) [OK, Adapter]";
+//    String BANNER_320x50_NO_BID_MAX = "Banner 320x50 (MAX) [noBids, No Ad]";
+    String BANNER_320x50_NO_BID_MAX = "Banner 320x50 (MAX) [noBids, MAX Ad]";
+//    String BANNER_320x50_MAX_RANDOM = "Banner 320x50 (MAX) [OK, Random]";
+    String BANNER_320x50_MAX_RANDOM = "Banner 320x50 (MAX) [Random, Respectively]";
+//    String BANNER_300x250_MAX = "Banner 300x250 (MAX)";
+    String BANNER_300x250_MAX = "Banner 300x250 (MAX) [OK, Adapter]";
+//    String BANNER_ADAPTIVE_MAX = "Banner Adaptive (MAX)";
+    String BANNER_ADAPTIVE_MAX = "Banner adaptive banners (MAX) [OK, Adapter]";
 
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
     String INTERSTITIAL_MULTI_FORMAT_IN_APP = "Multiformat Interstitial 320x480 (In-App)";
@@ -40,6 +50,13 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_320x480_ADMOB_RANDOM = "Display Interstitial 320x480 (AdMob) [OK, Random]";
     String INTERSTITIAL_MULTI_FORMAT_ADMOB = "Multiformat Interstitial 320x480 (AdMob)";
     String INTERSTITIAL_320x480_NO_BID_ADMOB = "Display Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
+
+//    String INTERSTITIAL_320x480_MAX = "Display Interstitial 320x480 (MAX) [OK, OXB Adapter]";
+    String INTERSTITIAL_320x480_MAX = "Display Interstitial 320x480 (MAX) [OK, Adapter]";
+    String INTERSTITIAL_320x480_MAX_RANDOM = "Display Interstitial 320x480 (MAX) [OK, Random]";
+    String INTERSTITIAL_MULTI_FORMAT_MAX = "Multiformat Interstitial 320x480 (MAX)";
+//    String INTERSTITIAL_320x480_NO_BID_MAX = "Display Interstitial 320x480 (MAX) [noBids, No Ad]";
+    String INTERSTITIAL_320x480_NO_BID_MAX = "Display Interstitial 320x480 (MAX) [noBids, MAX Ad]";
 
     String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
     String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
@@ -73,6 +90,12 @@ public interface InAppAdNamesImpl {
     String VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM = "Video Interstitial 320x480 (AdMob) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB = "Video Interstitial 320x480 (AdMob) [noBids, AdMob Ad]";
 
+    String VIDEO_INTERSTITIAL_320x480_MAX = "Video Interstitial 320x480 (MAX) [OK, OXB Adapter]";
+//    String VIDEO_INTERSTITIAL_320x480_MAX = "Video Interstitial 320x480 (MAX) [OK, Adapter]";
+    String VIDEO_INTERSTITIAL_320x480_MAX_RANDOM = "Video Interstitial 320x480 (MAX) [OK, Random]";
+//    String VIDEO_INTERSTITIAL_320x480_NO_BID_MAX = "Video Interstitial 320x480 (MAX) [noBids, No Ad]";
+    String VIDEO_INTERSTITIAL_320x480_NO_BID_MAX = "Video Interstitial 320x480 (MAX) [noBids, MAX Ad]";
+
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";
     String VIDEO_OUTSTREAM_FEED_IN_APP = "Video Outstream Feed (In-App)";
@@ -88,6 +111,24 @@ public interface InAppAdNamesImpl {
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
     String VIDEO_REWARDED_320x480_ADMOB_RANDOM = "Video Rewarded 320x480 (AdMob) [OK, Random]";
     String VIDEO_REWARDED_320x480_NO_BID_ADMOB = "Video Rewarded 320x480 (AdMob) [noBids, AdMob Ad]";
+
+    /** Videos with ad configuration*/
+    String VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (In-App)";
+//    String VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Interstitial 320x480 With Ad Configuration (In-App)";
+    String VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (GAM) [OK, AppEvent]";
+    String VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (AdMob) [OK, OXB Adapter]";
+    String VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION = "Video Interstitial With Ad Configuration 320x480 (MAX) [OK, OXB Adapter]";
+
+    String VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (In-App)";
+    String VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (GAM) [OK, Metadata]";
+    String VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (AdMob) [OK, OXB Adapter]";
+    String VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION = "Video Rewarded With Ad Configuration 320x480 (MAX) [OK, OXB Adapter]";
+
+    String VIDEO_REWARDED_320x480_MAX = "Video Rewarded 320x480 (MAX) [OK, OXB Adapter]";
+//    String VIDEO_REWARDED_320x480_MAX = "Video Rewarded 320x480 (MAX) [OK, Adapter]";
+    String VIDEO_REWARDED_320x480_MAX_RANDOM = "Video Rewarded 320x480 (MAX) [OK, Random]";
+//    String VIDEO_REWARDED_320x480_NO_BID_MAX = "Video Rewarded 320x480 (MAX) [noBids, No Ad]";
+    String VIDEO_REWARDED_320x480_NO_BID_MAX = "Video Rewarded 320x480 (MAX) [noBids, MAX Ad]";
 
 
     //CUSTOM AUCTION REQUEST TESTS
@@ -105,7 +146,13 @@ public interface InAppAdNamesImpl {
     //NATIVE ADS NAME
     String NATIVE_AD_ADMOB = "Native Ad (AdMob) [OK, OXB Adapter]";
     String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, AdMob ad]";
+//    String NATIVE_AD_ADMOB_NO_BIDS = "Native Ad (AdMob) [noBids, GADNative ad]";
     String NATIVE_AD_ADMOB_GAD_NO_BIDS = "Native Ad (AdMob) [noBids, GADNativeAd]";
+
+//    String NATIVE_AD_MAX = "Native Ad (MAX) [OK, OXB Adapter]";
+    String NATIVE_AD_MAX = "Native Ad (MAX) [OK, Adapter]";
+//    String NATIVE_AD_MAX_NO_BIDS = "Native Ad (MAX) [noBids, No Ad]";
+    String NATIVE_AD_MAX_NO_BIDS = "Native Ad (MAX) [noBids, MAX Ad]";
 
     String NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
     String NATIVE_AD_GAM_UNIFIED_GAD = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";

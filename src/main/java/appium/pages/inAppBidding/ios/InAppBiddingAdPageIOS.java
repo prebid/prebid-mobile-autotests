@@ -7,10 +7,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -36,8 +33,10 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By mraidVideoContainer = MobileBy.xpath("//XCUIElementTypeApplication[@name=\"PrebidMobileDemoRendering\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther");
         static final By showButton = MobileBy.xpath("//XCUIElementTypeButton[@name='Show']");
         static final By reloadButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Reload]']");
+        static final By stopRefreshButton = MobileBy.xpath("//XCUIElementTypeButton[@name=\"[Stop Refresh]\"]");
         static final By retryButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Retry]']");
-        static final By closeButton = MobileBy.AccessibilityId("PBM Close");
+        static final By closeButton = MobileBy.AccessibilityId("PBMCloseButton");
+        static final By skipButton = MobileBy.AccessibilityId("PBM skipButton");
         static final By closeButtonVideo = MobileBy.AccessibilityId("Close ad");
         static final By closeButtonInterstitial = MobileBy.AccessibilityId("Close Advertisement");
         static final By learnMore = MobileBy.AccessibilityId("Learn More");
@@ -226,7 +225,11 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         wait.until(ExpectedConditions.elementToBeClickable(Locators.reloadButton))
                 .click();
     }
-
+    @Override
+    public void clickStopRefreshButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.stopRefreshButton))
+                .click();
+    }
     @Override
     public void clickRetryButton() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.retryButton))
@@ -235,7 +238,18 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
 
     @Override
     public void clickBanner() {
-        wait.until(ExpectedConditions.elementToBeClickable(Locators.webView))
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(Locators.webView))
+                    .click();
+        } catch (TimeoutException exception){
+            wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
+                    .click();
+        }
+    }
+
+    @Override
+    public void clickSkipButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.skipButton))
                 .click();
     }
 

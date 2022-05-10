@@ -3,8 +3,7 @@
     "bundle": "$VARIABLE",
     "ext": {
       "prebid": {
-        "data": {
-        },
+        "data": {},
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
@@ -16,6 +15,7 @@
     "ver": "$VARIABLE"
   },
   "device": {
+
     "ext": {
       "atts": 0,
       "ifv": "$VARIABLE"
@@ -29,6 +29,8 @@
     "language": "en",
     "lmt": "$VARIABLE",
     "make": "Apple",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
     "model": "iPhone",
     "os": "iOS",
     "osv": "$VARIABLE",
@@ -39,29 +41,19 @@
   "ext": {
     "prebid": {
       "cache": {
-        "bids": {
-
-        },
-        "vastxml": {
-
-        }
-      },
-      "storedrequest": {
-        "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
-      },
-      "targeting": {
-
+        "bids": {},
+        "vastxml": {}
       },
       "data": {
         "bidders": []
-      }
-    }
-  },
-  "regs":{
-    "ext":{
-      "gdpr":"$VARIABLE"
+      },
+      "storedauctionresponse": {
+        "id": "$VARIABLE"
+      },
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "targeting": {}
     }
   },
   "id": "$VARIABLE",
@@ -103,6 +95,11 @@
       "secure": 1
     }
   ],
+  "regs": {
+    "ext": {
+      "gdpr": "$VARIABLE"
+    }
+  },
   "source": {
     "ext": {
       "omidpn": "Prebid",

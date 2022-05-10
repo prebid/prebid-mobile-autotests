@@ -69,6 +69,10 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_PAUSE, "/rv?t=pause");
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_RESUME, "/rv?t=resume");
         inAppBidding_Events.put(InAppBiddingEvents.VIDEO_CLOSE, "/rv?t=close");
+
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_LOAD, "event/load");
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_MIMP, "event/mimp");
+        inAppBidding_Events.put(InAppBiddingEvents.MAX_CIMP, "event/cimp");
     }
 
     private static final Map<InAppBiddingDelegates, String> inAppBidding_Delegates_iOS;
@@ -141,8 +145,17 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
 
         inAppBidding_Delegates_iOS.put(FETCH_DEMAND, "fetchDemand success");
+        inAppBidding_Delegates_iOS.put(DID_LOAD_AD, "didLoadAd called");
+        inAppBidding_Delegates_iOS.put(DID_HIDE_AD, "didHideAd called");
+        inAppBidding_Delegates_iOS.put(DID_DISPLAY_AD, "didDisplayAd called");
+        inAppBidding_Delegates_iOS.put(DID_EXPAND_AD, "didExpandAd called");
+        inAppBidding_Delegates_iOS.put(DID_COLLAPSED_AD, "didCollapsedAd called");
+        inAppBidding_Delegates_iOS.put(DID_CLICK_AD, "didClickAd called");
+        inAppBidding_Delegates_iOS.put(DID_REWARD_USER, "didRewardUser called");
         inAppBidding_Delegates_iOS.put(GET_NATIVE_AD, "getNativeAd success");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_CLICK, "adWasClicked called");
+        inAppBidding_Delegates_iOS.put(DID_CLICK_NATIVE_AD, "didClickNativeAd called");
+        inAppBidding_Delegates_iOS.put(DID_LOAD_NATIVE_AD, "didLoadNativeAd called");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_LOG_IMPRESSION, "adDidLogImpression called");
         inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "custom ad request successful");
         inAppBidding_Delegates_iOS.put(CUSTOM_NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called (custom)");
@@ -169,11 +182,13 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(ON_AD_OPENED, "btnAdOpened");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLICKED, "btnAdClicked");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_SHOWED, "btnAdShowed");
+        inAppBidding_Delegates_Android.put(DID_HIDE_AD, "btnAdHidden");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_AD_CLOSED, "btnAdClosed");
 
         inAppBidding_Delegates_Android.put(ON_NATIVE_FETCH_DEMAND_SUCCESS, "btnFetchDemandResultSuccess");
         inAppBidding_Delegates_Android.put(ON_NATIVE_GET_NATIVE_AD_SUCCESS, "btnGetNativeAdResultSuccess");
         inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOAD, "btnNativeAdLoaded");
+        inAppBidding_Delegates_Android.put(NATIVE_AD_DID_CLICK, "btnNativeAdClicked");
         inAppBidding_Delegates_Android.put(NATIVE_AD_DID_LOG_IMPRESSION, "btnAdEventImpression");
         inAppBidding_Delegates_Android.put(CUSTOM_NATIVE_AD_REQUEST_SUCCESS, "btnCustomAdRequestSuccess");
         inAppBidding_Delegates_Android.put(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS, "btnUnifiedRequestSuccess");
@@ -186,8 +201,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_INTERSTITIAL_DISMISSED, "btnAdDismissed");
 
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_STARTED, "btnAdVideoStarted");
+        inAppBidding_Delegates_Android.put(ON_REWARDED_VIDEO_STARTED, "btnRewardedVideoStarted");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_PLAYBACK_ERROR, "btnAdVideoPlaybackError");
         inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_COMPLETED, "btnAdCompleted");
+        inAppBidding_Delegates_Android.put(InAppBiddingDelegates.ON_REWARDED_VIDEO_COMPLETED, "btnRewardedVideoCompleted");
+        inAppBidding_Delegates_Android.put(REWARDED_AD_USER_DID_EARN_REWARD, "btnUserRewarded");
 
         inAppBidding_Delegates_Android.put(INTERSTITIAL_DID_RECEIVED, "btnAdLoaded");
         inAppBidding_Delegates_Android.put(INTERSTITIAL_WILL_PRESENT_AD, "btnAdDisplayed");
@@ -282,12 +300,24 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         ON_AD_COLLAPSED,
         ON_INTERSTITIAL_DISMISSED,
         ON_REWARDED_STARTED,
+        ON_REWARDED_VIDEO_STARTED,
         ON_REWARDED_PLAYBACK_ERROR,
         ON_REWARDED_COMPLETED,
+        ON_REWARDED_VIDEO_COMPLETED,
+
+        DID_LOAD_AD,
+        DID_DISPLAY_AD,
+        DID_HIDE_AD,
+        DID_EXPAND_AD,
+        DID_COLLAPSED_AD,
+        DID_CLICK_AD,
+        DID_REWARD_USER,
 
         FETCH_DEMAND,
         GET_NATIVE_AD,
         NATIVE_AD_DID_CLICK,
+        DID_CLICK_NATIVE_AD,
+        DID_LOAD_NATIVE_AD,
         NATIVE_AD_DID_LOG_IMPRESSION,
         CUSTOM_NATIVE_AD_REQUEST_SUCCESS,
         CUSTOM_NATIVE_AD_PRIMARY_WIN,
@@ -336,6 +366,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         VIDEO_PAUSE,
         VIDEO_RESUME,
         VIDEO_CLOSE,
+
+        /** MAX Load events*/
+        MAX_LOAD,
+        MAX_MIMP,
+        MAX_CIMP,
     }
 
     public InAppBiddingHomePageImpl homePage;
@@ -370,7 +405,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
             driver = new IOSDriver(new URL(urlAdress), capabilities);
-            installBmpCertificate();
+            if (capabilities.getCapability("udid") == null) {
+                installBmpCertificate();
+            }
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);
@@ -443,9 +480,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
     }
 
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout, int delay) throws InterruptedException, TimeoutException {
-         waitForEventBmp(event, expectedOccurrences, timeout, delay);
+        waitForEventBmp(event, expectedOccurrences, timeout, delay);
     }
-
 
 
     public String getEvent(InAppBiddingEvents event) {

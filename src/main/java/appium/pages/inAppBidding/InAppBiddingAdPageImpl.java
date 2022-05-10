@@ -13,11 +13,15 @@ public interface InAppBiddingAdPageImpl {
 
     void clickReloadButton();
 
+    void clickStopRefreshButton();
+
     void clickRetryButton();
 
     void performScrollToDelegates();
 
     void clickBanner();
+
+    void clickSkipButton();
 
     void isAdDisplayed();
 

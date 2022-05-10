@@ -1,6 +1,6 @@
 package adapters.delegates;
 
-public interface DelegatesInspector {
+public interface DelegatesInspector extends LoadDelegatesInspector, ClickDelegatesInspector {
     void checkBannerDelegates() throws InterruptedException;
 
     void checkDisplayInterstitialDelegates() throws InterruptedException;
