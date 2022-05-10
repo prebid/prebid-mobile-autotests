@@ -35,6 +35,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         static final By reloadButton = MobileBy.xpath("//*[@text='Load']");
         static final By retryButton = MobileBy.xpath("//*[@text='Retry']");
         static final By closeButton = getId("iv_close_interstitial");
+        static final By skipButton = getId("iv_skip");
         static final By closeWebViewButton = MobileBy.xpath("//android.widget.Button[@content-desc='close']");
         static final By learnMore = getId("tv_learn_more");
 
@@ -234,6 +235,12 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
     @Override
     public void clickBanner() {
         wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
+                .click();
+    }
+
+    @Override
+    public void clickSkipButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.skipButton))
                 .click();
     }
 

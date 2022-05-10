@@ -261,7 +261,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -271,8 +271,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
         page.clickInterstitialAd();
-
         page.closeWebViewCreative();
+
         initPrebidAdapter(adName, env);
         if (!isPlatformIOS) {
             page.isEndCardDisplayed();
@@ -295,6 +295,28 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkOMEndCardUserInteractionsAndClick();
         session.checkNonAutoPlaySkippableAndStandalonePosition();
         session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    public void testVideoInterstitialEndCardSkipButtonClicked(String adName) throws TimeoutException, InterruptedException {
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
+
+        page.isShowButtonEnabled();
+        page.clickShowButton();
+
+        page.clickSkipButton();
+
+        page.clickInterstitialAd();
+        page.closeWebViewCreative();
+
+        initPrebidAdapter(adName, env);
+        if (!isPlatformIOS) {
+            page.isEndCardDisplayed();
+            page.clickCloseInterstitial();
+        }
+        prebidAdapter.checkClickDelegate();
+
+        env.homePage.clickBack();
     }
 
     @Test(groups = {"android"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)

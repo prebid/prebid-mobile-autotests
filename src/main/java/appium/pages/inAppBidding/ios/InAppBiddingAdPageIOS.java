@@ -36,6 +36,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By stopRefreshButton = MobileBy.xpath("//XCUIElementTypeButton[@name=\"[Stop Refresh]\"]");
         static final By retryButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Retry]']");
         static final By closeButton = MobileBy.AccessibilityId("PBMCloseButton");
+        static final By skipButton = MobileBy.AccessibilityId("PBM skipButton");
         static final By closeButtonVideo = MobileBy.AccessibilityId("Close ad");
         static final By closeButtonInterstitial = MobileBy.AccessibilityId("Close Advertisement");
         static final By learnMore = MobileBy.AccessibilityId("Learn More");
@@ -244,6 +245,12 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
             wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
                     .click();
         }
+    }
+
+    @Override
+    public void clickSkipButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.skipButton))
+                .click();
     }
 
     @Override

@@ -21,6 +21,8 @@ public interface InAppBiddingAdPageImpl {
 
     void clickBanner();
 
+    void clickSkipButton();
+
     void isAdDisplayed();
 
     void waitAndReturnToApp() throws InterruptedException;
