@@ -23,17 +23,21 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     public void testUSPrivacy(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments("USPrivacy"));
-        initValidCCPAJsons();
+
+       initValidCCPAJsons();
+
         env.homePage.goToAd(BANNER_320x50_IN_APP);
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
+//        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_FALSE);
+//        env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_FALSE);
+//        env.homePage.clickBack();
 
+//        env.homePage.goToAd(BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
 
-   @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
+//   @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
     public void testTCFv1(Method method, ITestContext itc, String testCase) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(testCase));
@@ -44,7 +48,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"LiveRampATS"})
+//   @Test(groups = {"LiveRampATS"})
     public void testLiveRampATS(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(LIVE_RAMP_ATS));
@@ -60,7 +64,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"CustomOpenRTB"}/*,enabled = false*/)
+//   @Test(groups = {"CustomOpenRTB"}/*,enabled = false*/)
     public void testCustomOpenRtbUser(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(CUSTOM_OPENRTB));

@@ -22,14 +22,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        },
-        "vastxml": {
-
-        }
-      },
       "targeting": {
 
       },
