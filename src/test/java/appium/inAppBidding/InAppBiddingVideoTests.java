@@ -36,9 +36,10 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
-    @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
     public void testAuctionRequestVideoInterstitialWithCache(String adName) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(adName);
+        env.homePage.turnOnCacheSwitcher();
+        initValidTemplatesJsonWithCache(adName);
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         if (adName.contains("Feed")) {
@@ -51,7 +52,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.homePage.clickBack();
-
+        env.homePage.turnOffCacheSwitcher();
     }
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideoWithAdConfiguration", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoWithAdConfiguration(String adName) throws TimeoutException, InterruptedException {

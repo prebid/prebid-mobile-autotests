@@ -63,6 +63,16 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     }
 
     @Override
+    public void turnOnCacheSwitcher() {
+
+    }
+
+    @Override
+    public void turnOffCacheSwitcher() {
+
+    }
+
+    @Override
     public void turnOffGDPRSwitcher() {
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
     }

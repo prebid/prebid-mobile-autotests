@@ -29,6 +29,10 @@ public interface InAppBiddingHomePageImpl {
 
     void turnOnGDPRSwitcher();
 
+    void turnOnCacheSwitcher();
+
+    void turnOffCacheSwitcher();
+
     void turnOffGDPRSwitcher();
 
     void resetApp();
