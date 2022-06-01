@@ -75,7 +75,9 @@
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-
+      "lon": "$VARIABLE",
+      "type": 1,
+      "lat": "$VARIABLE"
     }
   },
   "user": {
@@ -95,14 +97,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        },
-        "vastxml": {
-
-        }
-      },
       "targeting": {
 
       }

@@ -2,7 +2,6 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
-import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.openqa.selenium.ScreenOrientation;
@@ -347,7 +346,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
     private void testAuctionRequestRealDevice(String prebidAd) throws InterruptedException, TimeoutException {
-        initValidTemplatesJsonRealDevice(prebidAd);
+        initValidTemplatesJson(prebidAd,true);
 
         env.homePage.goToAd(prebidAd);
 
