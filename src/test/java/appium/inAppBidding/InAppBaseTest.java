@@ -96,18 +96,23 @@ public class InAppBaseTest {
     }
 
     public void initValidTemplatesJson(String prebidAd) {
+        initValidTemplatesJson(prebidAd,false);
+    }
+    public void initValidTemplatesJsonWithCache(String prebidAd) {
 
-        validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+        validAuctionRequest = getAuctionRequestWithCacheTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")||prebidAd.contains("Ad Configuration")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
-    public void initValidTemplatesJsonRealDevice(String prebidAd) {
-
-        validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
-
+    public void initValidTemplatesJson(String prebidAd, boolean isRealDevice) {
+        if (isRealDevice) {
+            validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
+        } else {
+            validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+        }
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);

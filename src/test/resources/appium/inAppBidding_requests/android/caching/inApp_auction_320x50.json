@@ -16,10 +16,6 @@
         ],
         "format": [
           {
-            "w": 728,
-            "h": 90
-          },
-          {
             "w": 320,
             "h": 50
           }
@@ -94,7 +90,11 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
+      "cache": {
+        "bids": {
 
+        }
+      },
       "targeting": {
 
       }
