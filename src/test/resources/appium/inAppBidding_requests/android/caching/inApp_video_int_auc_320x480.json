@@ -99,6 +99,9 @@
       "cache": {
         "bids": {
 
+        },
+        "vastxml": {
+
         }
       },
       "targeting": {
