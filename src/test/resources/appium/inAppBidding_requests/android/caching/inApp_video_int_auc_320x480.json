@@ -4,26 +4,28 @@
       "id": "$VARIABLE",
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
-      "instl": 0,
+      "instl": 1,
       "clickbrowser": 0,
-      "secure": 1,
-      "banner": {
-        "api": [
-          3,
-          5,
-          6,
-          7
+      "video": {
+        "mimes": [
+          "video\/mp4",
+          "video\/3gpp",
+          "video\/webm",
+          "video\/mkv"
         ],
-        "format": [
-          {
-            "w": 728,
-            "h": 90
-          },
-          {
-            "w": 320,
-            "h": 50
-          }
-        ]
+        "playbackend": 2,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE",
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "placement": 5,
+        "delivery": [
+          3
+        ],
+        "pos": 7
       },
       "ext": {
         "prebid": {
@@ -64,7 +66,7 @@
     "os": "Android",
     "osv": "$VARIABLE",
     "language": "$VARIABLE",
-    "carrier": "$VARIABLE",
+    "carrier": "Android",
     "mccmnc": "$VARIABLE",
     "ifa": "$VARIABLE",
     "h": "$VARIABLE",
@@ -94,7 +96,11 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
+      "cache": {
+        "bids": {
 
+        }
+      },
       "targeting": {
 
       }

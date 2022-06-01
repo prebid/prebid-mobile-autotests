@@ -20,11 +20,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        }
-      },
       "targeting": {
 
       }
@@ -84,7 +80,9 @@
     "ua": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": {
-
+      "lon": "$VARIABLE",
+      "type": 1,
+      "lat": "$VARIABLE"
     },
     "lmt": "$VARIABLE",
     "carrier": "$VARIABLE",

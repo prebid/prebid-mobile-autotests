@@ -81,6 +81,11 @@
     "h":"$VARIABLE",
     "model":"$VARIABLE",
     "language":"$VARIABLE",
+    "geo": {
+      "lon": "$VARIABLE",
+      "type": 1,
+      "lat": "$VARIABLE"
+    },
     "connectiontype":"$VARIABLE",
     "make":"$VARIABLE"
   },

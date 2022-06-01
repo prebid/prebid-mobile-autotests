@@ -21,12 +21,7 @@
       "storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
-        },"vastxml": {
 
-        }
-      },
       "targeting": {
       }
     }
@@ -59,6 +54,9 @@
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
     "geo": {
+      "lon": "$VARIABLE",
+      "type": 1,
+      "lat": "$VARIABLE"
     },
     "pxratio": "$VARIABLE",
     "lmt": "$VARIABLE",
