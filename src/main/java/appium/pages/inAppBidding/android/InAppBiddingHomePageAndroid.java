@@ -27,6 +27,7 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
         static final By examples = MobileBy.AccessibilityId("Examples");
         static final By utilities = MobileBy.AccessibilityId("Utilities");
         static final By GDPRSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchEnableGdpr");
+        static final By CacheSwitcher = MobileBy.id("org.prebid.mobile.renderingtestapp:id/switchEnableCaching");
 
         static final By closeButton = MobileBy.id("org.prebid.mobile.renderingtestapp:id/iv_close_interstitial");
         static final By closeWebViewButton = MobileBy.xpath("//android.widget.Button[@content-desc='close']");
@@ -48,7 +49,6 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     }
 
 
-
     @Override
     public void turnOnGDPRSwitcher() {
         if (isGDPROff()) {
@@ -57,12 +57,30 @@ public class InAppBiddingHomePageAndroid extends AndroidBasePage implements InAp
     }
 
     @Override
+    public void turnOnCacheSwitcher() {
+        if (isCacheOff()) {
+            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.CacheSwitcher)).click();
+        }
+    }
+
+    @Override
+    public void turnOffCacheSwitcher() {
+        wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.CacheSwitcher)).click();
+    }
+
+    @Override
     public void turnOffGDPRSwitcher() {
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
     }
 
+    public boolean isCacheOff() {
+        WebElement cacheCheckbox = driver.findElement(PrebidLocators.CacheSwitcher);
+        return !Boolean.parseBoolean(cacheCheckbox.getAttribute("checked"));
+    }
+
     public boolean isGDPROff() {
-        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).isSelected();
+        WebElement cacheCheckbox = driver.findElement(PrebidLocators.GDPRSwitcher);
+        return !Boolean.parseBoolean(cacheCheckbox.getAttribute("checked"));
     }
 
 
