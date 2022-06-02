@@ -279,7 +279,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -315,7 +315,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-//    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
     public void testVideoInterstitialEndCardSkipButtonClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
