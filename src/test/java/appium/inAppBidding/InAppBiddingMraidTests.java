@@ -207,10 +207,9 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.adShouldExpand2Part();
 
         page.clickExpandAgain();
-
         page.adShouldExpand2Part();
 
-        page.clickHereToClose();
+        page.clickCloseInterstitial();
 
         page.isAdDisplayed();
 
@@ -230,8 +229,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.clickOpenIAB();
 
         page.closeWebViewCreative();
-
-        page.clickHereToClose();
+        page.clickCloseInterstitial();
 
         page.isAdDisplayed();
 
@@ -249,7 +247,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         page.adShouldExpand2Part();
 
         page.clickPlayVideo();
-
+        Thread.sleep(1000);
         page.learnMoreShouldNotBeDisplayed();
 
         if (isPlatformIOS) {
@@ -258,7 +256,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
             env.homePage.clickBack();
         }
 
-        page.clickHereToClose();
+        page.clickCloseInterstitial();
 
         env.homePage.clickBack();
     }
@@ -411,7 +409,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"smoke"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
     public void testMraidResizeOpenApp(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -451,7 +449,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke-Android"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
     public void testMraidResizeStorePicture(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -468,7 +466,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"smoke"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"smoke-Android"}, dataProvider = "mraidResize", dataProviderClass = InAppDataProviders.class)
     public void testResizeCreateCalendarEvent(String adName) throws InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
