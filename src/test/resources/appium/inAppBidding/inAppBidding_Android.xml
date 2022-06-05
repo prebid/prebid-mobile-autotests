@@ -25,6 +25,7 @@
             <run>
                 <include name="android"/>
                 <include name="smoke"/>
+                <include name="smoke-Android"/>
             </run>
         </groups>
         <classes>
