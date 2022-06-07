@@ -53,13 +53,11 @@
     "h": "$VARIABLE",
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
-    "geo": {
-      "lon": "$VARIABLE",
-      "type": 1,
-      "lat": "$VARIABLE"
-    },
+    "geo": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "lmt": "$VARIABLE",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
     "osv": "$VARIABLE",
     "w": "$VARIABLE",
     "model": "$VARIABLE",

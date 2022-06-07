@@ -36,7 +36,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
-    @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoInterstitialWithCache(String adName) throws TimeoutException, InterruptedException {
         env.homePage.turnOnCacheSwitcher();
         initValidTemplatesJsonWithCache(adName);
@@ -315,7 +315,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialEndCardSkipButtonClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 

@@ -30,7 +30,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestWithCache(String prebidAd) throws TimeoutException, InterruptedException {
         env.homePage.turnOnCacheSwitcher();
         initValidTemplatesJsonWithCache(prebidAd);
