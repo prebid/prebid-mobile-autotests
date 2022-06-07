@@ -76,11 +76,7 @@
         }
       }
     },
-    "geo": {
-      "lon": "$VARIABLE",
-      "type": 1,
-      "lat": "$VARIABLE"
-    }
+    "geo": "$VARIABLE"
   },
   "user": {
 
