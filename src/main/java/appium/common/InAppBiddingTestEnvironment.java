@@ -9,6 +9,8 @@ import net.lightbody.bmp.proxy.CaptureType;
 import org.json.JSONObject;
 import org.openqa.selenium.Platform;
 import org.testng.ITestContext;
+import utils.AndroidEmulatorUtils;
+import utils.AppiumUtils;
 import utils.RequestValidator;
 
 import java.io.File;
@@ -400,6 +402,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
      * @throws IOException when propertiesFilePath can't be loaded
      */
     public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors) throws IOException {
+
         super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors);
 
         final Platform platform = capabilities.getPlatform();

@@ -10,10 +10,9 @@ import appium.common.TestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+import utils.AndroidEmulatorUtils;
+import utils.AppiumUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -51,7 +50,12 @@ public class InAppBaseTest {
         version = null;
         omidpv = null;
         env.teardown();
+        if (!isPlatformIOS){
+            AndroidEmulatorUtils.disableAndroidProxy();
+        }
+        AppiumUtils.stopAppiumServer();
     }
+
 
     @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
     public void setupMethodBMP(ITestContext itc, Method method) throws InterruptedException {
@@ -59,7 +63,6 @@ public class InAppBaseTest {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
             env.homePage.turnOffGDPRSwitcher();
-
         }
 
         env.homePage.turnOffCustomConfig();
@@ -148,6 +151,7 @@ public class InAppBaseTest {
 
     private void setup(ITestContext itc) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
+        AppiumUtils.startAppiumServer();
         env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
         env.homePage.turnOffGDPRSwitcher();
 

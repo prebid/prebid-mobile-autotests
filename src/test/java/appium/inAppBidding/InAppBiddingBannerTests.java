@@ -15,7 +15,7 @@ import static appium.common.InAppTemplatesInit.*;
 public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
-    @Test(groups = {"requests-simulator"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -61,7 +61,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
@@ -97,7 +97,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);

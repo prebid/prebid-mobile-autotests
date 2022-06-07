@@ -3,6 +3,7 @@ package appium.common;
 import bmp.BMPWrapper;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utils.AndroidEmulatorUtils;
 
 import java.io.*;
 import java.util.Arrays;
@@ -93,6 +94,7 @@ public class TestEnvironment {
             capabilities.setCapability("name", name);
         }
         initMobProxy();
+        initAndroidSettings();
         setup();
     }
 
@@ -138,6 +140,12 @@ public class TestEnvironment {
         if (isIosSimulator()) {
             TestEnvironment.turnOnHttpProxyOnMac();
             TestEnvironment.turnOnHttpsProxyOnMac();
+        }
+    }
+    private void initAndroidSettings(){
+        if (!isIosSimulator()){
+//            AndroidEmulatorUtils.installAndroidBmpCertificate();
+            AndroidEmulatorUtils.enableAndroidProxy();
         }
     }
 
