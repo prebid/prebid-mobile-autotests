@@ -94,7 +94,7 @@ public class TestEnvironment {
             capabilities.setCapability("name", name);
         }
         initMobProxy();
-        initAndroidSettings();
+        applyAndroidEmulatorSettings();
         setup();
     }
 
@@ -142,9 +142,9 @@ public class TestEnvironment {
             TestEnvironment.turnOnHttpsProxyOnMac();
         }
     }
-    private void initAndroidSettings(){
+    private void applyAndroidEmulatorSettings(){
         if (!isIosSimulator()){
-//            AndroidEmulatorUtils.installAndroidBmpCertificate();
+            AndroidEmulatorUtils.installAndroidBmpCertificate();
             AndroidEmulatorUtils.enableAndroidProxy();
         }
     }

@@ -16,14 +16,12 @@ public class AndroidEmulatorUtils {
 
     public static void enableAndroidProxy() {
         if (!isAndroidProxyEnabled()) {
-//            CommandUtils.executeCommand("adb shell settings put global http_proxy 10.0.2.2:9091");
             CommandUtils.executeCommand("bash scripts/device/set_proxy.sh");
         }
     }
 
     public static void disableAndroidProxy() {
         if (isAndroidProxyEnabled()) {
-//            CommandUtils.executeCommand("adb shell settings put global http_proxy :0");
             CommandUtils.executeCommand("bash scripts/device/disable_proxy.sh");
         }
     }
@@ -48,9 +46,7 @@ public class AndroidEmulatorUtils {
     }
 
     public static void main(String[] args) {
-//        System.out.println(getCertificates());
-//        System.out.println(isAndroidBmpCertificateInstalled());
-        disableAndroidProxy();
-        System.out.println(isAndroidProxyEnabled());
+        System.out.println(getCertificates());
+        System.out.println(isAndroidBmpCertificateInstalled());
     }
 }
