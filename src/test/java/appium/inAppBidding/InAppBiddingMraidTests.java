@@ -666,7 +666,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
 
-        page.clickCloseRandom();
+        page.clickCloseInterstitial();
 
         if (platformName.equalsIgnoreCase("Android")) {
 

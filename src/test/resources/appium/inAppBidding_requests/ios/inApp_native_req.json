@@ -38,7 +38,14 @@
   },
   "ext": {
     "prebid": {
+      "cache": {
+        "bids": {
 
+        },
+        "vastxml": {
+
+        }
+      },
       "storedrequest": {
         "id": "$VARIABLE"
       },"storedauctionresponse": {
