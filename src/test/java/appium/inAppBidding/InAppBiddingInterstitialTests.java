@@ -315,7 +315,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         }
     }
 
-    @Test(groups = {"smoke"},priority = -1)
+    @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 

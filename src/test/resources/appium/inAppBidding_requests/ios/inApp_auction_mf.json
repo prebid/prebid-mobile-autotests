@@ -112,7 +112,6 @@
           3
         ],
         "h": "$VARIABLE",
-        "maxduration":30,
         "linearity": 1,
         "mimes": [
           "video\/mp4",
