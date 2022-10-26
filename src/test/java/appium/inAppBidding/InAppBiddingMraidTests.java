@@ -324,9 +324,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.homePage.isDelegateEnabled(AD_VIEW_PRESENT);
         env.homePage.isDelegateEnabled(AD_VIEW_DID_DISMISS);
 
-
         env.homePage.clickBack();
-
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
         // CHECK OM EVENTS
         initEventHandler();

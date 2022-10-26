@@ -4,9 +4,12 @@ import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
@@ -40,6 +43,25 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void testAuctionRequestVideoInterstitialWithCache(String adName) throws TimeoutException, InterruptedException {
         env.homePage.turnOnCacheSwitcher();
         initValidTemplatesJsonWithCache(adName);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
+
+        if (adName.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.homePage.clickBack();
+        env.homePage.turnOffCacheSwitcher();
+    }
+    @Test(groups = {"request-without-geo"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestVideoInterstitialWithoutGeo(Method method, ITestContext itc, String adName) throws TimeoutException, InterruptedException, IOException {
+        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false");
+        initValidTemplatesJsonWithoutGeo(adName);
+        env.homePage.turnOffGDPRSwitcher();
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         if (adName.contains("Feed")) {

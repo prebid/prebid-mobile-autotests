@@ -367,7 +367,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         VIDEO_RESUME,
         VIDEO_CLOSE,
 
-        /** MAX Load events*/
+        /**
+         * MAX Load events
+         */
         MAX_LOAD,
         MAX_MIMP,
         MAX_CIMP,
@@ -410,6 +412,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
             }
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
+            capabilities.setCapability("optionalIntentArguments", "--ez shareGeo true");
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);
             homePage = new InAppBiddingHomePageAndroid(androidDriver, "xpath");
         }
@@ -447,7 +450,9 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
             installBmpCertificate();
             homePage = new InAppBiddingHomePageIOS(driver);
         } else if (platform == Platform.ANDROID) {
-            capabilities.setCapability("optionalIntentArguments", commandLineArguments);
+            String arguments = commandLineArguments.contains("shareGeo") ? commandLineArguments
+                    : commandLineArguments + " --ez shareGeo true";
+            capabilities.setCapability("optionalIntentArguments", arguments);
             androidDriver = new AndroidDriver(new URL(urlAdress), capabilities);
             homePage = new InAppBiddingHomePageAndroid(androidDriver, "xpath");
         }
