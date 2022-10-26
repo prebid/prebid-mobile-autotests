@@ -57,25 +57,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
         env.homePage.turnOffCacheSwitcher();
     }
-    @Test(groups = {"request-without-geo"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
-    public void testAuctionRequestVideoInterstitialWithoutGeo(Method method, ITestContext itc, String adName) throws TimeoutException, InterruptedException, IOException {
-        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false");
-        initValidTemplatesJsonWithoutGeo(adName);
-        env.homePage.turnOffGDPRSwitcher();
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
-        if (adName.contains("Feed")) {
-            System.out.println("PERFORM SCROLL TO FEED");
-            page.scrollToFeedAd();
-        }
-
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
-
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
-        env.homePage.clickBack();
-        env.homePage.turnOffCacheSwitcher();
-    }
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideoWithAdConfiguration", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoWithAdConfiguration(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);

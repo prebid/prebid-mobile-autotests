@@ -10,7 +10,7 @@
     <test verbose="3" name="InApp_Bidding Android Custom Requests">
         <groups>
             <run>
-                <include name="request-without-geo"/>
+                <include name="WithoutGeoRequests"/>
                 <include name="USPrivacy"/>
                 <include name="TCFv1"/>
                 <include name="CustomOpenRTB"/>
@@ -19,8 +19,6 @@
         </groups>
         <classes>
             <class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>
-            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
-            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
     <test verbose="3" name="InApp_Bidding Android Smoke [Smoke]">

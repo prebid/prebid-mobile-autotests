@@ -47,19 +47,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.turnOffCacheSwitcher();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
-    @Test(groups = {"request-without-geo"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class,priority = -2)
-    public void testAuctionRequestWithoutGeo(Method method, ITestContext itc,String prebidAd) throws TimeoutException, InterruptedException, IOException {
-        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false");
-        env.homePage.turnOffGDPRSwitcher();
-        initValidTemplatesJsonWithoutGeo(prebidAd);
-        env.homePage.goToAd(prebidAd);
-
-        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
-
-        env.homePage.clickBack();
-    }
 
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRealDevice(String prebidAd) throws TimeoutException, InterruptedException {

@@ -37,7 +37,19 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
+    @Test(groups = {"WithoutGeoRequests"}, dataProvider = "adNamesWithoutGeo", dataProviderClass = InAppDataProviders.class,priority = -2)
+    public void testRequestsWithoutGeo(Method method, ITestContext itc,String prebidAd) throws TimeoutException, InterruptedException, IOException {
+        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false");
+        env.homePage.turnOffGDPRSwitcher();
+        initValidTemplatesJsonWithoutGeo(prebidAd);
+        env.homePage.goToAd(prebidAd);
 
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
+
+        env.homePage.clickBack();
+    }
    @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
     public void testTCFv1(Method method, ITestContext itc, String testCase) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
