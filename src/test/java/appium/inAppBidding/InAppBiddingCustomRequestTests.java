@@ -4,6 +4,7 @@ import appium.common.InAppBiddingTestEnvironment;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.common.InAppTemplatesInit;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import org.apache.xpath.operations.Bool;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 

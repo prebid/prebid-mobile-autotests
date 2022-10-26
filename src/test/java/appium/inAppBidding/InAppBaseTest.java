@@ -59,13 +59,11 @@ public class InAppBaseTest {
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
             env.homePage.turnOffGDPRSwitcher();
-
         }
 
         env.homePage.turnOffCustomConfig();
         env.bmp.newHar();
     }
-
 
 
     @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
@@ -78,7 +76,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","request-without-geo"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
@@ -106,6 +104,16 @@ public class InAppBaseTest {
     public void initValidTemplatesJsonWithCache(String prebidAd) {
 
         validAuctionRequest = getAuctionRequestWithCacheTemplate(prebidAd, platformName);
+
+        System.out.println(prebidAd);
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
+            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
+        }
+    }
+
+    public void initValidTemplatesJsonWithoutGeo(String prebidAd) {
+
+        validAuctionRequest = getAuctionRequestWithoutGeoTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
@@ -149,6 +157,7 @@ public class InAppBaseTest {
     private void setup(ITestContext itc) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
         env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
+
         env.homePage.turnOffGDPRSwitcher();
 
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
