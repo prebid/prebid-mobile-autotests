@@ -76,7 +76,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","request-without-geo"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","WithoutGeoRequests"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
