@@ -13,7 +13,7 @@ public class InAppDataProviders {
         {CUSTOM_TCF_GDPR1_CONSENT}
     };
     // Without geo data
-    @DataProvider(name = "adNamesWithoutGeo")
+    @DataProvider(name = "adNamesWithAdditionalParams")
     public static Object[][] provideWithoutGeoRequests() {
         String[][] geoRequestsArray = new String[BannerAdWithCache.length + VideoInterstitial.length][];
         System.arraycopy(BannerAdWithCache, 0, geoRequestsArray, 0, BannerAdWithCache.length-2);

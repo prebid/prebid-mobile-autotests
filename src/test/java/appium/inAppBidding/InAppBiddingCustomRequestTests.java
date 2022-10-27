@@ -4,7 +4,6 @@ import appium.common.InAppBiddingTestEnvironment;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.common.InAppTemplatesInit;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import org.apache.xpath.operations.Bool;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -37,11 +36,11 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
-    @Test(groups = {"WithoutGeoRequests"}, dataProvider = "adNamesWithoutGeo", dataProviderClass = InAppDataProviders.class,priority = -2)
-    public void testRequestsWithoutGeo(Method method, ITestContext itc,String prebidAd) throws TimeoutException, InterruptedException, IOException {
-        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false");
+    @Test(groups = {"WithAdditionalParams"}, dataProvider = "adNamesWithAdditionalParams", dataProviderClass = InAppDataProviders.class)
+    public void testRequestsWithAdditionalParams(Method method, ITestContext itc, String prebidAd) throws TimeoutException, InterruptedException, IOException {
+        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false --es targetingDomain domain");
         env.homePage.turnOffGDPRSwitcher();
-        initValidTemplatesJsonWithoutGeo(prebidAd);
+        initValidTemplatesJsonWithAdditionalParams(prebidAd);
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);

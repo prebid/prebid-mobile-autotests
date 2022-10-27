@@ -45,6 +45,7 @@
   },
   "id": "$VARIABLE",
   "app": {
+    "domain": "$VARIABLE",
     "name": "Prebid Rendering Kotlin Demo",
     "bundle": "org.prebid.mobile.renderingtestapp",
     "ver": "1.0",

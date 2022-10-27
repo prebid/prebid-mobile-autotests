@@ -10,11 +10,11 @@
     <test verbose="3" name="InApp_Bidding Android Custom Requests">
         <groups>
             <run>
-                <include name="WithoutGeoRequests"/>
-                <include name="USPrivacy"/>
-                <include name="TCFv1"/>
-                <include name="CustomOpenRTB"/>
-                <include name="LiveRampATS"/>
+                <include name="WithAdditionalParams"/>
+<!--                <include name="USPrivacy"/>-->
+<!--                <include name="TCFv1"/>-->
+<!--                <include name="CustomOpenRTB"/>-->
+<!--                <include name="LiveRampATS"/>-->
             </run>
         </groups>
         <classes>
