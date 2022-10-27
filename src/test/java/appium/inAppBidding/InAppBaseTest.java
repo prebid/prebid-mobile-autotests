@@ -76,7 +76,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","WithoutGeoRequests"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","WithAdditionalParams"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
@@ -111,9 +111,9 @@ public class InAppBaseTest {
         }
     }
 
-    public void initValidTemplatesJsonWithoutGeo(String prebidAd) {
+    public void initValidTemplatesJsonWithAdditionalParams(String prebidAd) {
 
-        validAuctionRequest = getAuctionRequestWithoutGeoTemplate(prebidAd, platformName);
+        validAuctionRequest = getAuctionRequestWithAdditionalParams(prebidAd, platformName);
 
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
