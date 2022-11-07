@@ -1,10 +1,10 @@
 {
   "app": {
     "ext":{
-      "prebid":{
-        "data":{
+      "data":{
 
-        },
+      },
+      "prebid":{
         "source":"prebid-mobile",
         "version":"$VARIABLE"
       }
