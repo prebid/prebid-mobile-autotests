@@ -47,7 +47,7 @@ public class OMSDKSessionDescriptor {
         public static final String VLID = "vlid";
         public static final String APP_ID_IOS = "org.prebid.mobile.renderingtestapp";
         public static final String APP_ID_ANDROID = "org.prebid.mobile.renderingtestapp";
-        public static final String LIBRARY_VERSION = "1.3.34-Prebidorg";
+        public static final String LIBRARY_VERSION = "1.4.1-Prebidorg";
         public static final String LIBRARY_VERSION_ANDROID = "1.3.34-Prebidorg";
         public static final String OBSTRUCTED = "obstructed";
         public static final String BACKGROUNDED = "backgrounded";

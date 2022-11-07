@@ -2,9 +2,10 @@
   "app": {
     "bundle": "org.prebid.mobile.renderingtestapp",
     "ext": {
+      "data":{
+
+      },
       "prebid": {
-        "data": {
-        },
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
