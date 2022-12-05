@@ -1,0 +1,118 @@
+{
+  "app": {
+    "ext": {
+      "data": {
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "ver": "$VARIABLE",
+    "name": "InternalTestApp",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "bundle": "$VARIABLE"
+  },
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "storedauctionresponse": {
+        "id": "$VARIABLE"
+      },
+      "cache": {
+        "bids": {
+        },
+        "vastxml": {
+        }
+      },
+      "targeting": {
+      },
+      "data": {
+        "bidders": []
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "regs": {
+    "ext": {
+      "gdpr": "$VARIABLE"
+    }
+  },
+  "source": {
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    },
+    "tid": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "os": "iOS",
+    "ifa": "$VARIABLE",
+    "h": "$VARIABLE",
+    "language": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "geo": {
+    },
+    "pxratio": "$VARIABLE",
+    "lmt": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "w": "$VARIABLE",
+    "model": "iPhone",
+    "connectiontype": "$VARIABLE",
+    "make": "Apple"
+  },
+  "imp": [
+    {
+      "ext": {
+        "context": {
+          "data": {
+          }
+        },
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          },
+          "storedauctionresponse": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "banner": {
+        "format": [
+          {
+            "w": 728,
+            "h": 90
+          },
+          {
+            "w": 320,
+            "h": 50
+          }
+        ],
+        "api": [
+          5
+        ]
+      },
+      "id": "$VARIABLE",
+      "secure": 1,
+      "instl": 0
+    }
+  ],
+  "user": {
+    "ext": {
+      "data": {
+      }
+    },
+    "yob": 0
+  }
+}
