@@ -14,13 +14,17 @@ public interface InAppAdNamesImpl {
     String BANNER_SKADNETWORK = "Banner 320x50 (In-App) [SKAdN]";
 
     String BANNER_320x50_GAM = "Banner 320x50 (GAM) [OK, AppEvent]";
+    String BANNER_320x50_GAM_ORIGINAL = "Banner 320x50 (GAM Original) [OK, PUC]";
     String BANNER_320x50_GAM_VANILLA = "Banner 320x50 (GAM) [Vanilla Prebid Order]";
     String BANNER_320x50_GAM_AD = "Banner 320x50 (GAM) [OK, GAM Ad]";
     String BANNER_320x50_NO_BID_GAM_AD = "Banner 320x50 (GAM) [noBids, GAM Ad]";
     String BANNER_320x50_GAM_RANDOM = "Banner 320x50 (GAM) [OK, Random]";
     String BANNER_300x250_GAM = "Banner 300x250 (GAM)";
+    String BANNER_300x250_GAM_ORIGINAL = "Banner 300x250 (GAM Original) [OK, PUC]";
     String BANNER_728x90_GAM = "Banner 728x90 (GAM)";
+    String BANNER_728x90_GAM_ORIGINAL = "Banner 728x90 (GAM Original) [OK, PUC]";
     String BANNER_MULTISIZE_GAM = "Banner Multisize (GAM)";
+    String BANNER_MULTISIZE_GAM_ORIGINAL = "Banner Multisize (GAM Original) [OK, PUC]";
 
     /** ADMOB*/
     String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, OXB Adapter]";

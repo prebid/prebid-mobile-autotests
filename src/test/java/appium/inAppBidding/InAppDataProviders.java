@@ -31,7 +31,7 @@ public class InAppDataProviders {
     //////////////
 
     private static final String[][] BannerAd = {
-            {BANNER_320x50_IN_APP},
+            /*{BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_ADMOB},
 //            {BANNER_320x50_MAX},
@@ -44,7 +44,11 @@ public class InAppDataProviders {
             {BANNER_300x250_ADMOB},
 //            {BANNER_300x250_MAX},
             {BANNER_ADAPTIVE_ADMOB},
-//            {BANNER_ADAPTIVE_MAX},
+//            {BANNER_ADAPTIVE_MAX},*/
+            {BANNER_320x50_GAM_ORIGINAL},
+            {BANNER_728x90_GAM_ORIGINAL},
+            {BANNER_300x250_GAM_ORIGINAL},
+            {BANNER_MULTISIZE_GAM_ORIGINAL},
     };
     private static final String[][] BannerAdWithCache = {
             {BANNER_320x50_IN_APP},

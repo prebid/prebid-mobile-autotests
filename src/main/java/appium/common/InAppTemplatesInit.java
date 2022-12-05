@@ -21,12 +21,16 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
     private final static String TEMPLATE_BANNER_320x50 = "appium/inAppBidding_requests/%s/inApp_auction_320x50.json";
     private final static String TEMPLATE_BANNER_320x50_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_auction_320x50.json";
+    private final static String TEMPLATE_BANNER_320x50_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_320x50_original.json";
     private final static String TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_auction_320x50.json";
     private final static String TEMPLATE_BANNER_320x50_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x50_real_device.json";
 
     private final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
+    private final static String TEMPLATE_BANNER_300x250_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_300x250.json";
     private final static String TEMPLATE_BANNER_728x90 = "appium/inAppBidding_requests/%s/inApp_auction_728x90.json";
+    private final static String TEMPLATE_BANNER_728x90_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_728x90.json";
     private final static String TEMPLATE_BANNER_MULTISIZE = "appium/inAppBidding_requests/%s/inApp_auction_ms.json";
+    private final static String TEMPLATE_BANNER_MULTISIZE_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_ms.json";
 
     private final static String TEMPLATE_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_auction_320x480.json";
     private final static String TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x480_real_device.json";
@@ -136,6 +140,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(BANNER_320x50_MAX_RANDOM, TEMPLATE_BANNER_320x50);
 
         put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50);
+        put(BANNER_320x50_GAM_ORIGINAL, TEMPLATE_BANNER_320x50_ORIGINAL);
         put(BANNER_320x50_GAM_AD, TEMPLATE_BANNER_320x50);
         put(BANNER_320x50_GAM_RANDOM, TEMPLATE_BANNER_320x50);
         put(BANNER_320x50_GAM_VANILLA, TEMPLATE_BANNER_320x50);
@@ -143,6 +148,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
         put(BANNER_300x250_IN_APP, TEMPLATE_BANNER_300x250);
         put(BANNER_300x250_GAM, TEMPLATE_BANNER_300x250);
+        put(BANNER_300x250_GAM_ORIGINAL, TEMPLATE_BANNER_300x250_ORIGINAL);
         put(BANNER_300x250_ADMOB, TEMPLATE_BANNER_300x250);
         put(BANNER_300x250_MAX, TEMPLATE_BANNER_300x250);
         put(BANNER_ADAPTIVE_ADMOB, TEMPLATE_BANNER_MULTISIZE);
@@ -150,9 +156,11 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
         put(BANNER_728x90_IN_APP, TEMPLATE_BANNER_728x90);
         put(BANNER_728x90_GAM, TEMPLATE_BANNER_728x90);
+        put(BANNER_728x90_GAM_ORIGINAL, TEMPLATE_BANNER_728x90_ORIGINAL);
 
         put(BANNER_MULTISIZE_IN_APP, TEMPLATE_BANNER_MULTISIZE);
         put(BANNER_MULTISIZE_GAM, TEMPLATE_BANNER_MULTISIZE);
+        put(BANNER_MULTISIZE_GAM_ORIGINAL, TEMPLATE_BANNER_MULTISIZE_ORIGINAL);
 
         put(BANNER_SKADNETWORK, TEMPLATE_BANNER_320x50_SKADN);
         put(LIVE_RAMP_ATS, TEMPLATE_BANNER_320x50_LIVERAMP);
