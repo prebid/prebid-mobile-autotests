@@ -31,7 +31,7 @@ public class InAppDataProviders {
     //////////////
 
     private static final String[][] BannerAd = {
-            {BANNER_320x50_IN_APP},
+            /*{BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_ADMOB},
 //            {BANNER_320x50_MAX},
@@ -44,7 +44,7 @@ public class InAppDataProviders {
             {BANNER_300x250_ADMOB},
 //            {BANNER_300x250_MAX},
             {BANNER_ADAPTIVE_ADMOB},
-//            {BANNER_ADAPTIVE_MAX},
+//            {BANNER_ADAPTIVE_MAX},*/
             {BANNER_320x50_GAM_ORIGINAL},
             {BANNER_728x90_GAM_ORIGINAL},
             {BANNER_300x250_GAM_ORIGINAL},
@@ -100,8 +100,8 @@ public class InAppDataProviders {
     private static final String[][] BannerNoBids = {
             {BANNER_320x50_NO_BID_GAM_AD},
             {BANNER_320x50_NO_BID_IN_APP},
-//            {BANNER_320x50_NO_BID_ADMOB},
-            {BANNER_320x50_NO_BID_MAX},
+            {BANNER_320x50_NO_BID_ADMOB},
+//            {BANNER_320x50_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBids")
@@ -130,8 +130,7 @@ public class InAppDataProviders {
             {INTERSTITIAL_320x480_IN_APP},
             {INTERSTITIAL_320x480_ADMOB},
 //            {INTERSTITIAL_320x480_MAX},
-            {INTERSTITIAL_320x480_GAM},
-            {INTERSTITIAL_320x480_GAM_ORIGINAL},
+            {INTERSTITIAL_320x480_GAM}
     };
 
     @DataProvider(name = "interstitialAds")
@@ -241,17 +240,13 @@ public class InAppDataProviders {
             {VIDEO_OUTSTREAM_FEED_IN_APP},
             {VIDEO_OUTSTREAM_FEED_GAM},
             {VIDEO_OUTSTREAM_GAM},
-            {VIDEO_OUTSTREAM_GAM_ORIGINAL},
-            {VIDEO_INSTREAM_GAM_ORIGINAL},
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ENDCARD},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_INTERSTITIAL_320x480_GAM},
-            {VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL},
 //            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
-            {VIDEO_REWARDED_320x480_GAM_ORIGINAL},
             {VIDEO_REWARDED_320x480_ADMOB},
 //            {VIDEO_REWARDED_320x480_MAX},
     };
@@ -270,11 +265,11 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION},
             {VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION},
-////            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
+//            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION},
-            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
+//            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
     };
 
     /* AD_NAME_TYPE*/
@@ -396,15 +391,14 @@ public class InAppDataProviders {
 
 
     private static final String[][] NativeRequestAds = {
-            {NATIVE_AD_ADMOB},
+//            {NATIVE_AD_ADMOB},
 //            {NATIVE_AD_MAX},
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
-            {NATIVE_AD_FEED_IN_APP},
+//            {NATIVE_AD_FEED_IN_APP},
 
-            {NATIVE_AD_FEED_GAM},
+//            {NATIVE_AD_FEED_GAM},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
-            {NATIVE_AD_GAM_ORIGINAL},
             {NATIVE_AD_GAM_UNIFIED},
 
     };
