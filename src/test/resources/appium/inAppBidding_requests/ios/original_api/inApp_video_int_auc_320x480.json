@@ -12,7 +12,7 @@
     },
     "name": "InternalTestApp",
     "publisher": {
-      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+      "id": "$VARIABLE"
     },
     "ver": "$VARIABLE"
   },
@@ -24,17 +24,17 @@
     "connectiontype": "$VARIABLE",
     "geo": {
     },
-    "h": "896",
-    "ifa": "00000000-0000-0000-0000-000000000000",
+    "h": "$VARIABLE",
+    "ifa": "$VARIABLE",
     "language": "$VARIABLE",
-    "lmt": 1,
+    "lmt": "$VARIABLE",
     "make": "Apple",
     "model": "iPhone",
     "os": "iOS",
     "osv": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "ua": "$VARIABLE",
-    "w": "414"
+    "w": "$VARIABLE"
   },
   "ext": {
     "prebid": {
@@ -46,11 +46,10 @@
 
         }
       },
-      "storedauctionresponse":{
-        "id":"response-prebid-video-interstitial-320-480-original-api"
-      },
-      "storedrequest":{
-        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
       },
       "targeting": {
 
@@ -63,7 +62,7 @@
   "id": "$VARIABLE",
   "regs":{
     "ext":{
-      "gdpr":0
+      "gdpr":"$VARIABLE"
     }
   },
   "imp": [
@@ -78,11 +77,10 @@
           }
         },
         "prebid": {
-          "storedauctionresponse":{
-            "id":"response-prebid-video-interstitial-320-480-original-api"
-          },
-          "storedrequest":{
-            "id":"imp-prebid-video-interstitial-320-480"
+          "storedrequest": {
+            "id": "$VARIABLE"
+          },"storedauctionresponse": {
+            "id": "$VARIABLE"
           }
         }
       },
