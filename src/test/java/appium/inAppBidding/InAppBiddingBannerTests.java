@@ -3,11 +3,12 @@ package appium.inAppBidding;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import org.testng.annotations.Listeners;
+import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
@@ -31,9 +32,25 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
+    @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestWithCache(String prebidAd) throws TimeoutException, InterruptedException {
+        env.homePage.turnOnCacheSwitcher();
+        initValidTemplatesJsonWithCache(prebidAd);
+
+        env.homePage.goToAd(prebidAd);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
+
+        env.homePage.clickBack();
+        env.homePage.turnOffCacheSwitcher();
+        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+    }
+
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJsonRealDevice(prebidAd);
+        initValidTemplatesJson(prebidAd,true);
 
         env.homePage.goToAd(prebidAd);
 

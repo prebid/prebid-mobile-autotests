@@ -1,4 +1,4 @@
-{
+ {
   "imp": [
     {
       "id": "$VARIABLE",
@@ -68,9 +68,7 @@
     "w": "$VARIABLE",
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
-    "geo": {
-
-    }
+    "geo": "$VARIABLE"
   },
   "user": {
 
@@ -89,11 +87,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        }
-      },
       "targeting": {
 
       }

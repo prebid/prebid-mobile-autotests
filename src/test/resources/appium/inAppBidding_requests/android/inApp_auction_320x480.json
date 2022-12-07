@@ -76,9 +76,7 @@
         }
       }
     },
-    "geo": {
-
-    }
+    "geo": "$VARIABLE"
   },
   "user": {
 
@@ -97,11 +95,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        }
-      },
       "targeting": {
 
       }

@@ -32,8 +32,14 @@
       }
     }
   ],
+  "regs":{
+    "ext":{
+      "gdpr":"$VARIABLE"
+    }
+  },
   "id": "$VARIABLE",
   "app": {
+    "domain": "$VARIABLE",
     "name": "Prebid Rendering Kotlin Demo",
     "bundle": "org.prebid.mobile.renderingtestapp",
     "ver": "1.0",
@@ -50,33 +56,21 @@
   "device": {
     "ua": "$VARIABLE",
     "lmt": 0,
-    "make": "Google",
+    "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
     "osv": "$VARIABLE",
-    "language": "en",
-    "carrier": "Android",
+    "language": "$VARIABLE",
+    "carrier": "$VARIABLE",
     "mccmnc": "$VARIABLE",
     "ifa": "$VARIABLE",
     "h": "$VARIABLE",
     "w": "$VARIABLE",
     "connectiontype": "$VARIABLE",
-    "pxratio": "$VARIABLE",
-    "geo": "$VARIABLE"
+    "pxratio": "$VARIABLE"
   },
   "user": {
-    "ext": {
-      "eids": [
-        {
-          "source": "liveramp.com",
-          "uids": [
-            {
-              "id": "XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM"
-            }
-          ]
-        }
-      ]
-    }
+
   },
   "source": {
     "tid": "$VARIABLE",

@@ -34,13 +34,18 @@
     "osv": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "ua": "$VARIABLE",
-    "carrier": "$VARIABLE",
-    "mccmnc": "$VARIABLE",
     "w": "$VARIABLE"
   },
   "ext": {
     "prebid": {
+      "cache": {
+        "bids": {
 
+        },
+        "vastxml": {
+
+        }
+      },
       "storedrequest": {
         "id": "$VARIABLE"
       },"storedauctionresponse": {
@@ -98,7 +103,6 @@
         "placement": 5,
         "playbackend": 2,
         "pos": 7,
-        "maxduration":30,
         "protocols": [
           2,
           5

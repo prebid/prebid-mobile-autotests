@@ -1,7 +1,6 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKSessionDescriptor;
-import adapters.PrebidAdapter;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
@@ -11,8 +10,6 @@ import java.util.concurrent.TimeoutException;
 
 import static appium.common.InAppAdNamesImpl.NATIVE_AD_FEED_GAM;
 import static appium.common.InAppAdNamesImpl.NATIVE_AD_LINKS_IN_APP;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.FETCH_DEMAND;
-import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.ON_NATIVE_FETCH_DEMAND_SUCCESS;
 
 
 public class InAppBiddingNativeTests extends InAppBaseTest {
@@ -83,7 +80,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     @Test(groups = {"requests-realDevice"}, dataProvider = "nativeRequestAdsReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJsonRealDevice(prebidAd);
+        initValidTemplatesJson(prebidAd,true);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 

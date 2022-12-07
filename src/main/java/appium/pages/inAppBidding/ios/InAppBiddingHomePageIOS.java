@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW;
 import static org.testng.Assert.assertFalse;
@@ -37,6 +36,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         static final By alertOk = MobileBy.AccessibilityId("OK");
         static final By searchField = MobileBy.xpath("//XCUIElementTypeSearchField");
         static final By GDPRSwitcher = MobileBy.AccessibilityId("GDPRSwitch");
+        static final By CacheSwitcher = MobileBy.AccessibilityId("Enable Cache Switch");
     }
 
 
@@ -54,12 +54,23 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     }
 
 
-
     @Override
     public void turnOnGDPRSwitcher() {
-        if(isGDPROff()){
+        if (isGDPROff()) {
             wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
         }
+    }
+
+    @Override
+    public void turnOnCacheSwitcher() {
+        if (isCacheOff()) {
+            wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.CacheSwitcher)).click();
+        }
+    }
+
+    @Override
+    public void turnOffCacheSwitcher() {
+        wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.CacheSwitcher)).click();
     }
 
     @Override
@@ -67,27 +78,32 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
         wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).click();
     }
 
-    private boolean isGDPROff(){
+    public boolean isCacheOff() {
+        return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.CacheSwitcher)).isSelected();
+    }
+
+    public boolean isGDPROff() {
         return !wait.until(ExpectedConditions.elementToBeClickable(PrebidLocators.GDPRSwitcher)).isSelected();
     }
+
     // Actions
     @Override
-    public boolean isSearchFieldDisplayed(){
+    public boolean isSearchFieldDisplayed() {
         try {
             return !(driver.findElements(PrebidLocators.searchField).size() == 0);
-        }catch (NoSuchElementException exception){
-         return false;
+        } catch (NoSuchElementException exception) {
+            return false;
         }
     }
 
     @Override
-    public void relaunchApp(){
-            System.out.println("relaunch app");
-            driver.launchApp();
+    public void relaunchApp() {
+        System.out.println("relaunch app");
+        driver.launchApp();
     }
 
     @Override
-    public void resetApp(){
+    public void resetApp() {
         System.out.println("reset app");
         driver.removeApp("org.prebid.mobile.renderingtestapp");
     }
@@ -114,15 +130,14 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     }
 
     @Override
-    public void goToAdExamples(){
+    public void goToAdExamples() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.examples)).click();
     }
 
     @Override
-    public void goToUtilities(){
+    public void goToUtilities() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.utilities)).click();
     }
-
 
 
     @Override
@@ -175,7 +190,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
                 .click();
     }
 
-    public void navigateBack(){
+    public void navigateBack() {
         driver.navigate().back();
     }
 
@@ -201,7 +216,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     @Override
     public void turnOffCustomConfig() {
         WebElement customConfigButton = wait.until(ExpectedConditions.visibilityOfElementLocated(PrebidLocators.customConfigButton));
-        if(customConfigButton.isSelected()){
+        if (customConfigButton.isSelected()) {
             customConfigButton.click();
         }
     }

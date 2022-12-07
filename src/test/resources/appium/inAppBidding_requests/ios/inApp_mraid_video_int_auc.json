@@ -1,9 +1,10 @@
 {
   "app": {
     "ext": {
+      "data":{
+
+      },
       "prebid": {
-        "data": {
-        },
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
@@ -22,14 +23,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        },
-        "vastxml": {
-
-        }
-      },
       "targeting": {
 
       },
@@ -110,6 +104,28 @@
           5,
           6,
           7
+        ]
+      },
+      "video":{
+        "delivery":[
+          3
+        ],
+        "linearity":1,
+        "playbackend":2,
+        "pos":7,
+        "w":"$VARIABLE",
+        "h":"$VARIABLE",
+        "placement":5,
+        "protocols":[
+          2,
+          5
+        ],
+        "mimes":[
+          "video/mp4",
+          "video/quicktime",
+          "video/x-m4v",
+          "video/3gpp",
+          "video/3gpp2"
         ]
       },
       "id": "$VARIABLE",

@@ -38,13 +38,13 @@ public class InAppBaseTest {
     protected OMSDKEventHandler eventHandler;
 
 
-    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
+    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
     public void setupBMP(ITestContext itc) throws IOException {
         System.out.println(itc.getName());
         setup(itc);
     }
 
-    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
@@ -53,18 +53,20 @@ public class InAppBaseTest {
         env.teardown();
     }
 
-    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice","requests-simulator"})
-    public void setupMethodBMP(ITestContext itc) throws InterruptedException {
+    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
+    public void setupMethodBMP(ITestContext itc, Method method) throws InterruptedException {
 
         if (!env.homePage.isSearchFieldDisplayed()) {
             env.homePage.relaunchApp();
             env.homePage.turnOffGDPRSwitcher();
         }
+
         env.homePage.turnOffCustomConfig();
         env.bmp.newHar();
     }
 
-    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests","requests-realDevice","requests-simulator"})
+
+    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
     public void teardownMethod() {
         eventHandler = null;
         validAuctionRequest = null;
@@ -74,7 +76,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","WithAdditionalParams"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
@@ -96,18 +98,35 @@ public class InAppBaseTest {
     }
 
     public void initValidTemplatesJson(String prebidAd) {
+        initValidTemplatesJson(prebidAd, false);
+    }
 
-        validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+    public void initValidTemplatesJsonWithCache(String prebidAd) {
+
+        validAuctionRequest = getAuctionRequestWithCacheTemplate(prebidAd, platformName);
 
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")||prebidAd.contains("Ad Configuration")) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
-    public void initValidTemplatesJsonRealDevice(String prebidAd) {
 
-        validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
+    public void initValidTemplatesJsonWithAdditionalParams(String prebidAd) {
 
+        validAuctionRequest = getAuctionRequestWithAdditionalParams(prebidAd, platformName);
+
+        System.out.println(prebidAd);
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
+            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
+        }
+    }
+
+    public void initValidTemplatesJson(String prebidAd, boolean isRealDevice) {
+        if (isRealDevice) {
+            validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
+        } else {
+            validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
+        }
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
@@ -135,10 +154,10 @@ public class InAppBaseTest {
     }
 
 
-
     private void setup(ITestContext itc) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
         env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
+
         env.homePage.turnOffGDPRSwitcher();
 
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
@@ -155,8 +174,7 @@ public class InAppBaseTest {
         } else {
             prebidAdapterFactory = new PrebidAdapterFactoryAndroid();
         }
-
-
     }
+
 
 }

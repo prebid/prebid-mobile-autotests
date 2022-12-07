@@ -2,8 +2,10 @@
   "app": {
     "bundle": "$VARIABLE",
     "ext": {
+      "data":{
+
+      },
       "prebid": {
-        "data": {},
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
@@ -40,10 +42,7 @@
   },
   "ext": {
     "prebid": {
-      "cache": {
-        "bids": {},
-        "vastxml": {}
-      },
+
       "data": {
         "bidders": []
       },

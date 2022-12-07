@@ -9,6 +9,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
     //REQUEST TEMPLATES
     private final static String TEMPLATE_BANNER_320x50_LIVERAMP = "appium/custom_requests/ortb/%s/liveRampATS.json";
+    private final static String TEMPLATE_BANNER_320x50_CUSTOM_ORTB = "appium/custom_requests/ortb/%s/Custom_ORTB.json";
     private final static String TEMPLATE_BANNER_320x50_CCPA_TRUE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_TRUE.json";
     private final static String TEMPLATE_BANNER_320x50_CCPA_FALSE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_FALSE.json";
     private final static String TEMPLATE_BANNER_320x50_GDPR0_CONS_NULL = "appium/custom_requests/ortb/%s/AUCTION_TCFv1_TRUE_GDPR_0_CONS_NULL.json";
@@ -19,6 +20,8 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_BANNER_320x50_SKADN = "appium/inAppBidding_requests/%s/inApp_auction_320x50_skadn.json";
 
     private final static String TEMPLATE_BANNER_320x50 = "appium/inAppBidding_requests/%s/inApp_auction_320x50.json";
+    private final static String TEMPLATE_BANNER_320x50_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_auction_320x50.json";
+    private final static String TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_auction_320x50.json";
     private final static String TEMPLATE_BANNER_320x50_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x50_real_device.json";
 
     private final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
@@ -34,6 +37,8 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_MRAID_VIDEO_INTERSTITIAL = "appium/inAppBidding_requests/%s/inApp_mraid_video_int_auc.json";
 
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480.json";
+    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_video_int_auc_320x480.json";
+    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_video_int_auc_320x480.json";
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480_real_device.json";
     private final static String TEMPLATE_VIDEO_OUTSTREAM_300x250 = "appium/inAppBidding_requests/%s/inApp_video_outstream_auc_300x250.json";
     private final static String TEMPLATE_VIDEO_FEED_300x250 = "appium/inAppBidding_requests/%s/inApp_video_feed_auc_300x250.json";
@@ -52,6 +57,24 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName) {
 
         final String filePath = getFilePathAuctionRequest(prebidAd, platformName);
+        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
+
+        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
+
+        return new JSONObject(testJSON);
+    }
+    public static JSONObject getAuctionRequestWithCacheTemplate(String prebidAd, String platformName) {
+
+        final String filePath = getFilePathAuctionRequestWithCache(prebidAd, platformName);
+        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
+
+        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
+
+        return new JSONObject(testJSON);
+    }
+    public static JSONObject getAuctionRequestWithAdditionalParams(String prebidAd, String platformName) {
+
+        final String filePath = getFilePathAuctionRequestWithAdditionalParams(prebidAd, platformName);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
 
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
@@ -77,6 +100,14 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
     private static String getFilePathAuctionRequest(String prebidAd, String platformName) {
         String path = requestTemplates.get(prebidAd);
+        return String.format(path, platformName);
+    }
+    private static String getFilePathAuctionRequestWithCache(String prebidAd, String platformName) {
+        String path = requestWithCacheTemplates.get(prebidAd);
+        return String.format(path, platformName);
+    }
+    private static String getFilePathAuctionRequestWithAdditionalParams(String prebidAd, String platformName) {
+        String path = requestWithAdditionalParamsTemplates.get(prebidAd);
         return String.format(path, platformName);
     }
     private static String getFilePathRealDeviceAuctionRequest(String prebidAd, String platformName) {
@@ -129,6 +160,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(ATTS_2, TEMPLATE_BANNER_320x50_ATTS_2);
         put(ATTS_3, TEMPLATE_BANNER_320x50_ATTS_3);
         put(CUSTOM_USPRIVACY_CCPA_TRUE, TEMPLATE_BANNER_320x50_CCPA_TRUE);
+        put(CUSTOM_OPENRTB, TEMPLATE_BANNER_320x50_CUSTOM_ORTB);
         put(CUSTOM_USPRIVACY_CCPA_FALSE, TEMPLATE_BANNER_320x50_CCPA_FALSE);
         put(CUSTOM_TCF_GDPR0_NO_CONSENT, TEMPLATE_BANNER_320x50_GDPR0_CONS_NULL);
         put(CUSTOM_TCF_GDPR1_CONSENT, TEMPLATE_BANNER_320x50_GDPR1_CONS_TRUE);
@@ -237,6 +269,28 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
         put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
 
+    }};
+    private final static HashMap<String, String> requestWithCacheTemplates = new HashMap<String, String>() {{
+        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_CACHE);
+        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_CACHE);
+        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_CACHE);
+        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_CACHE);
+
+        put(VIDEO_INTERSTITIAL_320x480_IN_APP, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(VIDEO_INTERSTITIAL_320x480_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(VIDEO_INTERSTITIAL_320x480_GAM, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(VIDEO_INTERSTITIAL_320x480_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+    }};
+    private final static HashMap<String, String> requestWithAdditionalParamsTemplates = new HashMap<String, String>() {{
+        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+
+        put(VIDEO_INTERSTITIAL_320x480_IN_APP, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(VIDEO_INTERSTITIAL_320x480_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(VIDEO_INTERSTITIAL_320x480_GAM, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(VIDEO_INTERSTITIAL_320x480_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
     }};
     private final static HashMap<String, String> realDeviceRequestTemplates = new HashMap<String, String>() {{
         put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_REAL_DEVICE);

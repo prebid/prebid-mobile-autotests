@@ -4,22 +4,28 @@
       "id": "$VARIABLE",
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
-      "instl": 0,
+      "instl": 1,
       "clickbrowser": 0,
-      "secure": 1,
-      "banner": {
-        "api": [
-          3,
-          5,
-          6,
-          7
+      "video": {
+        "mimes": [
+          "video\/mp4",
+          "video\/3gpp",
+          "video\/webm",
+          "video\/mkv"
         ],
-        "format": [
-          {
-            "w": 320,
-            "h": 50
-          }
-        ]
+        "playbackend": 2,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE",
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "placement": 5,
+        "delivery": [
+          3
+        ],
+        "pos": 7
       },
       "ext": {
         "prebid": {
@@ -32,6 +38,11 @@
       }
     }
   ],
+  "regs":{
+    "ext":{
+      "gdpr":"$VARIABLE"
+    }
+  },
   "id": "$VARIABLE",
   "app": {
     "name": "Prebid Rendering Kotlin Demo",
@@ -50,11 +61,11 @@
   "device": {
     "ua": "$VARIABLE",
     "lmt": 0,
-    "make": "Google",
+    "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
     "osv": "$VARIABLE",
-    "language": "en",
+    "language": "$VARIABLE",
     "carrier": "Android",
     "mccmnc": "$VARIABLE",
     "ifa": "$VARIABLE",
@@ -65,18 +76,7 @@
     "geo": "$VARIABLE"
   },
   "user": {
-    "ext": {
-      "eids": [
-        {
-          "source": "liveramp.com",
-          "uids": [
-            {
-              "id": "XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM"
-            }
-          ]
-        }
-      ]
-    }
+
   },
   "source": {
     "tid": "$VARIABLE",
@@ -92,7 +92,14 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
+      "cache": {
+        "bids": {
 
+        },
+        "vastxml": {
+
+        }
+      },
       "targeting": {
 
       }

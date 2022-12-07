@@ -65,7 +65,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By expandAgain = MobileBy.AccessibilityId("Expand Again");
         static final By playVideo = MobileBy.AccessibilityId("PlayVideo");
         static final By openIAB = MobileBy.AccessibilityId("Open IAB.net");
-        static final By clickHereToClose = MobileBy.AccessibilityId("PBM Close");
+        static final By clickHereToClose = MobileBy.AccessibilityId("Click here to close.");
 
         //MRAID RESIZE LOCATORS
         static final By resizeButton = MobileBy.AccessibilityId("Click to Resize");

@@ -4,9 +4,12 @@ import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
@@ -36,6 +39,25 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
+    @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
+    public void testAuctionRequestVideoInterstitialWithCache(String adName) throws TimeoutException, InterruptedException {
+        env.homePage.turnOnCacheSwitcher();
+        initValidTemplatesJsonWithCache(adName);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
+
+        if (adName.contains("Feed")) {
+            System.out.println("PERFORM SCROLL TO FEED");
+            page.scrollToFeedAd();
+        }
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.homePage.clickBack();
+        env.homePage.turnOffCacheSwitcher();
+    }
+
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameVideoWithAdConfiguration", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoWithAdConfiguration(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
@@ -50,7 +72,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameVideoReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRealDevice(String adName) throws TimeoutException, InterruptedException {
 
-        initValidTemplatesJsonRealDevice(adName);
+        initValidTemplatesJson(adName,true);
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         if (adName.contains("Feed")) {
@@ -261,7 +283,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialOMEventsEndCardClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -297,7 +319,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkPlayerStateIsNormal();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class,priority = -1)
+    @Test(groups = {"requests"}, dataProvider = "videoInterstitialEndCardAdName", dataProviderClass = InAppDataProviders.class)
     public void testVideoInterstitialEndCardSkipButtonClicked(String adName) throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
@@ -586,7 +608,15 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-    public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
+    public void
+
+
+
+
+
+
+
+    testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);

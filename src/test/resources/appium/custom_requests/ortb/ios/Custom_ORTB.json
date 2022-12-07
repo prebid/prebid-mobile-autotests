@@ -1,7 +1,20 @@
 {
   "app": {
-    "bundle": "org.prebid.mobile.renderingtestapp",
-    "name": "InternalTestApp"
+    "ext":{
+      "data":{
+
+      },
+      "prebid":{
+        "source":"prebid-mobile",
+        "version":"$VARIABLE"
+      }
+    },
+    "ver":"1.3.0",
+    "name":"InternalTestApp",
+    "publisher":{
+      "id":"$VARIABLE"
+    },
+    "bundle":"org.prebid.mobile.renderingtestapp"
   },
   "device": {
     "ext": {
@@ -10,9 +23,11 @@
     },
     "geo": "$VARIABLE",
     "h": "$VARIABLE",
+    "pxratio":"$VARIABLE",
     "ifa": "$VARIABLE",
     "language": "$VARIABLE",
     "lmt": "$VARIABLE",
+    "ua": "$VARIABLE",
     "connectiontype":  "$VARIABLE",
     "make": "$VARIABLE",
     "model": "$VARIABLE",
@@ -24,23 +39,72 @@
     "ext" : {
       "omidpv":"$VARIABLE",
       "omidpn":"$VARIABLE"
-    }
+    },
+    "tid":"$VARIABLE"
   },
+  "id": "$VARIABLE",
   "imp": [
     {
+      "ext":{
+        "context":{
+          "data":{
+
+          }
+        },
+        "prebid":{
+          "storedauctionresponse":{
+            "id":"$VARIABLE"
+          },
+          "storedrequest":{
+            "id":"$VARIABLE"
+          }
+        }
+      },
       "banner": {
-        "api": "$VARIABLE"
+        "format":[
+          {
+            "w":320,
+            "h":50
+          }
+        ],
+        "api":[
+          3,
+          5,
+          6,
+          7
+        ]
       },
       "clickbrowser": 0,
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "instl": "$VARIABLE",
-      "ext": {
-        "dlp": 1
-      },
+      "id":"$VARIABLE",
       "secure": 1
     }
   ],
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },"storedauctionresponse": {
+        "id": "$VARIABLE"
+      },
+
+      "targeting": {
+
+      },"data":{
+        "bidders":[
+
+        ]
+      }
+    }
+  },
   "user": {
+    "ext":{
+      "data":{
+
+      }
+    },
+    "yob":0
   }
 }

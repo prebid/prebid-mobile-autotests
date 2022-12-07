@@ -19,20 +19,36 @@ import static appium.common.InAppTemplatesInit.*;
 public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
     //CUSTOM REQUESTS TESTS
-   @Test(groups = {"USPrivacy"})
+    @Test(groups = {"USPrivacy"})
     public void testUSPrivacy(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments("USPrivacy"));
+
         initValidCCPAJsons();
+
         env.homePage.goToAd(BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_FALSE);
-
+//        env.homePage.clickBack();
+        env.bmp.clearLogs();
+//        env.homePage.goToAd(BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
+    @Test(groups = {"WithAdditionalParams"}, dataProvider = "adNamesWithAdditionalParams", dataProviderClass = InAppDataProviders.class)
+    public void testRequestsWithAdditionalParams(Method method, ITestContext itc, String prebidAd) throws TimeoutException, InterruptedException, IOException {
+        setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false --es targetingDomain domain");
+        env.homePage.turnOffGDPRSwitcher();
+        initValidTemplatesJsonWithAdditionalParams(prebidAd);
+        env.homePage.goToAd(prebidAd);
 
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
+
+        env.homePage.clickBack();
+    }
    @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
     public void testTCFv1(Method method, ITestContext itc, String testCase) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
@@ -60,7 +76,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"CustomOpenRTB"},enabled = false)
+   @Test(groups = {"CustomOpenRTB"}/*,enabled = false*/)
     public void testCustomOpenRtbUser(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(CUSTOM_OPENRTB));

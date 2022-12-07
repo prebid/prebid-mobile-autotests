@@ -1,9 +1,10 @@
 {
   "app": {
     "ext": {
+      "data":{
+
+      },
       "prebid": {
-        "data": {
-        },
         "source": "prebid-mobile",
         "version": "$VARIABLE"
       }
@@ -23,12 +24,7 @@
       "storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
-        },
-        "vastxml": {
-        }
-      },
+
       "targeting": {
       },
       "data": {

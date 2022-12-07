@@ -20,11 +20,7 @@
       },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-      "cache": {
-        "bids": {
 
-        }
-      },
       "targeting": {
 
       }
@@ -78,9 +74,7 @@
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
     "pxratio": "$VARIABLE",
-    "geo": {
-
-    },
+    "geo": "$VARIABLE",
     "lmt": 0,
     "carrier": "Android",
     "osv": "$VARIABLE",

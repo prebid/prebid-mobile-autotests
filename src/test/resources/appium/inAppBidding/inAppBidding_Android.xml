@@ -10,6 +10,7 @@
     <test verbose="3" name="InApp_Bidding Android Custom Requests">
         <groups>
             <run>
+                <include name="WithAdditionalParams"/>
                 <include name="USPrivacy"/>
                 <include name="TCFv1"/>
                 <include name="CustomOpenRTB"/>
@@ -25,6 +26,7 @@
             <run>
                 <include name="android"/>
                 <include name="smoke"/>
+                <include name="smoke-Android"/>
             </run>
         </groups>
         <classes>
