@@ -100,8 +100,8 @@ public class InAppDataProviders {
     private static final String[][] BannerNoBids = {
             {BANNER_320x50_NO_BID_GAM_AD},
             {BANNER_320x50_NO_BID_IN_APP},
-            {BANNER_320x50_NO_BID_ADMOB},
-//            {BANNER_320x50_NO_BID_MAX},
+//            {BANNER_320x50_NO_BID_ADMOB},
+            {BANNER_320x50_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBids")
@@ -248,12 +248,12 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
             {VIDEO_INTERSTITIAL_320x480_GAM},
             {VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL},
-            {VIDEO_INTERSTITIAL_320x480_MAX},
+//            {VIDEO_INTERSTITIAL_320x480_MAX},
             {VIDEO_REWARDED_320x480_IN_APP},
             {VIDEO_REWARDED_320x480_GAM_METADATA},
             {VIDEO_REWARDED_320x480_GAM_ORIGINAL},
             {VIDEO_REWARDED_320x480_ADMOB},
-            {VIDEO_REWARDED_320x480_MAX},
+//            {VIDEO_REWARDED_320x480_MAX},
     };
     private static final String[][] VideoAdsRealDevice = {
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
@@ -270,11 +270,11 @@ public class InAppDataProviders {
             {VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION},
             {VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION},
-//            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
+////            {VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION},
             {VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION},
-//            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
+            {VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION},
     };
 
     /* AD_NAME_TYPE*/
@@ -396,16 +396,16 @@ public class InAppDataProviders {
 
 
     private static final String[][] NativeRequestAds = {
-//            {NATIVE_AD_ADMOB},
+            {NATIVE_AD_ADMOB},
 //            {NATIVE_AD_MAX},
-//            {NATIVE_AD_IN_APP},
-//            {NATIVE_AD_LINKS_IN_APP},
-//            {NATIVE_AD_FEED_IN_APP},
+            {NATIVE_AD_IN_APP},
+            {NATIVE_AD_LINKS_IN_APP},
+            {NATIVE_AD_FEED_IN_APP},
 
-//            {NATIVE_AD_FEED_GAM},
-//            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
+            {NATIVE_AD_FEED_GAM},
+            {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
             {NATIVE_AD_GAM_ORIGINAL},
-//            {NATIVE_AD_GAM_UNIFIED},
+            {NATIVE_AD_GAM_UNIFIED},
 
     };
     private static final String[][] NativeRequestAdsRealDevice = {
