@@ -63,7 +63,7 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_320x480_NO_BID_MAX = "Display Interstitial 320x480 (MAX) [noBids, MAX Ad]";
 
     String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
-    String INTERSTITIAL_320x480_GAM_ORIGINAL = "Display Interstitial 320x480 (GAM Original) [OK, PUC]";
+    String INTERSTITIAL_320x480_GAM_ORIGINAL = "Display Interstitial 320x480 (GAM, Original) [OK, PUC]";
     String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
     String INTERSTITIAL_MULTI_FORMAT_GAM = "Multiformat Interstitial 320x480 (GAM)";
     String INTERSTITIAL_320x480_NO_BID_GAM = "Display Interstitial 320x480 (GAM) [noBids, GAM Ad]";

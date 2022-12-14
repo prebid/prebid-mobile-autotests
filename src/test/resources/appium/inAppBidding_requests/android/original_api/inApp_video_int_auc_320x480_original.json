@@ -6,23 +6,36 @@
       "displaymanagerver": "$VARIABLE",
       "instl": 1,
       "clickbrowser": 0,
-      "secure": 1,
-      "banner": {
-        "format": [
-          {
-            "w":411,
-            "h":659
-          }
+      "video": {
+        "maxduration":30,
+        "minbitrate":300,
+        "w":411,
+        "h":659,
+        "placement":5,
+        "playbackmethod":[
+          1
         ],
-        "pos": 7
+        "api":[
+          1,
+          2
+        ],
+        "protocols":[
+          2
+        ],
+        "minduration":5,
+        "mimes":[
+          "video/x-flv",
+          "video/mp4"
+        ],
+        "maxbitrate":1500
       },
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-display-interstitial-320-480"
+            "id":"imp-prebid-video-interstitial-320-480"
           },
           "storedauctionresponse":{
-            "id":"response-prebid-display-interstitial-320-480"
+            "id":"response-prebid-video-interstitial-320-480-original-api"
           }
         }
       }
@@ -39,7 +52,7 @@
     "bundle": "org.prebid.mobile.renderingtestapp",
     "ver": "1.0",
     "publisher": {
-      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+      "id": "$VARIABLE"
     },
     "ext": {
       "prebid": {
@@ -56,20 +69,12 @@
     "os": "Android",
     "osv": "$VARIABLE",
     "language": "$VARIABLE",
-    "carrier": "$VARIABLE",
+    "carrier": "Android",
     "mccmnc": "$VARIABLE",
-    "h": 2560,
-    "w": 1440,
+    "h":2560,
+    "w":1440,
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
-    "ext": {
-      "prebid": {
-        "interstitial": {
-          "minwidthperc": 30,
-          "minheightperc": 30
-        }
-      }
-    },
     "geo": "$VARIABLE"
   },
   "user": {
@@ -82,17 +87,19 @@
       "omidpn": "Prebid"
     }
   },
-
   "ext": {
     "prebid": {
       "storedrequest":{
         "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
       "storedauctionresponse":{
-        "id":"response-prebid-display-interstitial-320-480"
+        "id":"response-prebid-video-interstitial-320-480-original-api"
       },
-      "cache": {
-        "bids": {
+      "cache":{
+        "bids":{
+
+        },
+        "vastxml":{
 
         }
       },

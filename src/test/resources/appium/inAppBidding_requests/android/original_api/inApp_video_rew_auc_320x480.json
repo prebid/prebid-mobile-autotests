@@ -7,33 +7,27 @@
       "instl": 1,
       "clickbrowser": 0,
       "video": {
-        "mimes": [
-          "video\/mp4",
-          "video\/3gpp",
-          "video\/webm",
-          "video\/mkv"
+        "w":411,
+        "h":659,
+        "placement":5,
+        "playbackmethod":[
+          2
         ],
-        "playbackend": 2,
-        "protocols": [
-          2,
-          5
+        "protocols":[
+          2
         ],
-        "w": "$VARIABLE",
-        "h": "$VARIABLE",
-        "linearity": 1,
-        "placement": 5,
-        "delivery": [
-          3
-        ],
-        "pos": 7
+        "mimes":[
+          "video/mp4"
+        ]
       },
       "ext": {
         "prebid": {
           "is_rewarded_inventory": 1,
-          "storedrequest": {
-            "id": "$VARIABLE"
-          },"storedauctionresponse": {
-            "id": "$VARIABLE"
+          "storedrequest":{
+            "id":"imp-prebid-video-rewarded-320-480-without-end-card"
+          },
+          "storedauctionresponse":{
+            "id":"response-prebid-video-rewarded-320-480-original-api"
           }
         }
       }
@@ -69,9 +63,8 @@
     "language": "$VARIABLE",
     "carrier": "Android",
     "mccmnc": "$VARIABLE",
-    "ifa": "$VARIABLE",
-    "h": "$VARIABLE",
-    "w": "$VARIABLE",
+    "h":2560,
+    "w":1440,
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "geo": "$VARIABLE"
@@ -88,10 +81,11 @@
   },
   "ext": {
     "prebid": {
-      "storedrequest": {
-        "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },
+      "storedauctionresponse":{
+        "id":"response-prebid-video-rewarded-320-480-original-api"
       },
       "cache": {
         "bids": {
