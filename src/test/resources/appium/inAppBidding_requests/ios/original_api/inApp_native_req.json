@@ -11,7 +11,7 @@
       }
     },
     "publisher": {
-      "id": "$VARIABLE"
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
     },
     "name": "InternalTestApp",
     "ver": "$VARIABLE"
@@ -22,10 +22,10 @@
       "ifv":"$VARIABLE",
       "atts": 0
     },
-    "h": "$VARIABLE",
+    "h": "896",
     "ua": "$VARIABLE",
-    "ifa": "$VARIABLE",
-    "lmt": "$VARIABLE",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "lmt": 1,
     "language":"en",
     "make": "Apple",
     "model": "iPhone",
@@ -35,7 +35,7 @@
 
     },
     "pxratio": "$VARIABLE",
-    "w": "$VARIABLE"
+    "w": "414"
   },
   "ext": {
     "prebid": {
@@ -47,10 +47,11 @@
 
         }
       },
-      "storedrequest": {
-        "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
+      "storedauctionresponse":{
+        "id":"response-prebid-banner-native-styles"
+      },
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
       "targeting": {
       },
@@ -75,10 +76,11 @@
           }
         },
         "prebid": {
-          "storedrequest": {
-            "id": "$VARIABLE"
-          },"storedauctionresponse": {
-            "id": "$VARIABLE"
+          "storedauctionresponse":{
+            "id":"response-prebid-banner-native-styles"
+          },
+          "storedrequest":{
+            "id":"imp-prebid-banner-native-styles"
           }
         }
       },

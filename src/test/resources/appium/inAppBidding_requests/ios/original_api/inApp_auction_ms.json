@@ -11,17 +11,17 @@
     "ver": "$VARIABLE",
     "name": "InternalTestApp",
     "publisher": {
-      "id": "$VARIABLE"
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
     },
     "bundle": "$VARIABLE"
   },
   "ext": {
     "prebid": {
-      "storedrequest": {
-        "id": "$VARIABLE"
+      "storedauctionresponse":{
+        "id":"response-prebid-banner-multisize"
       },
-      "storedauctionresponse": {
-        "id": "$VARIABLE"
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
       "cache": {
         "bids": {
@@ -39,7 +39,7 @@
   "id": "$VARIABLE",
   "regs": {
     "ext": {
-      "gdpr": "$VARIABLE"
+      "gdpr": 0
     }
   },
   "source": {
@@ -55,16 +55,16 @@
       "ifv": "$VARIABLE"
     },
     "os": "iOS",
-    "ifa": "$VARIABLE",
-    "h": "$VARIABLE",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "h": "896",
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
     "geo": {
     },
     "pxratio": "$VARIABLE",
-    "lmt": "$VARIABLE",
+    "lmt": 1,
     "osv": "$VARIABLE",
-    "w": "$VARIABLE",
+    "w": "414",
     "model": "iPhone",
     "connectiontype": "$VARIABLE",
     "make": "Apple"
@@ -77,11 +77,11 @@
           }
         },
         "prebid": {
-          "storedrequest": {
-            "id": "$VARIABLE"
+          "storedauctionresponse":{
+            "id":"response-prebid-banner-multisize"
           },
-          "storedauctionresponse": {
-            "id": "$VARIABLE"
+          "storedrequest":{
+            "id":"imp-prebid-banner-multisize"
           }
         }
       },
