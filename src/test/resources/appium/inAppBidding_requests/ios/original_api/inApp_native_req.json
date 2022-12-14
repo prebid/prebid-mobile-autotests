@@ -1,0 +1,114 @@
+{
+  "app": {
+    "bundle": "$VARIABLE",
+    "ext": {
+      "data":{
+
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "name": "InternalTestApp",
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "connectiontype": "$VARIABLE",
+    "ext": {
+      "ifv":"$VARIABLE",
+      "atts": 0
+    },
+    "h": "896",
+    "ua": "$VARIABLE",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "lmt": 1,
+    "language":"en",
+    "make": "Apple",
+    "model": "iPhone",
+    "os": "iOS",
+    "osv": "$VARIABLE",
+    "geo":{
+
+    },
+    "pxratio": "$VARIABLE",
+    "w": "414"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        },
+        "vastxml": {
+
+        }
+      },
+      "storedauctionresponse":{
+        "id":"response-prebid-banner-native-styles"
+      },
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },
+      "targeting": {
+      },
+      "data": {
+        "bidders": [
+        ]
+      }
+    }
+  },
+  "regs": {
+    "ext": {
+      "gdpr": 0
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "ext": {
+        "context":{
+          "data":{
+
+          }
+        },
+        "prebid": {
+          "storedauctionresponse":{
+            "id":"response-prebid-banner-native-styles"
+          },
+          "storedrequest":{
+            "id":"imp-prebid-banner-native-styles"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "clickbrowser":0,
+
+      "native": {
+        "request": "$VARIABLE",
+        "ver": "$VARIABLE"
+      },
+      "displaymanager":"prebid-mobile",
+      "displaymanagerver":"$VARIABLE",
+      "secure": 1,
+      "instl":0
+
+    }
+  ],
+  "source": {
+    "ext":{
+      "omidpv":"$VARIABLE",
+      "omidpn":"Prebid"
+    },
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "ext": {
+      "data": {}
+    },
+    "yob": 0
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "app": {
+    "bundle": "$VARIABLE",
+    "ext": {
+      "data":{
+
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "InternalTestApp",
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "connectiontype": "$VARIABLE",
+    "geo": {
+
+    },
+    "h": "896",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "language": "$VARIABLE",
+    "lmt": 1,
+    "make": "Apple",
+    "model": "iPhone",
+    "os": "iOS",
+    "osv": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "w": "414"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        },
+        "vastxml": {
+
+        }
+      },
+      "storedauctionresponse":{
+        "id":"response-prebid-banner-728-90"
+      },
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },
+      "targeting": {
+
+      },
+      "data": {
+        "bidders": []
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "regs":{
+    "ext":{
+      "gdpr":0
+    }
+  },
+  "imp": [
+    {
+      "banner": {
+        "api": [
+          5
+        ],
+        "format": [
+          {
+            "h": 90,
+            "w": 728
+          }
+        ]
+      },
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "ext": {
+        "context": {
+          "data": {
+
+          }
+        },
+        "prebid": {
+          "storedauctionresponse":{
+            "id":"response-prebid-banner-728-90"
+          },
+          "storedrequest":{
+            "id":"imp-prebid-banner-728-90"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 0,
+      "secure": 1
+    }
+  ],
+  "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "ext": {
+      "data": {
+
+      }
+    },"yob":0
+  }
+}

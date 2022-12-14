@@ -14,13 +14,17 @@ public interface InAppAdNamesImpl {
     String BANNER_SKADNETWORK = "Banner 320x50 (In-App) [SKAdN]";
 
     String BANNER_320x50_GAM = "Banner 320x50 (GAM) [OK, AppEvent]";
+    String BANNER_320x50_GAM_ORIGINAL = "Banner 320x50 (GAM Original) [OK, PUC]";
     String BANNER_320x50_GAM_VANILLA = "Banner 320x50 (GAM) [Vanilla Prebid Order]";
     String BANNER_320x50_GAM_AD = "Banner 320x50 (GAM) [OK, GAM Ad]";
     String BANNER_320x50_NO_BID_GAM_AD = "Banner 320x50 (GAM) [noBids, GAM Ad]";
     String BANNER_320x50_GAM_RANDOM = "Banner 320x50 (GAM) [OK, Random]";
     String BANNER_300x250_GAM = "Banner 300x250 (GAM)";
+    String BANNER_300x250_GAM_ORIGINAL = "Banner 300x250 (GAM Original) [OK, PUC]";
     String BANNER_728x90_GAM = "Banner 728x90 (GAM)";
+    String BANNER_728x90_GAM_ORIGINAL = "Banner 728x90 (GAM Original) [OK, PUC]";
     String BANNER_MULTISIZE_GAM = "Banner Multisize (GAM)";
+    String BANNER_MULTISIZE_GAM_ORIGINAL = "Banner Multisize (GAM Original) [OK, PUC]";
 
     /** ADMOB*/
     String BANNER_320x50_ADMOB = "Banner 320x50 (AdMob) [OK, OXB Adapter]";
@@ -59,6 +63,7 @@ public interface InAppAdNamesImpl {
     String INTERSTITIAL_320x480_NO_BID_MAX = "Display Interstitial 320x480 (MAX) [noBids, MAX Ad]";
 
     String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
+    String INTERSTITIAL_320x480_GAM_ORIGINAL = "Display Interstitial 320x480 (GAM Original) [OK, PUC]";
     String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
     String INTERSTITIAL_MULTI_FORMAT_GAM = "Multiformat Interstitial 320x480 (GAM)";
     String INTERSTITIAL_320x480_NO_BID_GAM = "Display Interstitial 320x480 (GAM) [noBids, GAM Ad]";
@@ -83,6 +88,7 @@ public interface InAppAdNamesImpl {
     String VIDEO_INTERSTITIAL_320x480_IN_APP = "Video Interstitial 320x480 (In-App)";
     String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card (In-App)";
     String VIDEO_INTERSTITIAL_320x480_GAM = "Video Interstitial 320x480 (GAM) [OK, AppEvent]";
+    String VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL = "Video Interstitial 320x480 (GAM Original) [OK, PUC]";
     String VIDEO_INTERSTITIAL_320x480_GAM_RANDOM = "Video Interstitial 320x480 (GAM) [OK, Random]";
     String VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD = "Video Interstitial 320x480 (GAM) [noBids, GAM Ad]";
 
@@ -101,11 +107,14 @@ public interface InAppAdNamesImpl {
     String VIDEO_OUTSTREAM_FEED_IN_APP = "Video Outstream Feed (In-App)";
     String VIDEO_OUTSTREAM_FEED_GAM = "Video Outstream Feed (GAM)";
     String VIDEO_OUTSTREAM_GAM = "Video Outstream (GAM) [OK, AppEvent]";
+    String VIDEO_OUTSTREAM_GAM_ORIGINAL = "Video Outstream (GAM Original) [OK, PUC]";
+    String VIDEO_INSTREAM_GAM_ORIGINAL = "Instream Video (GAM Original) [OK, PUC]";
     String VIDEO_OUTSTREAM_GAM_RANDOM = "Video Outstream (GAM) [OK, Random]";
     String VIDEO_OUTSTREAM_NO_BID_GAM_AD = "Video Outstream (GAM) [noBids, GAM Ad]";
 
     String VIDEO_REWARDED_320x480_IN_APP = "Video Rewarded 320x480 (In-App)";
     String VIDEO_REWARDED_320x480_GAM_METADATA = "Video Rewarded 320x480 (GAM) [OK, Metadata]";
+    String VIDEO_REWARDED_320x480_GAM_ORIGINAL = "Video Rewarded 320x480 (GAM Original) [OK, PUC]";
     String VIDEO_REWARDED_320x480_NO_BID_GAM = "Video Rewarded 320x480 (GAM) [noBids, GAM Ad]";
     String VIDEO_REWARDED_320x480_GAM_RANDOM = "Video Rewarded 320x480 (GAM) [OK, Random]";
     String VIDEO_REWARDED_320x480_ADMOB = "Video Rewarded 320x480 (AdMob) [OK, OXB Adapter]";
@@ -155,6 +164,7 @@ public interface InAppAdNamesImpl {
     String NATIVE_AD_MAX_NO_BIDS = "Native Ad (MAX) [noBids, MAX Ad]";
 
     String NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD = "Native Ad (GAM) [OK, GADNativeCustomTemplateAd]";
+    String NATIVE_AD_GAM_ORIGINAL = "Native In-App (GAM Original) [OK, PUC]";
     String NATIVE_AD_GAM_UNIFIED_GAD = "Native Ad (GAM) [OK, GADUnifiedNativeAd]";
     String NATIVE_AD_GAM_UNIFIED = "Native Ad Unified Ad (GAM) [OK, NativeAd]";
     String NATIVE_AD_GAM_CUSTOM_TEMPLATE = "Native Ad Custom Templates (GAM) [OK, NativeAd]";
