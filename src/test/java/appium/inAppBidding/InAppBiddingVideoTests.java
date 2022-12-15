@@ -4,12 +4,9 @@ import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import utils.RequestValidator;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
@@ -39,6 +36,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.homePage.clickBack();
 
     }
+
     @Test(groups = {"requests-simulator"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoInterstitialWithCache(String adName) throws TimeoutException, InterruptedException {
         env.homePage.turnOnCacheSwitcher();
@@ -65,14 +63,15 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-        env.validateEventResponse(InAppBiddingEvents.AUCTION,validAuctionResponse);
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
         env.homePage.clickBack();
 
     }
+
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameVideoReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestVideoRealDevice(String adName) throws TimeoutException, InterruptedException {
 
-        initValidTemplatesJson(adName,true);
+        initValidTemplatesJson(adName, true);
         InAppBiddingAdPageImpl page = env.homePage.goToAd(adName);
 
         if (adName.contains("Feed")) {
@@ -611,11 +610,6 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     public void
 
 
-
-
-
-
-
     testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
@@ -636,7 +630,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkNonAutoPlaySkippableAndStandalonePosition();
     }
 
-    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class,priority = 1)
+    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class, priority = 1)
     public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 
