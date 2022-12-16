@@ -100,8 +100,8 @@ public class InAppDataProviders {
     private static final String[][] BannerNoBids = {
             {BANNER_320x50_NO_BID_GAM_AD},
             {BANNER_320x50_NO_BID_IN_APP},
-//            {BANNER_320x50_NO_BID_ADMOB},
-            {BANNER_320x50_NO_BID_MAX},
+            {BANNER_320x50_NO_BID_ADMOB},
+//            {BANNER_320x50_NO_BID_MAX},
     };
 
     @DataProvider(name = "noBids")
@@ -401,7 +401,7 @@ public class InAppDataProviders {
             {NATIVE_AD_IN_APP},
             {NATIVE_AD_LINKS_IN_APP},
             {NATIVE_AD_FEED_IN_APP},
-
+//
             {NATIVE_AD_FEED_GAM},
             {NATIVE_AD_GAM_CUSTOM_TEMPLATE},
             {NATIVE_AD_GAM_ORIGINAL},

@@ -42,7 +42,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String TEMPLATE_MRAID_VIDEO_INTERSTITIAL = "appium/inAppBidding_requests/%s/inApp_mraid_video_int_auc.json";
 
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_int_auc_320x480.json";
+    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_int_auc_320x480_original.json";
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_video_int_auc_320x480.json";
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_video_int_auc_320x480.json";
     private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480_real_device.json";
@@ -281,7 +281,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_AD_LINKS_IN_APP, REQUEST_TEMPLATE_NATIVE);
 
         put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_ORIGINAL, REQUEST_TEMPLATE_NATIVE);
+        put(NATIVE_AD_GAM_ORIGINAL, REQUEST_TEMPLATE_NATIVE_ORIGINAL);
         put(NATIVE_AD_GAM_UNIFIED_GAD, REQUEST_TEMPLATE_NATIVE);
         put(NATIVE_AD_GAM_UNIFIED, REQUEST_TEMPLATE_NATIVE);
         put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, REQUEST_TEMPLATE_NATIVE);

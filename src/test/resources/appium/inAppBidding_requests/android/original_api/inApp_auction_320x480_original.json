@@ -1,0 +1,104 @@
+{
+  "imp": [
+    {
+      "id": "$VARIABLE",
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "instl": 1,
+      "clickbrowser": 0,
+      "secure": 1,
+      "banner": {
+        "format": [
+          {
+            "w":411,
+            "h":659
+          }
+        ],
+        "pos": 7
+      },
+      "ext": {
+        "prebid": {
+          "storedrequest":{
+            "id":"imp-prebid-display-interstitial-320-480"
+          },
+          "storedauctionresponse":{
+            "id":"response-prebid-display-interstitial-320-480"
+          }
+        }
+      }
+    }
+  ],
+  "regs":{
+    "ext":{
+      "gdpr":0
+    }
+  },
+  "id": "$VARIABLE",
+  "app": {
+    "name": "Prebid Rendering Kotlin Demo",
+    "bundle": "org.prebid.mobile.renderingtestapp",
+    "ver": "1.0",
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    }
+  },
+  "device": {
+    "ua": "$VARIABLE",
+    "lmt": 0,
+    "make": "$VARIABLE",
+    "model": "$VARIABLE",
+    "os": "Android",
+    "osv": "$VARIABLE",
+    "language": "$VARIABLE",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
+    "h": 2560,
+    "w": 1440,
+    "connectiontype": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "ext": {
+      "prebid": {
+        "interstitial": {
+          "minwidthperc": 30,
+          "minheightperc": 30
+        }
+      }
+    },
+    "geo": "$VARIABLE"
+  },
+  "user": {
+
+  },
+  "source": {
+    "tid": "$VARIABLE",
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    }
+  },
+
+  "ext": {
+    "prebid": {
+      "storedrequest":{
+        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },
+      "storedauctionresponse":{
+        "id":"response-prebid-display-interstitial-320-480"
+      },
+      "cache": {
+        "bids": {
+
+        }
+      },
+      "targeting": {
+
+      }
+    }
+  }
+}
