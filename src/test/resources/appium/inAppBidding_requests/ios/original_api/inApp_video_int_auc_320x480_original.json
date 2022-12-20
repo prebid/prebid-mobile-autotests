@@ -94,29 +94,9 @@
           3
         ],
         "h": "$VARIABLE",
-        "minbitrate":300,
-        "playbackmethod":[
-          2
-        ],
-        "minduration":5,
-        "maxbitrate":1500,
-        "maxduration":30,
         "linearity": 1,
-        "mimes": [
-          "video\/mp4"
-        ],
-        "placement": 5,
         "playbackend": 2,
         "pos": 7,
-        "protocols": [
-          2,
-          3,
-          7
-        ],
-        "api":[
-          1,
-          2
-        ],
         "w": "$VARIABLE"
       }
     }
