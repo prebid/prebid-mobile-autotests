@@ -1,6 +1,11 @@
 {
   "app": {
-
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
     "ver": "$VARIABLE",
     "name": "InternalTestApp",
     "publisher": {

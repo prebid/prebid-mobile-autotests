@@ -5,6 +5,12 @@
     "publisher": {
       "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
     },
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
     "ver": "$VARIABLE"
   },
   "device": {

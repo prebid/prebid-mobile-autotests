@@ -1,5 +1,11 @@
 {
   "app": {
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
     "bundle": "$VARIABLE",
     "name": "InternalTestApp",
     "publisher": {
@@ -69,9 +75,6 @@
       "instl": 0,
       "secure": 1,
       "video": {
-        "delivery": [
-          3
-        ],
         "h": "$VARIABLE",
         "minbitrate":300,
         "playbackmethod":[
@@ -80,12 +83,9 @@
         "minduration":5,
         "maxbitrate":1500,
         "maxduration":30,
-        "linearity": 1,
         "mimes": [
           "video\/mp4"
         ],
-        "playbackend": 2,
-        "pos": 7,
         "protocols": [
           2,
           3,

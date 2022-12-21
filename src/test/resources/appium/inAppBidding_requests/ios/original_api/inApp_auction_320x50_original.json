@@ -1,7 +1,12 @@
 {
   "app": {
     "bundle": "$VARIABLE",
-
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
     "name": "InternalTestApp",
     "publisher": {
       "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
