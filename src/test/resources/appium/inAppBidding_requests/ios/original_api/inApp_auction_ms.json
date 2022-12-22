@@ -1,8 +1,6 @@
 {
   "app": {
     "ext": {
-      "data": {
-      },
       "prebid": {
         "source": "prebid-mobile",
         "version": "$VARIABLE"
@@ -17,11 +15,11 @@
   },
   "ext": {
     "prebid": {
-      "storedauctionresponse":{
-        "id":"response-prebid-banner-multisize"
+      "storedauctionresponse": {
+        "id": "response-prebid-banner-multisize"
       },
-      "storedrequest":{
-        "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
+      "storedrequest": {
+        "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
       "cache": {
         "bids": {
@@ -30,9 +28,6 @@
         }
       },
       "targeting": {
-      },
-      "data": {
-        "bidders": []
       }
     }
   },
@@ -43,10 +38,6 @@
     }
   },
   "source": {
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    },
     "tid": "$VARIABLE"
   },
   "device": {
@@ -59,8 +50,6 @@
     "h": "896",
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
-    "geo": {
-    },
     "pxratio": "$VARIABLE",
     "lmt": 1,
     "osv": "$VARIABLE",
@@ -72,47 +61,27 @@
   "imp": [
     {
       "ext": {
-        "context": {
-          "data": {
-          }
-        },
         "prebid": {
-          "storedauctionresponse":{
-            "id":"response-prebid-banner-multisize"
+          "storedauctionresponse": {
+            "id": "response-prebid-banner-multisize"
           },
-          "storedrequest":{
-            "id":"imp-prebid-banner-multisize"
+          "storedrequest": {
+            "id": "imp-prebid-banner-multisize"
           }
         }
       },
-      "clickbrowser": 0,
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
+      "clickbrowser": 1,
       "banner": {
         "format": [
           {
             "w": 728,
             "h": 90
-          },
-          {
-            "w": 320,
-            "h": 50
           }
-        ],
-        "api": [
-          5
         ]
       },
       "id": "$VARIABLE",
       "secure": 1,
       "instl": 0
     }
-  ],
-  "user": {
-    "ext": {
-      "data": {
-      }
-    },
-    "yob": 0
-  }
+  ]
 }

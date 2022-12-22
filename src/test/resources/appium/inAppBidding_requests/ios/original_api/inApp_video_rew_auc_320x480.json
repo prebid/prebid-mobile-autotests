@@ -2,9 +2,6 @@
   "app": {
     "bundle": "$VARIABLE",
     "ext": {
-      "data":{
-
-      },
       "prebid": {
         "source": "prebid-mobile",
         "version": "$VARIABLE"
@@ -22,9 +19,6 @@
       "ifv": "$VARIABLE"
     },
     "connectiontype": "$VARIABLE",
-    "geo": {
-
-    },
     "h": "896",
     "ifa": "00000000-0000-0000-0000-000000000000",
     "language": "$VARIABLE",
@@ -55,9 +49,6 @@
       },
       "targeting": {
 
-      },
-      "data": {
-        "bidders": []
       }
     }
   },
@@ -69,15 +60,8 @@
   },
   "imp": [
     {
-      "clickbrowser": 0,
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
+      "clickbrowser": 1,
       "ext": {
-        "context": {
-          "data": {
-
-          }
-        },
         "prebid": {
           "storedauctionresponse":{
             "id":"response-prebid-video-rewarded-320-480-original-api"
@@ -91,48 +75,13 @@
       "instl": 1,
       "secure": 1,
       "video": {
-        "delivery": [
-          3
-        ],
         "h": "$VARIABLE",
-        "minbitrate":300,
-        "playbackmethod":[
-          2
-        ],
-        "minduration":5,
-        "maxbitrate":1500,
-        "maxduration":30,
-        "linearity": 1,
-        "mimes": [
-          "video\/mp4"
-        ],
-        "placement": 5,
-        "playbackend": 2,
         "pos": 7,
-        "protocols": [
-          2,
-          3,
-          7
-        ],
-        "api":[
-          1,
-          2
-        ],
         "w": "$VARIABLE"
       }
     }
   ],
   "source": {
-    "ext": {
-      "omidpn": "Prebid",
-      "omidpv": "$VARIABLE"
-    },
     "tid": "$VARIABLE"
-  },
-  "user": {
-    "ext": {
-      "data": {}
-    },
-    "yob": 0
   }
 }

@@ -1,9 +1,6 @@
 {
   "app": {
     "ext": {
-      "data":{
-
-      },
       "prebid": {
         "source": "prebid-mobile",
         "version": "$VARIABLE"
@@ -33,9 +30,6 @@
       },
       "targeting": {
 
-      },
-      "data": {
-        "bidders": []
       }
     }
   },
@@ -46,10 +40,7 @@
     }
   },
   "source": {
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    },
+
     "tid": "$VARIABLE"
   },
   "device": {
@@ -68,9 +59,7 @@
     "h": 896,
     "language": "$VARIABLE",
     "ua": "$VARIABLE",
-    "geo": {
 
-    },
     "pxratio": "$VARIABLE",
     "lmt": 1,
     "osv": "$VARIABLE",
@@ -82,11 +71,6 @@
   "imp": [
     {
       "ext": {
-        "context": {
-          "data": {
-
-          }
-        },
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
@@ -95,9 +79,7 @@
           }
         }
       },
-      "clickbrowser": 0,
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
+      "clickbrowser": 1,
       "banner": {
         "format": [
           {
@@ -105,21 +87,11 @@
             "h": 896
           }
         ],
-        "pos": 7,
-        "api": [
-          5
-        ]
+        "pos": 7
       },
       "id": "$VARIABLE",
       "secure": 1,
       "instl": 1
     }
-  ],
-  "user": {
-    "ext": {
-      "data": {
-
-      }
-    },"yob":0
-  }
+  ]
 }

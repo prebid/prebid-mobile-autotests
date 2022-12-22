@@ -56,7 +56,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-        @Test(groups = {"requests-simulator"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "noBidsInterstitial", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -65,7 +65,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -89,7 +89,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         interstitialPage.waitAndReturnToApp();
 
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -116,7 +116,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         multiformatPage.waitAndReturnToApp();
 
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -140,7 +140,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         multiformatPage.waitAndReturnToApp();
 
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -159,7 +159,8 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         interstitialPage.closeWebViewCreative();
 
         interstitialPage.clickCloseInterstitial();
-        initPrebidAdapter(prebidAd,env);;
+        initPrebidAdapter(prebidAd, env);
+        ;
         prebidAdapter.checkDisplayInterstitialDelegates();
 
         env.homePage.clickBack();
@@ -185,7 +186,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -215,7 +216,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
 
-        initPrebidAdapter(prebidAd,env);
+        initPrebidAdapter(prebidAd, env);
         prebidAdapter.checkEvents();
 
         env.homePage.clickBack();
@@ -343,10 +344,13 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.homePage.clickBack();
-        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+        if (!prebidAd.contains("Original")) {
+            RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+        }
     }
+
     private void testAuctionRequestRealDevice(String prebidAd) throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(prebidAd,true);
+        initValidTemplatesJson(prebidAd, true);
 
         env.homePage.goToAd(prebidAd);
 
