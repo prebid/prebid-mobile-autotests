@@ -2,32 +2,13 @@
   "imp": [
     {
       "id": "$VARIABLE",
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
       "instl": 1,
       "clickbrowser": 0,
       "video": {
-        "maxduration":30,
-        "minbitrate":300,
+        "delivery":[3],
         "w":411,
         "h":659,
-        "placement":5,
-        "playbackmethod":[
-          1
-        ],
-        "api":[
-          1,
-          2
-        ],
-        "protocols":[
-          2
-        ],
-        "minduration":5,
-        "mimes":[
-          "video/x-flv",
-          "video/mp4"
-        ],
-        "maxbitrate":1500
+        "placement":5
       },
       "ext": {
         "prebid": {
