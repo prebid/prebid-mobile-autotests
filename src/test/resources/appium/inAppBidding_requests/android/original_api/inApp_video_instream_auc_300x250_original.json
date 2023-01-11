@@ -2,14 +2,13 @@
   "imp": [
     {
       "id": "$VARIABLE",
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
       "instl": 1,
       "clickbrowser": 0,
       "video": {
-        "w":411,
-        "h":659,
-        "placement":5,
+        "delivery":[3],
+        "w":640,
+        "h":480,
+        "placement":1,
         "playbackmethod":[
           2
         ],
