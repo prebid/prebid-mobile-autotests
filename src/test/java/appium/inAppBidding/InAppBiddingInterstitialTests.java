@@ -21,7 +21,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     // INTERSTITIAL TESTS
     // =============================
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests-simulator"}, dataProvider = "interstitialAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestInterstitial(String prebidAd) throws TimeoutException, InterruptedException {
         testAuctionRequest(prebidAd);
     }

@@ -8,7 +8,6 @@
       "atts": 0,
       "ifv": "$VARIABLE"
     },
-    "geo": "$VARIABLE",
     "h": "$VARIABLE",
     "ifa": "$VARIABLE",
     "language": "$VARIABLE",
@@ -40,7 +39,5 @@
       },
       "secure": 1
     }
-  ],
-  "user": {
-  }
+  ]
 }
