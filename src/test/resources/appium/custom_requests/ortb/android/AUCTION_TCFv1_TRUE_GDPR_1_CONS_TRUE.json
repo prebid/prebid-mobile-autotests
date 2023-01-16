@@ -6,7 +6,7 @@
         "version": "$VARIABLE"
       }
     },
-    "ver": "1.0",
+    "ver": "1.0.0",
     "name": "Prebid Rendering Kotlin Demo",
     "publisher": {
       "id": "$VARIABLE"
@@ -82,6 +82,7 @@
     "lmt": "$VARIABLE",
     "carrier": "Android",
     "osv": "$VARIABLE",
+    "ifa": "$VARIABLE",
     "mccmnc": "$VARIABLE",
     "w":"$VARIABLE",
     "model": "$VARIABLE",
