@@ -444,5 +444,39 @@ public class InAppDataProviders {
         return NativeNoBidsAds;
     }
 
+    private static final String[][] SkadNetworkAds = {
+            {BANNER_SKADNETWORK},
+            {INTERSTITIAL_320x480_IN_APP_SKADN},
+            {VIDEO_INTERSTITIAL_320x480_IN_APP_SKADN},
+            {VIDEO_REWARDED_320x480_IN_APP_SKADN},
+            {VIDEO_OUTSTREAM_IN_APP_SKADN},
+    };
 
+    @DataProvider(name = "SkadNetworkAds")
+    public static Object[][] provideSkadNetworkAds() {
+        return SkadNetworkAds;
+    }
+
+    private static final String[][] NoSkadNetworkAds = {
+            // Rendering
+            {NATIVE_AD_IN_APP},
+            {BANNER_320x50_IN_APP},
+            {INTERSTITIAL_320x480_IN_APP},
+            {VIDEO_OUTSTREAM_IN_APP},
+            {VIDEO_INTERSTITIAL_320x480_IN_APP},
+            {VIDEO_REWARDED_320x480_IN_APP},
+            // Original
+            {BANNER_320x50_GAM_ORIGINAL_NO_SKADN},
+            {BANNER_320x50_GAM_ORIGINAL},
+            {INTERSTITIAL_320x480_GAM_ORIGINAL},
+            {VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL},
+            {VIDEO_REWARDED_320x480_GAM_ORIGINAL},
+            {VIDEO_OUTSTREAM_GAM_ORIGINAL},
+            {NATIVE_AD_GAM_ORIGINAL},
+    };
+
+    @DataProvider(name = "NoSkadNetworkAds")
+    public static Object[][] provideNoSkadNetworkAds() {
+        return NoSkadNetworkAds;
+    }
 }

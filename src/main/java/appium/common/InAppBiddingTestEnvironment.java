@@ -401,8 +401,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
      * @param name test name which is later used as name in SauceLabs, e.g. iOS_SDK_UI
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors) throws IOException {
-        super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors);
+    public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors, String appPath) throws IOException {
+        super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors, appPath);
 
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
@@ -440,8 +440,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
      *
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors, String commandLineArguments) throws IOException {
-        super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors);
+    public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors, String commandLineArguments, String appPath) throws IOException {
+        super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors, appPath);
         final Platform platform = capabilities.getPlatform();
         capabilities.setCapability("noReset", false);
         if (platform == Platform.IOS) {
