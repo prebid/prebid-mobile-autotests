@@ -37,6 +37,8 @@ public class TestEnvironment {
     }
 
     public static final Set<TrafficInspectorKind> INSPECTORS_MOB_PROXY = new HashSet<>(Arrays.asList(TrafficInspectorKind.MOB_PROXY));
+    public static final String SKADN_APP_PATH = "/Users/mac-admin/Library/Developer/Xcode/DerivedData/PrebidMobile-dnfowmiskmgirobghgmelilrixkf/Build/Products/Debug-iphonesimulator/InternalTestApp-Skadn.app";
+    public static final String ORIGINAL_APP_PATH = "/Users/mac-admin/Library/Developer/Xcode/DerivedData/PrebidMobile-dnfowmiskmgirobghgmelilrixkf/Build/Products/Debug-iphonesimulator/InternalTestApp.app";
 
     private static class RemoteServer {
         public String host;
@@ -81,12 +83,12 @@ public class TestEnvironment {
      * @param trafficInspectors  the set of tools for sniffing the traffic
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    public TestEnvironment(String name, String propertiesFilePath, Set<TrafficInspectorKind> trafficInspectors)
+    public TestEnvironment(String name, String propertiesFilePath, Set<TrafficInspectorKind> trafficInspectors, String appPath)
             throws IOException {
 
         logger.setLevel(Level.WARNING);
 
-        setProperties(propertiesFilePath);
+        setProperties(propertiesFilePath, appPath);
         setCapabilities(trafficInspectors);
 
         if (capabilities.getCapability("name") == null) {
@@ -166,14 +168,14 @@ public class TestEnvironment {
      * @param propertiesFilePath path to .properties file with default configuration
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    private void setProperties(String propertiesFilePath) throws IOException {
+    private void setProperties(String propertiesFilePath, String appPath) throws IOException {
         Properties defaultConfig = new Properties();
         defaultConfig.load(new FileInputStream(propertiesFilePath));
         config.putAll(defaultConfig);
 
         Properties systemConfig = System.getProperties();
         config.putAll(systemConfig);
-
+        config.setProperty("app", appPath);
         if (config.getProperty("appium_port") != null) {
             appiumServer.port = Integer.valueOf(config.getProperty("appium_port"));
         }

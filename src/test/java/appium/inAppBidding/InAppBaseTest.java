@@ -156,7 +156,11 @@ public class InAppBaseTest {
 
     private void setup(ITestContext itc) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
-        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
+        if (testName.equals(InAppSkadnTests.class.getSimpleName())){
+            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.SKADN_APP_PATH);
+        } else {
+            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.ORIGINAL_APP_PATH);
+        }
 
         env.homePage.turnOffGDPRSwitcher();
 
