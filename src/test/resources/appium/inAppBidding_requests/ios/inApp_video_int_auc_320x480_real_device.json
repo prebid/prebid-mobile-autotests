@@ -2,9 +2,6 @@
   "app": {
     "bundle": "$VARIABLE",
     "ext": {
-      "data":{
-
-      },
       "prebid": {
         "source": "prebid-mobile",
         "version": "$VARIABLE"
@@ -48,9 +45,6 @@
       },
       "targeting": {
 
-      },
-      "data": {
-        "bidders": []
       }
     }
   },
@@ -66,11 +60,6 @@
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "ext": {
-        "context": {
-          "data": {
-
-          }
-        },
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
@@ -87,7 +76,6 @@
           3
         ],
         "h": "$VARIABLE",
-        "linearity": 1,
         "mimes": [
           "video\/mp4",
           "video\/quicktime",
@@ -113,12 +101,5 @@
       "omidpv": "$VARIABLE"
     },
     "tid": "$VARIABLE"
-  },
-  "user": {
-    "ext": {
-      "data": {
-
-      }
-    },"yob":0
   }
 }

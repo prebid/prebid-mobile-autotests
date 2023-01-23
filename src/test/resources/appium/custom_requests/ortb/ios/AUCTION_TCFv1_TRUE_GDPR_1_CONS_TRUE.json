@@ -1,9 +1,7 @@
 {
   "app": {
     "ext": {
-      "data":{
 
-      },
       "prebid": {
         "source": "prebid-mobile",
         "version": "$VARIABLE"
@@ -26,9 +24,6 @@
 
       "targeting": {
 
-      },
-      "data": {
-        "bidders": []
       }
     }
   },
@@ -39,10 +34,6 @@
   },
   "id": "$VARIABLE",
   "source": {
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    },
     "tid": "$VARIABLE"
   },
   "device": {
@@ -54,9 +45,6 @@
     "h": "$VARIABLE",
     "language": "en",
     "ua": "$VARIABLE",
-    "geo": {
-
-    },
     "pxratio": "$VARIABLE",
     "lmt": "$VARIABLE",
     "osv": "$VARIABLE",
@@ -68,11 +56,6 @@
   "imp": [
     {
       "ext": {
-        "context": {
-          "data": {
-
-          }
-        },
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
@@ -105,10 +88,7 @@
   ],
   "user": {
     "ext": {
-      "consent": "BObdrPUOevsguAfDqFENCNAAAAAmeAAA.PVAfDObdrA.DqFENCAmeAENCDA.OevsguAfDq",
-      "data": {
-
-      }
-    },"yob":0
+      "consent": "BObdrPUOevsguAfDqFENCNAAAAAmeAAA.PVAfDObdrA.DqFENCAmeAENCDA.OevsguAfDq"
+    }
   }
 }

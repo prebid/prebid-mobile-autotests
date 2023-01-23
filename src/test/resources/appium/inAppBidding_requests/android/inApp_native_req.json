@@ -61,8 +61,6 @@
         "request": "$VARIABLE",
         "ver": "$VARIABLE"
       },
-      "displaymanager":"prebid-mobile",
-      "displaymanagerver":"$VARIABLE",
       "secure": 1,
       "instl":0
 

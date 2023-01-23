@@ -6,7 +6,7 @@
         "version": "$VARIABLE"
       }
     },
-    "ver": "1.0",
+    "ver": "1.0.0",
     "name": "Prebid Rendering Kotlin Demo",
     "publisher": {
       "id": "$VARIABLE"

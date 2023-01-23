@@ -75,7 +75,9 @@
       "instl": 1,
       "secure": 1,
       "video": {
+        "delivery": [3],
         "h": "$VARIABLE",
+        "placement":5,
         "pos": 7,
         "w": "$VARIABLE"
       }

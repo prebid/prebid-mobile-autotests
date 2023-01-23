@@ -1,9 +1,6 @@
 {
   "app": {
     "ext":{
-      "data":{
-
-      },
       "prebid":{
         "source":"prebid-mobile",
         "version":"$VARIABLE"
@@ -21,7 +18,6 @@
       "atts": 0,
       "ifv": "$VARIABLE"
     },
-    "geo": "$VARIABLE",
     "h": "$VARIABLE",
     "pxratio":"$VARIABLE",
     "ifa": "$VARIABLE",
@@ -36,21 +32,12 @@
     "w": "$VARIABLE"
   },
   "source" : {
-    "ext" : {
-      "omidpv":"$VARIABLE",
-      "omidpn":"$VARIABLE"
-    },
     "tid":"$VARIABLE"
   },
   "id": "$VARIABLE",
   "imp": [
     {
       "ext":{
-        "context":{
-          "data":{
-
-          }
-        },
         "prebid":{
           "storedauctionresponse":{
             "id":"$VARIABLE"
@@ -92,19 +79,7 @@
 
       "targeting": {
 
-      },"data":{
-        "bidders":[
-
-        ]
       }
     }
-  },
-  "user": {
-    "ext":{
-      "data":{
-
-      }
-    },
-    "yob":0
   }
 }

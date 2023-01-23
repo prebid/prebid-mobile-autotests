@@ -75,6 +75,7 @@
       "instl": 0,
       "secure": 1,
       "video": {
+        "delivery": [3],
         "h": "$VARIABLE",
         "minbitrate":300,
         "playbackmethod":[

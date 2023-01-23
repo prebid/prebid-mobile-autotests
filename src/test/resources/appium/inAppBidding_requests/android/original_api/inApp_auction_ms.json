@@ -2,8 +2,6 @@
   "imp": [
     {
       "id": "$VARIABLE",
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
       "instl": 0,
       "clickbrowser": 0,
       "secure": 1,
@@ -40,7 +38,7 @@
   "app": {
     "name": "Prebid Rendering Kotlin Demo",
     "bundle": "org.prebid.mobile.renderingtestapp",
-    "ver": "1.0",
+    "ver": "1.0.0",
     "publisher": {
       "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
     },

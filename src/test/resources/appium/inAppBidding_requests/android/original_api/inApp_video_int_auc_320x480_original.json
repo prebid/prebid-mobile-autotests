@@ -31,7 +31,7 @@
   "app": {
     "name": "Prebid Rendering Kotlin Demo",
     "bundle": "org.prebid.mobile.renderingtestapp",
-    "ver": "1.0",
+    "ver": "1.0.0",
     "publisher": {
       "id": "$VARIABLE"
     },
@@ -48,6 +48,7 @@
     "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
+    "ifa": "$VARIABLE",
     "osv": "$VARIABLE",
     "language": "$VARIABLE",
     "carrier": "Android",

@@ -101,7 +101,6 @@
           3
         ],
         "h": "$VARIABLE",
-        "linearity": 1,
         "mimes": [
           "video/mp4",
           "video/3gpp",
