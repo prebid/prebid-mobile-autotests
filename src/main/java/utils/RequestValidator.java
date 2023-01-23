@@ -4,6 +4,7 @@ import bmp.HarParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import net.lightbody.bmp.core.har.Har;
+import org.bouncycastle.cert.ocsp.Req;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.InvalidArgumentException;
@@ -16,8 +17,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class RequestValidator {
-
-    public static final String KEY_VARIABLE = "$VARIABLE";
     public static final String ROOT_JSON_KEY = "Root JSON";
 
     public static void validatePrebidRequest(Har data, String prebidEvent, JSONObject validJson) {
@@ -200,8 +199,8 @@ public class RequestValidator {
         Set<String> validJsonKeys = validJson.keySet();
         for (String key : validJsonKeys) {
             Object validEntry = validJson.get(key);
-            if (isVariable(validEntry)) {
-                checkVariable(sentJson, key);
+            if (isTemplate(validEntry)) {
+                checkTemplate(sentJson, key, (String) validEntry);
             } else if (isArray(validEntry)) {
                 checkArray(sentJson.getJSONArray(key), (JSONArray) validEntry, key);
             } else if (isObject(validEntry)) {
@@ -212,7 +211,6 @@ public class RequestValidator {
         }
         return true;
     }
-
 
 
     private static void compareKeySets(String parentKey, JSONObject sentJson, JSONObject validJson) throws ValidationException {
@@ -235,8 +233,8 @@ public class RequestValidator {
         return entry instanceof JSONObject;
     }
 
-    private static boolean isVariable(Object entry) {
-        return entry instanceof String && entry.equals(KEY_VARIABLE);
+    private static boolean isTemplate(Object entry) {
+        return entry instanceof String && ((String) entry).startsWith("$");
     }
 
     private static void checkArray(JSONArray sentArray, JSONArray validArray, String key) throws ValidationException {
@@ -253,10 +251,8 @@ public class RequestValidator {
         }
     }
 
-    private static void checkVariable(JSONObject sentObject, String key) throws ValidationException {
-        if (sentObject.get(key) == null) {
-            throw new ValidationException("Key \"" + key + "\" doesn't present in JSON");
-        }
+    private static void checkTemplate(JSONObject sentObject, String key, String template) throws ValidationException {
+        TemplatesValidator.checkTemplate(sentObject, key, template);
     }
 
     private static void checkObject(JSONObject sentObject, JSONObject validObject, String key) throws ValidationException {
@@ -274,7 +270,7 @@ public class RequestValidator {
         return jsonArray.getJSONObject(index);
     }
 
-    private static class ValidationException extends Exception {
+    public static class ValidationException extends Exception {
         ValidationException(String message) {
             super(message);
         }

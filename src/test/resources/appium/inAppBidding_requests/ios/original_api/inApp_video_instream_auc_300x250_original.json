@@ -7,7 +7,7 @@
       }
     },
     "bundle": "$VARIABLE",
-    "name": "InternalTestApp",
+    "name": "$CONFIG_APP_NAME",
     "publisher": {
       "id": "1001"
     },

@@ -10,7 +10,7 @@
     "publisher": {
       "id": "$VARIABLE"
     },
-    "name": "InternalTestApp",
+    "name": "$CONFIG_APP_NAME",
     "ver": "$VARIABLE"
   },
   "device": {
