@@ -7,7 +7,7 @@
         "version": "$VARIABLE"
       }
     },
-    "name": "InternalTestApp-Skadn",
+    "name": "$CONFIG_APP_NAME",
     "publisher": {
       "id": "$VARIABLE"
     },

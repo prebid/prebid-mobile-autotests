@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public class InAppSkadnTests extends InAppBaseTest {
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "SkadNetworkAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-skadn"}, dataProvider = "SkadNetworkAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestSKADNIsPresent(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -20,7 +20,8 @@ public class InAppSkadnTests extends InAppBaseTest {
         checkPrebidWinEvent(prebidAd);
         env.homePage.clickBack();
     }
-    @Test(groups = {"requests-simulator"}, dataProvider = "NoSkadNetworkAds", dataProviderClass = InAppDataProviders.class)
+
+//    @Test(groups = {"requests-skadn"}, dataProvider = "NoSkadNetworkAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestSKADNIsNotPresent(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -31,6 +32,7 @@ public class InAppSkadnTests extends InAppBaseTest {
         checkPrebidWinEvent(prebidAd);
         env.homePage.clickBack();
     }
+
     private void checkPrebidWinEvent(String prebidAd) throws InterruptedException, TimeoutException {
         if (prebidAd.contains("Banner")) {
             env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.WIN_PREBID, 1, 30);

@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.openqa.selenium.Platform;
 import org.testng.ITestContext;
 import utils.RequestValidator;
+import utils.TemplatesValidator;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +30,6 @@ import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.*;
  * e.g. -DdeviceName="iPhone 8 Plus" in command line will override deviceName defined in .properties file
  */
 public class InAppBiddingTestEnvironment extends TestEnvironment {
-
     // Private Properties
 
     private static final String PROPERTIES_FILE_PATH_IOS = "src/test/resources/appium/config/iOSConfig.properties";
@@ -403,7 +403,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
      */
     public InAppBiddingTestEnvironment(String name, ITestContext itc, Set<TrafficInspectorKind> trafficInspectors, String appPath) throws IOException {
         super(name, InAppBiddingTestEnvironment.getConfigFileForContext(itc), trafficInspectors, appPath);
-
         final Platform platform = capabilities.getPlatform();
         if (platform == Platform.IOS) {
             driver = new IOSDriver(new URL(urlAdress), capabilities);
@@ -420,7 +419,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         this.trafficInspectors = trafficInspectors;
         bmp.newHar();
         bmp.setHarCaptureTypes(CaptureType.getAllContentCaptureTypes());
-
 
         homePage.rotatePortrait();
     }
@@ -481,7 +479,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
     // Methods
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout) throws InterruptedException, TimeoutException {
         waitForEventBmp(event, expectedOccurrences, timeout);
-
     }
 
     public void waitForEvent(InAppBiddingEvents event, int expectedOccurrences, int timeout, int delay) throws InterruptedException, TimeoutException {
@@ -509,7 +506,6 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
 
         switch (inAppBiddingEvent_name) {
             case "auction":
-
                 if (trafficInspectors.contains(TrafficInspectorKind.MOB_PROXY)) {
                     RequestValidator.validateInAppBiddingRequest(bmp.getHar(), inAppBiddingEvent_value, jsonValidTemplate);
                 } else {
