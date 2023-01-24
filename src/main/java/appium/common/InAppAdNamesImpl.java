@@ -11,11 +11,11 @@ public interface InAppAdNamesImpl {
     String BANNER_300x250_IN_APP = "Banner 300x250 (In-App)";
     String BANNER_728x90_IN_APP = "Banner 728x90 (In-App)";
     String BANNER_MULTISIZE_IN_APP = "Banner Multisize (In-App)";
-    String BANNER_SKADNETWORK = "Banner 320x50 (In-App) [SKAdN 2.2]";
+    String BANNER_SKADNETWORK = "Banner 320x50 (In-App) [SKAdN]";
 
     String BANNER_320x50_GAM = "Banner 320x50 (GAM) [OK, AppEvent]";
     String BANNER_320x50_GAM_ORIGINAL = "Banner 320x50 (GAM Original) [OK, PUC]";
-    String BANNER_320x50_GAM_ORIGINAL_NO_SKADN = "Banner 320x50 (GAM Original) [NO SKAdN 2.2]";
+    String BANNER_320x50_GAM_ORIGINAL_NO_SKADN = "Banner 320x50 (GAM Original) [NO SKAdN]";
     String BANNER_320x50_GAM_VANILLA = "Banner 320x50 (GAM) [Vanilla Prebid Order]";
     String BANNER_320x50_GAM_AD = "Banner 320x50 (GAM) [OK, GAM Ad]";
     String BANNER_320x50_NO_BID_GAM_AD = "Banner 320x50 (GAM) [noBids, GAM Ad]";
@@ -49,8 +49,8 @@ public interface InAppAdNamesImpl {
     String BANNER_ADAPTIVE_MAX = "Banner adaptive banners (MAX) [OK, Adapter]";
 
     String INTERSTITIAL_320x480_IN_APP = "Display Interstitial 320x480 (In-App)";
-    String INTERSTITIAL_320x480_IN_APP_SKADN = "Display Interstitial 320x480 (In-App) [SKAdN 2.2]";
-    String INTERSTITIAL_320x480_IN_APP_NO_SKADN = "Display Interstitial 320x480 (In-App) [NO SKAdN 2.2]";
+    String INTERSTITIAL_320x480_IN_APP_SKADN = "Display Interstitial 320x480 (In-App) [SKAdN]";
+    String INTERSTITIAL_320x480_IN_APP_NO_SKADN = "Display Interstitial 320x480 (In-App) [NO SKAdN]";
     String INTERSTITIAL_MULTI_FORMAT_IN_APP = "Multiformat Interstitial 320x480 (In-App)";
 
     String INTERSTITIAL_320x480_ADMOB = "Display Interstitial 320x480 (AdMob) [OK, OXB Adapter]";
@@ -89,7 +89,7 @@ public interface InAppAdNamesImpl {
     String MRAID_RESIZE_NEGATIVE = "MRAID 3.0: Resize Negative Test (In-App)";
 
     String VIDEO_INTERSTITIAL_320x480_IN_APP = "Video Interstitial 320x480 (In-App)";
-    String VIDEO_INTERSTITIAL_320x480_IN_APP_SKADN = "Video Interstitial 320x480 (In-App) [SKAdN 2.2]";
+    String VIDEO_INTERSTITIAL_320x480_IN_APP_SKADN = "Video Interstitial 320x480 (In-App) [SKAdN]";
     String VIDEO_INTERSTITIAL_320x480_ENDCARD = "Video Interstitial 320x480 with End Card (In-App)";
     String VIDEO_INTERSTITIAL_320x480_GAM = "Video Interstitial 320x480 (GAM) [OK, AppEvent]";
     String VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL = "Video Interstitial 320x480 (GAM Original) [OK, PUC]";
@@ -107,7 +107,7 @@ public interface InAppAdNamesImpl {
     String VIDEO_INTERSTITIAL_320x480_NO_BID_MAX = "Video Interstitial 320x480 (MAX) [noBids, MAX Ad]";
 
     String VIDEO_OUTSTREAM_IN_APP = "Video Outstream (In-App)";
-    String VIDEO_OUTSTREAM_IN_APP_SKADN = "Video Outstream (In-App) [SKAdN 2.2]";
+    String VIDEO_OUTSTREAM_IN_APP_SKADN = "Video Outstream (In-App) [SKAdN]";
     String VIDEO_OUTSTREAM_ENDCARD = "Video Outstream with End Card (In-App)";
     String VIDEO_OUTSTREAM_FEED_IN_APP = "Video Outstream Feed (In-App)";
     String VIDEO_OUTSTREAM_FEED_GAM = "Video Outstream Feed (GAM)";
@@ -118,7 +118,7 @@ public interface InAppAdNamesImpl {
     String VIDEO_OUTSTREAM_NO_BID_GAM_AD = "Video Outstream (GAM) [noBids, GAM Ad]";
 
     String VIDEO_REWARDED_320x480_IN_APP = "Video Rewarded 320x480 (In-App)";
-    String VIDEO_REWARDED_320x480_IN_APP_SKADN = "Video Rewarded 320x480 (In-App) [SKAdN 2.2]";
+    String VIDEO_REWARDED_320x480_IN_APP_SKADN = "Video Rewarded 320x480 (In-App) [SKAdN]";
     String VIDEO_REWARDED_320x480_GAM_METADATA = "Video Rewarded 320x480 (GAM) [OK, Metadata]";
     String VIDEO_REWARDED_320x480_GAM_ORIGINAL = "Video Rewarded 320x480 (GAM Original) [OK, PUC]";
     String VIDEO_REWARDED_320x480_NO_BID_GAM = "Video Rewarded 320x480 (GAM) [noBids, GAM Ad]";

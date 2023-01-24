@@ -21,7 +21,7 @@ public class InAppSkadnTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests-skadn"}, dataProvider = "NoSkadNetworkAds", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-skadn"}, dataProvider = "NoSkadNetworkAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestSKADNIsNotPresent(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 

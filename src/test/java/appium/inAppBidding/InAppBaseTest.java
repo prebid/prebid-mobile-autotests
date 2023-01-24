@@ -9,7 +9,6 @@ import appium.common.InAppBiddingTestEnvironment;
 import appium.common.TestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
-import org.junit.Before;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -35,15 +34,17 @@ public class InAppBaseTest {
     protected JSONObject auctionRequestJson;
     protected OMSDKEventHandler eventHandler;
 
-
-    @BeforeGroups(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
+    /**
+     * For skadn tests we must launch another application
+     */
+    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
     @Parameters({"prebidTestPlatform"})
     public void setupBMP(ITestContext itc, String prebidTestPlatform) throws IOException {
         System.out.println(itc.getName());
         setup(itc, prebidTestPlatform);
     }
 
-    @AfterGroups(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
