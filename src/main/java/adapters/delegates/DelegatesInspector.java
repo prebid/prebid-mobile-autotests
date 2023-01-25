@@ -5,11 +5,11 @@ public interface DelegatesInspector extends LoadDelegatesInspector, ClickDelegat
 
     void checkDisplayInterstitialDelegates() throws InterruptedException;
 
-    void checkVideoInterstitialDelegates();
+    void checkVideoInterstitialDelegates() throws InterruptedException;
 
-    void checkVideoRewardedDelegates();
+    void checkVideoRewardedDelegates() throws InterruptedException;
 
-    void checkVideoOutstreamDelegates();
+    void checkVideoOutstreamDelegates() throws InterruptedException;
 
     void checkNativeAdsDelegates(String prebidAd) throws InterruptedException;
 

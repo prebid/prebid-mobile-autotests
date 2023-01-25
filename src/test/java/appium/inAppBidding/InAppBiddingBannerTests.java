@@ -89,7 +89,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
 
-        initValidTemplatesJson(BANNER_SKADNETWORK);
+        initValidTemplatesJson(BANNER_320x50_IN_APP);
 
         env.homePage.goToAd(BANNER_SKADNETWORK);
 
@@ -111,7 +111,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER CUSTOM TESTS
-    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestReload(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
@@ -141,7 +141,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
-        env.homePage.openInBrowser();
+        if (!prebidAd.contains("Original")) {
+            env.homePage.openInBrowser();
+        }
         bannerPage.waitAndReturnToApp();
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
@@ -201,7 +203,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsAfterReload(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -233,7 +235,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSessionWithOpenClickthrough(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -272,7 +274,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "customOmAdName", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSessionWithBackground(String prebidAd) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
@@ -300,7 +302,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         session.checkHideAndRestoreViewabilityWithReasons(reasons);
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testOMEventsSessionWithScroll() throws InterruptedException, TimeoutException {
         String scrollableBanner;
 

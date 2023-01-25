@@ -1,12 +1,9 @@
 package adapters.factory;
 
 import adapters.PrebidAdapter;
-import adapters.ios.MaxAdapterIOS;
+import adapters.ios.*;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import adapters.ios.AdMobAdapterIOS;
-import adapters.ios.GamAdapterIOS;
-import adapters.ios.InAppAdapterIOS;
 import utils.PrebidConstants;
 
 public class PrebidAdapterFactoryIOS implements PrebidAdapterFactory {
@@ -17,6 +14,8 @@ public class PrebidAdapterFactoryIOS implements PrebidAdapterFactory {
                 return new InAppAdapterIOS(testEnvironment, adPage);
             case PrebidConstants.GAM:
                 return new GamAdapterIOS(testEnvironment, adPage);
+            case PrebidConstants.ORIGINAL:
+                return new OriginalAdapterIOS(testEnvironment, adPage);
             case PrebidConstants.ADMOB:
                 return new AdMobAdapterIOS(testEnvironment, adPage);
             case PrebidConstants.MAX:
@@ -33,6 +32,8 @@ public class PrebidAdapterFactoryIOS implements PrebidAdapterFactory {
                 return new InAppAdapterIOS(testEnvironment);
             case PrebidConstants.GAM:
                 return new GamAdapterIOS(testEnvironment);
+            case PrebidConstants.ORIGINAL:
+                return new OriginalAdapterIOS(testEnvironment);
             case PrebidConstants.ADMOB:
                 return new AdMobAdapterIOS(testEnvironment);
             case PrebidConstants.MAX:

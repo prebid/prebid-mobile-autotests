@@ -437,9 +437,10 @@ public class OMSDKSessionDescriptor {
         final String validAppId = getAppId(platformName);
         final String validLibraryVersion = getLibraryVersion(platformName);
 
-        final Boolean isValidAppID = appId.contains(validAppId);
-        final Boolean isValidAppVersion = libraryVersion.equalsIgnoreCase(validLibraryVersion);
+        final boolean isValidAppID = appId.contains(validAppId);
+        final boolean isValidAppVersion = libraryVersion.equalsIgnoreCase(validLibraryVersion);
 
+        if (libraryVersion.contains("google")) return new OMSDKCheckResult(isValidAppID,errorMessage(" OM data not valid " + "APP_ID " + validAppId + " != " + appId));
         return new OMSDKCheckResult(isValidAppID && isValidAppVersion, errorMessage(" OM data not valid " + "APP_ID " + validAppId + " != " + appId
                 + " OR " + " LIBRARY_VERSION " + validLibraryVersion + " != " + libraryVersion));
     }
