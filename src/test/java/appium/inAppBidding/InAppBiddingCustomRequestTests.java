@@ -36,6 +36,18 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 90);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_TRUE);
     }
+
+    @Test(groups = {"Gpp"})
+    public void testGpp(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
+        isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
+        setupEnvWithCommandLineArguments(method, itc, processArguments(GPP));
+        initValidRequestJsons(GPP);
+        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 50);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
+    }
+
     @Test(groups = {"WithAdditionalParams"}, dataProvider = "adNamesWithAdditionalParams", dataProviderClass = InAppDataProviders.class)
     public void testRequestsWithAdditionalParams(Method method, ITestContext itc, String prebidAd) throws TimeoutException, InterruptedException, IOException {
         setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false --es targetingDomain domain");
@@ -100,7 +112,13 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
     private String processArguments(String testCase) {
         switch (testCase) {
-            case "USPrivacy":
+            case GPP:
+                if (isPlatformIOS) {
+                    return Gpp_iOS();
+                } else{
+                    return GppAndroid;
+                }
+            case US_PRIVACY:
                 if (isPlatformIOS) {
                     return USPrivacyArgumentsIOS();
                 } else {
@@ -178,7 +196,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     final String With0GDPRnoConsent_Android = "--es EXTRA_CONSENT_V1 \"{\"launchOptions\":{\"IABConsent_CMPPresent\":true,\"IABConsent_SubjectToGDPR\":'0',\"IABConsent_ConsentString\":null}}\"";
     final String comandLineCustomOpenRTBParams_Android = "--es EXTRA_OPEN_RTB \"{\"crr\":\"carrier\",\"keywords\":\"keyword\",\"ip\":\"127.0.0.1\",\"buyerid\":\"buyerid\",\"url\":\"https://url.com\",\"geo\":{\"lon\":2,\"lat\":1},\"gen\":\"MALE\",\"xid\":\"007\",\"eth\":\"WHITE\",\"dma\":\"area\",\"customdata\":\"data\",\"age\":23,\"inc\":10000,\"mar\":\"SINGLE\"}\"";
     final String LiveRampATS_Android = "--es EXTRA_EIDS \"[{\\\"source\\\": \\\"liveramp.com\\\",\\\"uids\\\": [{\\\"id\\\": \\\"XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM\\\"}] }]\"";
-
+    final String GppAndroid = "--es gppString testGppString --es gppSid testGppSid";
     //iOS commandLineArgument parts
     private String NoGDPRnoConsent_iOS() {
 
@@ -236,6 +254,20 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
         final net.minidev.json.JSONObject argsValue = new net.minidev.json.JSONObject();
         argsValue.put("args", processArgs);
+
+        return argsValue.toString();
+    }
+
+    private String Gpp_iOS() {
+        String gppString = "testGppString";
+
+        List<String> processGppStringArgs = new ArrayList<>(Arrays.asList(
+                "GPP_STRING",
+                gppString
+        ));
+
+        final net.minidev.json.JSONObject argsValue = new net.minidev.json.JSONObject();
+        argsValue.put("args", processGppStringArgs);
 
         return argsValue.toString();
     }

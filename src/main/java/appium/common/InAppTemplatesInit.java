@@ -9,6 +9,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
     //REQUEST TEMPLATES
     private final static String TEMPLATE_BANNER_320x50_LIVERAMP = "appium/custom_requests/ortb/%s/liveRampATS.json";
+    private final static String TEMPLATE_BANNER_320x50_GPP = "appium/custom_requests/ortb/%s/AUCTION_Gpp.json";
     private final static String TEMPLATE_BANNER_320x50_CUSTOM_ORTB = "appium/custom_requests/ortb/%s/Custom_ORTB.json";
     private final static String TEMPLATE_BANNER_320x50_CCPA_TRUE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_TRUE.json";
     private final static String TEMPLATE_BANNER_320x50_CCPA_FALSE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_FALSE.json";
@@ -175,6 +176,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
 
         put(BANNER_SKADNETWORK, TEMPLATE_BANNER_320x50_SKADN);
         put(LIVE_RAMP_ATS, TEMPLATE_BANNER_320x50_LIVERAMP);
+        put(GPP, TEMPLATE_BANNER_320x50_GPP);
         put(ATTS_1, TEMPLATE_BANNER_320x50_ATTS_1);
         put(ATTS_2, TEMPLATE_BANNER_320x50_ATTS_2);
         put(ATTS_3, TEMPLATE_BANNER_320x50_ATTS_3);
