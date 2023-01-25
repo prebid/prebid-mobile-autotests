@@ -48,6 +48,7 @@
 			<class name="appium.inAppBidding.InAppSkadnTests"/>
 		</classes>
 	</test>
+
 	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB]">
 
 		<groups>

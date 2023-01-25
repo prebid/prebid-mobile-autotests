@@ -43,6 +43,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
     static {
         inAppBidding_Events = new HashMap<>();
         inAppBidding_Events.put(InAppBiddingEvents.AUCTION, "/openrtb2/auction");
+        inAppBidding_Events.put(InAppBiddingEvents.CACHE_EVENT, "/cache?uuid=");
         inAppBidding_Events.put(InAppBiddingEvents.IMPRESSION, "/events/tracker/impression");
         inAppBidding_Events.put(InAppBiddingEvents.MRC50, "/events/tracker/mrc50");
         inAppBidding_Events.put(InAppBiddingEvents.MRC100, "/events/tracker/mrc100");
@@ -85,6 +86,14 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_DISMISS, "adViewDidDismissScreen called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_WILL_LEAVE, "adViewWillLeaveApplication called");
 
+        /**
+         * For original banner
+         */
+        inAppBidding_Delegates_iOS.put(BANNER_VIEW_DID_RECEIVE_AD, "bannerViewDidReceiveAd called");
+        inAppBidding_Delegates_iOS.put(BANNER_VIEW_DID_RECORD_IMPRESSION, "bannerViewDidRecordImpression called");
+        inAppBidding_Delegates_iOS.put(BANNER_VIEW_DID_CLICK_AD, "bannerViewDidRecordClick called");
+
+
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_LOAD, "adViewDidLoadAd called");
         inAppBidding_Delegates_iOS.put(AD_VIEW_DID_RECORD_IMPRESSION, "didRecordImpression called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_VIEW_DID_FAIL, "adViewDidFail called");
@@ -95,6 +104,12 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_DISMISS_MODAL_VIEW, "didDismissModalView called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_LEAVE_APP, "willLeaveApplication called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW, "viewControllerForPresentingModalView called");
+
+        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_CLICK,"adDidRecordClick called");
+        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_IMPRESSION,"adDidRecordImpression called");
+        inAppBidding_Delegates_iOS.put(AD_WILL_PRESENT_FULL_SCREEN_CONTENT,"adWillPresentFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(AD_WILL_DISMISS_FULL_SCREEN_CONTENT,"adWillDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(AD_DID_DISMISS_FULL_SCREEN_CONTENT,"adDidDismissFullScreenContent called");
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_LOAD, "interstitialDidLoadAd called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_FAIL, "interstitialDidFail called");
@@ -166,6 +181,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(UNIFIED_NATIVE_AD_PRIMARY_WIN, "onPrimaryAdWin called (unified)");
         inAppBidding_Delegates_iOS.put(UNIFIED_CUSTOM_AD_REQUEST_SUCCESS, "unified ad request successful");
         inAppBidding_Delegates_iOS.put(NATIVE_AD_DID_LOAD, "onNativeAdLoaded called");
+        inAppBidding_Delegates_iOS.put(NATIVE_AD_LOADED, "nativeAdLoaded called");
         inAppBidding_Delegates_iOS.put(LOADER_DID_RECEIVE_BUTTON, "adLoaderDidReceiveAdButton called");
         inAppBidding_Delegates_iOS.put(LOADER_DID_FINISH_LOADING_BUTTON, "adLoaderDidFinishLoadingButton called");
 
@@ -235,6 +251,18 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         AD_DISMISS_MODAL_VIEW,
         AD_WILL_LEAVE_APP,
         AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW,
+
+        AD_DID_RECORD_CLICK,
+        AD_DID_RECORD_IMPRESSION,
+        AD_WILL_PRESENT_FULL_SCREEN_CONTENT,
+        AD_WILL_DISMISS_FULL_SCREEN_CONTENT,
+        AD_DID_DISMISS_FULL_SCREEN_CONTENT,
+
+
+        BANNER_VIEW_DID_RECEIVE_AD,
+        BANNER_VIEW_DID_RECORD_IMPRESSION,
+        BANNER_VIEW_DID_CLICK_AD,
+
 
         INTERSTITIAL_DID_RECEIVED,
         INTERSTITIAL_DID_FAIL_TO_RECEIVE,
@@ -330,6 +358,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         NATIVE_AD_DID_DISMISS_MODAL,
         LOADER_DID_RECEIVE_BUTTON,
         LOADER_DID_FINISH_LOADING_BUTTON,
+
+        NATIVE_AD_LOADED,
         ;
 
     }
@@ -373,6 +403,8 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         MAX_LOAD,
         MAX_MIMP,
         MAX_CIMP,
+
+        CACHE_EVENT
     }
 
     public InAppBiddingHomePageImpl homePage;
