@@ -34,7 +34,7 @@
   ],
   "regs":{
     "gpp": "$VARIABLE",
-    "gpp_sid": "$VARIABLE"
+    "gpp_sid": [2,3]
   },
   "id": "$VARIABLE",
   "app": {
