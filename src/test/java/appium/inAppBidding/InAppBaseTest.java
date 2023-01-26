@@ -76,7 +76,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS","WithAdditionalParams", "Gpp"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS", "WithAdditionalParams", "Gpp"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
@@ -90,7 +90,8 @@ public class InAppBaseTest {
 
     public void setupEnvWithCommandLineArguments(Method method, ITestContext itc, String commandLineArguments) throws IOException {
         final String testName = String.format("%s_%s", this.getClass().getSimpleName(), method.getName());
-        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, commandLineArguments, TestEnvironment.ANDROID_ORIGINAL_APP_PATH);
+        String appPath = isPlatformIOS ? TestEnvironment.IOS_ORIGINAL_APP_PATH : TestEnvironment.ANDROID_ORIGINAL_APP_PATH;
+        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, commandLineArguments, appPath);
         platformName = env.getProperty("platformName");
         System.out.println("commandLineArguments ==> " + commandLineArguments);
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
@@ -180,11 +181,8 @@ public class InAppBaseTest {
     }
 
     private void initIosEnv(ITestContext itc, String testName) throws IOException {
-        if (testName.equals(InAppSkadnTests.class.getSimpleName())) {
-            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.IOS_SKADN_APP_PATH);
-        } else {
-            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.IOS_ORIGINAL_APP_PATH);
-        }
+        String appPath = testName.equals(InAppSkadnTests.class.getSimpleName()) ? TestEnvironment.IOS_SKADN_APP_PATH : TestEnvironment.IOS_ORIGINAL_APP_PATH;
+        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, appPath);
     }
 
     private void initAndroidEnv(ITestContext itc, String testName) throws IOException {

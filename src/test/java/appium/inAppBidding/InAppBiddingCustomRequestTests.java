@@ -260,10 +260,12 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
     private String Gpp_iOS() {
         String gppString = "testGppString";
-
+        String gppSidString = "2_3";
         List<String> processGppStringArgs = new ArrayList<>(Arrays.asList(
-                "GPP_STRING",
-                gppString
+                "GPP_HDR_STRING",
+                gppString,
+                "GPP_SID",
+                gppSidString
         ));
 
         final net.minidev.json.JSONObject argsValue = new net.minidev.json.JSONObject();
