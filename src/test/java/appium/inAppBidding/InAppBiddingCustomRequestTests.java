@@ -196,7 +196,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     final String With0GDPRnoConsent_Android = "--es EXTRA_CONSENT_V1 \"{\"launchOptions\":{\"IABConsent_CMPPresent\":true,\"IABConsent_SubjectToGDPR\":'0',\"IABConsent_ConsentString\":null}}\"";
     final String comandLineCustomOpenRTBParams_Android = "--es EXTRA_OPEN_RTB \"{\"crr\":\"carrier\",\"keywords\":\"keyword\",\"ip\":\"127.0.0.1\",\"buyerid\":\"buyerid\",\"url\":\"https://url.com\",\"geo\":{\"lon\":2,\"lat\":1},\"gen\":\"MALE\",\"xid\":\"007\",\"eth\":\"WHITE\",\"dma\":\"area\",\"customdata\":\"data\",\"age\":23,\"inc\":10000,\"mar\":\"SINGLE\"}\"";
     final String LiveRampATS_Android = "--es EXTRA_EIDS \"[{\\\"source\\\": \\\"liveramp.com\\\",\\\"uids\\\": [{\\\"id\\\": \\\"XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM\\\"}] }]\"";
-    final String GppAndroid = "--es gppString testGppString --es gppSid testGppSid";
+    final String GppAndroid = "--es gppString testGppString --es gppSid 2_3";
     //iOS commandLineArgument parts
     private String NoGDPRnoConsent_iOS() {
 
