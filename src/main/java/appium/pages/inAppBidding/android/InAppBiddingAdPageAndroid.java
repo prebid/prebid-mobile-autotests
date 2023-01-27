@@ -19,6 +19,7 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 
 public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppBiddingAdPageImpl {
+
     public InAppBiddingAdPageAndroid(AndroidDriver driver, String locatorType) {
         super(driver, locatorType);
     }
@@ -237,6 +238,7 @@ public class InAppBiddingAdPageAndroid extends AndroidBasePage implements InAppB
         wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
                 .click();
     }
+
 
     @Override
     public void clickSkipButton() {

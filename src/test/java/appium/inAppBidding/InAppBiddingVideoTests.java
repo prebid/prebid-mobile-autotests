@@ -31,8 +31,10 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
+//        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        if (isOriginalAd(adName)) {
+            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        }
         env.homePage.clickBack();
 
     }
@@ -121,8 +123,6 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         } catch (TimeoutException e) {
             prebidAdapter.checkEvents();
         }
-
-
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }

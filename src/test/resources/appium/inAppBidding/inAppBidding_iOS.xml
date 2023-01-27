@@ -51,18 +51,18 @@
 
 		<groups>
 			<run>
-				<include name="requests"/>
+<!--				<include name="requests"/>-->
 				<!-- When running on real device change include requests-simulator to exclude and vice versa-->
-<!--				<include name="requests-simulator"/>-->
+				<include name="requests-simulator"/>
 				<!--				<exclude name="requests-realDevice"/>-->
 			</run>
 		</groups>
 		<classes>
 <!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
 			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
 <!--			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
 	</test>
 </suite>

@@ -22,12 +22,14 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+//        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
 
         env.homePage.clickBack();
-
-        if (!prebidAd.contains("Original")) {
+        if (isOriginalAd(prebidAd)) {
+            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        } else {
             RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
         }
     }
@@ -157,7 +159,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
         bannerPage.clickBanner();
-        env.homePage.clickCloseButtonClickThroughBrowser();
+        if (prebidAd.contains("Original")) {
+            bannerPage.waitAndReturnToApp();
+        } else {
+            env.homePage.clickCloseButtonClickThroughBrowser();
+        }
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();

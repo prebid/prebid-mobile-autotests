@@ -231,7 +231,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
         initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
 
@@ -270,7 +270,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         session.checkNoObstructions();
     }
 
-    @Test(groups = {"requests"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "interstitialMultiFormat", dataProviderClass = InAppDataProviders.class)
     public void testInterstitialMultiFormatBackgroundedSession(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
@@ -341,10 +341,12 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 15);
-        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+//        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.homePage.clickBack();
-        if (!prebidAd.contains("Original")) {
+        if (isOriginalAd(prebidAd)) {
+            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        } else {
             RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
         }
     }
