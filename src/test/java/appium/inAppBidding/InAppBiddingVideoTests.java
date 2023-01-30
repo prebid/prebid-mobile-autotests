@@ -607,10 +607,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoOutstreamAdName", dataProviderClass = InAppDataProviders.class)
-    public void
-
-
-    testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
+    public void testVideoOutstreamOMEventsSingleSessionFullscreen(String adName) throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(adName);
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 60);
@@ -630,7 +627,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkNonAutoPlaySkippableAndStandalonePosition();
     }
 
-    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class, priority = 1)
+    @Test(groups = {"requests"}, dataProviderClass = InAppDataProviders.class)
     public void testVideoOutstreamOMEventsSingleSessionEndCard() throws InterruptedException, TimeoutException {
         InAppBiddingAdPageImpl videoPage = env.homePage.goToAd(VIDEO_OUTSTREAM_ENDCARD);
 

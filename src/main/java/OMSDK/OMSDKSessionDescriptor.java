@@ -48,7 +48,6 @@ public class OMSDKSessionDescriptor {
         public static final String APP_ID_IOS = "org.prebid.mobile.renderingtestapp";
         public static final String APP_ID_ANDROID = "org.prebid.mobile.renderingtestapp";
         public static final String LIBRARY_VERSION = "1.4.1-Prebidorg";
-        public static final String LIBRARY_VERSION_ANDROID = "1.3.34-Prebidorg";
         public static final String OBSTRUCTED = "obstructed";
         public static final String BACKGROUNDED = "backgrounded";
         public static final String NOT_FOUND = "notFound";
@@ -459,11 +458,7 @@ public class OMSDKSessionDescriptor {
      * Return LIBRARY_VERSION according to platformName
      */
     private String getLibraryVersion(String platformName) {
-        if (platformName.equalsIgnoreCase("Android")) {
-            return EVENT_VALUE.LIBRARY_VERSION_ANDROID;
-        } else {
-            return EVENT_VALUE.LIBRARY_VERSION;
-        }
+        return EVENT_VALUE.LIBRARY_VERSION;
     }
 
     /**
