@@ -10,10 +10,7 @@ import appium.common.TestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -37,14 +34,17 @@ public class InAppBaseTest {
     protected JSONObject auctionRequestJson;
     protected OMSDKEventHandler eventHandler;
 
-
-    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
-    public void setupBMP(ITestContext itc) throws IOException {
+    /**
+     * For skadn tests we must launch another application
+     */
+    @BeforeTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
+    @Parameters({"prebidTestPlatform"})
+    public void setupBMP(ITestContext itc, String prebidTestPlatform) throws IOException {
         System.out.println(itc.getName());
-        setup(itc);
+        setup(itc, prebidTestPlatform);
     }
 
-    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
+    @AfterTest(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-skadn", "requests-simulator"})
     public void teardown() throws IOException {
         displaymanagerver = null;
         ver = null;
@@ -53,7 +53,7 @@ public class InAppBaseTest {
         env.teardown();
     }
 
-    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
+    @BeforeMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-skadn", "requests-realDevice", "requests-simulator"})
     public void setupMethodBMP(ITestContext itc, Method method) throws InterruptedException {
 
         if (!env.homePage.isSearchFieldDisplayed()) {
@@ -66,7 +66,7 @@ public class InAppBaseTest {
     }
 
 
-    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-realDevice", "requests-simulator"})
+    @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-skadn", "requests-realDevice", "requests-simulator"})
     public void teardownMethod() {
         eventHandler = null;
         validAuctionRequest = null;
@@ -154,10 +154,13 @@ public class InAppBaseTest {
     }
 
 
-    private void setup(ITestContext itc) throws IOException {
+    private void setup(ITestContext itc, String prebidTestPlatform) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
-        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY);
-
+        if (prebidTestPlatform.equals("iOS")) {
+            initIosEnv(itc, testName);
+        } else {
+            initAndroidEnv(itc, testName);
+        }
         env.homePage.turnOffGDPRSwitcher();
 
         itc.setAttribute("pathToManifest", env.getProperty("pathToManifest"));
@@ -176,5 +179,16 @@ public class InAppBaseTest {
         }
     }
 
+    private void initIosEnv(ITestContext itc, String testName) throws IOException {
+        if (testName.equals(InAppSkadnTests.class.getSimpleName())) {
+            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.IOS_SKADN_APP_PATH);
+        } else {
+            env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.IOS_ORIGINAL_APP_PATH);
+        }
+    }
+
+    private void initAndroidEnv(ITestContext itc, String testName) throws IOException {
+        env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.ANDROID_ORIGINAL_APP_PATH);
+    }
 
 }

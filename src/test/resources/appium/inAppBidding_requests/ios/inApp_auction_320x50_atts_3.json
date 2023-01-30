@@ -8,7 +8,7 @@
         "version": "$VARIABLE"
       }
     },
-    "name": "InternalTestApp",
+    "name": "$CONFIG_APP_NAME",
     "publisher": {
       "id": "$VARIABLE"
     },

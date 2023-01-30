@@ -3,6 +3,7 @@ package appium.common;
 import bmp.BMPWrapper;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import utils.TemplatesValidator;
 
 import java.io.*;
 import java.util.Arrays;
@@ -37,6 +38,18 @@ public class TestEnvironment {
     }
 
     public static final Set<TrafficInspectorKind> INSPECTORS_MOB_PROXY = new HashSet<>(Arrays.asList(TrafficInspectorKind.MOB_PROXY));
+    /**
+     * Path to our ios apps
+     */
+    public static final String IOS_SKADN_APP_PATH = "/Users/mac-admin/Library/Developer/Xcode/DerivedData/PrebidMobile-dnfowmiskmgirobghgmelilrixkf/Build/Products/Debug-iphonesimulator/InternalTestApp-Skadn.app";
+    public static final String IOS_ORIGINAL_APP_PATH = "/Users/mac-admin/Library/Developer/Xcode/DerivedData/PrebidMobile-dnfowmiskmgirobghgmelilrixkf/Build/Products/Debug-iphonesimulator/InternalTestApp.app";
+    /**
+     * Path to our android app
+     */
+    public static final String ANDROID_ORIGINAL_APP_PATH = "/Users/mac-admin/StudioProjects/prebid-mobile-android/Example/PrebidInternalTestApp/build/outputs/apk/debug/PrebidInternalTestApp-debug.apk";
+
+    private static final String IOS_SKADN_APP = "InternalTestApp-Skadn";
+    private static final String IOS_ORIGINAL_APP = "InternalTestApp";
 
     private static class RemoteServer {
         public String host;
@@ -81,14 +94,13 @@ public class TestEnvironment {
      * @param trafficInspectors  the set of tools for sniffing the traffic
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    public TestEnvironment(String name, String propertiesFilePath, Set<TrafficInspectorKind> trafficInspectors)
+    public TestEnvironment(String name, String propertiesFilePath, Set<TrafficInspectorKind> trafficInspectors, String appPath)
             throws IOException {
 
         logger.setLevel(Level.WARNING);
 
-        setProperties(propertiesFilePath);
+        setProperties(propertiesFilePath, appPath);
         setCapabilities(trafficInspectors);
-
         if (capabilities.getCapability("name") == null) {
             capabilities.setCapability("name", name);
         }
@@ -143,8 +155,28 @@ public class TestEnvironment {
 
     private boolean isIosSimulator() {
         return config.getProperty("env").equals(EnvType.LOCAL)
-                && capabilities.getPlatform().equals(Platform.IOS)
+                && isIos()
                 && config.getProperty("platformType").equals("Simulator");
+    }
+    private boolean isIos() {
+        return capabilities.getPlatform().equals(Platform.IOS);
+    }
+
+    /**
+     * Adds config app name to templates map
+     */
+    private void addConfigAppName(String appPath) {
+        switch (appPath) {
+            case IOS_ORIGINAL_APP_PATH:
+                TemplatesValidator.addTemplate(TemplatesValidator.KEY_CONFIG_APP_NAME, IOS_ORIGINAL_APP);
+                break;
+            case IOS_SKADN_APP_PATH:
+                TemplatesValidator.addTemplate(TemplatesValidator.KEY_CONFIG_APP_NAME, IOS_SKADN_APP);
+                break;
+            case ANDROID_ORIGINAL_APP_PATH:
+                TemplatesValidator.addTemplate(TemplatesValidator.KEY_CONFIG_APP_NAME, ANDROID_ORIGINAL_APP_PATH);
+                break;
+        }
     }
 
     /**
@@ -166,13 +198,15 @@ public class TestEnvironment {
      * @param propertiesFilePath path to .properties file with default configuration
      * @throws IOException when propertiesFilePath can't be loaded
      */
-    private void setProperties(String propertiesFilePath) throws IOException {
+    private void setProperties(String propertiesFilePath, String appPath) throws IOException {
         Properties defaultConfig = new Properties();
         defaultConfig.load(new FileInputStream(propertiesFilePath));
         config.putAll(defaultConfig);
 
         Properties systemConfig = System.getProperties();
         config.putAll(systemConfig);
+        config.setProperty("app", appPath);
+        addConfigAppName(appPath);
 
         if (config.getProperty("appium_port") != null) {
             appiumServer.port = Integer.valueOf(config.getProperty("appium_port"));
