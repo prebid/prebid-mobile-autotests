@@ -90,6 +90,10 @@
     }
   ],
   "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
     "tid": "$VARIABLE"
   }
 }

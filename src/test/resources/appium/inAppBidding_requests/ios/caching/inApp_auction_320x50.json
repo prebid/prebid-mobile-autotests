@@ -78,11 +78,6 @@
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "ext": {
-        "context": {
-          "data": {
-
-          }
-        },
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
