@@ -67,7 +67,6 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
         env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
 
-
         if (prebidAd.contains("Original")) {
             if (isPlatformIOS) {
                 env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 30);
@@ -75,6 +74,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
                 env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 30);
             }
         }
+
 
         env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
 
