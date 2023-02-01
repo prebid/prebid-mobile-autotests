@@ -177,7 +177,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoOriginalAds", dataProviderClass = InAppDataProviders.class)
-    public void testVideoOriginal(String adName) throws TimeoutException, InterruptedException {
+    public void testVideoOriginalSession(String adName) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(adName);
         env.homePage.goToAd(adName);
 

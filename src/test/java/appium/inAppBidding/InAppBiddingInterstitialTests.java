@@ -201,7 +201,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
     @Test(groups = {"requests"})
-    public void testOriginalDisplayInterstitial() throws TimeoutException, InterruptedException {
+    public void testOriginalDisplayInterstitialSession() throws TimeoutException, InterruptedException {
         initValidTemplatesJson(INTERSTITIAL_320x480_GAM_ORIGINAL);
         InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_GAM_ORIGINAL);
 
