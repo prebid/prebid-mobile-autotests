@@ -153,7 +153,7 @@ public class InAppBaseTest {
         }
     }
 
-    protected boolean isOriginalAd(String prebidAd) {
+    private boolean isOriginalAd(String prebidAd) {
         return prebidAd.contains("Original");
     }
 
