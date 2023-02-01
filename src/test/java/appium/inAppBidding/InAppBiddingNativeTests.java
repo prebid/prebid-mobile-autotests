@@ -65,8 +65,14 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        if (!isPlatformIOS) {
-            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+
+        if (prebidAd.contains("Original")) {
+            if (isPlatformIOS) {
+                env.waitForEvent(InAppBiddingEvents.GAM_GAMPAD, 1, 30);
+            } else {
+                env.waitForEvent(InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 30);
+            }
         }
 
         env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
@@ -74,6 +80,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.MRC50, 1, 60);
 
         env.waitForEvent(InAppBiddingEvents.MRC100, 1, 60);
+
 
         env.homePage.clickBack();
     }

@@ -7,49 +7,49 @@
     <parameter name="prebidServerKind" value="Prebid"/>
     <parameter name="locatorType" value="text"/>
 
-<!--    <test verbose="3" name="InApp_Bidding Android Custom Requests">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--&lt;!&ndash;                <include name="WithAdditionalParams"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <include name="USPrivacy"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <include name="TCFv1"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <include name="CustomOpenRTB"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <include name="LiveRampATS"/>&ndash;&gt;-->
-<!--                <include name="Gpp"/>-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test verbose="3" name="InApp_Bidding Android Smoke [Smoke]">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="android"/>-->
-<!--&lt;!&ndash;                <include name="smoke"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <include name="smoke-Android"/>&ndash;&gt;-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>&ndash;&gt;-->
-<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--&lt;!&ndash;            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>&ndash;&gt;-->
-<!--            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test verbose="3" name="InApp_Bidding Android Custom Requests">
+        <groups>
+            <run>
+                <include name="WithAdditionalParams"/>
+                <include name="USPrivacy"/>
+                <include name="TCFv1"/>
+                <include name="CustomOpenRTB"/>
+                <include name="LiveRampATS"/>
+                <include name="Gpp"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>
+        </classes>
+    </test>
+    <test verbose="3" name="InApp_Bidding Android Smoke [Smoke]">
+        <groups>
+            <run>
+                <include name="android"/>
+                <include name="smoke"/>
+                <include name="smoke-Android"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+            <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+        </classes>
+    </test>
     <test verbose="3" name="InApp_Bidding Android Requests [OM, Auction, Events, OpenRTB]">
         <groups>
             <run>
                 <include name="requests"/>
-<!--                <include name="requests-simulator"/>-->
+                <include name="requests-simulator"/>
             </run>
         </groups>
         <classes>
-<!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
-<!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
+            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>
             <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
     </test>
