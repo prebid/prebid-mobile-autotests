@@ -238,13 +238,8 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
 
     @Override
     public void clickBanner() {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(Locators.webView))
-                    .click();
-        } catch (TimeoutException exception){
-            wait.until(ExpectedConditions.elementToBeClickable(Locators.adView))
-                    .click();
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.webView))
+                .click();
     }
 
     @Override

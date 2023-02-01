@@ -56,8 +56,9 @@
     "language": "$VARIABLE",
     "carrier": "$VARIABLE",
     "mccmnc": "$VARIABLE",
-    "h": 2560,
+    "h": 3040,
     "w": 1440,
+    "ifa": "$VARIABLE",
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "ext": {

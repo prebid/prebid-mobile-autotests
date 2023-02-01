@@ -69,6 +69,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
     private final static String RESPONSE_TEMPLATE_BANNER = "appium/inAppBidding_responses/%s/inApp_banner_res.json";
     private final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res.json";
     private final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res.json";
+    private final static String RESPONSE_TEMPLATE_VIDEO_INSTREM = "appium/inAppBidding_responses/%s/inApp_video_instream_res.json";
     private final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM = "appium/inAppBidding_responses/%s/inApp_video_outstream_res.json";
     private final static String RESPONSE_TEMPLATE_VIDEO_REWARDED = "appium/inAppBidding_responses/%s/inApp_video_rewarded_res.json";
     private final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_interstitial_320x480_with_ad_configuration.json";
@@ -385,6 +386,7 @@ public class InAppTemplatesInit implements InAppAdNamesImpl {
         put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
 
         put(VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL);
+        put(VIDEO_INSTREAM_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_INSTREM);
         put(INTERSTITIAL_320x480_GAM_ORIGINAL, RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL);
         put(BANNER_320x50_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);
         put(BANNER_300x250_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);

@@ -62,7 +62,7 @@
     "language": "$VARIABLE",
     "carrier": "Android",
     "mccmnc": "$VARIABLE",
-    "h": 2560,
+    "h": 3040,
     "w": 1440,
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",

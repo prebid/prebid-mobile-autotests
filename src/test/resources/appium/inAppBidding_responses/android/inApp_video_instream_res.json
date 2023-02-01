@@ -1,0 +1,63 @@
+{
+  "id": "$VARIABLE",
+  "seatbid": [{
+    "bid": [{
+      "id": "$VARIABLE",
+      "impid": "$VARIABLE",
+      "price": 1.23,
+      "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"2.0\"><Ad id=\"TestAd\"><InLine><AdSystem>Rubicon Project</AdSystem><AdTitle>VAST 2.0 Linear Ad</AdTitle><Error><![CDATA[http://myErrorURL/error]]></Error><Impression><![CDATA[]]></Impression><Impression><![CDATA[https://prebid-server.rubiconproject.com/event?t=imp&b=7749755c-44fd-49a6-89b3-9caa1eff81db&a=1001&aid=a1bcd417-a37e-4c32-87c7-ec475e00da8c&ts=1675262822631&bidder=rubicon&f=b&int=dspbs]]></Impression><Creatives><Creative id=\"2014\" AdID=\"20150911\" sequence=\"1\"><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking><Tracking event=\"start\"><![CDATA[]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[]]></Tracking><Tracking event=\"midpoint\"><![CDATA[]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[]]></Tracking><Tracking event=\"complete\"><![CDATA[]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://iwanttoberecycled.org/]]></ClickThrough><ClickTracking><![CDATA[]]></ClickTracking></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" bitrate=\"275\" width=\"320\" height=\"180\" type=\"video/x-flv\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_320_low.flv]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"348\" width=\"320\" height=\"180\" type=\"video/mp4\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_320_low.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"250\" width=\"320\" height=\"180\" type=\"video/webm\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_320_low.webm]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"433\" width=\"620\" height=\"360\" type=\"video/x-flv\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_low.flv]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"381\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_low.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"614\" width=\"620\" height=\"360\" type=\"video/x-flv\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_med.flv]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"553\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_med.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"1024\" width=\"620\" height=\"360\" type=\"video/x-flv\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_high.flv]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"983\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_high.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"1024\" width=\"620\" height=\"360\" type=\"video/webm\"><![CDATA[https://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_640_high.webm]]></MediaFile></MediaFiles></Linear></Creative><Creative AdID=\"TestAd-Companion\"><CompanionAds><Companion width=\"300\" height=\"250\"><StaticResource creativeType=\"image/jpeg\"><![CDATA[http://sneezy.aws.rubiconproject.com/rp-eng-soln/rp-qa-sites/videoTest/ad1/recycling_300x250.jpg]]></StaticResource><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking></TrackingEvents><CompanionClickThrough><![CDATA[http://iwanttoberecycled.org/]]></CompanionClickThrough></Companion></CompanionAds></Creative></Creatives></InLine></Ad></VAST>",
+      "crid": "$VARIABLE",
+      "w": 640,
+      "h": 480,
+      "exp": 900,
+      "ext": {
+        "prebid": {
+          "type": "video",
+          "targeting": {
+            "hb_env": "mobile-app",
+            "hb_size_rubicon": "640x480",
+            "hb_cache_id": "$VARIABLE",
+            "hb_cache_host_rubico": "$VARIABLE",
+            "hb_pb": "1.20",
+            "hb_cache_id_rubicon": "$VARIABLE",
+            "hb_pb_rubicon": "1.20",
+            "hb_cache_path": "/cache",
+            "hb_uuid": "$VARIABLE",
+            "hb_size": "640x480",
+            "hb_env_rubicon": "mobile-app",
+            "hb_uuid_rubicon": "$VARIABLE",
+            "hb_cache_path_rubico": "/cache",
+            "hb_bidder": "rubicon",
+            "hb_bidder_rubicon": "rubicon",
+            "hb_cache_host": "$VARIABLE"
+          },
+          "cache": {
+            "bids": {
+              "url": "$VARIABLE",
+              "cacheId": "$VARIABLE"
+            },
+            "vastXml": {
+              "url": "$VARIABLE",
+              "cacheId": "$VARIABLE"
+            }
+          }
+        },
+        "origbidcpm": 1.23,
+        "origbidcur": "USD"
+      }
+    }],
+    "seat": "rubicon",
+    "group": 0
+  }],
+  "cur": "USD",
+  "ext": {
+    "responsetimemillis": {
+      "cache": "$VARIABLE",
+      "rubicon": "$VARIABLE"
+    },
+    "tmaxrequest": "$VARIABLE",
+    "prebid": {
+      "auctiontimestamp": "$VARIABLE"
+    }
+  }
+}

@@ -44,12 +44,16 @@ public class InAppDataProviders {
 //            {BANNER_300x250_ADMOB},
 //            {BANNER_300x250_MAX},
 //            {BANNER_ADAPTIVE_ADMOB},
-//            {BANNER_ADAPTIVE_MAX},
+//            {BANNER_ADAPTIVE_MAX}
+    };
+
+    private static final String[][] BannerAdOriginal = {
             {BANNER_320x50_GAM_ORIGINAL},
             {BANNER_728x90_GAM_ORIGINAL},
             {BANNER_300x250_GAM_ORIGINAL},
             {BANNER_MULTISIZE_GAM_ORIGINAL},
     };
+
     private static final String[][] BannerAdWithCache = {
 //            {BANNER_320x50_IN_APP},
 //            {BANNER_320x50_GAM},
@@ -125,19 +129,25 @@ public class InAppDataProviders {
         return BannerAd;
     }
 
+    @DataProvider(name = "bannerOriginalAds")
+    public static Object[][] provideOriginalBanner() {
+        return BannerAdOriginal;
+    }
+
 
     private static final String[][] InterstitialAds = {
 //            {INTERSTITIAL_320x480_IN_APP},
 //            {INTERSTITIAL_320x480_ADMOB},
 //            {INTERSTITIAL_320x480_MAX},
 //            {INTERSTITIAL_320x480_GAM},
-            {INTERSTITIAL_320x480_GAM_ORIGINAL},
     };
 
     @DataProvider(name = "interstitialAds")
     public static Object[][] provideInterstitial() {
         return InterstitialAds;
     }
+
+
 
     private static final String[][] InterstitialRandom = {
 //            {INTERSTITIAL_320x480_GAM_RANDOM},
@@ -241,20 +251,25 @@ public class InAppDataProviders {
 //            {VIDEO_OUTSTREAM_FEED_IN_APP},
 //            {VIDEO_OUTSTREAM_FEED_GAM},
 //            {VIDEO_OUTSTREAM_GAM},
-            {VIDEO_OUTSTREAM_GAM_ORIGINAL},
-            {VIDEO_INSTREAM_GAM_ORIGINAL},
+
 //            {VIDEO_INTERSTITIAL_320x480_IN_APP},
 //            {VIDEO_INTERSTITIAL_320x480_ENDCARD},
 //            {VIDEO_INTERSTITIAL_320x480_ADMOB},
 //            {VIDEO_INTERSTITIAL_320x480_GAM},
-            {VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL},
 //            {VIDEO_INTERSTITIAL_320x480_MAX},
 //            {VIDEO_REWARDED_320x480_IN_APP},
 //            {VIDEO_REWARDED_320x480_GAM_METADATA},
-            {VIDEO_REWARDED_320x480_GAM_ORIGINAL},
 //            {VIDEO_REWARDED_320x480_ADMOB},
 //            {VIDEO_REWARDED_320x480_MAX},
     };
+
+    private static final String[][] VideoAdsOriginal = {
+            {VIDEO_OUTSTREAM_GAM_ORIGINAL},
+//            {VIDEO_INSTREAM_GAM_ORIGINAL},
+            {VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL},
+            {VIDEO_REWARDED_320x480_GAM_ORIGINAL},
+    };
+
     private static final String[][] VideoAdsRealDevice = {
             {VIDEO_INTERSTITIAL_320x480_IN_APP},
             {VIDEO_INTERSTITIAL_320x480_ADMOB},
@@ -281,6 +296,11 @@ public class InAppDataProviders {
     @DataProvider(name = "adNameVideo")
     public static Object[][] provideVideoAd() {
         return VideoAds;
+    }
+
+    @DataProvider(name = "videoOriginalAds")
+    public static Object[][] provideOriginalVideoAd() {
+        return VideoAdsOriginal;
     }
 
     @DataProvider(name = "adNameVideoWithAdConfiguration")

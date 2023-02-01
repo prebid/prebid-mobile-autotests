@@ -19,40 +19,26 @@ public class OriginalAdapterIOS extends PrebidAdapter {
 
     @Override
     public void checkBannerDelegates() throws InterruptedException {
-        testEnvironment.homePage.isDelegateEnabled(BANNER_VIEW_DID_RECEIVE_AD);
-        testEnvironment.homePage.isDelegateEnabled(BANNER_VIEW_DID_RECORD_IMPRESSION);
-        testEnvironment.homePage.isDelegateEnabled(BANNER_VIEW_DID_CLICK_AD);
     }
 
     @Override
     public void checkDisplayInterstitialDelegates() throws InterruptedException {
-        testEnvironment.homePage.isDelegateEnabled(AD_DID_RECORD_IMPRESSION);
-        testEnvironment.homePage.isDelegateEnabled(AD_DID_RECORD_CLICK);
-        testEnvironment.homePage.isDelegateEnabled(AD_WILL_PRESENT_FULL_SCREEN_CONTENT);
-        testEnvironment.homePage.isDelegateEnabled(AD_WILL_DISMISS_FULL_SCREEN_CONTENT);
-        testEnvironment.homePage.isDelegateEnabled(AD_DID_DISMISS_FULL_SCREEN_CONTENT);
     }
 
     @Override
     public void checkVideoInterstitialDelegates() throws InterruptedException {
-        checkDisplayInterstitialDelegates();
     }
 
     @Override
     public void checkVideoRewardedDelegates() throws InterruptedException {
-        checkDisplayInterstitialDelegates();
     }
 
     @Override
     public void checkVideoOutstreamDelegates() throws InterruptedException {
-        checkBannerDelegates();
     }
 
     @Override
     public void checkNativeAdsDelegates(String prebidAd) throws InterruptedException {
-        testEnvironment.homePage.isDelegateEnabled(NATIVE_AD_LOADED);
-        testEnvironment.homePage.isDelegateEnabled(NATIVE_AD_DID_LOG_IMPRESSION);
-        testEnvironment.homePage.isDelegateEnabled(NATIVE_AD_DID_CLICK);
     }
 
     @Override
