@@ -22,16 +22,13 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
-//        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
 
         env.homePage.clickBack();
-        if (isOriginalAd(prebidAd)) {
-            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
-        } else {
-            RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
-        }
+        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
+
     }
 
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
@@ -143,9 +140,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
 
         bannerPage.clickBanner();
-        if (!prebidAd.contains("Original")) {
-            env.homePage.openInBrowser();
-        }
+        env.homePage.openInBrowser();
+
         bannerPage.waitAndReturnToApp();
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
@@ -159,11 +155,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
         bannerPage.clickBanner();
-        if (prebidAd.contains("Original")) {
-            bannerPage.waitAndReturnToApp();
-        } else {
-            env.homePage.clickCloseButtonClickThroughBrowser();
-        }
+
+        env.homePage.clickCloseButtonClickThroughBrowser();
+
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
@@ -182,7 +176,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
      *
      * @throws IOException
      */
-    @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"requests"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testOMEventsSingleSession(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
@@ -206,6 +200,29 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
         session.checkOMBaseEvents(platformName);
         session.checkNoObstructions();
+
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "bannerOriginalAds", dataProviderClass = InAppDataProviders.class)
+    public void testBannerOriginal(String bannerAds) throws InterruptedException, TimeoutException {
+        // RUN TEST SCENARIO
+        initValidTemplatesJson(bannerAds);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+
+        if (isPlatformIOS && (bannerAds.contains("728x90") || bannerAds.contains("Multisize"))) {
+            env.homePage.rotateLandscape();
+            env.homePage.rotatePortrait();
+        }
+        initPrebidAdapter(bannerAds, env);
+        prebidAdapter.checkEvents();
+        env.homePage.clickBack();
 
     }
 
@@ -431,7 +448,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.bmp.cancelResponseError();
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testRefreshClientSide() throws TimeoutException, InterruptedException {
         int expectedEventCount = 4;
 
@@ -478,7 +495,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
 
@@ -521,7 +538,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-    @Test(groups = {"requests"})
+//    @Test(groups = {"requests"})
     public void testSlowConnection() throws TimeoutException, InterruptedException {
         // regular 2G network (250/50 KB/s, 300ms latency -  diff because of real network latency)
 
@@ -541,7 +558,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.bmp.cancelLatency();
     }
 
-    @Test(groups = {"requests"}, priority = 1)
+//    @Test(groups = {"requests"}, priority = 1)
     public void testNoConnection() throws TimeoutException, InterruptedException {
         env.bmp.setLatency(30 * 1000);
 

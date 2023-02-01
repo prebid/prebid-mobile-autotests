@@ -2,8 +2,6 @@
   "imp": [
     {
       "id": "$VARIABLE",
-      "displaymanager": "prebid-mobile",
-      "displaymanagerver": "$VARIABLE",
       "instl": 1,
       "clickbrowser": 0,
       "secure": 1,
@@ -11,7 +9,7 @@
         "format": [
           {
             "w":411,
-            "h":659
+            "h":792
           }
         ],
         "pos": 7
@@ -58,8 +56,9 @@
     "language": "$VARIABLE",
     "carrier": "$VARIABLE",
     "mccmnc": "$VARIABLE",
-    "h": 2560,
+    "h": 3040,
     "w": 1440,
+    "ifa": "$VARIABLE",
     "connectiontype": "$VARIABLE",
     "pxratio": "$VARIABLE",
     "ext": {

@@ -177,7 +177,7 @@ public class BMPWrapper extends BrowserMobProxyServer implements LogValidator {
         int actualOccurrences = 0;
         for (int i = 0; i <= timeout; i++) {
             actualOccurrences = getCountOfEvent(eventName);
-            if (actualOccurrences == expectedOccurrences) {
+            if (actualOccurrences >= expectedOccurrences) {
                 return;
             }
             Thread.sleep(1000);

@@ -41,14 +41,14 @@
     <test verbose="3" name="InApp_Bidding Android Requests [OM, Auction, Events, OpenRTB]">
         <groups>
             <run>
-<!--                <include name="requests"/>-->
-                <include name="requests-simulator"/>
+                <include name="requests"/>
+<!--                <include name="requests-simulator"/>-->
             </run>
         </groups>
         <classes>
 <!--            <class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
-            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+<!--            <class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
+<!--            <class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
 <!--            <class name="appium.inAppBidding.InAppBiddingMraidTests"/>-->
             <class name="appium.inAppBidding.InAppBiddingVideoTests"/>
         </classes>
