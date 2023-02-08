@@ -3,6 +3,7 @@ package appium.inAppBidding;
 import OMSDK.OMSDKEventHandler;
 import OMSDK.OMSDKSessionDescriptor;
 import adapters.PrebidAdapter;
+import appium.common.InAppAdNames;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.openqa.selenium.Dimension;
@@ -143,7 +144,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testDelegatesExpand2() throws InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_EXPAND_2_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_EXPAND_2_IN_APP);
 
         page.isAdDisplayed();
 
@@ -166,7 +167,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testExpand2OMEventsWithOpenClickThrough() throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_EXPAND_2_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_EXPAND_2_IN_APP);
 
         page.isAdDisplayed();
 
@@ -198,7 +199,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testExpand2ExpandAgain() throws InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_EXPAND_2_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_EXPAND_2_IN_APP);
 
         page.isAdDisplayed();
 
@@ -218,7 +219,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testExpand2OpenIAB() throws InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_EXPAND_2_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_EXPAND_2_IN_APP);
 
         page.isAdDisplayed();
 
@@ -238,7 +239,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testExpand2PlayVideo() throws InterruptedException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_EXPAND_2_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_EXPAND_2_IN_APP);
 
         page.isAdDisplayed();
 
@@ -492,7 +493,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testMraidResizeWithErrorsWithOffsetTrue() throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_RESIZE_WITH_ERRORS_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_RESIZE_WITH_ERRORS_IN_APP);
 
         page.isResizeWithErrorsAdLoaded();
 
@@ -536,7 +537,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testMraidResizeWithErrorsWithOffsetFalls() throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_RESIZE_WITH_ERRORS_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_RESIZE_WITH_ERRORS_IN_APP);
 
         page.isResizeWithErrorsAdLoaded();
 
@@ -754,7 +755,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testMraid3LoadAndEvents() throws InterruptedException, TimeoutException {
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_LOAD_AND_EVENTS);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_LOAD_AND_EVENTS);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
@@ -787,7 +788,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
     public void testMRAID3ViewabilityComplianceAd() throws TimeoutException, InterruptedException {
         InAppBiddingAdPageImpl page;
         if (isPlatformIOS) {
-            page = env.homePage.goToAd(MRAID_VIEWABILITY_COMPLIANCE);
+            page = env.homePage.goToAd(InAppAdNames.MRAID_VIEWABILITY_COMPLIANCE);
         } else {
             page = env.homePage.goToAd("MRAID 3.0: Viewability Compliance");
         }
@@ -805,7 +806,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
     @Test(groups = {"ios"})
     public void testMRAID3ResizeNegative() throws InterruptedException {
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(MRAID_RESIZE_NEGATIVE);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.MRAID_RESIZE_NEGATIVE);
 
         Thread.sleep(5000);
 

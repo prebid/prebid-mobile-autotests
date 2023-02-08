@@ -2,17 +2,18 @@ package appium.inAppBidding;
 
 import OMSDK.OMSDKAssert;
 import OMSDK.OMSDKSessionDescriptor;
+import appium.common.InAppAdNames;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.openqa.selenium.ScreenOrientation;
 import org.testng.annotations.Test;
+import utils.RequestTemplate;
 import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
 import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_GAM_ORIGINAL;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVE_BUTTON;
-import static appium.common.InAppTemplatesInit.INTERSTITIAL_320x480_IN_APP;
 import static org.testng.Assert.assertEquals;
 
 public class InAppBiddingInterstitialTests extends InAppBaseTest {
@@ -249,9 +250,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testBackgroundedSession() throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
+        initValidTemplatesJson(InAppAdNames.INTERSTITIAL_320x480_IN_APP);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.INTERSTITIAL_320x480_IN_APP);
 
         page.clickShowButton();
 
@@ -334,9 +335,9 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     @Test(groups = {"smoke"})
     public void testRotation() throws InterruptedException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_IN_APP);
+        initValidTemplatesJson(InAppAdNames.INTERSTITIAL_320x480_IN_APP);
 
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_IN_APP);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.INTERSTITIAL_320x480_IN_APP);
 
         page.clickShowButton();
 
@@ -365,7 +366,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
     }
 
     private void testAuctionRequestRealDevice(String prebidAd) throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(prebidAd, true);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_REAL_DEVICE);
 
         env.homePage.goToAd(prebidAd);
 

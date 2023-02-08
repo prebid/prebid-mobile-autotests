@@ -1,0 +1,9 @@
+package utils;
+
+public enum RequestTemplate {
+    REQUEST_SIMULATOR,
+    REQUEST_ADDITIONAL_PARAMS,
+    REQUEST_FIRST_PARTY,
+    REQUEST_REAL_DEVICE,
+    REQUEST_CACHE
+}

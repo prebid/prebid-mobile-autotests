@@ -11,6 +11,7 @@ import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.json.JSONObject;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import utils.RequestTemplate;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -65,6 +66,10 @@ public class InAppBaseTest {
         env.bmp.newHar();
     }
 
+    @BeforeMethod(groups = {"FirstPartyData"})
+    public void setupFirstPartyTestCasesName(Method method, Object[] testData) {
+
+    }
 
     @AfterMethod(groups = {"smoke", "android", "ios", "exec", "requests", "requests-skadn", "requests-realDevice", "requests-simulator"})
     public void teardownMethod() {
@@ -76,7 +81,7 @@ public class InAppBaseTest {
         auctionRequestJson = null;
     }
 
-    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS", "WithAdditionalParams", "Gpp"})
+    @AfterMethod(groups = {"USPrivacy", "TCFv1", "CustomOpenRTB", "LiveRampATS", "WithAdditionalParams", "Gpp", "FirstPartyData"})
     public void teardownMethodCustom() throws IOException {
         eventHandler = null;
         validAuctionRequest = null;
@@ -99,35 +104,11 @@ public class InAppBaseTest {
     }
 
     public void initValidTemplatesJson(String prebidAd) {
-        initValidTemplatesJson(prebidAd, false);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_SIMULATOR);
     }
 
-    public void initValidTemplatesJsonWithCache(String prebidAd) {
-
-        validAuctionRequest = getAuctionRequestWithCacheTemplate(prebidAd, platformName);
-
-        System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
-            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
-        }
-    }
-
-    public void initValidTemplatesJsonWithAdditionalParams(String prebidAd) {
-
-        validAuctionRequest = getAuctionRequestWithAdditionalParams(prebidAd, platformName);
-
-        System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration") || isOriginalAd(prebidAd)) {
-            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
-        }
-    }
-
-    public void initValidTemplatesJson(String prebidAd, boolean isRealDevice) {
-        if (isRealDevice) {
-            validAuctionRequest = getRealDeviceAuctionRequestTemplate(prebidAd, platformName);
-        } else {
-            validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
-        }
+    public void initValidTemplatesJson(String prebidAd, RequestTemplate requestTemplate) {
+        validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName, requestTemplate);
         System.out.println(prebidAd);
         if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || isOriginalAd(prebidAd)) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);

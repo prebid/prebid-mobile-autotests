@@ -5,11 +5,12 @@ import appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.annotations.Test;
+import utils.RequestTemplate;
 
 import java.util.concurrent.TimeoutException;
 
-import static appium.common.InAppAdNamesImpl.NATIVE_AD_FEED_GAM;
-import static appium.common.InAppAdNamesImpl.NATIVE_AD_LINKS_IN_APP;
+import static appium.common.InAppAdNames.NATIVE_AD_FEED_GAM;
+import static appium.common.InAppAdNames.NATIVE_AD_LINKS_IN_APP;
 
 
 public class InAppBiddingNativeTests extends InAppBaseTest {
@@ -88,7 +89,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     @Test(groups = {"requests-realDevice"}, dataProvider = "nativeRequestAdsReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd, true);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_REAL_DEVICE);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
