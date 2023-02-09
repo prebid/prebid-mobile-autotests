@@ -9,53 +9,46 @@ import java.util.HashMap;
 public class InAppTemplatesInit {
 
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName, RequestTemplate requestTemplate) {
-        String filePath = getFilePath(prebidAd, platformName, requestTemplate);
+        String filePath = getFilePathAuctionRequest(prebidAd, platformName, requestTemplate);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
         return new JSONObject(testJSON);
     }
 
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName) {
-        String filePath = getFilePathAuctionRequest(requestTemplates.get(prebidAd), platformName);
+        String filePath = getFilePath(requestTemplates.get(prebidAd), platformName);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
         return new JSONObject(testJSON);
     }
 
-    private static String getFilePath(String prebidAd, String platformName, RequestTemplate requestTemplate) {
+    public static JSONObject getAuctionResponseTemplate(String prebidAd, String platformName) {
+        final String filePath = getFilePath(responseTemplates.get(prebidAd), platformName);
+        System.out.println("RESPONSE TEMPLATE PATH IS ==> " + filePath + "\n");
+        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
+        return new JSONObject(testJSON);
+    }
+
+    private static String getFilePathAuctionRequest(String prebidAd, String platformName, RequestTemplate requestTemplate) {
         switch (requestTemplate) {
             case REQUEST_SIMULATOR:
-                return getFilePathAuctionRequest(requestTemplates.get(prebidAd), platformName);
+                return getFilePath(requestTemplates.get(prebidAd), platformName);
             case REQUEST_CACHE:
-                return getFilePathAuctionRequest(requestWithCacheTemplates.get(prebidAd), platformName);
+                return getFilePath(requestWithCacheTemplates.get(prebidAd), platformName);
             case REQUEST_ADDITIONAL_PARAMS:
-                return getFilePathAuctionRequest(requestWithAdditionalParamsTemplates.get(prebidAd), platformName);
+                return getFilePath(requestWithAdditionalParamsTemplates.get(prebidAd), platformName);
             case REQUEST_REAL_DEVICE:
-                return getFilePathAuctionRequest(realDeviceRequestTemplates.get(prebidAd), platformName);
+                return getFilePath(realDeviceRequestTemplates.get(prebidAd), platformName);
             case REQUEST_FIRST_PARTY:
-                return getFilePathAuctionRequest(requestWithFirstPartyData.get(prebidAd), platformName);
+                return getFilePath(requestWithFirstPartyData.get(prebidAd), platformName);
             default:
                 throw new IllegalStateException("Unexpected value: " + requestTemplate);
         }
     }
 
-    public static JSONObject getAuctionResponseTemplate(String prebidAd, String platformName) {
-        final String filePath = getFilePathAuctionResponse(prebidAd, platformName);
-        System.out.println("RESPONSE TEMPLATE PATH IS ==> " + filePath + "\n");
-        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
-        return new JSONObject(testJSON);
-    }
-
-    private static String getFilePathAuctionRequest(String path, String platformName) {
+    private static String getFilePath(String path, String platformName) {
         return String.format(path, platformName);
     }
-
-    private static String getFilePathAuctionResponse(String prebidAd, String platformName) {
-        String path = responseTemplates.get(prebidAd);
-        return String.format(path, platformName);
-    }
-
 
     private final static HashMap<String, String> requestTemplates = new HashMap<>() {{
         put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
