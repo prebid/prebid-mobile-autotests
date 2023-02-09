@@ -16,7 +16,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     //NATIVE TESTS
 
-//        @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
+    //        @Test(groups = {"serverBased"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAds(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
 
@@ -65,9 +65,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
 
-        if (!isPlatformIOS) {
-            env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
-        }
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
 
         env.waitForEvent(InAppBiddingEvents.IMPRESSION, 1, 60);
 
@@ -80,7 +78,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
 
     @Test(groups = {"requests-realDevice"}, dataProvider = "nativeRequestAdsReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionNativeAdsEventsRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd,true);
+        initValidTemplatesJson(prebidAd, true);
 
         InAppBiddingAdPageImpl page = env.homePage.goToAd(prebidAd);
 
@@ -111,7 +109,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
-        initPrebidAdapter(prebidAd,env,nativePage);
+        initPrebidAdapter(prebidAd, env, nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 
@@ -122,7 +120,7 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
-        initPrebidAdapter(prebidAd,env,nativePage);
+        initPrebidAdapter(prebidAd, env, nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
         env.homePage.clickBack();
 

@@ -52,6 +52,7 @@
   "device": {
     "ua": "$VARIABLE",
     "lmt": 0,
+    "ifa": "$VARIABLE",
     "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",

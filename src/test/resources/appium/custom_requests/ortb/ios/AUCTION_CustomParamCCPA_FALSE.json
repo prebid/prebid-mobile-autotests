@@ -28,6 +28,10 @@
   },
   "id": "$VARIABLE",
   "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
     "tid": "$VARIABLE"
   },
   "device": {

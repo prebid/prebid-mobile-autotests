@@ -51,6 +51,7 @@
     "make": "$VARIABLE",
     "model": "$VARIABLE",
     "os": "Android",
+    "ifa": "$VARIABLE",
     "osv": "$VARIABLE",
     "language": "$VARIABLE",
     "carrier": "$VARIABLE",

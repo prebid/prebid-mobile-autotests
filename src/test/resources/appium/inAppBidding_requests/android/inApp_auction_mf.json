@@ -109,6 +109,7 @@
         ],
         "playbackend": 2,
         "placement": 5,
+        "linearity": 1,
         "pos": 7,
         "protocols": [
           2,

@@ -79,7 +79,11 @@
     }
   ],
   "source": {
-    "tid": "$VARIABLE"
+    "tid": "$VARIABLE",
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    }
   },
   "user": {
     "ext": {
