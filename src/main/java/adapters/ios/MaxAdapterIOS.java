@@ -59,7 +59,7 @@ public class MaxAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() throws InterruptedException, TimeoutException {
+    public void checkAdRequests() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MAX_LOAD, 1, 60);
         try {
             testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.MAX_CIMP, 1, 60);

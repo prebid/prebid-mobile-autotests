@@ -118,7 +118,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         try {
             env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
         } catch (TimeoutException e) {
-            prebidAdapter.checkEvents();
+            prebidAdapter.checkAdRequests();
         }
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
@@ -187,7 +187,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
 
         initPrebidAdapter(adName, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
 
@@ -414,7 +414,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
         initPrebidAdapter(adName, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);

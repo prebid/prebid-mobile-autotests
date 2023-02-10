@@ -70,7 +70,7 @@ public class InAppAdapterAndroid extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() {
+    public void checkAdRequests() {
 
     }
 

@@ -80,7 +80,7 @@ public class GamAdapterAndroid extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() throws InterruptedException, TimeoutException {
+    public void checkAdRequests() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
     }
 

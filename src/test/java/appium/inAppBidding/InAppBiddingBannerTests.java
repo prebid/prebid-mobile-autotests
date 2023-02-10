@@ -80,7 +80,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
         initPrebidAdapter(prebidAd, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
     }
@@ -190,7 +190,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotatePortrait();
         }
         initPrebidAdapter(bannerAds, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
@@ -221,7 +221,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotatePortrait();
         }
         initPrebidAdapter(bannerAds, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
 
     }

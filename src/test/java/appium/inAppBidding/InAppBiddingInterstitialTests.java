@@ -67,7 +67,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
         initPrebidAdapter(prebidAd, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
     }
@@ -187,7 +187,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
         initPrebidAdapter(prebidAd, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
 
@@ -211,7 +211,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
 
         initPrebidAdapter(INTERSTITIAL_320x480_GAM_ORIGINAL, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
 
@@ -233,7 +233,7 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         page.clickCloseInterstitial();
 
         initPrebidAdapter(prebidAd, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
 

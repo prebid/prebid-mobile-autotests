@@ -55,7 +55,7 @@ public class OriginalAdapterAndroid extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() throws InterruptedException, TimeoutException {
+    public void checkAdRequests() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.CACHE_EVENT, 1, 10);
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_G_DOUBLECLICK, 1, 10);
     }

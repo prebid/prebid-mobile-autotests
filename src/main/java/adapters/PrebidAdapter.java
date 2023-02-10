@@ -1,12 +1,11 @@
 package adapters;
 
 import adapters.delegates.DelegatesInspector;
-import adapters.events.EventsInspector;
+import adapters.adrequests.AdRequestsInspector;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
-import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
 
-public abstract class PrebidAdapter implements DelegatesInspector, EventsInspector {
+public abstract class PrebidAdapter implements DelegatesInspector, AdRequestsInspector {
     protected final InAppBiddingTestEnvironment testEnvironment;
     protected InAppBiddingAdPageImpl adPage;
 

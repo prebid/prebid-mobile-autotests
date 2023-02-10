@@ -347,7 +347,7 @@ public class InAppBiddingMraidTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         PrebidAdapter prebidAdapter = prebidAdapterFactory.createPrebidAdapter(adName, env, page);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
 
