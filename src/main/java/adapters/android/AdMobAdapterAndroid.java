@@ -73,7 +73,7 @@ public class AdMobAdapterAndroid extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() throws InterruptedException, TimeoutException {
+    public void checkAdRequests() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.ADMOB_PAGEAD_INTERACTION, 1, 10);
     }
 

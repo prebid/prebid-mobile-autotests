@@ -32,7 +32,6 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
-
         env.homePage.clickBack();
 
     }
@@ -119,10 +118,8 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         try {
             env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
         } catch (TimeoutException e) {
-            prebidAdapter.checkEvents();
+            prebidAdapter.checkAdRequests();
         }
-
-
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
@@ -177,6 +174,23 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
         session.checkVideoStartEvent(platformName);
         session.checkNonAutoPlaySkippableAndStandalonePosition();
         session.checkPlayerStateIsNormal();
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "videoOriginalAds", dataProviderClass = InAppDataProviders.class)
+    public void testVideoOriginalSession(String adName) throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(adName);
+        env.homePage.goToAd(adName);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
+
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+
+        initPrebidAdapter(adName, env);
+        prebidAdapter.checkAdRequests();
+
+        env.homePage.clickBack();
+
     }
 
     @Test(groups = {"requests"}, dataProvider = "videoInterstitialAdName", dataProviderClass = InAppDataProviders.class)
@@ -400,7 +414,7 @@ public class InAppBiddingVideoTests extends InAppBaseTest {
 
         page.clickCloseInterstitial();
         initPrebidAdapter(adName, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 60);

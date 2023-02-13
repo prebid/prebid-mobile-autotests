@@ -117,7 +117,7 @@ public class InAppBaseTest {
         validAuctionRequest = getAuctionRequestWithAdditionalParams(prebidAd, platformName);
 
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration")) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || prebidAd.contains("Ad Configuration") || isOriginalAd(prebidAd)) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
@@ -129,7 +129,7 @@ public class InAppBaseTest {
             validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName);
         }
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native")) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || isOriginalAd(prebidAd)) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
@@ -154,6 +154,9 @@ public class InAppBaseTest {
         }
     }
 
+    private boolean isOriginalAd(String prebidAd) {
+        return prebidAd.contains("Original");
+    }
 
     private void setup(ITestContext itc, String prebidTestPlatform) throws IOException {
         final String testName = String.format("%s", this.getClass().getSimpleName());
@@ -188,5 +191,6 @@ public class InAppBaseTest {
     private void initAndroidEnv(ITestContext itc, String testName) throws IOException {
         env = new InAppBiddingTestEnvironment(testName, itc, TestEnvironment.INSPECTORS_MOB_PROXY, TestEnvironment.ANDROID_ORIGINAL_APP_PATH);
     }
+
 
 }

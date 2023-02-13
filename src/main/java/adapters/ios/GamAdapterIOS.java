@@ -78,7 +78,7 @@ public class GamAdapterIOS extends PrebidAdapter {
     }
 
     @Override
-    public void checkEvents() throws InterruptedException, TimeoutException {
+    public void checkAdRequests() throws InterruptedException, TimeoutException {
         testEnvironment.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.GAM_GAMPAD, 1, 60);
     }
 

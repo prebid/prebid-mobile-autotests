@@ -23,13 +23,12 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 30);
 
         env.homePage.clickBack();
+        RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
 
-        if (!prebidAd.contains("Original")) {
-            RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
-        }
     }
 
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
@@ -81,7 +80,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         System.out.println(InAppBiddingEvents.GAM_G_DOUBLECLICK);
         initPrebidAdapter(prebidAd, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();
     }
@@ -89,7 +88,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
 
-        initValidTemplatesJson(BANNER_SKADNETWORK);
+        initValidTemplatesJson(BANNER_320x50_IN_APP);
 
         env.homePage.goToAd(BANNER_SKADNETWORK);
 
@@ -142,6 +141,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         bannerPage.clickBanner();
         env.homePage.openInBrowser();
+
         bannerPage.waitAndReturnToApp();
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
@@ -155,7 +155,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
         bannerPage.clickBanner();
+
         env.homePage.clickCloseButtonClickThroughBrowser();
+
         initPrebidAdapter(prebidAd, env, bannerPage);
         prebidAdapter.checkBannerDelegates();
         env.homePage.clickBack();
@@ -188,7 +190,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotatePortrait();
         }
         initPrebidAdapter(bannerAds, env);
-        prebidAdapter.checkEvents();
+        prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_FINISH, 1, 30);
@@ -198,6 +200,29 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         OMSDKSessionDescriptor session = eventHandler.getFirstSession();
         session.checkOMBaseEvents(platformName);
         session.checkNoObstructions();
+
+    }
+
+    @Test(groups = {"requests"}, dataProvider = "bannerOriginalAds", dataProviderClass = InAppDataProviders.class)
+    public void testBannerOriginalSession(String bannerAds) throws InterruptedException, TimeoutException {
+        // RUN TEST SCENARIO
+        initValidTemplatesJson(bannerAds);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(bannerAds);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 30);
+
+        env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
+
+        if (isPlatformIOS && (bannerAds.contains("728x90") || bannerAds.contains("Multisize"))) {
+            env.homePage.rotateLandscape();
+            env.homePage.rotatePortrait();
+        }
+        initPrebidAdapter(bannerAds, env);
+        prebidAdapter.checkAdRequests();
+        env.homePage.clickBack();
 
     }
 
