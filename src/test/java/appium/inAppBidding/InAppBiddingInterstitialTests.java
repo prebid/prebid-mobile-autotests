@@ -12,7 +12,6 @@ import utils.RequestValidator;
 
 import java.util.concurrent.TimeoutException;
 
-import static appium.common.InAppAdNamesImpl.INTERSTITIAL_320x480_GAM_ORIGINAL;
 import static appium.common.InAppBiddingTestEnvironment.InAppBiddingDelegates.INTERSTITIAL_DID_RECEIVE_BUTTON;
 import static org.testng.Assert.assertEquals;
 
@@ -203,15 +202,15 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testOriginalDisplayInterstitialSession() throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(INTERSTITIAL_320x480_GAM_ORIGINAL);
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(INTERSTITIAL_320x480_GAM_ORIGINAL);
+        initValidTemplatesJson(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL);
+        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
 
 
-        initPrebidAdapter(INTERSTITIAL_320x480_GAM_ORIGINAL, env);
+        initPrebidAdapter(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL, env);
         prebidAdapter.checkAdRequests();
 
         env.homePage.clickBack();

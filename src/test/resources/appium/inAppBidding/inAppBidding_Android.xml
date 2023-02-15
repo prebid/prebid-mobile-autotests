@@ -13,6 +13,7 @@
                 <include name="WithAdditionalParams"/>
                 <include name="USPrivacy"/>
                 <include name="TCFv1"/>
+                <include name="FirstPartyData"/>
                 <include name="CustomOpenRTB"/>
                 <include name="LiveRampATS"/>
                 <include name="Gpp"/>

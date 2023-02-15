@@ -221,7 +221,11 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     final String LiveRampATS_Android = "--es EXTRA_EIDS \"[{\\\"source\\\": \\\"liveramp.com\\\",\\\"uids\\\": [{\\\"id\\\": \\\"XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM\\\"}] }]\"";
     final String GppAndroid = "--es gppString testGppString --es gppSid 2_3";
     //TODO when android first party data will be ready, add command line argument for that
-    final String FirstPartyDataAndroid = "";
+    final String FirstPartyDataAndroid = "--es ADD_USER_EXT_DATA \"{\"testKey\":[\"testData\", \"testData12\"], \"testKey2\":[\"testData2\"]}\" " +
+            " --es ADD_APP_EXT \"{\"testKey\":[\"testData\", \"testData12\"], \"testKey2\":[\"testData2\"]}\" " +
+            " --es ADD_ADUNIT_CONTEXT \"{\"testKey\":[\"testData\", \"testData12\",  \"testData33\"], \"testKey2\":[\"testData2\"]}\"" +
+            " --es ADD_APP_KEYWORD testAppKeyword --es ADD_ADUNIT_KEYWORD testAdUnitKeyword --es ADD_USER_KEYWORD  testUserKeyword" +
+            " --es ADD_APP_CONTENT_DATA_EXT testAppContentDataExt --es ADD_USER_DATA_EXT testUserDataExt";
 
     //iOS commandLineArgument parts
     private String NoGDPRnoConsent_iOS() {

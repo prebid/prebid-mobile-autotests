@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
-import static appium.common.InAppTemplatesInit.*;
 
 public class InAppBiddingBannerTests extends InAppBaseTest {
 

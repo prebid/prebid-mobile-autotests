@@ -1,0 +1,147 @@
+{
+  "app": {
+    "bundle": "$VARIABLE",
+    "content": {
+      "data": [
+        {
+          "ext": {
+            "key": "$VARIABLE"
+          }
+        }
+      ]
+    },
+    "keywords": "$VARIABLE",
+    "ext": {
+      "data": {
+        "testKey": [
+          "testData",
+          "testData12"
+        ],
+        "testKey2": [
+          "testData2"
+        ]
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "Prebid Rendering Kotlin Demo",
+    "publisher": {
+      "id": "$VARIABLE"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ua": "$VARIABLE",
+    "lmt": 0,
+    "make": "$VARIABLE",
+    "model": "$VARIABLE",
+    "os": "Android",
+    "osv": "$VARIABLE",
+    "language": "$VARIABLE",
+    "carrier": "Android",
+    "mccmnc": "$VARIABLE",
+    "ifa": "$VARIABLE",
+    "h": "$VARIABLE",
+    "w": "$VARIABLE",
+    "connectiontype": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "geo": "$VARIABLE"
+  },
+  "ext": {
+    "prebid": {
+      "storedrequest": {
+        "id": "$VARIABLE"
+      },
+      "storedauctionresponse": {
+        "id": "$VARIABLE"
+      },
+      "targeting": {
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "regs": {
+    "ext": {
+      "gdpr": "$VARIABLE"
+    }
+  },
+  "imp": [
+    {
+      "clickbrowser": 0,
+      "displaymanager": "prebid-mobile",
+      "displaymanagerver": "$VARIABLE",
+      "ext": {
+        "data": {
+          "testKey2":[
+            "testData2"
+          ],
+          "testKey":[
+            "testData",
+            "testData12",
+            "testData33"
+          ]
+        },
+        "keywords": "$VARIABLE",
+        "prebid": {
+          "storedauctionresponse": {
+            "id": "$VARIABLE"
+          },
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 1,
+      "video": {
+        "mimes": [
+          "video\/mp4",
+          "video\/3gpp",
+          "video\/webm",
+          "video\/mkv"
+        ],
+        "playbackend": 2,
+        "protocols": [
+          2,
+          5
+        ],
+        "w": "$VARIABLE",
+        "h": "$VARIABLE",
+        "linearity": 1,
+        "placement": 5,
+        "delivery": [
+          3
+        ],
+        "pos": 7
+      }
+    }
+  ],
+  "source": {
+    "ext": {
+      "omidpn": "Prebid",
+      "omidpv": "$VARIABLE"
+    },
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "keywords": "$VARIABLE",
+    "data": [
+      {
+        "ext": "$VARIABLE"
+      }
+    ],
+    "ext": {
+      "data": {
+        "testKey2": [
+          "testData2"
+        ],
+        "testKey": [
+          "testData",
+          "testData12"
+        ]
+      }
+    }
+  }
+}

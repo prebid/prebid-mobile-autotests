@@ -1,0 +1,135 @@
+{
+  "app": {
+    "bundle": "$VARIABLE",
+    "content": {
+      "data": [{
+        "ext": {
+          "key": "$VARIABLE"
+        }
+      }]
+    },
+    "keywords": "$VARIABLE",
+    "ext": {
+      "data": {
+        "testKey": [
+          "testData",
+          "testData12"
+        ],
+        "testKey2": [
+          "testData2"
+        ]
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "Prebid Rendering Kotlin Demo",
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ua": "$VARIABLE",
+    "lmt": 0,
+    "make": "$VARIABLE",
+    "model": "$VARIABLE",
+    "os": "Android",
+    "ifa": "$VARIABLE",
+    "osv": "$VARIABLE",
+    "language": "$VARIABLE",
+    "carrier": "$VARIABLE",
+    "mccmnc": "$VARIABLE",
+    "h": 3040,
+    "w": 1440,
+    "connectiontype": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "geo": "$VARIABLE"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        }
+      },
+      "storedrequest": {
+        "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },"storedauctionresponse": {
+        "id": "response-prebid-banner-320-50"
+      },
+      "targeting": {
+
+      }
+    }
+  },
+  "regs":{
+    "ext":{
+      "gdpr":0
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "banner": {
+        "format": [
+          {
+            "h": 50,
+            "w": 320
+          }
+        ]
+      },
+      "clickbrowser": 0,
+      "ext": {
+        "data": {
+          "testKey2":[
+            "testData2"
+          ],
+          "testKey":[
+            "testData",
+            "testData12",
+            "testData33"
+          ]
+        },
+        "keywords": "$VARIABLE",
+        "prebid": {
+          "storedauctionresponse": {
+            "id": "$VARIABLE"
+          },
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 0,
+      "secure": 1
+    }
+  ],
+  "source": {
+    "tid": "$VARIABLE",
+    "ext": {
+      "omidpv": "$VARIABLE",
+      "omidpn": "Prebid"
+    }
+  },
+  "user": {
+    "keywords": "$VARIABLE",
+    "data": [{
+      "ext": "$VARIABLE"
+    }],
+    "ext": {
+      "data": {
+        "testKey2":[
+          "testData2"
+        ],
+        "testKey":[
+          "testData",
+          "testData12"
+        ]
+      }
+    }
+  }
+
+}
