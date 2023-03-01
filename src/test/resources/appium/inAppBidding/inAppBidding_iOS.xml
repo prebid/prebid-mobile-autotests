@@ -14,6 +14,7 @@
 				<include name="USPrivacy"/>
 				<include name="TCFv1"/>
 				<include name="CustomOpenRTB"/>
+				<include name="FirstPartyData"/>
 				<include name="LiveRampATS"/>
 				<include name="Gpp"/>
 			</run>

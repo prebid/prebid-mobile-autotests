@@ -1,0 +1,116 @@
+{
+  "app": {
+    "bundle": "$VARIABLE",
+    "content": {
+      "data": [{
+        "ext": {
+          "testKey": "$VARIABLE"
+        }
+      }]
+    },
+    "keywords": "$VARIABLE",
+    "ext": {
+      "data": {
+        "testKey": "$VARIABLE"
+      },
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "name": "$CONFIG_APP_NAME",
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "ver": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE"
+    },
+    "connectiontype": "$VARIABLE",
+
+    "h": "896",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "language": "$VARIABLE",
+    "lmt": 1,
+    "make": "Apple",
+    "model": "iPhone",
+    "os": "iOS",
+    "osv": "$VARIABLE",
+    "pxratio": "$VARIABLE",
+    "ua": "$VARIABLE",
+    "w":"414"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {
+
+        },
+        "vastxml": {
+
+        }
+      },
+      "storedrequest": {
+        "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },"storedauctionresponse": {
+        "id": "response-prebid-banner-320-50"
+      },
+      "targeting": {
+
+      }
+    }
+  },
+  "regs":{
+    "ext":{
+      "gdpr":0
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "banner": {
+        "format": [
+          {
+            "h": 50,
+            "w": 320
+          }
+        ]
+      },
+      "clickbrowser": 1,
+      "ext": {
+        "data": {
+          "testKey": "$VARIABLE"
+        },
+        "keywords": "$VARIABLE",
+        "prebid": {
+          "storedauctionresponse": {
+            "id": "$VARIABLE"
+          },
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 0,
+      "secure": 1
+    }
+  ],
+  "source": {
+
+    "tid": "$VARIABLE"
+  },
+  "user": {
+    "keywords": "$VARIABLE",
+    "data": [{
+      "ext": "$VARIABLE"
+    }],
+    "ext": {
+      "data": "$VARIABLE"
+    }
+  }
+
+}

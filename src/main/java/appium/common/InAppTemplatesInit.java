@@ -2,407 +2,314 @@ package appium.common;
 
 import org.json.JSONObject;
 import utils.FileUtils;
+import utils.RequestTemplate;
 
 import java.util.HashMap;
 
-public class InAppTemplatesInit implements InAppAdNamesImpl {
+public class InAppTemplatesInit {
 
-    //REQUEST TEMPLATES
-    private final static String TEMPLATE_BANNER_320x50_LIVERAMP = "appium/custom_requests/ortb/%s/liveRampATS.json";
-    private final static String TEMPLATE_BANNER_320x50_GPP = "appium/custom_requests/ortb/%s/AUCTION_Gpp.json";
-    private final static String TEMPLATE_BANNER_320x50_CUSTOM_ORTB = "appium/custom_requests/ortb/%s/Custom_ORTB.json";
-    private final static String TEMPLATE_BANNER_320x50_CCPA_TRUE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_TRUE.json";
-    private final static String TEMPLATE_BANNER_320x50_CCPA_FALSE = "appium/custom_requests/ortb/%s/AUCTION_CustomParamCCPA_FALSE.json";
-    private final static String TEMPLATE_BANNER_320x50_GDPR0_CONS_NULL = "appium/custom_requests/ortb/%s/AUCTION_TCFv1_TRUE_GDPR_0_CONS_NULL.json";
-    private final static String TEMPLATE_BANNER_320x50_GDPR1_CONS_TRUE = "appium/custom_requests/ortb/%s/AUCTION_TCFv1_TRUE_GDPR_1_CONS_TRUE.json";
-    private final static String TEMPLATE_BANNER_320x50_ATTS_1 = "appium/inAppBidding_requests/%s/inApp_auction_320x50_atts_1.json";
-    private final static String TEMPLATE_BANNER_320x50_ATTS_2 = "appium/inAppBidding_requests/%s/inApp_auction_320x50_atts_2.json";
-    private final static String TEMPLATE_BANNER_320x50_ATTS_3 = "appium/inAppBidding_requests/%s/inApp_auction_320x50_atts_3.json";
-    private final static String TEMPLATE_BANNER_320x50_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_auction_320x50_skadn.json";
-
-    private final static String TEMPLATE_BANNER_320x50 = "appium/inAppBidding_requests/%s/inApp_auction_320x50.json";
-    private final static String TEMPLATE_BANNER_320x50_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_auction_320x50.json";
-    private final static String TEMPLATE_BANNER_320x50_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_320x50_original.json";
-    private final static String TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_auction_320x50.json";
-    private final static String TEMPLATE_BANNER_320x50_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x50_real_device.json";
-
-    private final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
-    private final static String TEMPLATE_BANNER_300x250_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_300x250.json";
-    private final static String TEMPLATE_BANNER_728x90 = "appium/inAppBidding_requests/%s/inApp_auction_728x90.json";
-    private final static String TEMPLATE_BANNER_728x90_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_728x90.json";
-    private final static String TEMPLATE_BANNER_MULTISIZE = "appium/inAppBidding_requests/%s/inApp_auction_ms.json";
-    private final static String TEMPLATE_BANNER_MULTISIZE_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_ms.json";
-
-    private final static String TEMPLATE_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_auction_320x480.json";
-    private final static String TEMPLATE_INTERSTITIAL_320x480_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_auction_320x480_skadn.json";
-    private final static String TEMPLATE_INTERSTITIAL_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_320x480_original.json";
-    private final static String TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x480_real_device.json";
-    private final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT = "appium/inAppBidding_requests/%s/inApp_auction_mf.json";
-    private final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_mf_real_device.json";
-
-    private final static String TEMPLATE_MRAID_FULLSCREEN = "appium/inAppBidding_requests/%s/inApp_mraid_fullscreen_auc.json";
-    private final static String TEMPLATE_MRAID_VIDEO_INTERSTITIAL = "appium/inAppBidding_requests/%s/inApp_mraid_video_int_auc.json";
-
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_video_int_auc_320x480_skadn.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_int_auc_320x480_original.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE = "appium/inAppBidding_requests/%s/caching/inApp_video_int_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS = "appium/inAppBidding_requests/%s/additional_params/inApp_video_int_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_int_auc_320x480_real_device.json";
-    private final static String TEMPLATE_VIDEO_OUTSTREAM_300x250 = "appium/inAppBidding_requests/%s/inApp_video_outstream_auc_300x250.json";
-    private final static String TEMPLATE_VIDEO_OUTSTREAM_300x250_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_video_outstream_auc_300x250_skadn.json";
-    private final static String TEMPLATE_VIDEO_OUTSTREAM_300x250_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_outstream_auc_300x250.json";
-    private final static String TEMPLATE_VIDEO_INSTREAM_300x250_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_instream_auc_300x250_original.json";
-    private final static String TEMPLATE_VIDEO_FEED_300x250 = "appium/inAppBidding_requests/%s/inApp_video_feed_auc_300x250.json";
-    private final static String TEMPLATE_VIDEO_REWARDED_320x480 = "appium/inAppBidding_requests/%s/inApp_video_rew_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_REWARDED_320x480_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_video_rew_auc_320x480_skadn.json";
-    private final static String TEMPLATE_VIDEO_REWARDED_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_video_rew_auc_320x480.json";
-    private final static String TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_video_rew_auc_320x480_real_device.json";
-
-    //NATIVE TEMPLATES
-    private final static String REQUEST_TEMPLATE_NATIVE = "appium/inAppBidding_requests/%s/inApp_native_req.json";
-    private final static String REQUEST_TEMPLATE_NATIVE_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_native_req.json";
-    private final static String REQUEST_TEMPLATE_NATIVE_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_native_req_real_device.json";
-
-    //RESPONSES
-    private final static String RESPONSE_TEMPLATE_NATIVE = "appium/inAppBidding_responses/%s/inApp_native_res.json";
-    private final static String RESPONSE_TEMPLATE_BANNER = "appium/inAppBidding_responses/%s/inApp_banner_res.json";
-    private final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_INSTREM = "appium/inAppBidding_responses/%s/inApp_video_instream_res.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM = "appium/inAppBidding_responses/%s/inApp_video_outstream_res.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_REWARDED = "appium/inAppBidding_responses/%s/inApp_video_rewarded_res.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_interstitial_320x480_with_ad_configuration.json";
-    private final static String RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_rewarded_320x480_with_ad_configuration.json";
+    public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName, RequestTemplate requestTemplate) {
+        String filePath = getFilePathAuctionRequest(prebidAd, platformName, requestTemplate);
+        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
+        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
+        return new JSONObject(testJSON);
+    }
 
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName) {
-
-        final String filePath = getFilePathAuctionRequest(prebidAd, platformName);
+        String filePath = getFilePath(requestTemplates.get(prebidAd), platformName);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
-
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
         return new JSONObject(testJSON);
     }
-    public static JSONObject getAuctionRequestWithCacheTemplate(String prebidAd, String platformName) {
 
-        final String filePath = getFilePathAuctionRequestWithCache(prebidAd, platformName);
-        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
-
-        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
-        return new JSONObject(testJSON);
-    }
-    public static JSONObject getAuctionRequestWithAdditionalParams(String prebidAd, String platformName) {
-
-        final String filePath = getFilePathAuctionRequestWithAdditionalParams(prebidAd, platformName);
-        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
-
-        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
-        return new JSONObject(testJSON);
-    }
-    public static JSONObject getRealDeviceAuctionRequestTemplate(String prebidAd, String platformName) {
-
-        final String filePath = getFilePathRealDeviceAuctionRequest(prebidAd, platformName);
-        System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
-
-        final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
-        return new JSONObject(testJSON);
-    }
     public static JSONObject getAuctionResponseTemplate(String prebidAd, String platformName) {
-        final String filePath = getFilePathAuctionResponse(prebidAd, platformName);
+        final String filePath = getFilePath(responseTemplates.get(prebidAd), platformName);
         System.out.println("RESPONSE TEMPLATE PATH IS ==> " + filePath + "\n");
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
-
         return new JSONObject(testJSON);
     }
 
-    private static String getFilePathAuctionRequest(String prebidAd, String platformName) {
-        String path = requestTemplates.get(prebidAd);
-        return String.format(path, platformName);
-    }
-    private static String getFilePathAuctionRequestWithCache(String prebidAd, String platformName) {
-        String path = requestWithCacheTemplates.get(prebidAd);
-        return String.format(path, platformName);
-    }
-    private static String getFilePathAuctionRequestWithAdditionalParams(String prebidAd, String platformName) {
-        String path = requestWithAdditionalParamsTemplates.get(prebidAd);
-        return String.format(path, platformName);
-    }
-    private static String getFilePathRealDeviceAuctionRequest(String prebidAd, String platformName) {
-        String path = realDeviceRequestTemplates.get(prebidAd);
-        return String.format(path, platformName);
-    }
-    private static String getFilePathAuctionResponse(String prebidAd, String platformName) {
-        String path = responseTemplates.get(prebidAd);
-        return String.format(path, platformName);
+    private static String getFilePathAuctionRequest(String prebidAd, String platformName, RequestTemplate requestTemplate) {
+        switch (requestTemplate) {
+            case REQUEST_SIMULATOR:
+                return getFilePath(requestTemplates.get(prebidAd), platformName);
+            case REQUEST_CACHE:
+                return getFilePath(requestWithCacheTemplates.get(prebidAd), platformName);
+            case REQUEST_ADDITIONAL_PARAMS:
+                return getFilePath(requestWithAdditionalParamsTemplates.get(prebidAd), platformName);
+            case REQUEST_REAL_DEVICE:
+                return getFilePath(realDeviceRequestTemplates.get(prebidAd), platformName);
+            case REQUEST_FIRST_PARTY:
+                return getFilePath(requestWithFirstPartyData.get(prebidAd), platformName);
+            default:
+                throw new IllegalStateException("Unexpected value: " + requestTemplate);
+        }
     }
 
+    private static String getFilePath(String path, String platformName) {
+        return String.format(path, platformName);
+    }
 
-    private final static HashMap<String, String> requestTemplates = new HashMap<String, String>() {{
-        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_IN_APP_SCROLLABLE, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_IN_APP_VAST, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_IN_APP_DEEPLINK, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_NO_BID_IN_APP, TEMPLATE_BANNER_320x50);
+    private final static HashMap<String, String> requestTemplates = new HashMap<>() {{
+        put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_IN_APP_SCROLLABLE, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_IN_APP_VAST, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_IN_APP_DEEPLINK, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_NO_BID_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
 
-        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_NO_BID_ADMOB, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_ADMOB_RANDOM, TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_NO_BID_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_ADMOB_RANDOM, InAppTemplates.TEMPLATE_BANNER_320x50);
 
-        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_NO_BID_MAX, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_MAX_RANDOM, TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_MAX, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_NO_BID_MAX, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_MAX_RANDOM, InAppTemplates.TEMPLATE_BANNER_320x50);
 
-        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_GAM_ORIGINAL, TEMPLATE_BANNER_320x50_ORIGINAL);
-        put(BANNER_320x50_GAM_ORIGINAL_NO_SKADN, TEMPLATE_BANNER_320x50_ORIGINAL);
-        put(BANNER_320x50_GAM_AD, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_GAM_RANDOM, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_GAM_VANILLA, TEMPLATE_BANNER_320x50);
-        put(BANNER_320x50_NO_BID_GAM_AD, TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_GAM, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_320x50_ORIGINAL);
+        put(InAppAdNames.BANNER_320x50_GAM_ORIGINAL_NO_SKADN, InAppTemplates.TEMPLATE_BANNER_320x50_ORIGINAL);
+        put(InAppAdNames.BANNER_320x50_GAM_AD, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_GAM_RANDOM, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_GAM_VANILLA, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.BANNER_320x50_NO_BID_GAM_AD, InAppTemplates.TEMPLATE_BANNER_320x50);
 
-        put(BANNER_300x250_IN_APP, TEMPLATE_BANNER_300x250);
-        put(BANNER_300x250_GAM, TEMPLATE_BANNER_300x250);
-        put(BANNER_300x250_GAM_ORIGINAL, TEMPLATE_BANNER_300x250_ORIGINAL);
-        put(BANNER_300x250_ADMOB, TEMPLATE_BANNER_300x250);
-        put(BANNER_300x250_MAX, TEMPLATE_BANNER_300x250);
-        put(BANNER_ADAPTIVE_ADMOB, TEMPLATE_BANNER_MULTISIZE);
-        put(BANNER_ADAPTIVE_MAX, TEMPLATE_BANNER_MULTISIZE);
+        put(InAppAdNames.BANNER_300x250_IN_APP, InAppTemplates.TEMPLATE_BANNER_300x250);
+        put(InAppAdNames.BANNER_300x250_GAM, InAppTemplates.TEMPLATE_BANNER_300x250);
+        put(InAppAdNames.BANNER_300x250_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_300x250_ORIGINAL);
+        put(InAppAdNames.BANNER_300x250_ADMOB, InAppTemplates.TEMPLATE_BANNER_300x250);
+        put(InAppAdNames.BANNER_300x250_MAX, InAppTemplates.TEMPLATE_BANNER_300x250);
+        put(InAppAdNames.BANNER_ADAPTIVE_ADMOB, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
+        put(InAppAdNames.BANNER_ADAPTIVE_MAX, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
 
-        put(BANNER_728x90_IN_APP, TEMPLATE_BANNER_728x90);
-        put(BANNER_728x90_GAM, TEMPLATE_BANNER_728x90);
-        put(BANNER_728x90_GAM_ORIGINAL, TEMPLATE_BANNER_728x90_ORIGINAL);
+        put(InAppAdNames.BANNER_728x90_IN_APP, InAppTemplates.TEMPLATE_BANNER_728x90);
+        put(InAppAdNames.BANNER_728x90_GAM, InAppTemplates.TEMPLATE_BANNER_728x90);
+        put(InAppAdNames.BANNER_728x90_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_728x90_ORIGINAL);
 
-        put(BANNER_MULTISIZE_IN_APP, TEMPLATE_BANNER_MULTISIZE);
-        put(BANNER_MULTISIZE_GAM, TEMPLATE_BANNER_MULTISIZE);
-        put(BANNER_MULTISIZE_GAM_ORIGINAL, TEMPLATE_BANNER_MULTISIZE_ORIGINAL);
+        put(InAppAdNames.BANNER_MULTISIZE_IN_APP, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
+        put(InAppAdNames.BANNER_MULTISIZE_GAM, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
+        put(InAppAdNames.BANNER_MULTISIZE_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_MULTISIZE_ORIGINAL);
 
-        put(BANNER_SKADNETWORK, TEMPLATE_BANNER_320x50_SKADN);
-        put(LIVE_RAMP_ATS, TEMPLATE_BANNER_320x50_LIVERAMP);
-        put(GPP, TEMPLATE_BANNER_320x50_GPP);
-        put(ATTS_1, TEMPLATE_BANNER_320x50_ATTS_1);
-        put(ATTS_2, TEMPLATE_BANNER_320x50_ATTS_2);
-        put(ATTS_3, TEMPLATE_BANNER_320x50_ATTS_3);
-        put(CUSTOM_USPRIVACY_CCPA_TRUE, TEMPLATE_BANNER_320x50_CCPA_TRUE);
-        put(CUSTOM_OPENRTB, TEMPLATE_BANNER_320x50_CUSTOM_ORTB);
-        put(CUSTOM_USPRIVACY_CCPA_FALSE, TEMPLATE_BANNER_320x50_CCPA_FALSE);
-        put(CUSTOM_TCF_GDPR0_NO_CONSENT, TEMPLATE_BANNER_320x50_GDPR0_CONS_NULL);
-        put(CUSTOM_TCF_GDPR1_CONSENT, TEMPLATE_BANNER_320x50_GDPR1_CONS_TRUE);
-        put(CUSTOM_TCF_NO_GDPR_NO_CONSENT, TEMPLATE_BANNER_320x50_CCPA_FALSE);
+        put(InAppAdNames.BANNER_SKADNETWORK, InAppTemplates.TEMPLATE_BANNER_320x50_SKADN);
+        put(InAppAdNames.LIVE_RAMP_ATS, InAppTemplates.TEMPLATE_BANNER_320x50_LIVERAMP);
+        put(InAppAdNames.GPP, InAppTemplates.TEMPLATE_BANNER_320x50_GPP);
+        put(InAppAdNames.ATTS_1, InAppTemplates.TEMPLATE_BANNER_320x50_ATTS_1);
+        put(InAppAdNames.ATTS_2, InAppTemplates.TEMPLATE_BANNER_320x50_ATTS_2);
+        put(InAppAdNames.ATTS_3, InAppTemplates.TEMPLATE_BANNER_320x50_ATTS_3);
+        put(InAppAdNames.CUSTOM_USPRIVACY_CCPA_TRUE, InAppTemplates.TEMPLATE_BANNER_320x50_CCPA_TRUE);
+        put(InAppAdNames.CUSTOM_OPENRTB, InAppTemplates.TEMPLATE_BANNER_320x50_CUSTOM_ORTB);
+        put(InAppAdNames.CUSTOM_USPRIVACY_CCPA_FALSE, InAppTemplates.TEMPLATE_BANNER_320x50_CCPA_FALSE);
+        put(InAppAdNames.CUSTOM_TCF_GDPR0_NO_CONSENT, InAppTemplates.TEMPLATE_BANNER_320x50_GDPR0_CONS_NULL);
+        put(InAppAdNames.CUSTOM_TCF_GDPR1_CONSENT, InAppTemplates.TEMPLATE_BANNER_320x50_GDPR1_CONS_TRUE);
+        put(InAppAdNames.CUSTOM_TCF_NO_GDPR_NO_CONSENT, InAppTemplates.TEMPLATE_BANNER_320x50_CCPA_FALSE);
 
-        put(INTERSTITIAL_320x480_IN_APP, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_IN_APP_SKADN, TEMPLATE_INTERSTITIAL_320x480_SKADN);
-        put(INTERSTITIAL_320x480_GAM, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_GAM_ORIGINAL, TEMPLATE_INTERSTITIAL_320x480_ORIGINAL);
-        put(INTERSTITIAL_320x480_ADMOB, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_MAX, TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_IN_APP_SKADN, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_SKADN);
+        put(InAppAdNames.INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_ORIGINAL);
+        put(InAppAdNames.INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
 
-        put(INTERSTITIAL_320x480_GAM_RANDOM, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_ADMOB_RANDOM, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_MAX_RANDOM, TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_GAM_RANDOM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_ADMOB_RANDOM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_MAX_RANDOM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
 
-        put(INTERSTITIAL_320x480_NO_BID_GAM, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_NO_BID_ADMOB, TEMPLATE_INTERSTITIAL_320x480);
-        put(INTERSTITIAL_320x480_NO_BID_MAX, TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_NO_BID_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_NO_BID_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
+        put(InAppAdNames.INTERSTITIAL_320x480_NO_BID_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
 
-        put(INTERSTITIAL_320x480_MULTISIZE_GAM, TEMPLATE_BANNER_MULTISIZE);
+        put(InAppAdNames.INTERSTITIAL_320x480_MULTISIZE_GAM, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
 
-        put(INTERSTITIAL_MULTI_FORMAT_IN_APP, TEMPLATE_INTERSTITIAL_MULTIFORMAT);
-        put(INTERSTITIAL_MULTI_FORMAT_GAM, TEMPLATE_INTERSTITIAL_MULTIFORMAT);
-        put(INTERSTITIAL_MULTI_FORMAT_ADMOB, TEMPLATE_INTERSTITIAL_MULTIFORMAT);
-        put(INTERSTITIAL_MULTI_FORMAT_MAX, TEMPLATE_INTERSTITIAL_MULTIFORMAT);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_IN_APP, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT);
 
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP_SKADN, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_SKADN);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
 
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP_SKADN, TEMPLATE_VIDEO_INTERSTITIAL_320x480_SKADN);
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ENDCARD, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
 
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_ENDCARD, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_ORIGINAL);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM_RANDOM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
 
-        put(VIDEO_INTERSTITIAL_320x480_GAM, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ORIGINAL);
-        put(VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_GAM_RANDOM, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_NO_BID_GAM_AD, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
 
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX_RANDOM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_NO_BID_MAX, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480);
 
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_NO_BID_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-
-        put(VIDEO_INTERSTITIAL_320x480_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_MAX_RANDOM, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-        put(VIDEO_INTERSTITIAL_320x480_NO_BID_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480);
-
-
-        put(VIDEO_REWARDED_320x480_IN_APP, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_IN_APP_SKADN, TEMPLATE_VIDEO_REWARDED_320x480_SKADN);
-        put(VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_IN_APP_SKADN, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_SKADN);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
 
 
-        put(VIDEO_REWARDED_320x480_ADMOB, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_NO_BID_ADMOB, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_ADMOB_RANDOM, TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_NO_BID_ADMOB, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_ADMOB_RANDOM, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
 
-        put(VIDEO_REWARDED_320x480_MAX, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_NO_BID_MAX, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_MAX_RANDOM, TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_NO_BID_MAX, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_MAX_RANDOM, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
 
-        put(VIDEO_REWARDED_320x480_GAM_METADATA, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_GAM_ORIGINAL, TEMPLATE_VIDEO_REWARDED_320x480_ORIGINAL);
-        put(VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_NO_BID_GAM, TEMPLATE_VIDEO_REWARDED_320x480);
-        put(VIDEO_REWARDED_320x480_GAM_RANDOM, TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_METADATA, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_ORIGINAL, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_ORIGINAL);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_NO_BID_GAM, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_RANDOM, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480);
 
-        put(VIDEO_OUTSTREAM_IN_APP, TEMPLATE_VIDEO_OUTSTREAM_300x250);
-        put(VIDEO_OUTSTREAM_IN_APP_SKADN, TEMPLATE_VIDEO_OUTSTREAM_300x250_SKADN);
-        put(VIDEO_OUTSTREAM_FEED_IN_APP, TEMPLATE_VIDEO_FEED_300x250);
-        put(VIDEO_OUTSTREAM_ENDCARD, TEMPLATE_VIDEO_OUTSTREAM_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_IN_APP, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_IN_APP_SKADN, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250_SKADN);
+        put(InAppAdNames.VIDEO_OUTSTREAM_FEED_IN_APP, InAppTemplates.TEMPLATE_VIDEO_FEED_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_ENDCARD, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250);
 
-        put(VIDEO_OUTSTREAM_GAM, TEMPLATE_VIDEO_OUTSTREAM_300x250);
-        put(VIDEO_OUTSTREAM_GAM_ORIGINAL, TEMPLATE_VIDEO_OUTSTREAM_300x250_ORIGINAL);
-        put(VIDEO_INSTREAM_GAM_ORIGINAL, TEMPLATE_VIDEO_INSTREAM_300x250_ORIGINAL);
-        put(VIDEO_OUTSTREAM_FEED_GAM, TEMPLATE_VIDEO_FEED_300x250);
-        put(VIDEO_OUTSTREAM_NO_BID_GAM_AD, TEMPLATE_VIDEO_OUTSTREAM_300x250);
-        put(VIDEO_OUTSTREAM_GAM_RANDOM, TEMPLATE_VIDEO_OUTSTREAM_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_GAM, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_GAM_ORIGINAL, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250_ORIGINAL);
+        put(InAppAdNames.VIDEO_INSTREAM_GAM_ORIGINAL, InAppTemplates.TEMPLATE_VIDEO_INSTREAM_300x250_ORIGINAL);
+        put(InAppAdNames.VIDEO_OUTSTREAM_FEED_GAM, InAppTemplates.TEMPLATE_VIDEO_FEED_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_NO_BID_GAM_AD, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250);
+        put(InAppAdNames.VIDEO_OUTSTREAM_GAM_RANDOM, InAppTemplates.TEMPLATE_VIDEO_OUTSTREAM_300x250);
 
-        put(MRAID_EXPAND_1_IN_APP, TEMPLATE_BANNER_320x50);
-        put(MRAID_EXPAND_2_IN_APP, TEMPLATE_BANNER_320x50);
-        put(MRAID_RESIZE_IN_APP, TEMPLATE_BANNER_320x50);
-        put(MRAID_RESIZE_WITH_ERRORS_IN_APP, TEMPLATE_BANNER_320x50);
-        put(MRAID_VIDEO_INTERSTITIAL_IN_APP, TEMPLATE_MRAID_VIDEO_INTERSTITIAL);
-        put(MRAID_FULLSCREEN_IN_APP, TEMPLATE_MRAID_FULLSCREEN);
+        put(InAppAdNames.MRAID_EXPAND_1_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_EXPAND_2_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_RESIZE_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_RESIZE_WITH_ERRORS_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_VIDEO_INTERSTITIAL_IN_APP, InAppTemplates.TEMPLATE_MRAID_VIDEO_INTERSTITIAL);
+        put(InAppAdNames.MRAID_FULLSCREEN_IN_APP, InAppTemplates.TEMPLATE_MRAID_FULLSCREEN);
 
-        put(MRAID_VIDEO_INTERSTITIAL_GAM, TEMPLATE_MRAID_VIDEO_INTERSTITIAL);
-        put(MRAID_EXPAND_1_GAM, TEMPLATE_BANNER_320x50);
-        put(MRAID_RESIZE_GAM, TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_VIDEO_INTERSTITIAL_GAM, InAppTemplates.TEMPLATE_MRAID_VIDEO_INTERSTITIAL);
+        put(InAppAdNames.MRAID_EXPAND_1_GAM, InAppTemplates.TEMPLATE_BANNER_320x50);
+        put(InAppAdNames.MRAID_RESIZE_GAM, InAppTemplates.TEMPLATE_BANNER_320x50);
 
         //NATIVE CASES
 
-        put(NATIVE_AD_ADMOB, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_ADMOB_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_ADMOB_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB_NO_BIDS, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB_GAD_NO_BIDS, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_MAX, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_MAX_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_MAX, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_MAX_NO_BIDS, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_IN_APP, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_IN_APP, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_LINKS_IN_APP, REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_IN_APP, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_FEED_IN_APP, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_LINKS_IN_APP, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_ORIGINAL, REQUEST_TEMPLATE_NATIVE_ORIGINAL);
-        put(NATIVE_AD_GAM_UNIFIED_GAD, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_GAM, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_ORIGINAL, InAppTemplates.REQUEST_TEMPLATE_NATIVE_ORIGINAL);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED_GAD, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_FEED_GAM, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, InAppTemplates.REQUEST_TEMPLATE_NATIVE);
 
     }};
     private final static HashMap<String, String> requestWithCacheTemplates = new HashMap<String, String>() {{
-        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_CACHE);
-        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_CACHE);
-        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_CACHE);
-        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_CACHE);
+        put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50_CACHE);
+        put(InAppAdNames.BANNER_320x50_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50_CACHE);
+        put(InAppAdNames.BANNER_320x50_MAX, InAppTemplates.TEMPLATE_BANNER_320x50_CACHE);
+        put(InAppAdNames.BANNER_320x50_GAM, InAppTemplates.TEMPLATE_BANNER_320x50_CACHE);
 
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
-        put(VIDEO_INTERSTITIAL_320x480_GAM, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
-        put(VIDEO_INTERSTITIAL_320x480_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_CACHE);
     }};
     private final static HashMap<String, String> requestWithAdditionalParamsTemplates = new HashMap<String, String>() {{
-        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
-        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
-        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
-        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(InAppAdNames.BANNER_320x50_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(InAppAdNames.BANNER_320x50_MAX, InAppTemplates.TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
+        put(InAppAdNames.BANNER_320x50_GAM, InAppTemplates.TEMPLATE_BANNER_320x50_ADDITIONAL_PARAMS);
 
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
-        put(VIDEO_INTERSTITIAL_320x480_GAM, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
-        put(VIDEO_INTERSTITIAL_320x480_MAX, TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_ADDITIONAL_PARAMS);
     }};
+    private final static HashMap<String, String> requestWithFirstPartyData = new HashMap<>() {{
+            put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50_FIRST_PARTY);
+            put(InAppAdNames.BANNER_320x50_GAM, InAppTemplates.TEMPLATE_BANNER_320x50_FIRST_PARTY);
+            put(InAppAdNames.BANNER_320x50_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50_FIRST_PARTY);
+            put(InAppAdNames.BANNER_320x50_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_320x50_ORIGINAL_FIRST_PARTY);
+            put(InAppAdNames.NATIVE_AD_ADMOB, InAppTemplates.REQUEST_TEMPLATE_NATIVE_FIRST_PARTY);
+            put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_FIRST_PARTY);
+            put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_FIRST_PARTY);
+            put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_FIRST_PARTY);
+    }};
+
     private final static HashMap<String, String> realDeviceRequestTemplates = new HashMap<String, String>() {{
-        put(BANNER_320x50_IN_APP, TEMPLATE_BANNER_320x50_REAL_DEVICE);
-        put(BANNER_320x50_GAM, TEMPLATE_BANNER_320x50_REAL_DEVICE);
-        put(BANNER_320x50_ADMOB, TEMPLATE_BANNER_320x50_REAL_DEVICE);
-        put(BANNER_320x50_MAX, TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(InAppAdNames.BANNER_320x50_IN_APP, InAppTemplates.TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(InAppAdNames.BANNER_320x50_GAM, InAppTemplates.TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(InAppAdNames.BANNER_320x50_ADMOB, InAppTemplates.TEMPLATE_BANNER_320x50_REAL_DEVICE);
+        put(InAppAdNames.BANNER_320x50_MAX, InAppTemplates.TEMPLATE_BANNER_320x50_REAL_DEVICE);
 
-        put(INTERSTITIAL_320x480_IN_APP,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(INTERSTITIAL_320x480_ADMOB,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(INTERSTITIAL_320x480_GAM,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(INTERSTITIAL_320x480_MAX,TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE);
 
-        put(INTERSTITIAL_MULTI_FORMAT_IN_APP,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
-        put(INTERSTITIAL_MULTI_FORMAT_MAX,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
-        put(INTERSTITIAL_MULTI_FORMAT_GAM,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
-        put(INTERSTITIAL_MULTI_FORMAT_ADMOB,TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_IN_APP, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
+        put(InAppAdNames.INTERSTITIAL_MULTI_FORMAT_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE);
 
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(VIDEO_INTERSTITIAL_320x480_GAM,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
-        put(VIDEO_INTERSTITIAL_320x480_MAX,TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_INTERSTITIAL_320x480_REAL_DEVICE);
 
-        put(VIDEO_REWARDED_320x480_IN_APP,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
-        put(VIDEO_REWARDED_320x480_ADMOB,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
-        put(VIDEO_REWARDED_320x480_GAM_METADATA,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
-        put(VIDEO_REWARDED_320x480_MAX,TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_IN_APP, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_ADMOB, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_METADATA, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_MAX, InAppTemplates.TEMPLATE_VIDEO_REWARDED_320x480_REAL_DEVICE);
 
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
-        put(NATIVE_AD_GAM_UNIFIED, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
-        put(NATIVE_AD_ADMOB, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
-        put(NATIVE_AD_IN_APP, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
-        put(NATIVE_AD_MAX, REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE, InAppTemplates.REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED, InAppTemplates.REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(InAppAdNames.NATIVE_AD_ADMOB, InAppTemplates.REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(InAppAdNames.NATIVE_AD_IN_APP, InAppTemplates.REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
+        put(InAppAdNames.NATIVE_AD_MAX, InAppTemplates.REQUEST_TEMPLATE_NATIVE_REAL_DEVICE);
 
     }};
     private final static HashMap<String, String> responseTemplates = new HashMap<>() {{
         //NATIVE CASES
 
-        put(NATIVE_AD_ADMOB, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_ADMOB_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_ADMOB_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_ADMOB_GAD_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_MAX, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_MAX_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_MAX, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_MAX_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_IN_APP, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_IN_APP, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_LINKS_IN_APP, RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_IN_APP, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_FEED_IN_APP, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_LINKS_IN_APP, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
 
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_ORIGINAL, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_FEED_GAM, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
-        put(NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED_GAD, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_FEED_GAM, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_UNIFIED_GAD_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+        put(InAppAdNames.NATIVE_AD_GAM_CUSTOM_TEMPLATE_GAD_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
 
-        put(VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL);
-        put(VIDEO_INSTREAM_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_INSTREM);
-        put(INTERSTITIAL_320x480_GAM_ORIGINAL, RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL);
-        put(BANNER_320x50_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);
-        put(BANNER_300x250_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);
-        put(BANNER_728x90_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);
-        put(BANNER_MULTISIZE_GAM_ORIGINAL, RESPONSE_TEMPLATE_BANNER);
-        put(VIDEO_REWARDED_320x480_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_REWARDED);
-        put(VIDEO_OUTSTREAM_GAM_ORIGINAL, RESPONSE_TEMPLATE_VIDEO_OUTSTREAM);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
 
-        put(VIDEO_INTERSTITIAL_320x480_IN_APP_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
-        put(VIDEO_INTERSTITIAL_320x480_GAM_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
-        put(VIDEO_INTERSTITIAL_320x480_ADMOB_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
-        put(VIDEO_INTERSTITIAL_320x480_MAX_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION);
-
-        put(VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
-        put(VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
-        put(VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
-        put(VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION, RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_IN_APP_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_ADMOB_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_MAX_WITH_AD_CONFIGURATION, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION);
     }};
 }

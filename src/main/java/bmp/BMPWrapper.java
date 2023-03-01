@@ -1,5 +1,6 @@
 package bmp;
 
+import appium.common.InAppTemplates;
 import appium.common.LogValidator;
 import com.google.gson.JsonArray;
 import net.lightbody.bmp.BrowserMobProxyServer;

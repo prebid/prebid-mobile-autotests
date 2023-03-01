@@ -1,22 +1,24 @@
 package appium.inAppBidding;
 
 import OMSDK.OMSDKSessionDescriptor;
+import appium.common.InAppAdNames;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.annotations.Test;
+import utils.RequestTemplate;
 import utils.RequestValidator;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import static OMSDK.OMSDKAssert.assertTrue;
-import static appium.common.InAppTemplatesInit.*;
 
 public class InAppBiddingBannerTests extends InAppBaseTest {
 
     //BANNER TESTS
     @Test(groups = {"requests-simulator"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
+
         initValidTemplatesJson(prebidAd);
 
         env.homePage.goToAd(prebidAd);
@@ -34,7 +36,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestWithCache(String prebidAd) throws TimeoutException, InterruptedException {
         env.homePage.turnOnCacheSwitcher();
-        initValidTemplatesJsonWithCache(prebidAd);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_CACHE);
 
         env.homePage.goToAd(prebidAd);
 
@@ -49,7 +51,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     @Test(groups = {"requests-realDevice"}, dataProvider = "adNameReal", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRealDevice(String prebidAd) throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(prebidAd, true);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_REAL_DEVICE);
 
         env.homePage.goToAd(prebidAd);
 
@@ -67,7 +69,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
 
-        if (prebidAd.equalsIgnoreCase(BANNER_320x50_NO_BID_IN_APP) && !(isPlatformIOS)) {
+        if (prebidAd.equalsIgnoreCase(InAppAdNames.BANNER_320x50_NO_BID_IN_APP) && !(isPlatformIOS)) {
             noBidAd = "Banner 320x50 [noBids] (In-App)";
         } else {
             noBidAd = prebidAd;
@@ -87,10 +89,9 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(InAppAdNames.BANNER_SKADNETWORK);
 
-        initValidTemplatesJson(BANNER_320x50_IN_APP);
-
-        env.homePage.goToAd(BANNER_SKADNETWORK);
+        env.homePage.goToAd(InAppAdNames.BANNER_SKADNETWORK);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
@@ -330,7 +331,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         String scrollableBanner;
 
         if (platformName.equalsIgnoreCase("iOS")) {
-            scrollableBanner = BANNER_320x50_IN_APP_SCROLLABLE;
+            scrollableBanner = InAppAdNames.BANNER_320x50_IN_APP_SCROLLABLE;
         } else {
             scrollableBanner = "Scrollable";
         }
@@ -364,11 +365,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        env.homePage.goToAd(BANNER_320x50_ADMOB);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_ADMOB);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
-        initPrebidAdapter(BANNER_320x50_ADMOB, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_ADMOB, env);
         prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
@@ -393,11 +394,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        env.homePage.goToAd(BANNER_320x50_ADMOB);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_ADMOB);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
-        initPrebidAdapter(BANNER_320x50_ADMOB, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_ADMOB, env);
 
         prebidAdapter.checkLoadDelegate();
 
@@ -456,11 +457,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.turnOnCustomConfig();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
 
         env.homePage.setAutoRefreshDelay(autoRefreshDelay);
 
-        initPrebidAdapter(BANNER_320x50_IN_APP, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_IN_APP, env);
         prebidAdapter.checkLoadDelegate();
 
         env.bmp.waitForEvent(OMSDKSessionDescriptor.EVENT_TYPE.SESSION_START, 1, 10);
@@ -497,11 +498,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
-        env.homePage.goToAd(BANNER_320x50_IN_APP_VAST);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP_VAST);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 10);
 
-        initPrebidAdapter(BANNER_320x50_IN_APP_VAST, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_IN_APP_VAST, env);
         prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
@@ -544,11 +545,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.bmp.setLatency(300);
 
-        env.homePage.goToAd(BANNER_320x50_ADMOB);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_ADMOB);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
-        initPrebidAdapter(BANNER_320x50_ADMOB, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_ADMOB, env);
         prebidAdapter.checkLoadDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 1, 35);
@@ -562,11 +563,11 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testNoConnection() throws TimeoutException, InterruptedException {
         env.bmp.setLatency(30 * 1000);
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 35);
 
-        initPrebidAdapter(BANNER_320x50_IN_APP, env);
+        initPrebidAdapter(InAppAdNames.BANNER_320x50_IN_APP, env);
         prebidAdapter.checkLoadFailDelegate();
 
         env.waitForEvent(InAppBiddingEvents.WIN_PREBID, 0, 10);
@@ -578,7 +579,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     @Test(groups = {"atts"}, priority = 2)
     public void testAttsNotAllowed() throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(ATTS_2);
+        initValidTemplatesJson(InAppAdNames.ATTS_2);
 
         env.homePage.goToUtilities();
 
@@ -590,7 +591,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.goToAdExamples();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
 
         //Validate default request with ATTS 2;
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
@@ -603,7 +604,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     @Test(groups = {"atts"}, priority = 3)
     public void testAttsAllowed() throws InterruptedException, TimeoutException {
-        initValidTemplatesJson(ATTS_3);
+        initValidTemplatesJson(InAppAdNames.ATTS_3);
 
         env.homePage.goToUtilities();
 
@@ -615,7 +616,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
         env.homePage.goToAdExamples();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
 
         //Validate default request with ATTS 3;
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
@@ -656,7 +657,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         String scrollableBanner;
 
         if (platformName.equalsIgnoreCase("iOS")) {
-            scrollableBanner = BANNER_320x50_IN_APP_SCROLLABLE;
+            scrollableBanner = InAppAdNames.BANNER_320x50_IN_APP_SCROLLABLE;
         } else {
             scrollableBanner = "Scrollable";
         }

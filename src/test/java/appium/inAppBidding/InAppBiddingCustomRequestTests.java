@@ -1,11 +1,13 @@
 package appium.inAppBidding;
 
+import appium.common.InAppAdNames;
 import appium.common.InAppBiddingTestEnvironment;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.common.InAppTemplatesInit;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
+import utils.RequestTemplate;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -26,7 +28,7 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
         initValidCCPAJsons();
 
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 60);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestCCPA_FALSE);
@@ -40,19 +42,19 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     @Test(groups = {"Gpp"})
     public void testGpp(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
-        setupEnvWithCommandLineArguments(method, itc, processArguments(GPP));
-        initValidRequestJsons(GPP);
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        setupEnvWithCommandLineArguments(method, itc, processArguments(InAppAdNames.GPP));
+        initValidRequestJsons(InAppAdNames.GPP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 50);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
     @Test(groups = {"WithAdditionalParams"}, dataProvider = "adNamesWithAdditionalParams", dataProviderClass = InAppDataProviders.class)
-    public void testRequestsWithAdditionalParams(Method method, ITestContext itc, String prebidAd) throws TimeoutException, InterruptedException, IOException {
+    public void testRequestsWithAdditionalParams(String prebidAd,Method method, ITestContext itc ) throws TimeoutException, InterruptedException, IOException {
         setupEnvWithCommandLineArguments(method, itc, " --ez shareGeo false --es targetingDomain domain");
         env.homePage.turnOffGDPRSwitcher();
-        initValidTemplatesJsonWithAdditionalParams(prebidAd);
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_ADDITIONAL_PARAMS);
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
@@ -61,40 +63,55 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
         env.homePage.clickBack();
     }
-   @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
-    public void testTCFv1(Method method, ITestContext itc, String testCase) throws TimeoutException, InterruptedException, IOException {
+
+    @Test(groups = {"FirstPartyData"}, dataProvider = "FirstPartyDataAds", dataProviderClass = InAppDataProviders.class)
+    public void testRequestsWithFirstPartyData(String prebidAd, Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
+        isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
+        setupEnvWithCommandLineArguments(method, itc, processArguments(InAppAdNames.FIRST_PARTY_DATA));
+        env.homePage.turnOffGDPRSwitcher();
+        initValidTemplatesJson(prebidAd, RequestTemplate.REQUEST_FIRST_PARTY);
+        env.homePage.goToAd(prebidAd);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
+        env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
+
+        env.homePage.clickBack();
+    }
+
+    @Test(groups = {"TCFv1"}, dataProvider = "TCFv1", dataProviderClass = InAppDataProviders.class)
+    public void testTCFv1(String testCase, Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(testCase));
         initValidRequestJsons(testCase);
-        env.homePage.goToAd(BANNER_320x50_IN_APP);
+        env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 50);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"LiveRampATS"})
+    @Test(groups = {"LiveRampATS"})
     public void testLiveRampATS(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
-        setupEnvWithCommandLineArguments(method, itc, processArguments(LIVE_RAMP_ATS));
-        initValidRequestJsons(LIVE_RAMP_ATS);
+        setupEnvWithCommandLineArguments(method, itc, processArguments(InAppAdNames.LIVE_RAMP_ATS));
+        initValidRequestJsons(InAppAdNames.LIVE_RAMP_ATS);
         InAppBiddingAdPageImpl page;
         if (isPlatformIOS) {
-            page = env.homePage.goToAd(BANNER_320x50_IN_APP_ATS);
+            page = env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP_ATS);
         } else {
-            page = env.homePage.goToAd(BANNER_320x50_IN_APP);
+            page = env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         }
         env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 50);
 
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
 
-   @Test(groups = {"CustomOpenRTB"}/*,enabled = false*/)
+    @Test(groups = {"CustomOpenRTB"}/*,enabled = false*/)
     public void testCustomOpenRtbUser(Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
-        setupEnvWithCommandLineArguments(method, itc, processArguments(CUSTOM_OPENRTB));
-        initValidRequestJsons(CUSTOM_OPENRTB);
+        setupEnvWithCommandLineArguments(method, itc, processArguments(InAppAdNames.CUSTOM_OPENRTB));
+        initValidRequestJsons(InAppAdNames.CUSTOM_OPENRTB);
         Thread.sleep(5000);
-        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(BANNER_320x50_IN_APP);
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 10);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, auctionRequestJson);
     }
@@ -102,8 +119,8 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     // PRIVATE METHODS
 
     private void initValidCCPAJsons() {
-        auctionRequestCCPA_TRUE = InAppTemplatesInit.getAuctionRequestTemplate(CUSTOM_USPRIVACY_CCPA_TRUE, platformName);
-        auctionRequestCCPA_FALSE = InAppTemplatesInit.getAuctionRequestTemplate(CUSTOM_USPRIVACY_CCPA_FALSE, platformName);
+        auctionRequestCCPA_TRUE = InAppTemplatesInit.getAuctionRequestTemplate(InAppAdNames.CUSTOM_USPRIVACY_CCPA_TRUE, platformName);
+        auctionRequestCCPA_FALSE = InAppTemplatesInit.getAuctionRequestTemplate(InAppAdNames.CUSTOM_USPRIVACY_CCPA_FALSE, platformName);
     }
 
     private void initValidRequestJsons(String testCase) {
@@ -112,43 +129,49 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
 
     private String processArguments(String testCase) {
         switch (testCase) {
-            case GPP:
+            case InAppAdNames.FIRST_PARTY_DATA:
+                if (isPlatformIOS) {
+                    return FirstPartyDataIOS();
+                } else {
+                    return FirstPartyDataAndroid;
+                }
+            case InAppAdNames.GPP:
                 if (isPlatformIOS) {
                     return Gpp_iOS();
-                } else{
+                } else {
                     return GppAndroid;
                 }
-            case US_PRIVACY:
+            case InAppAdNames.US_PRIVACY:
                 if (isPlatformIOS) {
                     return USPrivacyArgumentsIOS();
                 } else {
                     return USPrivacyArgumentsAndroid();
                 }
-            case CUSTOM_TCF_NO_GDPR_NO_CONSENT:
+            case InAppAdNames.CUSTOM_TCF_NO_GDPR_NO_CONSENT:
                 if (isPlatformIOS) {
                     return NoGDPRnoConsent_iOS();
                 } else {
                     return NoGDPRnoConsent_Android;
                 }
-            case CUSTOM_TCF_GDPR0_NO_CONSENT:
+            case InAppAdNames.CUSTOM_TCF_GDPR0_NO_CONSENT:
                 if (isPlatformIOS) {
                     return With0GDPRnoConsent_iOS();
                 } else {
                     return With0GDPRnoConsent_Android;
                 }
-            case CUSTOM_TCF_GDPR1_CONSENT:
+            case InAppAdNames.CUSTOM_TCF_GDPR1_CONSENT:
                 if (isPlatformIOS) {
                     return With1GDPRandConsent_iOS();
                 } else {
                     return With1GDPRandConsent_Android;
                 }
-            case CUSTOM_OPENRTB:
+            case InAppAdNames.CUSTOM_OPENRTB:
                 if (isPlatformIOS) {
                     return getComandLineCustomOpenRTBParams_iOS();
                 } else {
                     return comandLineCustomOpenRTBParams_Android;
                 }
-            case LIVE_RAMP_ATS:
+            case InAppAdNames.LIVE_RAMP_ATS:
                 if (isPlatformIOS) {
                     return LiveRampATS_iOS();
                 } else {
@@ -197,6 +220,13 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     final String comandLineCustomOpenRTBParams_Android = "--es EXTRA_OPEN_RTB \"{\"crr\":\"carrier\",\"keywords\":\"keyword\",\"ip\":\"127.0.0.1\",\"buyerid\":\"buyerid\",\"url\":\"https://url.com\",\"geo\":{\"lon\":2,\"lat\":1},\"gen\":\"MALE\",\"xid\":\"007\",\"eth\":\"WHITE\",\"dma\":\"area\",\"customdata\":\"data\",\"age\":23,\"inc\":10000,\"mar\":\"SINGLE\"}\"";
     final String LiveRampATS_Android = "--es EXTRA_EIDS \"[{\\\"source\\\": \\\"liveramp.com\\\",\\\"uids\\\": [{\\\"id\\\": \\\"XY1000bIVBVah9ium-sZ3ykhPiXQbEcUpn4GjCtxrrw2BRDGM\\\"}] }]\"";
     final String GppAndroid = "--es gppString testGppString --es gppSid 2_3";
+    //TODO when android first party data will be ready, add command line argument for that
+    final String FirstPartyDataAndroid = "--es ADD_USER_EXT_DATA \"{\"testKey\":[\"testData\", \"testData12\"], \"testKey2\":[\"testData2\"]}\" " +
+            " --es ADD_APP_EXT \"{\"testKey\":[\"testData\", \"testData12\"], \"testKey2\":[\"testData2\"]}\" " +
+            " --es ADD_ADUNIT_CONTEXT \"{\"testKey\":[\"testData\", \"testData12\",  \"testData33\"], \"testKey2\":[\"testData2\"]}\"" +
+            " --es ADD_APP_KEYWORD testAppKeyword --es ADD_ADUNIT_KEYWORD testAdUnitKeyword --es ADD_USER_KEYWORD  testUserKeyword" +
+            " --es ADD_APP_CONTENT_DATA_EXT testAppContentDataExt --es ADD_USER_DATA_EXT testUserDataExt";
+
     //iOS commandLineArgument parts
     private String NoGDPRnoConsent_iOS() {
 
@@ -267,9 +297,38 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
                 "GPP_SID",
                 gppSidString
         ));
-
         final net.minidev.json.JSONObject argsValue = new net.minidev.json.JSONObject();
         argsValue.put("args", processGppStringArgs);
+
+        return argsValue.toString();
+    }
+
+    private String FirstPartyDataIOS() {
+        List<String> processFirstPartyDataArgs = new ArrayList<>(Arrays.asList(
+                "ADD_USER_DATA_EXT",
+                "testKey",
+                "test user data ext",
+                "ADD_USER_EXT_DATA",
+                "testKey",
+                "test user ext data",
+                "ADD_APP_EXT",
+                "testKey",
+                "test app ext",
+                "ADD_APP_CONTENT_DATA_EXT",
+                "testKey",
+                "test app context data ext",
+                "ADD_ADUNIT_CONTEXT",
+                "testKey",
+                "test adunit context",
+                "ADD_APP_KEYWORD",
+                "test app keyword",
+                "ADD_USER_KEYWORD",
+                "test user keyword",
+                "ADD_ADUNIT_KEYWORD",
+                "test adunit keyword"
+        ));
+        final net.minidev.json.JSONObject argsValue = new net.minidev.json.JSONObject();
+        argsValue.put("args", processFirstPartyDataArgs);
 
         return argsValue.toString();
     }
