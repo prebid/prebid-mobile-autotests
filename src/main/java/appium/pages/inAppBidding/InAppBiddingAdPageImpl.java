@@ -167,4 +167,7 @@ public interface InAppBiddingAdPageImpl {
 
     void clickButtonCallToAction();
 
+    static boolean isOriginalAd(String prebidAd) {
+        return prebidAd.contains("Original") || prebidAd.contains("Native");
+    }
 }

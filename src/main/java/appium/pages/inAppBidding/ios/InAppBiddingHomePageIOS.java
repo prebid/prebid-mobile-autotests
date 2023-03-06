@@ -23,7 +23,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
 
     public static class PrebidLocators {
         public static final By backButton = MobileBy.AccessibilityId("Back");
-        static final By openBrowser = MobileBy.AccessibilityId("PBM openbrowser");
+        static final By openBrowser = MobileBy.AccessibilityId("OpenInSafariButton");
         static final By closeButtonClickThroughBrowser = MobileBy.AccessibilityId("PBMCloseButtonClickThroughBrowser");
         static final By customConfigButton = MobileBy.AccessibilityId("\u2699");
         static final By autoRefreshDelay = MobileBy.AccessibilityId("refreshInterval_field");
@@ -50,7 +50,7 @@ public class InAppBiddingHomePageIOS extends IOSBasePage implements InAppBidding
     @Override
     public InAppBiddingAdPageImpl goToAd(String prebidAd) {
         navigateToAd(prebidAd, MobileBy.AccessibilityId(prebidAd));
-        return new InAppBiddingAdPageIOS(super.driver);
+        return new InAppBiddingAdPageIOS(super.driver, InAppBiddingAdPageImpl.isOriginalAd(prebidAd));
     }
 
 

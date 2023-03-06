@@ -17,11 +17,14 @@ import java.util.HashMap;
 import static org.testng.Assert.assertEquals;
 
 public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAdPageImpl {
-
+    private boolean isOriginalApi;
     public InAppBiddingAdPageIOS(IOSDriver driver) {
         super(driver);
     }
-
+    public InAppBiddingAdPageIOS(IOSDriver driver, boolean isOriginalApi) {
+        super(driver);
+        this.isOriginalApi = isOriginalApi;
+    }
     private static class Locators {
 
         static final By examples = MobileBy.AccessibilityId("Examples");
@@ -36,11 +39,12 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         static final By stopRefreshButton = MobileBy.xpath("//XCUIElementTypeButton[@name=\"[Stop Refresh]\"]");
         static final By retryButton = MobileBy.xpath("//XCUIElementTypeStaticText[@name='[Retry]']");
         static final By closeButton = MobileBy.AccessibilityId("PBMCloseButton");
+        static final By closeBrowser = MobileBy.AccessibilityId("Done");
         static final By skipButton = MobileBy.AccessibilityId("PBM skipButton");
         static final By closeButtonVideo = MobileBy.AccessibilityId("Close ad");
         static final By closeButtonInterstitial = MobileBy.AccessibilityId("Close Advertisement");
         static final By learnMore = MobileBy.AccessibilityId("Learn More");
-        static final By closeWebViewButton = MobileBy.AccessibilityId("PBMCloseButtonClickThroughBrowser");
+//        static final By closeWebViewButton = MobileBy.AccessibilityId("PBMCloseButtonClickThroughBrowser");
         static final By adDidLoadCounter = MobileBy.xpath("(//XCUIElementTypeStaticText[@name=' - '])[1]/following-sibling::*[1]");
 
         //TODO divide locators to separate page class
@@ -137,8 +141,16 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
         // This method should use a separate class for the browser page
         Thread.sleep(1000);
         TouchAction action = new TouchAction(driver);
-        action.longPress(PointOption.point(0, 0)).perform().release();
+        action.longPress(PointOption.point(56, 42)).perform().release();
         Thread.sleep(1000);
+        if (!isOriginalApi) {
+            clickSafariCloseButton();
+        }
+    }
+
+    private void clickSafariCloseButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(Locators.closeBrowser))
+                .click();
     }
 
     @Override
@@ -250,8 +262,7 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
 
     @Override
     public void closeWebViewCreative() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Locators.closeWebViewButton))
-                .click();
+        clickSafariCloseButton();
     }
 
     @Override
@@ -489,7 +500,10 @@ public class InAppBiddingAdPageIOS extends IOSBasePage implements InAppBiddingAd
     public void smsAppShouldOpen() {
         //TODO add method to check that sms app displayed
         try {
-            waitAndReturnToApp();
+            Thread.sleep(1000);
+            TouchAction action = new TouchAction(driver);
+            action.longPress(PointOption.point(56, 42)).perform().release();
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
