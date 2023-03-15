@@ -43,9 +43,6 @@
     {
       "ext":{
         "prebid":{
-          "storedauctionresponse":{
-            "id":"$VARIABLE"
-          },
           "storedrequest":{
             "id":"$VARIABLE"
           }
@@ -65,7 +62,7 @@
           7
         ]
       },
-      "clickbrowser": 0,
+      "clickbrowser": 1,
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "instl": "$VARIABLE",
@@ -77,10 +74,7 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
       },
-
       "targeting": {
 
       }

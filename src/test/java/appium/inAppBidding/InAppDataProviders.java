@@ -136,8 +136,8 @@ public class InAppDataProviders {
 
 
     private static final String[][] InterstitialAds = {
-//            {INTERSTITIAL_320x480_IN_APP},
-//            {INTERSTITIAL_320x480_ADMOB},
+            {INTERSTITIAL_320x480_IN_APP},
+            {INTERSTITIAL_320x480_ADMOB},
 //            {INTERSTITIAL_320x480_MAX},
             {INTERSTITIAL_320x480_GAM},
     };
@@ -172,10 +172,10 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialMultiFormatAds = {
-//            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
+            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
 //            {INTERSTITIAL_MULTI_FORMAT_MAX},
-//            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
+            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
     @DataProvider(name = "interstitialMultiFormat")
     public static Object[][] provideInterstitialMultiFormat() {

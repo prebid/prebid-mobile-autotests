@@ -44,9 +44,7 @@
   },
   "ext": {
     "prebid": {
-      "storedauctionresponse": {
-        "id": "response-prebid-banner-320-50"
-      },
+
       "storedrequest": {
         "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
@@ -62,7 +60,7 @@
         "w": 320
       }]
     },
-    "clickbrowser": 0,
+    "clickbrowser": 1,
     "displaymanager": "prebid-mobile",
     "displaymanagerver": "$VARIABLE",
     "ext": {
@@ -71,9 +69,6 @@
       },
       "keywords": "$VARIABLE",
       "prebid": {
-        "storedauctionresponse": {
-          "id": "response-prebid-banner-320-50"
-        },
         "storedrequest": {
           "id": "imp-prebid-banner-320-50"
         }
