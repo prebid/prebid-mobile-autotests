@@ -64,7 +64,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
     }
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "noBids", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestNoBidsAd(String prebidAd) throws TimeoutException, InterruptedException {
         String noBidAd;
         initValidTemplatesJson(prebidAd);
@@ -87,7 +87,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"ios"})
+    @Test(groups = {"ios"})
     public void testAuctionRequestSKAdNetwork() throws TimeoutException, InterruptedException {
         initValidTemplatesJson(InAppAdNames.BANNER_SKADNETWORK);
 
@@ -99,7 +99,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
-//    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests-simulator"}, dataProvider = "randomAd", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestRandomAd(String prebidAd) throws TimeoutException, InterruptedException {
         initValidTemplatesJson(prebidAd);
         env.homePage.goToAd(prebidAd);
@@ -111,7 +111,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER CUSTOM TESTS
-//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestReload(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
