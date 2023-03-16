@@ -32,8 +32,6 @@
           "is_rewarded_inventory": 1,
           "storedrequest": {
             "id": "$VARIABLE"
-          },"storedauctionresponse": {
-            "id": "$VARIABLE"
           }
         }
       }
@@ -90,10 +88,7 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
       },
-
       "targeting": {
 
       }

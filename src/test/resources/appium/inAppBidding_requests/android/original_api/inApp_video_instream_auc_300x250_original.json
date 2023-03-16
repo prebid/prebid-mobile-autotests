@@ -23,9 +23,6 @@
         "prebid": {
           "storedrequest":{
             "id":"1001-1"
-          },
-          "storedauctionresponse":{
-            "id":"sample_video_response"
           }
         }
       }
@@ -72,20 +69,13 @@
 
   },
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
 
   "ext": {
     "prebid": {
       "storedrequest":{
         "id":"1001"
-      },
-      "storedauctionresponse":{
-        "id":"sample_video_response"
       },
       "cache": {
         "bids": {

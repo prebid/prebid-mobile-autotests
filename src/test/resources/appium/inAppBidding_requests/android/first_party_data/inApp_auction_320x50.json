@@ -49,9 +49,6 @@
   },
   "ext": {
     "prebid": {
-      "storedauctionresponse": {
-        "id": "response-prebid-banner-320-50"
-      },
       "storedrequest": {
         "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
@@ -83,9 +80,6 @@
       },
       "keywords": "$VARIABLE",
       "prebid": {
-        "storedauctionresponse": {
-          "id": "response-prebid-banner-320-50"
-        },
         "storedrequest": {
           "id": "$VARIABLE"
         }

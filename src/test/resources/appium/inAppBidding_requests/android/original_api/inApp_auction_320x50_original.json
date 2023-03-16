@@ -17,9 +17,6 @@
         "prebid": {
           "storedrequest": {
             "id": "imp-prebid-banner-320-50"
-          },
-          "storedauctionresponse": {
-            "id": "response-prebid-banner-320-50"
           }
         }
       }
@@ -54,7 +51,6 @@
     "ifa": "$VARIABLE",
     "osv": "$VARIABLE",
     "language": "$VARIABLE",
-    "ifa": "$VARIABLE",
     "carrier": "$VARIABLE",
     "mccmnc": "$VARIABLE",
     "h": 3040,
@@ -66,19 +62,12 @@
   "user": {
   },
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
   "ext": {
     "prebid": {
       "storedrequest": {
         "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
-      },
-      "storedauctionresponse": {
-        "id": "response-prebid-banner-320-50"
       },
       "targeting": {
       },

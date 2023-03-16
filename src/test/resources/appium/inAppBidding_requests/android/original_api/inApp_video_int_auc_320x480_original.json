@@ -13,10 +13,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-video-interstitial-320-480"
-          },
-          "storedauctionresponse":{
-            "id":"response-prebid-video-interstitial-320-480-original-api"
+            "id":"imp-prebid-video-interstitial-320-480-original-api"
           }
         }
       }
@@ -63,19 +60,12 @@
 
   },
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
   "ext": {
     "prebid": {
       "storedrequest":{
         "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
-      },
-      "storedauctionresponse":{
-        "id":"response-prebid-video-interstitial-320-480-original-api"
       },
       "cache":{
         "bids":{

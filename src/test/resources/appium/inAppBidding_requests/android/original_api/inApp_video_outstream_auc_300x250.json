@@ -12,10 +12,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-video-outstream"
-          },
-          "storedauctionresponse":{
-            "id":"response-prebid-video-outstream-original-api"
+            "id":"imp-prebid-video-outstream-original-api"
           }
         }
       }
@@ -62,19 +59,12 @@
 
   },
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
   "ext": {
     "prebid": {
       "storedrequest":{
         "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
-      },
-      "storedauctionresponse":{
-        "id":"response-prebid-video-outstream-original-api"
       },
       "cache": {
         "bids": {

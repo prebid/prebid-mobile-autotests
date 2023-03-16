@@ -17,8 +17,6 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
       },
       "cache": {
         "bids": {
@@ -37,10 +35,6 @@
   },
   "id": "$VARIABLE",
   "source": {
-    "ext":{
-      "omidpv":"$VARIABLE",
-      "omidpn":"Prebid"
-    },
     "tid": "$VARIABLE"
   },
   "imp": [
@@ -48,8 +42,6 @@
       "ext": {
         "prebid": {
           "storedrequest": {
-            "id": "$VARIABLE"
-          },"storedauctionresponse": {
             "id": "$VARIABLE"
           }
         }

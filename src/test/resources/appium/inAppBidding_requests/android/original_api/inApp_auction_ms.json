@@ -21,9 +21,6 @@
         "prebid": {
           "storedrequest":{
             "id":"imp-prebid-banner-multisize"
-          },
-          "storedauctionresponse":{
-            "id":"response-prebid-banner-multisize"
           }
         }
       }
@@ -57,7 +54,6 @@
     "model": "$VARIABLE",
     "os": "Android",
     "osv": "$VARIABLE",
-    "ifa": "$VARIABLE",
     "language": "$VARIABLE",
     "carrier": "$VARIABLE",
     "mccmnc": "$VARIABLE",
@@ -71,21 +67,13 @@
 
   },
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
   "ext": {
     "prebid": {
       "storedrequest":{
         "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
-      "storedauctionresponse":{
-        "id":"response-prebid-banner-multisize"
-      },
-
       "targeting": {
 
       },
