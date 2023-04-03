@@ -110,7 +110,7 @@ public class InAppBaseTest {
     public void initValidTemplatesJson(String prebidAd, RequestTemplate requestTemplate) {
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName, requestTemplate);
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || isOriginalAd(prebidAd)) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || InAppBiddingAdPageImpl.isOriginalAd(prebidAd)) {
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }
@@ -133,10 +133,6 @@ public class InAppBaseTest {
         } catch (NoSuchFieldException noSuchFieldException) {
             noSuchFieldException.printStackTrace();
         }
-    }
-
-    private boolean isOriginalAd(String prebidAd) {
-        return prebidAd.contains("Original");
     }
 
     private void setup(ITestContext itc, String prebidTestPlatform) throws IOException {

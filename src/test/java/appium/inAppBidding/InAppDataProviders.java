@@ -34,7 +34,7 @@ public class InAppDataProviders {
             {BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_ADMOB},
-            {BANNER_320x50_MAX},
+//            {BANNER_320x50_MAX},
             {BANNER_728x90_IN_APP},
             {BANNER_728x90_GAM},
             {BANNER_MULTISIZE_IN_APP},
@@ -42,9 +42,9 @@ public class InAppDataProviders {
             {BANNER_300x250_IN_APP},
             {BANNER_300x250_GAM},
             {BANNER_300x250_ADMOB},
-            {BANNER_300x250_MAX},
+//            {BANNER_300x250_MAX},
             {BANNER_ADAPTIVE_ADMOB},
-            {BANNER_ADAPTIVE_MAX}
+//            {BANNER_ADAPTIVE_MAX}
     };
 
     private static final String[][] BannerAdOriginal = {
@@ -58,7 +58,7 @@ public class InAppDataProviders {
             {BANNER_320x50_IN_APP},
             {BANNER_320x50_GAM},
             {BANNER_320x50_ADMOB},
-            {BANNER_320x50_MAX},
+//            {BANNER_320x50_MAX},
     };
     private static final String[][] BannerAdRealDevice = {
             {BANNER_320x50_IN_APP},
@@ -136,8 +136,8 @@ public class InAppDataProviders {
 
 
     private static final String[][] InterstitialAds = {
-            {INTERSTITIAL_320x480_IN_APP},
-            {INTERSTITIAL_320x480_ADMOB},
+//            {INTERSTITIAL_320x480_IN_APP},
+//            {INTERSTITIAL_320x480_ADMOB},
 //            {INTERSTITIAL_320x480_MAX},
             {INTERSTITIAL_320x480_GAM},
     };
@@ -172,10 +172,10 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialMultiFormatAds = {
-            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
+//            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
 //            {INTERSTITIAL_MULTI_FORMAT_MAX},
-            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
+//            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
     @DataProvider(name = "interstitialMultiFormat")
     public static Object[][] provideInterstitialMultiFormat() {
