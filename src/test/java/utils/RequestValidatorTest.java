@@ -20,12 +20,14 @@ public class RequestValidatorTest {
     @Test
     public void acjRequestValid_ReturnTrue() {
         JSONObject validAcjRequest = getJsonObjectFromFile("appium/custom_requests/acj_request_valid.json");
+        System.out.println(mModelAcjRequest);
         assertTrue(validAcjRequest, mModelAcjRequest);
     }
 
     @Test
     public void acjUpperLevelKeyMissing_ReturnFalse() {
         // missing "device" key
+        System.out.println(mModelAcjRequest);
         JSONObject acjRequestKeyMissing = getJsonObjectFromFile("appium/custom_requests/acj_request_missing_key.json");
         assertFalse(acjRequestKeyMissing, mModelAcjRequest, "Root JSON: key sets are not equal.\n" +
                 "Expected: [app, tmax, imp, device, user]\n" +
@@ -34,6 +36,7 @@ public class RequestValidatorTest {
 
     @Test
     public void acjNestedObjectKeyMissing_ReturnFalse() {
+        System.out.println(mModelAcjRequest);
         // missing "connectiontype" key
         JSONObject acjRequestNestedKeyMissing = getJsonObjectFromFile("appium/custom_requests/acj_request_missing_nested_key.json");
         assertFalse(acjRequestNestedKeyMissing, mModelAcjRequest, "device: key sets are not equal.\n" +
@@ -44,6 +47,7 @@ public class RequestValidatorTest {
     @Test
     public void acjInvalidUpperLevelValue_ReturnFalse() {
         // invalid tmax value
+        System.out.println(mModelAcjRequest);
         JSONObject acjRequestInvalidValue = getJsonObjectFromFile("appium/custom_requests/acj_request_invalid_value.json");
         assertFalse(acjRequestInvalidValue, mModelAcjRequest, "Content for \"tmax\" key is not matching. Expected: \"3000\", Actual: \"3001\"");
     }
@@ -51,6 +55,7 @@ public class RequestValidatorTest {
     @Test
     public void acjInvalidNestedObjectValue_ReturnFalse() {
         // invalid connectiontype value
+        System.out.println(mModelAcjRequest);
         JSONObject acjRequestInvalidNestedValue = getJsonObjectFromFile("appium/custom_requests/acj_request_invalid_nested_value.json");
         assertFalse(acjRequestInvalidNestedValue, mModelAcjRequest, "Content for \"connectiontype\" key is not matching. Expected: \"2\", Actual: \"3\"");
     }
@@ -58,6 +63,7 @@ public class RequestValidatorTest {
     @Test
     public void acjRedundantKeyPresent_ReturnFalse() {
         //redundant "key" key
+        System.out.println(mModelAcjRequest);
         JSONObject acjRequestRedundantKey = getJsonObjectFromFile("appium/custom_requests/acj_request_redundant_key.json");
         assertFalse(acjRequestRedundantKey, mModelAcjRequest, "Root JSON: key sets are not equal.\n" +
                 "Expected: [app, tmax, imp, device, user]\n" +
@@ -66,6 +72,7 @@ public class RequestValidatorTest {
 
     @Test
     public void vastRequestValid_ReturnTrue() {
+        System.out.println(mModelVastRequest);
         JSONObject validVastRequest = getJsonObjectFromFile("appium/custom_requests/vast_request_valid.json");
         assertTrue(validVastRequest, mModelVastRequest);
     }
@@ -73,6 +80,7 @@ public class RequestValidatorTest {
     @Test
     public void vastUpperLevelKeyMissing_ReturnFalse() {
         // missing "device" key
+        System.out.println(mModelVastRequest);
         JSONObject vastRequestKeyMissing = getJsonObjectFromFile("appium/custom_requests/vast_request_missing_key.json");
         assertFalse(vastRequestKeyMissing, mModelVastRequest, "Root JSON: key sets are not equal.\n" +
                 "Expected: [app, tmax, imp, device, user]\n" +
@@ -82,6 +90,7 @@ public class RequestValidatorTest {
     @Test
     public void vastNestedObjectKeyMissing_ReturnFalse() {
         // missing "connectiontype" key
+        System.out.println(mModelVastRequest);
         JSONObject vastRequestNestedKeyMissing = getJsonObjectFromFile("appium/custom_requests/vast_request_missing_nested_key.json");
         assertFalse(vastRequestNestedKeyMissing, mModelVastRequest, "device: key sets are not equal.\n" +
                 "Expected: [os, ifa, h, language, geo, lmt, carrier, osv, mccmnc, w, model, connectiontype, make]\n" +
@@ -91,6 +100,7 @@ public class RequestValidatorTest {
     @Test
     public void vastInvalidUpperLevelValue_ReturnFalse() {
         // invalid tmax value
+        System.out.println(mModelVastRequest);
         JSONObject vastRequestInvalidValue = getJsonObjectFromFile("appium/custom_requests/vast_request_invalid_value.json");
         assertFalse(vastRequestInvalidValue, mModelVastRequest, "Content for \"tmax\" key is not matching. Expected: \"3000\", Actual: \"3001\"");
     }
@@ -98,6 +108,7 @@ public class RequestValidatorTest {
     @Test
     public void vastInvalidNestedObjectValue_ReturnFalse() {
         // invalid connectiontype value
+        System.out.println(mModelVastRequest);
         JSONObject vastRequestInvalidNestedValue = getJsonObjectFromFile("appium/custom_requests/vast_request_invalid_nested_value.json");
         assertFalse(vastRequestInvalidNestedValue, mModelVastRequest, "Content for \"connectiontype\" key is not matching. Expected: \"2\", Actual: \"3\"");
     }
@@ -105,6 +116,7 @@ public class RequestValidatorTest {
     @Test
     public void vastRedundantKeyPresent_ReturnFalse() {
         //redundant "key" key
+        System.out.println(mModelVastRequest);
         JSONObject vastRequestRedundantKey = getJsonObjectFromFile("appium/custom_requests/vast_request_redundant_key.json");
         assertFalse(vastRequestRedundantKey, mModelVastRequest, "Root JSON: key sets are not equal.\n" +
                 "Expected: [app, tmax, imp, device, user]\n" +

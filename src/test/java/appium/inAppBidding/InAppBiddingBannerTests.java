@@ -333,7 +333,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         if (platformName.equalsIgnoreCase("iOS")) {
             scrollableBanner = InAppAdNames.BANNER_320x50_IN_APP_SCROLLABLE;
         } else {
-            scrollableBanner = "Scrollable";
+            scrollableBanner = InAppAdNames.BANNER_320x50_IN_APP_SCROLLABLE.replace("(In-App) [Scrollable]", "Scrollable (In-App)");
         }
 
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(scrollableBanner);

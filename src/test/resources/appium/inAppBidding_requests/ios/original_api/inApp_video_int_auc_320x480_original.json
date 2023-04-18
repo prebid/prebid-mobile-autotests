@@ -41,9 +41,6 @@
 
         }
       },
-      "storedauctionresponse":{
-        "id":"response-prebid-video-interstitial-320-480-original-api"
-      },
       "storedrequest":{
         "id":"0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
@@ -63,11 +60,8 @@
       "clickbrowser": 1,
       "ext": {
         "prebid": {
-          "storedauctionresponse":{
-            "id":"response-prebid-video-interstitial-320-480-original-api"
-          },
           "storedrequest":{
-            "id":"imp-prebid-video-interstitial-320-480"
+            "id":"imp-prebid-video-interstitial-320-480-original-api"
           }
         }
       },

@@ -82,6 +82,9 @@ public class InAppBiddingCustomRequestTests extends InAppBaseTest {
     public void testTCFv1(String testCase, Method method, ITestContext itc) throws TimeoutException, InterruptedException, IOException {
         isPlatformIOS = itc.getSuite().getXmlSuite().getParameter("prebidTestPlatform").equalsIgnoreCase("ios");
         setupEnvWithCommandLineArguments(method, itc, processArguments(testCase));
+        if (!testCase.contains("NO_GDPR_NO_CONSENT") && !isPlatformIOS) {
+            env.homePage.turnOffGDPRSwitcher();
+        }
         initValidRequestJsons(testCase);
         env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP);
         env.waitForEvent(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, 1, 50);

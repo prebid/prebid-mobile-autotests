@@ -43,8 +43,6 @@
       },
       "storedrequest": {
         "id": "$VARIABLE"
-      },"storedauctionresponse": {
-        "id": "$VARIABLE"
       },
       "targeting": {
       }
@@ -61,8 +59,6 @@
       "ext": {
         "prebid": {
           "storedrequest": {
-            "id": "$VARIABLE"
-          },"storedauctionresponse": {
             "id": "$VARIABLE"
           }
         }

@@ -39,9 +39,6 @@
         "vastxml": {
         }
       },
-      "storedauctionresponse": {
-        "id": "response-prebid-banner-728-90"
-      },
       "storedrequest": {
         "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
       },
@@ -68,9 +65,6 @@
       "clickbrowser": 1,
       "ext": {
         "prebid": {
-          "storedauctionresponse": {
-            "id": "response-prebid-banner-728-90"
-          },
           "storedrequest": {
             "id": "imp-prebid-banner-728-90"
           }

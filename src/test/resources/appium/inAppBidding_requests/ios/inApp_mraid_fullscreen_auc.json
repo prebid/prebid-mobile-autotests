@@ -64,7 +64,7 @@
           }
         }
       },
-      "clickbrowser": 0,
+      "clickbrowser": 1,
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "banner": {

@@ -67,4 +67,11 @@ public class InAppTemplates {
     final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_interstitial_320x480_with_ad_configuration.json";
     final static String RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_rewarded_320x480_with_ad_configuration.json";
 
+    final static String RESPONSE_TEMPLATE_BANNER = "appium/inAppBidding_responses/%s/inApp_banner_res.json";
+    final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_REWARDED = "appium/inAppBidding_responses/%s/inApp_video_rewarded_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM = "appium/inAppBidding_responses/%s/inApp_video_outstream_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_INSTREAM = "appium/inAppBidding_responses/%s/inApp_video_instream_res.json";
+
 }

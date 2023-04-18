@@ -44,8 +44,6 @@
       },
       "storedrequest": {
         "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
-      },"storedauctionresponse": {
-        "id": "response-prebid-banner-320-50"
       },
       "targeting": {
 
@@ -73,8 +71,6 @@
         "prebid": {
           "storedrequest": {
             "id": "imp-prebid-banner-320-50"
-          },"storedauctionresponse": {
-            "id": "response-prebid-banner-320-50"
           }
         }
       },

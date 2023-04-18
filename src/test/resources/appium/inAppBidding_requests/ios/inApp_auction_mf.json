@@ -17,11 +17,9 @@
     "prebid": {
       "storedrequest": {
         "id": "$VARIABLE"
-      },
-      "storedauctionresponse": {
+      },"storedauctionresponse": {
         "id": "$VARIABLE"
       },
-
       "targeting": {
       }
     }
@@ -69,13 +67,12 @@
         "prebid": {
           "storedrequest": {
             "id": "$VARIABLE"
-          },
-          "storedauctionresponse": {
+          }, "storedauctionresponse": {
             "id": "$VARIABLE"
           }
         }
       },
-      "clickbrowser": 0,
+      "clickbrowser": 1,
       "displaymanager": "prebid-mobile",
       "displaymanagerver": "$VARIABLE",
       "banner": {

@@ -41,9 +41,6 @@
 
         }
       },
-      "storedauctionresponse":{
-        "id":"sample_video_response"
-      },
       "storedrequest":{
         "id":"1001"
       },
@@ -63,9 +60,6 @@
       "clickbrowser": 1,
       "ext": {
         "prebid": {
-          "storedauctionresponse":{
-            "id":"sample_video_response"
-          },
           "storedrequest":{
             "id":"1001-1"
           }
