@@ -50,10 +50,10 @@ public class InAppDataProviders {
     };
 
     private static final String[][] BannerAdOriginal = {
-//            {BANNER_320x50_GAM_ORIGINAL},
-//            {BANNER_728x90_GAM_ORIGINAL},
-//            {BANNER_300x250_GAM_ORIGINAL},
-//            {BANNER_MULTISIZE_GAM_ORIGINAL},
+            {BANNER_320x50_GAM_ORIGINAL},
+            {BANNER_728x90_GAM_ORIGINAL},
+            {BANNER_300x250_GAM_ORIGINAL},
+            {BANNER_MULTISIZE_GAM_ORIGINAL},
             {BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT},
     };
 
@@ -182,11 +182,11 @@ public class InAppDataProviders {
     }
 
     private static final String[][] InterstitialMultiFormatAds = {
-//            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
+            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
 //            {INTERSTITIAL_MULTI_FORMAT_MAX},
-//            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
+            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
 
     @DataProvider(name = "interstitialMultiFormat")

@@ -19,6 +19,7 @@
         "id": "$VARIABLE"
       },
       "targeting": {
+        "includeformat": true
       }
     }
   },

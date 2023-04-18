@@ -204,7 +204,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
 
     }
 
-    @Test(groups = {"requests-simulator"}, dataProvider = "bannerOriginalAds", dataProviderClass = InAppDataProviders.class, priority = -1)
+    @Test(groups = {"requests-simulator"}, dataProvider = "bannerOriginalAds", dataProviderClass = InAppDataProviders.class)
     public void testBannerOriginalSession(String bannerAds) throws InterruptedException, TimeoutException {
         // RUN TEST SCENARIO
         initValidTemplatesJson(bannerAds);
