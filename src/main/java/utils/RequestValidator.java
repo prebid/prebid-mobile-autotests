@@ -1,10 +1,11 @@
 package utils;
 
+import appium.common.InAppTemplates;
+import appium.common.InAppTemplatesInit;
 import bmp.HarParser;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import net.lightbody.bmp.core.har.Har;
-import org.bouncycastle.cert.ocsp.Req;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.InvalidArgumentException;

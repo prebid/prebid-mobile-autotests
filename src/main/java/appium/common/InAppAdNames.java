@@ -16,6 +16,7 @@ public class InAppAdNames {
 
     public static final String BANNER_320x50_GAM = "Banner 320x50 (GAM) [OK, AppEvent]";
     public static final String BANNER_320x50_GAM_ORIGINAL = "Banner 320x50 (GAM Original) [OK, PUC]";
+    public static final String BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT = "Multiformat Banner (GAM Original) [OK, PUC]";
     public static final String BANNER_320x50_GAM_ORIGINAL_NO_SKADN = "Banner 320x50 (GAM Original) [NO SKAdN]";
     public static final String BANNER_320x50_GAM_VANILLA = "Banner 320x50 (GAM) [Vanilla Prebid Order]";
     public static final String BANNER_320x50_GAM_AD = "Banner 320x50 (GAM) [OK, GAM Ad]";
@@ -68,6 +69,7 @@ public class InAppAdNames {
 
     public static final String INTERSTITIAL_320x480_GAM = "Display Interstitial 320x480 (GAM) [OK, AppEvent]";
     public static final String INTERSTITIAL_320x480_GAM_ORIGINAL = "Display Interstitial 320x480 (GAM Original) [OK, PUC]";
+    public static final String INTERSTITIAL_320x480_MULTIFORMAT_ORIGINAL = "Multiformat Interstitial 320x480 (GAM Original) [OK, PUC]";
     public static final String INTERSTITIAL_320x480_MULTISIZE_GAM = "Display Interstitial Multisize (GAM) [OK, AppEvent]";
     public static final String INTERSTITIAL_MULTI_FORMAT_GAM = "Multiformat Interstitial 320x480 (GAM)";
     public static final String INTERSTITIAL_320x480_NO_BID_GAM = "Display Interstitial 320x480 (GAM) [noBids, GAM Ad]";

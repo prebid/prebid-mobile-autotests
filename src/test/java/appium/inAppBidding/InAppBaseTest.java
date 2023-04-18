@@ -16,7 +16,8 @@ import utils.RequestTemplate;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-import static appium.common.InAppTemplatesInit.*;
+import static appium.common.InAppTemplatesInit.getAuctionRequestTemplate;
+import static appium.common.InAppTemplatesInit.getAuctionResponseTemplate;
 
 public class InAppBaseTest {
     protected static InAppBiddingTestEnvironment env;
@@ -110,7 +111,14 @@ public class InAppBaseTest {
     public void initValidTemplatesJson(String prebidAd, RequestTemplate requestTemplate) {
         validAuctionRequest = getAuctionRequestTemplate(prebidAd, platformName, requestTemplate);
         System.out.println(prebidAd);
-        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || InAppBiddingAdPageImpl.isOriginalAd(prebidAd)) {
+        if (prebidAd.startsWith("Native") || prebidAd.startsWith("Banner Native") || InAppBiddingAdPageImpl.isOriginalAd(prebidAd) && !prebidAd.contains("Multiformat")) {
+            validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
+        }
+    }
+
+    public void setValidAuctionResponseForMultiformat(String prebidAd) {
+        if (prebidAd.contains("Multiformat")) {
+            env.setMultiformatAdConfig(InAppBiddingTestEnvironment.InAppBiddingEvents.AUCTION, prebidAd);
             validAuctionResponse = getAuctionResponseTemplate(prebidAd, platformName);
         }
     }

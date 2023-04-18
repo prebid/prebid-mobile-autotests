@@ -24,6 +24,7 @@ public class InAppTemplates {
 
     final static String TEMPLATE_BANNER_300x250 = "appium/inAppBidding_requests/%s/inApp_auction_300x250.json";
     final static String TEMPLATE_BANNER_300x250_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_300x250.json";
+    final static String TEMPLATE_BANNER_300x250_ORIGINAL_MF = "appium/inAppBidding_requests/%s/original_api/inApp_auction_300x250_mf.json";
     final static String TEMPLATE_BANNER_728x90 = "appium/inAppBidding_requests/%s/inApp_auction_728x90.json";
     final static String TEMPLATE_BANNER_728x90_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_728x90.json";
     final static String TEMPLATE_BANNER_MULTISIZE = "appium/inAppBidding_requests/%s/inApp_auction_ms.json";
@@ -32,6 +33,7 @@ public class InAppTemplates {
     final static String TEMPLATE_INTERSTITIAL_320x480 = "appium/inAppBidding_requests/%s/inApp_auction_320x480.json";
     final static String TEMPLATE_INTERSTITIAL_320x480_SKADN = "appium/inAppBidding_requests/%s/skadn/inApp_auction_320x480_skadn.json";
     final static String TEMPLATE_INTERSTITIAL_320x480_ORIGINAL = "appium/inAppBidding_requests/%s/original_api/inApp_auction_320x480_original.json";
+    final static String TEMPLATE_INTERSTITIAL_320x480_ORIGINAL_MF = "appium/inAppBidding_requests/%s/original_api/inApp_auction_320x480_mf.json";
     final static String TEMPLATE_INTERSTITIAL_320x480_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_320x480_real_device.json";
     final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT = "appium/inAppBidding_requests/%s/inApp_auction_mf.json";
     final static String TEMPLATE_INTERSTITIAL_MULTIFORMAT_REAL_DEVICE = "appium/inAppBidding_requests/%s/inApp_auction_mf_real_device.json";
@@ -68,10 +70,14 @@ public class InAppTemplates {
     final static String RESPONSE_TEMPLATE_VIDEO_REWARDED_AD_CONFIGURATION = "appium/inAppBidding_responses/inApp_video_rewarded_320x480_with_ad_configuration.json";
 
     final static String RESPONSE_TEMPLATE_BANNER = "appium/inAppBidding_responses/%s/inApp_banner_res.json";
-    final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res.json";
-    final static String RESPONSE_TEMPLATE_VIDEO_REWARDED = "appium/inAppBidding_responses/%s/inApp_video_rewarded_res.json";
-    final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM = "appium/inAppBidding_responses/%s/inApp_video_outstream_res.json";
-    final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res.json";
-    final static String RESPONSE_TEMPLATE_VIDEO_INSTREAM = "appium/inAppBidding_responses/%s/inApp_video_instream_res.json";
 
+    final static String RESPONSE_TEMPLATE_BANNER_MF = "appium/inAppBidding_responses/%s/inApp_banner_res_mf.json";
+    final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res.json";
+    final static String RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL_MF = "appium/inAppBidding_responses/%s/inApp_display_interstitial_res_mf.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_MF = "appium/inAppBidding_responses/%s/inApp_video_interstitial_res_mf.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_INSTREAM = "appium/inAppBidding_responses/%s/inApp_video_instream_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM = "appium/inAppBidding_responses/%s/inApp_video_outstream_res.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_OUTSTREAM_MF = "appium/inAppBidding_responses/%s/inApp_video_outstream_res_mf.json";
+    final static String RESPONSE_TEMPLATE_VIDEO_REWARDED = "appium/inAppBidding_responses/%s/inApp_video_rewarded_res.json";
 }

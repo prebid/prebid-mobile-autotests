@@ -200,15 +200,14 @@ public class InAppBiddingInterstitialTests extends InAppBaseTest {
         session.checkNoObstructions();
     }
 
-    @Test(groups = {"requests"})
-    public void testOriginalDisplayInterstitialSession() throws TimeoutException, InterruptedException {
-        initValidTemplatesJson(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL);
-        InAppBiddingAdPageImpl page = env.homePage.goToAd(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL);
+    @Test(groups = {"requests"}, dataProvider = "interstitialOriginalAds", dataProviderClass = InAppDataProviders.class)
+    public void testOriginalDisplayInterstitialSession(String prebidAd) throws TimeoutException, InterruptedException {
+        initValidTemplatesJson(prebidAd);
+        env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 5);
         env.validateEventRequest(InAppBiddingEvents.AUCTION, validAuctionRequest);
         env.validateEventResponse(InAppBiddingEvents.AUCTION, validAuctionResponse);
-
 
         initPrebidAdapter(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL, env);
         prebidAdapter.checkAdRequests();

@@ -8,18 +8,20 @@ import static appium.common.InAppAdNames.*;
 public class InAppDataProviders {
 
     private static final String[][] TCFv1Cases = {
-        {CUSTOM_TCF_NO_GDPR_NO_CONSENT},
-        {CUSTOM_TCF_GDPR0_NO_CONSENT},
-        {CUSTOM_TCF_GDPR1_CONSENT}
+            {CUSTOM_TCF_NO_GDPR_NO_CONSENT},
+            {CUSTOM_TCF_GDPR0_NO_CONSENT},
+            {CUSTOM_TCF_GDPR1_CONSENT}
     };
+
     // Without geo data
     @DataProvider(name = "adNamesWithAdditionalParams")
     public static Object[][] provideWithoutGeoRequests() {
         String[][] geoRequestsArray = new String[BannerAdWithCache.length + VideoInterstitial.length][];
-        System.arraycopy(BannerAdWithCache, 0, geoRequestsArray, 0, BannerAdWithCache.length-2);
-        System.arraycopy(VideoInterstitial, 0, geoRequestsArray, BannerAdWithCache.length, VideoInterstitial.length-2);
+        System.arraycopy(BannerAdWithCache, 0, geoRequestsArray, 0, BannerAdWithCache.length - 2);
+        System.arraycopy(VideoInterstitial, 0, geoRequestsArray, BannerAdWithCache.length, VideoInterstitial.length - 2);
         return geoRequestsArray;
     }
+
     //CUSTOM REQUESTS DATA
     @DataProvider(name = "TCFv1")
     public static Object[][] provideTCFv1Cases() {
@@ -48,10 +50,11 @@ public class InAppDataProviders {
     };
 
     private static final String[][] BannerAdOriginal = {
-            {BANNER_320x50_GAM_ORIGINAL},
-            {BANNER_728x90_GAM_ORIGINAL},
-            {BANNER_300x250_GAM_ORIGINAL},
-            {BANNER_MULTISIZE_GAM_ORIGINAL},
+//            {BANNER_320x50_GAM_ORIGINAL},
+//            {BANNER_728x90_GAM_ORIGINAL},
+//            {BANNER_300x250_GAM_ORIGINAL},
+//            {BANNER_MULTISIZE_GAM_ORIGINAL},
+            {BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT},
     };
 
     private static final String[][] BannerAdWithCache = {
@@ -136,8 +139,8 @@ public class InAppDataProviders {
 
 
     private static final String[][] InterstitialAds = {
-//            {INTERSTITIAL_320x480_IN_APP},
-//            {INTERSTITIAL_320x480_ADMOB},
+            {INTERSTITIAL_320x480_IN_APP},
+            {INTERSTITIAL_320x480_ADMOB},
 //            {INTERSTITIAL_320x480_MAX},
             {INTERSTITIAL_320x480_GAM},
     };
@@ -148,6 +151,13 @@ public class InAppDataProviders {
     }
 
 
+    @DataProvider(name = "interstitialOriginalAds")
+    public static Object[][] provideInterstitialOriginalAds() {
+        return new String[][]{
+                {INTERSTITIAL_320x480_GAM_ORIGINAL},
+                {INTERSTITIAL_320x480_MULTIFORMAT_ORIGINAL},
+        };
+    }
 
     private static final String[][] InterstitialRandom = {
             {INTERSTITIAL_320x480_GAM_RANDOM},
@@ -174,9 +184,11 @@ public class InAppDataProviders {
     private static final String[][] InterstitialMultiFormatAds = {
 //            {INTERSTITIAL_MULTI_FORMAT_IN_APP},
             {INTERSTITIAL_MULTI_FORMAT_GAM},
+            {INTERSTITIAL_MULTI_FORMAT_GAM},
 //            {INTERSTITIAL_MULTI_FORMAT_MAX},
 //            {INTERSTITIAL_MULTI_FORMAT_ADMOB}
     };
+
     @DataProvider(name = "interstitialMultiFormat")
     public static Object[][] provideInterstitialMultiFormat() {
         return InterstitialMultiFormatAds;
@@ -312,6 +324,7 @@ public class InAppDataProviders {
     public static Object[][] provideVideoAdRealDevice() {
         return VideoAdsRealDevice;
     }
+
     private static final String[][] VideoRandom = {
             {VIDEO_INTERSTITIAL_320x480_GAM_RANDOM},
             {VIDEO_INTERSTITIAL_320x480_ADMOB_RANDOM},
@@ -443,6 +456,7 @@ public class InAppDataProviders {
 //            {NATIVE_AD_MAX_NO_BIDS},
 
     };
+
     /* AD_NAME_TYPE*/
     @DataProvider(name = "nativeRequestAds")
     public static Object[][] provideNativeRequestAdsIos() {
@@ -515,4 +529,6 @@ public class InAppDataProviders {
     public static Object[][] provideFirstPartyDataAds() {
         return FirstPartyDataAds;
     }
+
+
 }
