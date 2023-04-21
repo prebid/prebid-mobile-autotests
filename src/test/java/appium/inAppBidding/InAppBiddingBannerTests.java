@@ -221,7 +221,8 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
             env.homePage.rotatePortrait();
         }
         initPrebidAdapter(bannerAds, env);
-//        prebidAdapter.checkAdRequests();
+        // Unstable check
+        // prebidAdapter.checkAdRequests();
         env.homePage.clickBack();
     }
 
