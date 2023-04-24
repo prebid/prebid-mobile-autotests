@@ -7,7 +7,6 @@ import utils.RequestTemplate;
 import java.util.HashMap;
 
 public class InAppTemplatesInit {
-
     public static JSONObject getAuctionRequestTemplate(String prebidAd, String platformName, RequestTemplate requestTemplate) {
         String filePath = getFilePathAuctionRequest(prebidAd, platformName, requestTemplate);
         System.out.println("TEMPLATE PATH IS ==> " + filePath + "\n");
@@ -27,6 +26,17 @@ public class InAppTemplatesInit {
         System.out.println("RESPONSE TEMPLATE PATH IS ==> " + filePath + "\n");
         final String testJSON = FileUtils.getJsonStringFromResourceFile(filePath);
         return new JSONObject(testJSON);
+    }
+
+    public static void setOriginalApiMultiformatResponseTemplate(String multiformatAd, String config) {
+        switch (multiformatAd) {
+            case InAppAdNames.BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT:
+               responseTemplates.put(InAppAdNames.BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT, config.contains("video") ? InAppTemplates.RESPONSE_TEMPLATE_VIDEO_OUTSTREAM_MF : InAppTemplates.RESPONSE_TEMPLATE_BANNER_MF);
+               break;
+            case InAppAdNames.INTERSTITIAL_320x480_MULTIFORMAT_ORIGINAL:
+                responseTemplates.put(InAppAdNames.INTERSTITIAL_320x480_MULTIFORMAT_ORIGINAL, config.contains("video") ? InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL_MF : InAppTemplates.RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL_MF);
+                break;
+        }
     }
 
     private static String getFilePathAuctionRequest(String prebidAd, String platformName, RequestTemplate requestTemplate) {
@@ -76,6 +86,7 @@ public class InAppTemplatesInit {
         put(InAppAdNames.BANNER_300x250_IN_APP, InAppTemplates.TEMPLATE_BANNER_300x250);
         put(InAppAdNames.BANNER_300x250_GAM, InAppTemplates.TEMPLATE_BANNER_300x250);
         put(InAppAdNames.BANNER_300x250_GAM_ORIGINAL, InAppTemplates.TEMPLATE_BANNER_300x250_ORIGINAL);
+        put(InAppAdNames.BANNER_300x250_GAM_ORIGINAL_MULTIFORMAT, InAppTemplates.TEMPLATE_BANNER_300x250_ORIGINAL_MF);
         put(InAppAdNames.BANNER_300x250_ADMOB, InAppTemplates.TEMPLATE_BANNER_300x250);
         put(InAppAdNames.BANNER_300x250_MAX, InAppTemplates.TEMPLATE_BANNER_300x250);
         put(InAppAdNames.BANNER_ADAPTIVE_ADMOB, InAppTemplates.TEMPLATE_BANNER_MULTISIZE);
@@ -106,6 +117,7 @@ public class InAppTemplatesInit {
         put(InAppAdNames.INTERSTITIAL_320x480_IN_APP_SKADN, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_SKADN);
         put(InAppAdNames.INTERSTITIAL_320x480_GAM, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
         put(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_ORIGINAL);
+        put(InAppAdNames.INTERSTITIAL_320x480_MULTIFORMAT_ORIGINAL, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480_ORIGINAL_MF);
         put(InAppAdNames.INTERSTITIAL_320x480_ADMOB, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
         put(InAppAdNames.INTERSTITIAL_320x480_MAX, InAppTemplates.TEMPLATE_INTERSTITIAL_320x480);
 
@@ -294,6 +306,14 @@ public class InAppTemplatesInit {
         put(InAppAdNames.NATIVE_AD_ADMOB, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
         put(InAppAdNames.NATIVE_AD_ADMOB_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
         put(InAppAdNames.NATIVE_AD_ADMOB_GAD_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
+
+
+        put(InAppAdNames.BANNER_320x50_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_BANNER);
+        put(InAppAdNames.INTERSTITIAL_320x480_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_DISPLAY_INTERSTITIAL);
+        put(InAppAdNames.VIDEO_INSTREAM_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INSTREAM);
+        put(InAppAdNames.VIDEO_OUTSTREAM_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_OUTSTREAM);
+        put(InAppAdNames.VIDEO_INTERSTITIAL_320x480_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_INTERSTITIAL);
+        put(InAppAdNames.VIDEO_REWARDED_320x480_GAM_ORIGINAL, InAppTemplates.RESPONSE_TEMPLATE_VIDEO_REWARDED);
 
         put(InAppAdNames.NATIVE_AD_MAX, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);
         put(InAppAdNames.NATIVE_AD_MAX_NO_BIDS, InAppTemplates.RESPONSE_TEMPLATE_NATIVE);

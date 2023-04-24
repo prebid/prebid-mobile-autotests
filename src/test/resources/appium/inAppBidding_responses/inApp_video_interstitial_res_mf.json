@@ -23,6 +23,8 @@
             "hb_size_openx": "375x667",
             "hb_cache_path_openx": "/cache",
             "hb_pb": "0.10",
+            "hb_format":"$VARIABLE",
+            "hb_format_openx":"$VARIABLE",
             "hb_env_openx": "mobile-app",
             "hb_cache_path": "/cache",
             "hb_uuid": "$VARIABLE",

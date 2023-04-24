@@ -1,0 +1,100 @@
+{
+  "app": {
+    "ext": {
+      "prebid": {
+        "source": "prebid-mobile",
+        "version": "$VARIABLE"
+      }
+    },
+    "ver": "$VARIABLE",
+    "name": "$CONFIG_APP_NAME",
+    "publisher": {
+      "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+    },
+    "bundle": "$VARIABLE"
+  },
+  "device": {
+    "ext": {
+      "atts": 0,
+      "ifv": "$VARIABLE",
+      "prebid": {
+        "interstitial": {
+          "minheightperc": 70,
+          "minwidthperc": 50
+        }
+      }
+    },
+    "os": "iOS",
+    "ifa": "00000000-0000-0000-0000-000000000000",
+    "h": 896,
+    "language": "$VARIABLE",
+    "ua": "$VARIABLE",
+
+    "pxratio": "$VARIABLE",
+    "lmt": 1,
+    "osv": "$VARIABLE",
+    "w": 414,
+    "model": "iPhone",
+    "connectiontype": "$VARIABLE",
+    "make": "Apple"
+  },
+  "ext": {
+    "prebid": {
+      "cache": {
+        "bids": {},
+        "vastxml": {}
+      },
+      "storedrequest": {
+        "id": "0689a263-318d-448b-a3d4-b02e8a709d9d"
+      },
+      "targeting": {
+        "includeformat": true
+      }
+    }
+  },
+  "id": "$VARIABLE",
+  "imp": [
+    {
+      "banner": {
+        "format": [
+          {
+            "h": 896,
+            "w": 414
+          }
+        ],
+        "pos": 7
+      },
+      "clickbrowser": 1,
+      "ext": {
+        "prebid": {
+          "storedrequest": {
+            "id": "$VARIABLE"
+          }
+        }
+      },
+      "id": "$VARIABLE",
+      "instl": 1,
+      "secure": 1,
+      "video": {
+        "delivery": [
+          3
+        ],
+        "h": 896,
+        "mimes": [
+          "video\/mp4"
+        ],
+        "placement": 5,
+        "pos": 7,
+        "w": 414
+      }
+    }
+  ],
+  "regs": {
+    "ext": {
+      "gdpr": 0
+    }
+  },
+  "source": {
+    "tid": "$VARIABLE"
+  }
+}

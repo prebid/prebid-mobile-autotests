@@ -3,6 +3,7 @@ package appium.common;
 import appium.pages.inAppBidding.InAppBiddingHomePageImpl;
 import appium.pages.inAppBidding.android.InAppBiddingHomePageAndroid;
 import appium.pages.inAppBidding.ios.InAppBiddingHomePageIOS;
+import bmp.HarParser;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import net.lightbody.bmp.proxy.CaptureType;
@@ -10,7 +11,6 @@ import org.json.JSONObject;
 import org.openqa.selenium.Platform;
 import org.testng.ITestContext;
 import utils.RequestValidator;
-import utils.TemplatesValidator;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,11 +105,11 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_WILL_LEAVE_APP, "willLeaveApplication called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.AD_CONTROLLER_FOR_PRESENTING_MODAL_VIEW, "viewControllerForPresentingModalView called");
 
-        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_CLICK,"adDidRecordClick called");
-        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_IMPRESSION,"adDidRecordImpression called");
-        inAppBidding_Delegates_iOS.put(AD_WILL_PRESENT_FULL_SCREEN_CONTENT,"adWillPresentFullScreenContent called");
-        inAppBidding_Delegates_iOS.put(AD_WILL_DISMISS_FULL_SCREEN_CONTENT,"adWillDismissFullScreenContent called");
-        inAppBidding_Delegates_iOS.put(AD_DID_DISMISS_FULL_SCREEN_CONTENT,"adDidDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_CLICK, "adDidRecordClick called");
+        inAppBidding_Delegates_iOS.put(AD_DID_RECORD_IMPRESSION, "adDidRecordImpression called");
+        inAppBidding_Delegates_iOS.put(AD_WILL_PRESENT_FULL_SCREEN_CONTENT, "adWillPresentFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(AD_WILL_DISMISS_FULL_SCREEN_CONTENT, "adWillDismissFullScreenContent called");
+        inAppBidding_Delegates_iOS.put(AD_DID_DISMISS_FULL_SCREEN_CONTENT, "adDidDismissFullScreenContent called");
 
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_LOAD, "interstitialDidLoadAd called");
         inAppBidding_Delegates_iOS.put(InAppBiddingDelegates.INTERSTITIAL_DID_FAIL, "interstitialDidFail called");
@@ -530,6 +530,13 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
             res = inAppBidding_Delegates_Android.get(delegate);
         }
         return res;
+    }
+
+    public void setMultiformatAdConfig(InAppBiddingEvents event, String ad) {
+        String inAppBiddingEvent_value = getEvent(event);
+        JSONObject sentObject = HarParser.getRequestPostDataTextJson(bmp.getHar(), inAppBiddingEvent_value);
+        String config = sentObject.getJSONArray("imp").getJSONObject(0).getJSONObject("ext").getJSONObject("prebid").getJSONObject("storedrequest").getString("id");
+        InAppTemplatesInit.setOriginalApiMultiformatResponseTemplate(ad, config);
     }
 
     public void validateEventRequest(InAppBiddingEvents event, JSONObject jsonValidTemplate) {
