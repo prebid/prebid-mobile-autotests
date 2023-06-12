@@ -57,7 +57,7 @@
       "ext": {
         "prebid": {
           "storedrequest": {
-            "id": "imp-prebid-banner-native-styles"
+            "id": "$VARIABLE"
           }
         }
       },
