@@ -8,47 +8,47 @@
 	<parameter name="prebidServerKind" value="Prebid"/>
 
 	<!-- Run with enabled mac proxy for BMP -->
-<!--	<test verbose="3" name="InApp_Bidding iOS Custom Requests">-->
-<!--		<groups>-->
-<!--			<run>-->
-<!--				<include name="USPrivacy"/>-->
-<!--				<include name="TCFv1"/>-->
-<!--				<include name="CustomOpenRTB"/>-->
-<!--				<include name="FirstPartyData"/>-->
-<!--				<include name="LiveRampATS"/>-->
-<!--				<include name="Gpp"/>-->
-<!--			</run>-->
-<!--		</groups>-->
-<!--		<classes>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>-->
-<!--		</classes>-->
-<!--	</test>-->
-<!--	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke]">-->
-<!--		<groups>-->
-<!--			<run>-->
-<!--				<include name="ios"/>-->
-<!--				<include name="smoke"/>-->
-<!--			</run>-->
-<!--		</groups>-->
-<!--		<classes>-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>&ndash;&gt;-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>&ndash;&gt;-->
-<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>&ndash;&gt;-->
-<!--			&lt;!&ndash;	Not stable		&ndash;&gt;-->
-<!--&lt;!&ndash;			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>&ndash;&gt;-->
-<!--		</classes>-->
-<!--	</test>-->
-<!--	<test verbose="3" name="InApp_Bidding iOS SKAdN Requests [Auction, OpenRTB]">-->
-<!--		<groups>-->
-<!--			<run>-->
-<!--				<include name="requests-skadn"/>-->
-<!--			</run>-->
-<!--		</groups>-->
-<!--		<classes>-->
-<!--			<class name="appium.inAppBidding.InAppSkadnTests"/>-->
-<!--		</classes>-->
-<!--	</test>-->
+	<test verbose="3" name="InApp_Bidding iOS Custom Requests">
+		<groups>
+			<run>
+				<include name="USPrivacy"/>
+				<include name="TCFv1"/>
+				<include name="CustomOpenRTB"/>
+				<include name="FirstPartyData"/>
+				<include name="LiveRampATS"/>
+				<include name="Gpp"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="appium.inAppBidding.InAppBiddingCustomRequestTests"/>
+		</classes>
+	</test>
+	<test verbose="3" name="InApp_Bidding iOS Smoke [Smoke]">
+		<groups>
+			<run>
+				<include name="ios"/>
+				<include name="smoke"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
+			<!--	Not stable		-->
+			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
+		</classes>
+	</test>
+	<test verbose="3" name="InApp_Bidding iOS SKAdN Requests [Auction, OpenRTB]">
+		<groups>
+			<run>
+				<include name="requests-skadn"/>
+			</run>
+		</groups>
+		<classes>
+			<class name="appium.inAppBidding.InAppSkadnTests"/>
+		</classes>
+	</test>
 	<test verbose="3" name="InApp_Bidding iOS Requests [OM, Auction, Events, OpenRTB]">
 		<groups>
 			<run>
@@ -59,9 +59,9 @@
 			</run>
 		</groups>
 		<classes>
-<!--			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>-->
-<!--			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>-->
+			<class name="appium.inAppBidding.InAppBiddingNativeTests"/>
+			<class name="appium.inAppBidding.InAppBiddingInterstitialTests"/>
+			<class name="appium.inAppBidding.InAppBiddingBannerTests"/>
 			<class name="appium.inAppBidding.InAppBiddingMraidTests"/>
 			<class name="appium.inAppBidding.InAppBiddingVideoTests"/>
 		</classes>
