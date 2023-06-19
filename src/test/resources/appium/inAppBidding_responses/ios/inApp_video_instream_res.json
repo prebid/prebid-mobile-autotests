@@ -54,6 +54,8 @@
     "responsetimemillis": {
       "cache": "$VARIABLE",
       "rubicon": "$VARIABLE"
+    },"warnings":{
+      "prebid": "$VARIABLE"
     },
     "tmaxrequest": "$VARIABLE",
     "prebid": {

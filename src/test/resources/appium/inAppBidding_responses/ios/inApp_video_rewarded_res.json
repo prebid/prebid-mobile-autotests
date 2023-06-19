@@ -19,14 +19,14 @@
             "hb_cache_id": "$VARIABLE",
             "hb_cache_id_openx": "$VARIABLE",
             "hb_size_openx": "414x896",
-            "hb_cache_path_openx": "/cache",
+            "hb_cache_path_prebid": "/cache",
             "hb_pb": "0.10",
-            "hb_env_openx": "mobile-app",
+            "hb_env_prebid": "mobile-app",
             "hb_cache_path": "/cache",
             "hb_uuid": "$VARIABLE",
             "hb_size": "414x896",
             "hb_bidder": "openx",
-            "hb_pb_openx": "0.10",
+            "hb_pb_prebid": "0.10",
             "hb_cache_host": "prebid-server-test-j.prebid.org",
             "hb_cache_host_openx": "prebid-server-test-j.prebid.org"
           },
@@ -52,9 +52,11 @@
   "ext": {
     "responsetimemillis": {
       "cache": "$VARIABLE",
-      "openx": "$VARIABLE"
+      "prebid": "$VARIABLE"
     },
-    "tmaxrequest": "$VARIABLE",
+    "tmaxrequest": "$VARIABLE","warnings":{
+      "prebid": "$VARIABLE"
+    },
     "prebid": {
       "auctiontimestamp": "$VARIABLE"
     }

@@ -51,6 +51,8 @@
     "responsetimemillis":{
       "cache":"$VARIABLE",
       "openx":"$VARIABLE"
+    },"warnings":{
+      "prebid": "$VARIABLE"
     },
     "tmaxrequest":"$VARIABLE",
     "prebid":{

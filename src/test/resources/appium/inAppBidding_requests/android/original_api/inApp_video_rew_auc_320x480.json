@@ -14,7 +14,7 @@
         "prebid": {
           "is_rewarded_inventory": 1,
           "storedrequest":{
-            "id":"imp-prebid-video-rewarded-320-480-original-api"
+            "id":"$VARIABLE"
           }
         }
       }

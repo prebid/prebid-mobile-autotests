@@ -103,11 +103,7 @@
     }
   ],
   "source": {
-    "tid": "$VARIABLE",
-    "ext": {
-      "omidpv": "$VARIABLE",
-      "omidpn": "Prebid"
-    }
+    "tid": "$VARIABLE"
   },
   "user": {
     "keywords": "$VARIABLE",

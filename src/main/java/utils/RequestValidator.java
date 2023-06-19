@@ -149,6 +149,7 @@ public class RequestValidator {
             throw new InvalidArgumentException("Passed Har is null");
         }
         JSONObject sentJson = HarParser.getResponseTextJson(harLog, event);
+        System.out.println("Sent response json: " + sentJson);
         boolean checkResult;
         String errorMessage = null;
         try {

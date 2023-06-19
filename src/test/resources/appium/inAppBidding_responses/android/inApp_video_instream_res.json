@@ -55,7 +55,9 @@
       "cache": "$VARIABLE",
       "rubicon": "$VARIABLE"
     },
-    "tmaxrequest": "$VARIABLE",
+    "tmaxrequest": "$VARIABLE","warnings":{
+      "prebid": "$VARIABLE"
+    },
     "prebid": {
       "auctiontimestamp": "$VARIABLE"
     }
