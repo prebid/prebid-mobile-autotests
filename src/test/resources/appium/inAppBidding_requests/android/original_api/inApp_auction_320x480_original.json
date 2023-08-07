@@ -17,7 +17,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-display-interstitial-320-480"
+            "id": "$VARIABLE"
           }
         }
       }

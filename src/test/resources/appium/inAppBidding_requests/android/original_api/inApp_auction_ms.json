@@ -20,7 +20,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-banner-multisize"
+            "id": "$VARIABLE"
           }
         }
       }

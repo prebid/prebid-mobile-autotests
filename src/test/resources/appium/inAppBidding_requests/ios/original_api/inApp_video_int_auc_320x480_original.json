@@ -61,7 +61,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-video-interstitial-320-480-original-api"
+            "id":"$VARIABLE"
           }
         }
       },

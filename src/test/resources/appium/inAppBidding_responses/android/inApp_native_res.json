@@ -19,17 +19,17 @@
               },
               "targeting": {
                 "hb_bidder": "$VARIABLE",
-                "hb_bidder_openx": "$VARIABLE",
+                "hb_bidder_prebid": "$VARIABLE",
                 "hb_cache_host": "$VARIABLE",
-                "hb_cache_host_openx": "$VARIABLE",
+                "hb_cache_host_prebid": "$VARIABLE",
                 "hb_cache_id": "$VARIABLE",
-                "hb_cache_id_openx": "$VARIABLE",
+                "hb_cache_id_prebid": "$VARIABLE",
                 "hb_cache_path": "$VARIABLE",
-                "hb_cache_path_openx": "$VARIABLE",
+                "hb_cache_path_prebid": "$VARIABLE",
                 "hb_env": "$VARIABLE",
-                "hb_env_openx": "$VARIABLE",
+                "hb_env_prebid": "$VARIABLE",
                 "hb_pb": "$VARIABLE",
-                "hb_pb_openx": "$VARIABLE",
+                "hb_pb_prebid": "$VARIABLE",
               },
               "type": "native"
             },
@@ -46,7 +46,10 @@
   "ext": {
     "responsetimemillis": {
       "cache":"$VARIABLE",
-      "openx":"$VARIABLE"
+      "prebid":"$VARIABLE"
+    },
+    "warnings":{
+      "prebid": "$VARIABLE"
     },
     "tmaxrequest":"$VARIABLE",
     "prebid":{

@@ -5,7 +5,7 @@
       "id": "$VARIABLE",
       "impid": "$VARIABLE",
       "price": 0.15,
-      "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"2.0\"><Ad id=\"TestAd\"><InLine><AdSystem>Rubicon Project</AdSystem><AdTitle>VAST 2.0 Linear Ad</AdTitle><Error><![CDATA[http://myErrorURL/error]]></Error><Impression><![CDATA[]]></Impression><Impression><![CDATA[https://prebid-server-test-j.prebid.org/events/v/1.0/rc?ts=1]]></Impression><Creatives><Creative id=\"2014\" AdID=\"20150911\" sequence=\"1\"><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking><Tracking event=\"start\"><![CDATA[]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[]]></Tracking><Tracking event=\"midpoint\"><![CDATA[]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[]]></Tracking><Tracking event=\"complete\"><![CDATA[]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://iwanttoberecycled.org/]]></ClickThrough><ClickTracking><![CDATA[]]></ClickTracking></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" bitrate=\"348\" width=\"320\" height=\"180\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"381\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"553\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"983\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile></MediaFiles></Linear></Creative><Creative AdID=\"TestAd-Companion\"><CompanionAds><Companion width=\"320\" height=\"480\"><StaticResource creativeType=\"image/jpeg\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/interstitial/Pbs_intestitial_320x480.png]]></StaticResource><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking></TrackingEvents><CompanionClickThrough><![CDATA[https://www.openx.com/]]></CompanionClickThrough></Companion></CompanionAds></Creative></Creatives></InLine></Ad></VAST>",
+      "adm": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><VAST version=\"2.0\"><Ad id=\"TestAd\"><InLine><AdSystem>Rubicon Project</AdSystem><AdTitle>VAST 2.0 Linear Ad</AdTitle><Error><![CDATA[http://myErrorURL/error]]></Error><Impression><![CDATA[]]></Impression><Impression><![CDATA[https://prebid-server-test-j.prebid.org/events/v/1.0/rc?ts=1]]></Impression><Creatives><Creative id=\"2014\" AdID=\"20150911\" sequence=\"1\"><Linear><Duration>00:00:15</Duration><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking><Tracking event=\"start\"><![CDATA[]]></Tracking><Tracking event=\"firstQuartile\"><![CDATA[]]></Tracking><Tracking event=\"midpoint\"><![CDATA[]]></Tracking><Tracking event=\"thirdQuartile\"><![CDATA[]]></Tracking><Tracking event=\"complete\"><![CDATA[]]></Tracking></TrackingEvents><VideoClicks><ClickThrough><![CDATA[http://iwanttoberecycled.org/]]></ClickThrough><ClickTracking><![CDATA[]]></ClickTracking></VideoClicks><MediaFiles><MediaFile delivery=\"progressive\" bitrate=\"348\" width=\"320\" height=\"180\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"381\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"553\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile><MediaFile delivery=\"progressive\" bitrate=\"983\" width=\"620\" height=\"360\" type=\"video/mp4\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/video/Pbs_video_rewarded_320x480.mp4]]></MediaFile></MediaFiles></Linear></Creative><Creative AdID=\"TestAd-Companion\"><CompanionAds><Companion width=\"320\" height=\"480\"><StaticResource creativeType=\"image/jpeg\"><![CDATA[https://prebid-mobile-ad-assets.s3.amazonaws.com/interstitial/Pbs_intestitial_320x480.png]]></StaticResource><TrackingEvents><Tracking event=\"creativeView\"><![CDATA[]]></Tracking></TrackingEvents><CompanionClickThrough><![CDATA[https://www.prebid.com/]]></CompanionClickThrough></Companion></CompanionAds></Creative></Creatives></InLine></Ad></VAST>",
       "crid": "$VARIABLE",
       "w": 414,
       "h": 896,
@@ -14,21 +14,21 @@
           "type": "video",
           "targeting": {
             "hb_env": "mobile-app",
-            "hb_uuid_openx": "$VARIABLE",
-            "hb_bidder_openx": "openx",
+            "hb_uuid_prebid": "$VARIABLE",
+            "hb_bidder_prebid": "prebid",
             "hb_cache_id": "$VARIABLE",
-            "hb_cache_id_openx": "$VARIABLE",
-            "hb_size_openx": "414x896",
-            "hb_cache_path_openx": "/cache",
+            "hb_cache_id_prebid": "$VARIABLE",
+            "hb_size_prebid": "414x896",
+            "hb_cache_path_prebid": "/cache",
             "hb_pb": "0.10",
-            "hb_env_openx": "mobile-app",
+            "hb_env_prebid": "mobile-app",
             "hb_cache_path": "/cache",
             "hb_uuid": "$VARIABLE",
             "hb_size": "414x896",
-            "hb_bidder": "openx",
-            "hb_pb_openx": "0.10",
+            "hb_bidder": "prebid",
+            "hb_pb_prebid": "0.10",
             "hb_cache_host": "prebid-server-test-j.prebid.org",
-            "hb_cache_host_openx": "prebid-server-test-j.prebid.org"
+            "hb_cache_host_prebid": "prebid-server-test-j.prebid.org"
           },
           "cache": {
             "bids": {
@@ -45,16 +45,18 @@
         "origbidcur": "USD"
       }
     }],
-    "seat": "openx",
+    "seat": "prebid",
     "group": 0
   }],
   "cur": "USD",
   "ext": {
     "responsetimemillis": {
       "cache": "$VARIABLE",
-      "openx": "$VARIABLE"
+      "prebid": "$VARIABLE"
     },
-    "tmaxrequest": "$VARIABLE",
+    "tmaxrequest": "$VARIABLE","warnings":{
+      "prebid": "$VARIABLE"
+    },
     "prebid": {
       "auctiontimestamp": "$VARIABLE"
     }

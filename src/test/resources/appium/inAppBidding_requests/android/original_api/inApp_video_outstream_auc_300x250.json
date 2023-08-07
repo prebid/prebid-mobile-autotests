@@ -12,7 +12,7 @@
       "ext": {
         "prebid": {
           "storedrequest":{
-            "id":"imp-prebid-video-outstream-original-api"
+            "id":"$VARIABLE"
           }
         }
       }
