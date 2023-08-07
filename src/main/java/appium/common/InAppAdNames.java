@@ -4,6 +4,7 @@ public class InAppAdNames {
     private InAppAdNames(){}
     //IN APP BIDDING
     public static final String BANNER_320x50_IN_APP = "Banner 320x50 (In-App)";
+    public static final String BANNER_320x50_IN_APP_SYMBOLS = "Banner 320x50 Special Symbols (In-App)";
     public static final String BANNER_320x50_NO_BID_IN_APP = "Banner 320x50 (In-App) [noBids]";
     public static final String BANNER_320x50_IN_APP_ATS = "Banner 320x50 (In-App) ATS";
     public static final String BANNER_320x50_IN_APP_VAST = "Banner 320x50 (In-App) [Incorrect VAST]";
