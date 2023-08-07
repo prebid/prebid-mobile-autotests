@@ -45,6 +45,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         inAppBidding_Events.put(InAppBiddingEvents.AUCTION, "/openrtb2/auction");
         inAppBidding_Events.put(InAppBiddingEvents.CACHE_EVENT, "/cache?uuid=");
         inAppBidding_Events.put(InAppBiddingEvents.IMPRESSION, "/events/tracker/impression");
+        inAppBidding_Events.put(InAppBiddingEvents.CLICKTRACKER, "/events/click/root/url");
         inAppBidding_Events.put(InAppBiddingEvents.MRC50, "/events/tracker/mrc50");
         inAppBidding_Events.put(InAppBiddingEvents.MRC100, "/events/tracker/mrc100");
         inAppBidding_Events.put(InAppBiddingEvents.CLICK_ROOT_URL, "/events/click/root/url");
@@ -404,7 +405,7 @@ public class InAppBiddingTestEnvironment extends TestEnvironment {
         MAX_MIMP,
         MAX_CIMP,
 
-        CACHE_EVENT
+        CLICKTRACKER, CACHE_EVENT
     }
 
     public InAppBiddingHomePageImpl homePage;

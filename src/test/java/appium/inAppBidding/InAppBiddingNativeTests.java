@@ -116,23 +116,25 @@ public class InAppBiddingNativeTests extends InAppBaseTest {
     }
 
     @Test(groups = {"ios"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException {
+    public void testNativeAdsiOSDelegates(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
         initPrebidAdapter(prebidAd, env, nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
+        env.waitForEvent(InAppBiddingEvents.CLICKTRACKER, 1, 60);
         env.homePage.clickBack();
 
     }
 
     @Test(groups = {"android"}, dataProvider = "nativeAds", dataProviderClass = InAppDataProviders.class)
-    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException {
+    public void testNativeAdsAndroidDelegates(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
         InAppBiddingAdPageImpl nativePage = env.homePage.goToAd(prebidAd);
         initPrebidAdapter(prebidAd, env, nativePage);
         prebidAdapter.checkNativeAdsDelegates(prebidAd);
+        env.waitForEvent(InAppBiddingEvents.CLICKTRACKER, 1, 60);
         env.homePage.clickBack();
 
     }
