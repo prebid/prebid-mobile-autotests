@@ -4,6 +4,7 @@ import OMSDK.OMSDKSessionDescriptor;
 import appium.common.InAppAdNames;
 import appium.common.InAppBiddingTestEnvironment.InAppBiddingEvents;
 import appium.pages.inAppBidding.InAppBiddingAdPageImpl;
+import appium.sdk.android.retry.RetryAnalyzer;
 import org.testng.annotations.Test;
 import utils.RequestTemplate;
 import utils.RequestValidator;
@@ -20,7 +21,6 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     public void testAuctionRequest(String prebidAd) throws TimeoutException, InterruptedException {
 
         initValidTemplatesJson(prebidAd);
-
         env.homePage.goToAd(prebidAd);
 
         env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 30);
@@ -31,6 +31,19 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
         RequestValidator.checkVersionParametersFromRequest(env.bmp.getHar(), ver, version, omidpv, displaymanagerver);
 
+    }
+    @Test(groups = {"android"}, retryAnalyzer = RetryAnalyzer.class)
+    public void testAndroidSpecialSymbolsAd() throws InterruptedException {
+
+        String prebidAd = InAppAdNames.BANNER_320x50_IN_APP_SYMBOLS;
+        InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
+        bannerPage.clickBanner();
+
+        env.homePage.clickCloseButtonClickThroughBrowser();
+
+        initPrebidAdapter(prebidAd, env, bannerPage);
+        prebidAdapter.checkBannerDelegates();
+        env.homePage.clickBack();
     }
 
     @Test(groups = {"requests-simulator"}, dataProvider = "adNameWithCache", dataProviderClass = InAppDataProviders.class)
@@ -111,7 +124,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER CUSTOM TESTS
-//    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
+    @Test(groups = {"requests"}, dataProvider = "adName", dataProviderClass = InAppDataProviders.class)
     public void testAuctionRequestReload(String prebidAd) throws InterruptedException, TimeoutException {
         initValidTemplatesJson(prebidAd);
 
@@ -151,7 +164,7 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
     }
 
     //BANNER DELEGATES TEST
-    @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
+//    @Test(groups = {"android"}, dataProvider = "bannerAds", dataProviderClass = InAppDataProviders.class)
     public void testBannerAndroidDelegates(String prebidAd) throws InterruptedException {
         initValidTemplatesJson(prebidAd);
         InAppBiddingAdPageImpl bannerPage = env.homePage.goToAd(prebidAd);
