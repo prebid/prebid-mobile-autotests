@@ -16,19 +16,19 @@
               "type":"banner",
               "targeting":{
                 "hb_env":"mobile-app",
-                "hb_bidder_openx":"openx",
+                "hb_bidder_prebid":"prebid",
                 "hb_cache_id":"$VARIABLE",
-                "hb_cache_id_openx":"$VARIABLE",
-                "hb_size_openx":"$VARIABLE",
-                "hb_cache_path_openx":"/cache",
+                "hb_cache_id_prebid":"$VARIABLE",
+                "hb_size_prebid":"$VARIABLE",
+                "hb_cache_path_prebid":"/cache",
                 "hb_pb":"$VARIABLE",
-                "hb_env_openx":"mobile-app",
+                "hb_env_prebid":"mobile-app",
                 "hb_cache_path":"/cache",
                 "hb_size":"$VARIABLE",
-                "hb_bidder":"openx",
-                "hb_pb_openx":"$VARIABLE",
+                "hb_bidder":"prebid",
+                "hb_pb_prebid":"$VARIABLE",
                 "hb_cache_host":"prebid-server-test-j.prebid.org",
-                "hb_cache_host_openx":"prebid-server-test-j.prebid.org"
+                "hb_cache_host_prebid":"prebid-server-test-j.prebid.org"
               },
               "cache":{
                 "bids":{
@@ -42,7 +42,7 @@
           }
         }
       ],
-      "seat":"openx",
+      "seat":"prebid",
       "group":0
     }
   ],
@@ -50,7 +50,7 @@
   "ext":{
     "responsetimemillis":{
       "cache":"$VARIABLE",
-      "openx":"$VARIABLE"
+      "prebid":"$VARIABLE"
     },"warnings":{
       "prebid": "$VARIABLE"
     },
