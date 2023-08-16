@@ -508,6 +508,20 @@ public class InAppBiddingBannerTests extends InAppBaseTest {
         env.homePage.clickBack();
     }
 
+    @Test(groups = {"smoke"}, priority = -1)
+    public void testRefreshServerSide() throws TimeoutException, InterruptedException {
+        String prebidAd = InAppAdNames.BANNER_320x50_IN_APP_SERVER_SIDE_TIMEOUT;
+        env.homePage.goToAd(prebidAd);
+
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 1, 42);
+
+        initPrebidAdapter(prebidAd, env);
+        //wait for reload
+        env.waitForEvent(InAppBiddingEvents.AUCTION, 2, 42, 60);
+
+        env.homePage.clickBack();
+    }
+
     @Test(groups = {"requests"})
     public void testWithIncorrectVastFile() throws TimeoutException, InterruptedException {
         env.homePage.goToAd(InAppAdNames.BANNER_320x50_IN_APP_VAST);
